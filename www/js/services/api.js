@@ -1,8 +1,8 @@
 var app = angular.module('starter.services', [])
 
 app.factory('Api', function($http, $rootScope) {
-  var root_url = "http://localhost:3000/api/";
-  // var root_url = "https://swapper-app.herokuapp.com/api/";
+  // var root_url = "http://localhost:3000/api/";
+  var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
 
@@ -15,8 +15,9 @@ app.factory('Api', function($http, $rootScope) {
       password: password
     }
     $.post(createUserUrl, params).then(function(result) {
-      var user = jQuery.parseJSON(result.data);
-      Api.user = user;
+      debugger
+      // var user = jQuery.parseJSON(result);
+      Api.user = result.user;
       $rootScope.$broadcast("userCreated");
     });
   }
