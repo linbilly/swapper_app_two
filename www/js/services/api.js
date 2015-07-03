@@ -6,16 +6,16 @@ app.factory('Api', function($http, $rootScope) {
 
   var Api = {};
 
-  Api.createUser = function($scope) {
+  Api.createUser = function(email, firstName, lastName, password) {
     var createUserUrl = root_url + "users/create"
     var params = {
-      first_name: $scope.firstName,
-      last_name: $scope.lastName,
-      email: $scope.email,
-      password: $scope.password
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password
     }
-    $http.post(createUserUrl, {params: params}).then(function(result) {
-      var user = jQuery.parseJSON(result.data.phrase);
+    $.post(createUserUrl, params).then(function(result) {
+      var user = jQuery.parseJSON(result.data);
       Api.user = user;
       $rootScope.$broadcast("userCreated");
     });
