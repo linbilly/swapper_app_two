@@ -4,4 +4,8 @@ angular.module('starter.controllers')
   $scope.fetchGroups = function() {
     Api.getGroups()
   }
+
+  $scope.$on('groupsFetched', function() {
+    $scope.groups = Api.groups
+  });
 })
