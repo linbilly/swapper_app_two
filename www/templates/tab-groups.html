@@ -1,12 +1,14 @@
 <ion-view view-title="Groups" ng-init="fetchGroups()">
-<ion-content>
+  <ion-content>
 
-<ion-spinner icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
 
-  <ion-list >
-    <ion-item ng-repeat="group in groups">
-    {{group.name}}	
-    </ion-item>
-  </ion-list>
-</ion-content>
+    <ion-list >
+      <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/tab/groups/{{group.id}}">
+        {{group.id}}
+        {{group.name}}
+      <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>
