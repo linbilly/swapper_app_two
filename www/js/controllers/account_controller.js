@@ -4,4 +4,9 @@ angular.module('starter.controllers', [])
   $scope.createUser = function(email, firstName, lastName, password) {
     Api.createUser(email, firstName, lastName, password)
   }
+
+  $scope.$on('userCreated', function(){
+  	debugger
+  	window.localStorage['token'] =  Api.user.authentication_token;
+  })
 })

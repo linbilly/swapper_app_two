@@ -16,8 +16,9 @@ app.factory('Api', function($http, $rootScope) {
       password: password
     }
     $.post(createUserUrl, params).then(function(result) {
-      var user = jQuery.parseJSON(result.data);
-      Api.user = user;
+      debugger
+      // var user = jQuery.parseJSON(result);
+      Api.user = result.user;
       $rootScope.$broadcast("userCreated");
     });
   }
