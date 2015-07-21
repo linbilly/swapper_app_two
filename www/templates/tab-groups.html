@@ -1,8 +1,11 @@
 <ion-view view-title="Groups" ng-init="fetchGroups()">
 <ion-content>
+
+<ion-spinner icon="lines" ng-show="loader"></ion-spinner>
+
   <ion-list >
     <ion-item ng-repeat="group in groups">
-    {{group.name}}
+    {{group.name}}	
     </ion-item>
   </ion-list>
 </ion-content>
