@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('GroupsCtrl', function($scope, Api) {
+.controller('GroupCreateCtrl', function($scope, Api) {
   $scope.loader = true;
   $scope.fetchGroups = function() {
     Api.getGroups()
@@ -11,4 +11,8 @@ angular.module('starter.controllers')
     $scope.loader = false;
     $scope.$apply();
   });
+
+  $scope.createGroup = function(){
+    
+  }
 })
