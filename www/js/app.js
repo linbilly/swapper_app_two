@@ -48,6 +48,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.group-create', {
+    url: '/groups/create',
+    views: {
+      'tab-groups': {
+        templateUrl: 'templates/group-create.html',
+        controller: 'GroupCreateCtrl'
+      }
+    }
+  })
+
   .state('tab.group-detail', {
     url: '/groups/:groupId',
     views: {
