@@ -1,8 +1,8 @@
 <ion-view view-title="Groups" ng-init="fetchGroups()">
 <ion-content>
-  <ion-list>
-    <ion-item>
-    1
+  <ion-list >
+    <ion-item ng-repeat="group in groups">
+    {{group.name}}
     </ion-item>
   </ion-list>
 </ion-content>
