@@ -1,7 +1,8 @@
 var app = angular.module('starter.services', [])
 
 app.factory('Api', function($http, $rootScope) {
-  var root_url = "http://localhost:3000/api/";
+  // var root_url = "http://localhost:3000/api/";
+  var root_url = "http://192.168.0.10:3000/api/";
   // var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
