@@ -12,7 +12,4 @@ angular.module('starter.controllers')
     $scope.$apply();
   });
 
-  $scope.createGroup = function(){
-    
-  }
 })
