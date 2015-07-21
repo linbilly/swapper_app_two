@@ -1,7 +1,5 @@
 angular.module('starter')
 
-.controller('GroupsCtrl', function($scope) {})
-
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {

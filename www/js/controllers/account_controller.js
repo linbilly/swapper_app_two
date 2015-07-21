@@ -6,7 +6,6 @@ angular.module('starter.controllers', [])
   }
 
   $scope.$on('userCreated', function(){
-  	debugger
   	window.localStorage['token'] =  Api.user.authentication_token;
   })
 })

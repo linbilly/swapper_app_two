@@ -16,10 +16,20 @@ app.factory('Api', function($http, $rootScope) {
       password: password
     }
     $.post(createUserUrl, params).then(function(result) {
-      debugger
-      // var user = jQuery.parseJSON(result);
       Api.user = result.user;
       $rootScope.$broadcast("userCreated");
+    });
+  }
+
+  Api.getGroups = function() {
+    var fetchGroupsUrl = root_url + "groups"
+    var params = {
+      authentication_token: window.localStorage['token']
+    }
+    $.get(fetchGroupsUrl, params).then(function(result) {
+      Api.groups = result.groups
+      console.log(Api.groups)
+      $rootScope.$broadcast("groupsFetched");
     });
   }
 
