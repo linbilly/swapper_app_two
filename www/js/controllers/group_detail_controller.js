@@ -7,7 +7,6 @@ angular.module('starter.controllers')
   $scope.$on('groupDetailsFetched', function() {
     $scope.groupName = Api.group.name
     $scope.users = Api.groupUsers
-    $scope.loader = false;
-    $scope.$apply();
+    $scope.loader = false
   });
 })

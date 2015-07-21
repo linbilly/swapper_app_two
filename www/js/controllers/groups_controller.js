@@ -9,6 +9,5 @@ angular.module('starter.controllers')
   $scope.$on('groupsFetched', function() {
     $scope.groups = Api.groups
     $scope.loader = false;
-    $scope.$apply();
   });
 })
