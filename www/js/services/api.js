@@ -24,11 +24,10 @@ app.factory('Api', function($http, $rootScope) {
   Api.getGroups = function() {
     var fetchGroupsUrl = root_url + "groups"
     var params = {
-      authentication_token: window.localStorage['token']
+      authentication_token: userToken()
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
       Api.groups = result.groups
-      console.log(Api.groups)
       $rootScope.$broadcast("groupsFetched");
     });
   }
@@ -43,6 +42,23 @@ app.factory('Api', function($http, $rootScope) {
     $.post(createGroupUrl, params).then(function(result){
       $rootScope.$broadcast("groupCreated");
     });
+  }
+
+  Api.groupDetails = function(id) {
+    var fetchGroupsUrl = root_url + "groups/" + id + "/details"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(fetchGroupsUrl, params).then(function(result) {
+      Api.group = result.group
+      Api.groupUsers = result.users
+      $rootScope.$broadcast("groupDetailsFetched");
+    });
+  }
+
+  function userToken() {
+    return window.localStorage['token']
+    // return "a_oBj-m7pF8mQ7ei2Gr_"
   }
 
   return Api;
