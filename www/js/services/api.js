@@ -33,5 +33,17 @@ app.factory('Api', function($http, $rootScope) {
     });
   }
 
+  Api.createGroup = function(groupName){
+    debugger
+    var createGroupUrl = root_url+"groups/create"
+    var params = {
+      authentication_token: window.localStorage['token'],
+      name: groupName
+    }
+    $.post(createGroupUrl, params).then(function(result){
+      $rootScope.$broadcast("groupCreated");
+    });
+  }
+
   return Api;
 });
