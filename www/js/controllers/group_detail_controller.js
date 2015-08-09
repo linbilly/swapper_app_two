@@ -15,4 +15,12 @@ angular.module('starter.controllers')
       $scope.message = "This group has " + $scope.users.length + " members. Join to swap your shifts with them!"
     }
   });
+
+  $scope.joinGroup = function() {
+    Api.joinGroup($stateParams.groupId)
+  }
+
+  $scope.$on('groupJoined', function() {
+    console.log("YAY!")
+  });
 })

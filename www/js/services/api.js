@@ -32,10 +32,10 @@ app.factory('Api', function($http, $rootScope) {
     });
   }
 
-  Api.createGroup = function(groupName){
-    var createGroupUrl = root_url+"groups/create"
+  Api.createGroup = function(groupName) {
+    var createGroupUrl = root_url + "groups/create"
     var params = {
-      authentication_token: window.localStorage['token'],
+      authentication_token: userToken(),
       name: groupName
     }
     $.post(createGroupUrl, params).then(function(result){
@@ -52,6 +52,16 @@ app.factory('Api', function($http, $rootScope) {
       Api.group = result.group
       Api.groupUsers = result.users
       $rootScope.$broadcast("groupDetailsFetched");
+    });
+  }
+
+  Api.joinGroup = function(id) {
+    var joinGroupUrl = root_url + "groups/" + id + "/join"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.post(joinGroupUrl, params).then(function(result){
+      $rootScope.$broadcast("groupJoined");
     });
   }
 
