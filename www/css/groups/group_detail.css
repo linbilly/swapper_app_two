@@ -3,7 +3,12 @@
 }
 
 .detailed-group-header-holder button {
-  margin-top: 12px;
+  margin-top: 8px;
+}
+
+.detailed-group-header-holder .leave-group-link {
+  margin-left: -20px;
+  line-height: 4.6;
 }
 
 .detailed-group-footer-holder {

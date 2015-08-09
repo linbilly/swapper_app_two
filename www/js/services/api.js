@@ -51,6 +51,7 @@ app.factory('Api', function($http, $rootScope) {
     $.get(fetchGroupsUrl, params).then(function(result) {
       Api.group = result.group
       Api.groupUsers = result.users
+      Api.userPartOfGroup = result.has_user
       $rootScope.$broadcast("groupDetailsFetched");
     });
   }
@@ -62,6 +63,17 @@ app.factory('Api', function($http, $rootScope) {
     }
     $.post(joinGroupUrl, params).then(function(result){
       $rootScope.$broadcast("groupJoined");
+    });
+  }
+
+  Api.leaveGroup = function(id) {
+    var leaveGroupUrl = root_url + "groups/" + id + "/leave"
+    var params = {
+      authentication_token: userToken()
+    }
+
+    $.post(leaveGroupUrl, params).then(function(result){
+      $rootScope.$broadcast("leftGroup");
     });
   }
 

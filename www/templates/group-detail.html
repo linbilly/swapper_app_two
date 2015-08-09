@@ -11,11 +11,24 @@
       <div>
         {{message}}
       </div>
-      <button class="button button-balanced" ng-click="joinGroup()">
+      <button class="button button-balanced" ng-click="joinGroup()" ng-show="!groupHasUser">
         Join group
       </button>
+      <div ng-show="groupHasUser">
+        <div class="row">
+          <div class="col">
+            <button class="button" ng-click="joinGroup()">
+              <i class="icon ion-checkmark"></i> Joined
+            </button>
+          </div>
+          <div class="col col-center">
+            <a class="leave-group-link" ng-click="leaveGroup()">
+              Leave group
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
 
     <div class="item item-divider">
       Members:
@@ -27,9 +40,20 @@
     </ion-list>
 
     <div class="detailed-group-footer-holder">
-      <button class="button button-balanced" ng-click="joinGroup()">
-        Join group
-      </button>
+      <div ng-show="groupHasUser">
+        <div class="row">
+          <div class="col">
+            <button class="button" ng-click="joinGroup()">
+              <i class="icon ion-checkmark"></i> Joined
+            </button>
+          </div>
+          <div class="col col-center">
+            <a class="leave-group-link" ng-click="leaveGroup()">
+              Leave group
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
