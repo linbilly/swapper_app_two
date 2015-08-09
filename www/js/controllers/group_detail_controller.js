@@ -2,12 +2,14 @@ angular.module('starter.controllers')
 
 .controller('GroupDetailCtrl', function($scope, $stateParams, Api) {
   $scope.loader = true
+  $scope.buttonClicked = false
   Api.groupDetails($stateParams.groupId)
 
   $scope.$on('groupDetailsFetched', function() {
     $scope.groupName = Api.group.name
     $scope.users = Api.groupUsers
     $scope.loader = false
+    $scope.buttonClicked = false
     $scope.groupHasUser = Api.userPartOfGroup
 
     if ($scope.groupHasUser) {
@@ -23,6 +25,7 @@ angular.module('starter.controllers')
   });
 
   $scope.joinGroup = function() {
+    $scope.buttonClicked = !$scope.buttonClicked
     Api.joinGroup($stateParams.groupId)
   }
 
