@@ -8,5 +8,11 @@ angular.module('starter.controllers')
     $scope.groupName = Api.group.name
     $scope.users = Api.groupUsers
     $scope.loader = false
+
+    if ($scope.users.length == 0) {
+      $scope.message = "Be the first to join this group!"
+    } else {
+      $scope.message = "This group has " + $scope.users.length + " members. Join to swap your shifts with them!"
+    }
   });
 })
