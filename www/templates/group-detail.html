@@ -20,7 +20,7 @@
       <div ng-show="groupHasUser">
         <div class="row">
           <div class="col">
-            <button class="button" ng-click="joinGroup()">
+            <button class="button">
               <i class="icon ion-checkmark"></i> Joined
             </button>
           </div>
@@ -43,14 +43,16 @@
     </ion-list>
 
     <div class="detailed-group-footer-holder">
-      <button class="button button-balanced" ng-click="joinGroup()" ng-show="!groupHasUser">
+      <button class="button button-balanced" ng-click="joinGroup()" ng-show="!groupHasUser" ng-class="buttonClicked ? 'clicked' : ''">
+        <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
         Join group
-        <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
       </button>
+      <div>
+      </div>
       <div ng-show="groupHasUser">
         <div class="row">
           <div class="col">
-            <button class="button" ng-click="joinGroup()">
+            <button class="button">
               <i class="icon ion-checkmark"></i> Joined
             </button>
           </div>
