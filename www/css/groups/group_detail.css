@@ -2,6 +2,10 @@
   padding: 16px;
 }
 
+.detailed-group-header-holder button {
+  margin-top: 12px;
+}
+
 .detailed-group-footer-holder {
   padding: 16px;
 }
