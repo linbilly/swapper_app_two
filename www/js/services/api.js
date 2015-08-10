@@ -7,6 +7,9 @@ app.factory('Api', function($http, $rootScope) {
 
   var Api = {};
 
+  // Users
+  // ===========================================================================
+
   Api.createUser = function(email, firstName, lastName, password) {
     var createUserUrl = root_url + "users/create"
     var params = {
@@ -20,6 +23,9 @@ app.factory('Api', function($http, $rootScope) {
       $rootScope.$broadcast("userCreated");
     });
   }
+
+  // Groups
+  // ===========================================================================
 
   Api.getGroups = function() {
     var fetchGroupsUrl = root_url + "groups"
@@ -76,6 +82,23 @@ app.factory('Api', function($http, $rootScope) {
       $rootScope.$broadcast("leftGroup");
     });
   }
+
+  // Shifts
+  // ===========================================================================
+
+  Api.getShiftPatterns = function() {
+    var fetchShiftPatternsUrl = root_url + "shift-types"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(fetchShiftPatternsUrl, params).then(function(result) {
+      Api.groupsWithShiftTypes = result.shift_types
+      $rootScope.$broadcast("shiftTypesFetched");
+    });
+  }
+
+  // General
+  // ===========================================================================
 
   function userToken() {
     return window.localStorage['token']

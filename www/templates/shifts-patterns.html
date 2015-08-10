@@ -1,8 +1,19 @@
-<ion-view view-title="Shift patterns">
+<ion-view view-title="Shift patterns" ng-init="fetchShiftPatterns()">
   <ion-nav-buttons side="right" >
     <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
   </ion-nav-buttons>
   <ion-content>
-    Patterns
+    <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
+    <div class="list">
+      <ion-list ng-repeat="group in groupsWithShiftTypes">
+        <div class="item item-divider">
+          {{group.name}}
+        </div>
+        <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item-icon-right">
+          {{shiftType.name}}
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-view>
