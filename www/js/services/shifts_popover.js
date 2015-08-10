@@ -23,7 +23,7 @@ angular.module('starter.services')
           str += "<a class='item' href='#/tab/shifts/input' ng-click='popoverClicked()'>"
             str += "Shift input"
           str += "</a>"
-          str += "<a class='item' href='http://showcase.ionicframework.com/' ng-click='popoverClicked()'>"
+          str += "<a class='item' href='#/tab/shifts/patterns' ng-click='popoverClicked()'>"
             str += "Shift patterns"
           str += "</a>"
         str += "</div>"
