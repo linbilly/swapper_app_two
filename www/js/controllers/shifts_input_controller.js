@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsCtrl', function($scope, $ionicPopover, Api) {
+.controller('ShiftsInputCtrl', function($scope, $ionicPopover, Api) {
   $ionicPopover.fromTemplateUrl('shifts-popover.html', {
     scope: $scope
   }).then(function(popover) {

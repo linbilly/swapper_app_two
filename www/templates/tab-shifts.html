@@ -1,4 +1,4 @@
-<ion-view view-title="Shifts">
+<ion-view view-title="Calendar">
   <ion-nav-buttons side="right" >
     <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
   </ion-nav-buttons>
@@ -7,13 +7,13 @@
     <ion-popover-view>
       <ion-content>
         <div class="list">
-          <a class="item" href="http://learn.ionicframework.com/" target="_blank">
+          <a class="item" href="#/tab/shifts" ng-click="popoverClicked()">
             Calendar view
           </a>
-          <a class="item" href="http://ionicframework.com/docs/" target="_blank">
+          <a class="item" href="#/tab/shifts/input" ng-click="popoverClicked()">
             Shift input
           </a>
-          <a class="item" href="http://showcase.ionicframework.com/" target="_blank">
+          <a class="item" href="http://showcase.ionicframework.com/" ng-click="popoverClicked()">
             Shift patterns
           </a>
         </div>
@@ -22,44 +22,6 @@
   </script>
 
   <ion-content>
-    <ion-list>
-      <ion-item>
-      1
-      <div class="button-bar">
-        <label class="item item-radio">
-          <input type="radio" name="group">
-          <div class="item-content">
-            A
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-
-        <label class="item item-radio">
-          <input type="radio" name="group">
-          <div class="item-content">
-            B
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-
-        <label class="item item-radio">
-          <input type="radio" name="group">
-          <div class="item-content">
-            C
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-
-        <label class="item item-radio">
-          <input type="radio" name="group">
-          <div class="item-content">
-            D
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-
-      </div>
-      </ion-item>
-    </ion-list>
+    Calendar
   </ion-content>
 </ion-view>
