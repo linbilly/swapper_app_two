@@ -4,16 +4,32 @@ angular.module('starter.services')
   var ShiftPopover = {};
 
   ShiftPopover.renderPopover = function($scope) {
-    $ionicPopover.fromTemplateUrl('shifts-popover.html', {
+    $scope.popover = $ionicPopover.fromTemplate(ShiftPopover.popoverAsString(), {
       scope: $scope
-    }).then(function(popover) {
-      $scope.popover = popover;
     });
   }
 
-
   ShiftPopover.popoverClicked = function($scope) {
     $scope.popover.hide();
+  }
+
+  ShiftPopover.popoverAsString = function() {
+    var str = "<ion-popover-view>"
+      str += "<ion-content>"
+        str += "<div class='list'>"
+          str += "<a class='item' href='#/tab/shifts' ng-click='popoverClicked()'>"
+            str += "Calendar view"
+          str += "</a>"
+          str += "<a class='item' href='#/tab/shifts/input' ng-click='popoverClicked()'>"
+            str += "Shift input"
+          str += "</a>"
+          str += "<a class='item' href='http://showcase.ionicframework.com/' ng-click='popoverClicked()'>"
+            str += "Shift patterns"
+          str += "</a>"
+        str += "</div>"
+      str += "</ion-content>"
+    str += "</ion-popover-view>"
+    return str
   }
 
   return ShiftPopover;
