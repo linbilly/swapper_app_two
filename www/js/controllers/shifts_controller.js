@@ -1,13 +1,9 @@
-angular.module('starter.controllers')
+var app = angular.module('starter.controllers')
 
-.controller('ShiftsCtrl', function($scope, $ionicPopover, Api) {
-  $ionicPopover.fromTemplateUrl('shifts-popover.html', {
-    scope: $scope
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
+app.controller('ShiftsCtrl', function($scope, $ionicPopover, Api, ShiftPopover) {
+  ShiftPopover.renderPopover($scope)
 
   $scope.popoverClicked = function() {
-    $scope.popover.hide();
+    ShiftPopover.popoverClicked($scope)
   }
 })
