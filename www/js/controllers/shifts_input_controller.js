@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsInputCtrl', function($scope, $ionicPopover, Api, ShiftPopover) {
+.controller('ShiftsInputCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, Api, ShiftPopover) {
+  $ionicNavBarDelegate.showBackButton(false)
   ShiftPopover.renderPopover($scope)
 
   $scope.popoverClicked = function() {
