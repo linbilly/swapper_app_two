@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-.controller('GroupDetailCtrl', function($scope, $stateParams, Api) {
+.controller('GroupDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api) {
+  $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.buttonClicked = false
   Api.groupDetails($stateParams.groupId)
