@@ -1,43 +1,65 @@
 <ion-view view-title="Shifts">
-<ion-content>
-  <ion-list>
-    <ion-item>
-    1
-    <div class="button-bar">
-      <label class="item item-radio">
-        <input type="radio" name="group">
-        <div class="item-content">
-          A
-        </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label>
+  <ion-nav-buttons side="right" >
+    <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
+  </ion-nav-buttons>
 
-      <label class="item item-radio">
-        <input type="radio" name="group">
-        <div class="item-content">
-          B
+  <script id="shifts-popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-content>
+        <div class="list">
+          <a class="item" href="http://learn.ionicframework.com/" target="_blank">
+            Calendar view
+          </a>
+          <a class="item" href="http://ionicframework.com/docs/" target="_blank">
+            Shift input
+          </a>
+          <a class="item" href="http://showcase.ionicframework.com/" target="_blank">
+            Shift patterns
+          </a>
         </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label>
+      </ion-content>
+    </ion-popover-view>
+  </script>
 
-      <label class="item item-radio">
-        <input type="radio" name="group">
-        <div class="item-content">
-          C
-        </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+      1
+      <div class="button-bar">
+        <label class="item item-radio">
+          <input type="radio" name="group">
+          <div class="item-content">
+            A
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
 
-      <label class="item item-radio">
-        <input type="radio" name="group">
-        <div class="item-content">
-          D
-        </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label>
+        <label class="item item-radio">
+          <input type="radio" name="group">
+          <div class="item-content">
+            B
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
 
-    </div>
-    </ion-item>
-  </ion-list>
-</ion-content>
+        <label class="item item-radio">
+          <input type="radio" name="group">
+          <div class="item-content">
+            C
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+
+        <label class="item item-radio">
+          <input type="radio" name="group">
+          <div class="item-content">
+            D
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+
+      </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>
