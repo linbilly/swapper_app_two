@@ -5,6 +5,10 @@ angular.module('starter.controllers')
   ShiftPopover.renderPopover($scope)
   $scope.loader = true;
 
+  $scope.$on('$ionicView.enter', function(){
+    Api.getShiftPatterns()
+  });
+
   $scope.popoverClicked = function() {
     ShiftPopover.popoverClicked($scope)
   }
