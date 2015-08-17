@@ -29,7 +29,7 @@
                 <i class="icon ion-arrow-up-b up-minute-icon"></i>
               </div>
               <div>
-                {{shiftPattern.start_hour}}{{shiftPattern.start_hour}} : {{shiftPattern.start_hour}}{{shiftPattern.start_hour}}
+                {{shiftPattern.start_hour | numberFixedLen: 2}} : {{shiftPattern.start_minute | numberFixedLen: 2}}
               </div>
               <div>
                 <i class="icon ion-arrow-down-b down-hour-icon"></i>
@@ -49,7 +49,7 @@
                 <i class="icon ion-arrow-up-b up-minute-icon"></i>
               </div>
               <div>
-                {{shiftPattern.start_hour}}{{shiftPattern.start_hour}} : {{shiftPattern.start_hour}}{{shiftPattern.start_hour}}
+                {{shiftPattern.start_hour | numberFixedLen: 2}} : {{shiftPattern.start_minute | numberFixedLen: 2}}
               </div>
               <div>
                 <i class="icon ion-arrow-down-b down-hour-icon"></i>
@@ -58,7 +58,7 @@
             </div>
           </div>
 
-          
+
         </div>
 
         <div>
