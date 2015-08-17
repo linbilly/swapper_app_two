@@ -6,10 +6,16 @@
     <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
     <div class="list">
       <ion-list ng-repeat="group in groupsWithShiftTypes">
-        <div class="item item-divider">
-          {{group.name}}
+        <div class="item item-divider shift-pattern-group">
+          <div class="shift-pattern-group-name">
+            {{group.name}}
+          </div>
+          <a class="add-pattern positive">
+            <i class="icon ion-android-add-circle"></i>
+            Add pattern
+          </a>
         </div>
-        <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item-icon-right">
+        <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item-icon-right" href="#/tab/shifts/patterns/{{shiftType.id}}">
           {{shiftType.name}}
           <i class="icon ion-chevron-right icon-accessory"></i>
         </ion-item>

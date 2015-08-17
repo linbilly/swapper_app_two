@@ -92,9 +92,22 @@ app.factory('Api', function($http, $rootScope) {
       authentication_token: userToken()
     }
     $.get(fetchShiftPatternsUrl, params).then(function(result) {
-      Api.groupsWithShiftTypes = result.shift_types
+      Api.groupsWithShiftTypes = JSON.parse(result.shift_types)
+      makeShiftTypesEasyToQuery()
       $rootScope.$broadcast("shiftTypesFetched");
     });
+  }
+
+  function makeShiftTypesEasyToQuery() {
+    Api.shiftTypes = {}
+    for (var groupIndex = 0; groupIndex < Api.groupsWithShiftTypes.length; groupIndex++) {
+      if (Api.groupsWithShiftTypes[groupIndex].shift_types.length > 0) {
+        for (var shiftTypeIndex = 0; shiftTypeIndex < Api.groupsWithShiftTypes[groupIndex].shift_types.length; shiftTypeIndex++) {
+          Api.shiftTypes[Api.groupsWithShiftTypes[groupIndex].shift_types[shiftTypeIndex].id] = Api.groupsWithShiftTypes[groupIndex].shift_types[shiftTypeIndex]
+          Api.shiftTypes[Api.groupsWithShiftTypes[groupIndex].shift_types[shiftTypeIndex].id]["group"] = Api.groupsWithShiftTypes[groupIndex]
+        };
+      }
+    };
   }
 
   // General

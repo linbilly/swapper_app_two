@@ -18,7 +18,7 @@ angular.module('starter.controllers')
   };
 
   $scope.$on('shiftTypesFetched', function() {
-    $scope.groupsWithShiftTypes = JSON.parse(Api.groupsWithShiftTypes)
+    $scope.groupsWithShiftTypes = Api.groupsWithShiftTypes
     $scope.loader = false;
   });
 })

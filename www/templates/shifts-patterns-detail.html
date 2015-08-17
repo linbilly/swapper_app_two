@@ -1,0 +1,77 @@
+<ion-view>
+<ion-nav-title>Edit</ion-nav-title>
+  <ion-nav-buttons side="left" >
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/shifts/patterns">Patterns</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="shift-patterns-detail">
+      <h4>
+        {{shiftPattern.group.name}}
+      </h4>
+      <div class="list shift-pattern-list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Shift pattern name: (tap to edit)</span>
+          <input class="shift-name-input" type="text" placeholder="John" value="{{shiftPattern.name}}">
+        </label>
+      </div>
+
+
+      <div class="bottom-section-holder">
+        <div class="row">
+          <div class="col">
+            <p>
+              Start time:
+            </p>
+
+            <div class="times-holder">
+              <div>
+                <i class="icon ion-arrow-up-b up-hour-icon"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon"></i>
+              </div>
+              <div>
+                {{shiftPattern.start_hour}}{{shiftPattern.start_hour}} : {{shiftPattern.start_hour}}{{shiftPattern.start_hour}}
+              </div>
+              <div>
+                <i class="icon ion-arrow-down-b down-hour-icon"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <p>
+              End time:
+            </p>
+
+            <div class="times-holder">
+              <div>
+                <i class="icon ion-arrow-up-b up-hour-icon"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon"></i>
+              </div>
+              <div>
+                {{shiftPattern.start_hour}}{{shiftPattern.start_hour}} : {{shiftPattern.start_hour}}{{shiftPattern.start_hour}}
+              </div>
+              <div>
+                <i class="icon ion-arrow-down-b down-hour-icon"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div>
+          <button class="button button-balanced">
+            <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
+            Save
+          </button>
+          <button class="button button-balanced">
+            Delete
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

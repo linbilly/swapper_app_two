@@ -98,6 +98,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.shifts-patterns-detail', {
+    url: '/shifts/patterns/:patternId',
+    views: {
+      'tab-shifts': {
+        templateUrl: 'templates/shifts-patterns-detail.html',
+        controller: 'ShiftsPatternsDetailCtrl'
+      }
+    }
+  })
+
   .state('tab.chats', {
     url: '/chats',
     views: {
