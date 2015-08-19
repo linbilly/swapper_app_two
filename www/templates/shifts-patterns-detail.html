@@ -41,6 +41,9 @@
           <div class="col">
             <p>
               End time:
+              <span ng-show="nextDayEnd">
+                *
+              </span>
             </p>
 
             <div class="times-holder">
@@ -55,6 +58,9 @@
                 <i class="icon ion-arrow-down-b down-hour-icon end" ng-click="downHour($event)"></i>
                 <i class="icon ion-arrow-down-b down-minute-icon end" ng-click="downMinute($event)"></i>
               </div>
+            </div>
+            <div ng-show="nextDayEnd">
+              * Ends the next day
             </div>
           </div>
 

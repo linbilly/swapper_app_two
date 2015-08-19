@@ -9,11 +9,13 @@ angular.module('starter.controllers')
   } else {
     $scope.shiftPattern = Api.shiftTypes[$stateParams.patternId]
     setEndTime()
+    checkNextDayEnd()
   }
 
   $scope.$on('shiftTypesFetched', function() {
     $scope.shiftPattern = Api.shiftTypes[$stateParams.patternId]
     setEndTime()
+    checkNextDayEnd()
   });
 
   $scope.upHour = function($event) {
@@ -31,6 +33,7 @@ angular.module('starter.controllers')
         $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour + 1
       }
     }
+    checkNextDayEnd()
   }
 
   $scope.upMinute = function($event) {
@@ -48,6 +51,7 @@ angular.module('starter.controllers')
         $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute + 5
       }
     }
+    checkNextDayEnd()
   }
 
   $scope.downHour = function($event) {
@@ -65,6 +69,7 @@ angular.module('starter.controllers')
         $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour - 1
       }
     }
+    checkNextDayEnd()
   }
 
   $scope.downMinute = function($event) {
@@ -82,14 +87,25 @@ angular.module('starter.controllers')
         $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute - 5
       }
     }
+    checkNextDayEnd()
   }
 
   function setEndTime() {
     var now = new Date()
-    var shiftStart = new Date(now.getFullYear(), now.getMonth(), now.getDay(), $scope.shiftPattern.start_hour, $scope.shiftPattern.start_minute)
-    var shiftEnd = new Date(shiftStart.getTime() + $scope.shiftPattern.duration * 60 * 1000)
-    $scope.shiftPattern.end_hour = shiftEnd.getHours()
-    $scope.shiftPattern.end_minute = shiftEnd.getMinutes()
+    $scope.shiftStart = new Date(now.getFullYear(), now.getMonth(), now.getDay(), $scope.shiftPattern.start_hour, $scope.shiftPattern.start_minute)
+    $scope.shiftEnd = new Date($scope.shiftStart.getTime() + $scope.shiftPattern.duration * 60 * 1000)
+    $scope.shiftPattern.end_hour = $scope.shiftEnd.getHours()
+    $scope.shiftPattern.end_minute = $scope.shiftEnd.getMinutes()
+  }
+
+  function checkNextDayEnd() {
+    if ($scope.shiftPattern.start_hour > $scope.shiftPattern.end_hour) {
+      $scope.nextDayEnd = true
+    } else if ($scope.shiftPattern.start_hour == $scope.shiftPattern.end_hour && $scope.shiftPattern.start_minute >= $scope.shiftPattern.end_minute) {
+      $scope.nextDayEnd = true
+    } else {
+      $scope.nextDayEnd = false
+    }
   }
 })
 
