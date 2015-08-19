@@ -14,7 +14,7 @@ angular.module('starter.services')
   }
 
   ShiftPopover.popoverAsString = function() {
-    var str = "<ion-popover-view>"
+    var str = "<ion-popover-view class='shifts-popover'>"
       str += "<ion-content>"
         str += "<div class='list'>"
           str += "<a class='item' href='#/tab/shifts' ng-click='popoverClicked()'>"
