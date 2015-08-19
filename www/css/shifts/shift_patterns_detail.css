@@ -14,8 +14,9 @@
   font-size: 18px !important;
 }
 
-.shift-patterns-detail .bottom-section-holder {
+.shift-patterns-detail .time-section-holder {
   padding: 5px;
+  border-bottom: 1px solid #ddd;
 }
 
 .shift-patterns-detail .times-holder {
@@ -31,4 +32,8 @@
 .shift-patterns-detail .up-minute-icon,
 .shift-patterns-detail .down-minute-icon {
   margin-left: 30px;
+}
+
+.shift-patterns-detail .action-buttons-holder {
+  padding: 15px;
 }
