@@ -25,15 +25,15 @@
 
             <div class="times-holder">
               <div>
-                <i class="icon ion-arrow-up-b up-hour-icon"></i>
-                <i class="icon ion-arrow-up-b up-minute-icon"></i>
+                <i class="icon ion-arrow-up-b up-hour-icon start" ng-click="upHour($event)"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon start" ng-click="upMinute($event)"></i>
               </div>
               <div>
                 {{shiftPattern.start_hour | numberFixedLen: 2}} : {{shiftPattern.start_minute | numberFixedLen: 2}}
               </div>
               <div>
-                <i class="icon ion-arrow-down-b down-hour-icon"></i>
-                <i class="icon ion-arrow-down-b down-minute-icon"></i>
+                <i class="icon ion-arrow-down-b down-hour-icon start" ng-click="downHour($event)"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon start" ng-click="downMinute($event)"></i>
               </div>
             </div>
           </div>
@@ -45,15 +45,15 @@
 
             <div class="times-holder">
               <div>
-                <i class="icon ion-arrow-up-b up-hour-icon"></i>
-                <i class="icon ion-arrow-up-b up-minute-icon"></i>
+                <i class="icon ion-arrow-up-b up-hour-icon end" ng-click="upHour($event)"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon end" ng-click="upMinute($event)"></i>
               </div>
               <div>
-                {{shiftPattern.start_hour | numberFixedLen: 2}} : {{shiftPattern.start_minute | numberFixedLen: 2}}
+                {{shiftPattern.end_hour | numberFixedLen: 2}} : {{shiftPattern.end_minute | numberFixedLen: 2}}
               </div>
               <div>
-                <i class="icon ion-arrow-down-b down-hour-icon"></i>
-                <i class="icon ion-arrow-down-b down-minute-icon"></i>
+                <i class="icon ion-arrow-down-b down-hour-icon end" ng-click="downHour($event)"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon end" ng-click="downMinute($event)"></i>
               </div>
             </div>
           </div>
