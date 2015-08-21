@@ -78,12 +78,17 @@ app.factory('Api', function($http, $rootScope) {
       authentication_token: userToken()
     }
 
-    $.post(leaveGroupUrl, params).then(function(result){
+    $.ajax({
+      url: leaveGroupUrl,
+      method: "DELETE",
+      data: params
+    })
+    .done(function() {
       $rootScope.$broadcast("leftGroup");
-    });
+    })
   }
 
-  // Shifts
+  // Shift types / patterns
   // ===========================================================================
 
   Api.getShiftPatterns = function() {
@@ -96,6 +101,19 @@ app.factory('Api', function($http, $rootScope) {
       makeShiftTypesEasyToQuery()
       $rootScope.$broadcast("shiftTypesFetched");
     });
+  }
+
+  Api.updateShiftPattern = function(id, shiftParams) {
+    var updateShiftPatternUrl = root_url + "shift-types/" + id + "/update"
+    shiftParams["authentication_token"] = userToken()
+    $.ajax({
+      url: updateShiftPatternUrl,
+      method: "PUT",
+      data: shiftParams
+    })
+    .done(function() {
+      $rootScope.$broadcast("shiftTypeUpdated");
+    })
   }
 
   function makeShiftTypesEasyToQuery() {
