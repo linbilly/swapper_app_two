@@ -1,15 +1,20 @@
 angular.module('starter')
 
-.directive('notification', function($timeout){
+.directive('notification', function($timeout, Notification){
   return {
     template: "<div class='notification-box row'><div class='col'>{{message}}</div><div class='col col-center col-10 clear-button-holder'><div class='clear-button' ng-click='clear()'></div></div></div>",
     link: function(scope, element, attrs){
       $timeout(function(){
-        element.remove();
+        clearMessage()
       }, 5000);
 
       scope.clear = function() {
+        clearMessage()
+      }
+
+      function clearMessage() {
         element.remove()
+        Notification.message = ""
       }
     }
   }

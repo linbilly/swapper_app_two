@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster) {
+.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
 
   if (!Api.groupsWithShiftTypes) {
@@ -72,12 +72,12 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftTypeUpdated', function(event, args) {
-    Api.message = args.name + " successfully updated"
+    Notification.message = args.name + " successfully updated"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });
 
   $scope.$on('shiftTypeDeleted', function(event, args) {
-    Api.message = args.name + " successfully deleted"
+    Notification.message = args.name + " successfully deleted"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });
 })

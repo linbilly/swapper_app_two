@@ -1,10 +1,10 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, Api, ShiftPopover) {
+.controller('ShiftsPatternsCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, Api, ShiftPopover, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   ShiftPopover.renderPopover($scope)
   $scope.loader = true;
-  $scope.message = Api.message
+  $scope.message = Notification.message
 
   $scope.$on('$ionicView.enter', function(){
     Api.getShiftPatterns()

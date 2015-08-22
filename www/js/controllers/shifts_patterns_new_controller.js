@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster) {
+.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.shiftPattern = {}
 
@@ -55,7 +55,7 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftTypeCreated', function(event, args) {
-    Api.message = args.name + " successfully created"
+    Notification.message = args.name + " successfully created"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });
 })
