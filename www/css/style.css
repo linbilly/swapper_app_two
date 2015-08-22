@@ -1,1 +1,7 @@
 /* Empty. Add your own CSS if you like */
+ion-scroll[direction=x] {
+  width: 100vw;
+}
+ion-scroll[direction=y] {
+  height: 100vh;
+}
