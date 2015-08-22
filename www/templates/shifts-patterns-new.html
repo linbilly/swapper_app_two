@@ -10,9 +10,19 @@
       </h4>
       <div class="list shift-pattern-list">
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Shift pattern name: (tap to edit)</span>
-          <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName" autofocus>
-          <span class="input-label assertive" ng-show="inputError">Please fill in</span>
+          <div class="row">
+            <div class="col col-67">
+              <span class="input-label">Shift pattern name:</span>
+              <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName">
+              <span class="input-label assertive" ng-show="inputError">Please fill in</span>
+            </div>
+            <div class="col col-33">
+              <span class="input-label">Abbreviation:</span>
+              <input class="shift-name-input" type="text" placeholder="E.g. Dx" ng-model="abbreviation">
+              <span class="input-label assertive" ng-show="abbInputError">Please fill in</span>
+              <span class="input-label assertive" ng-show="lengthError">2 letters max</span>
+            </div>
+          </div>
         </label>
       </div>
 
@@ -72,7 +82,7 @@
       </div>
       <div class="action-buttons-holder">
         <div>
-          <button class="button button-balanced" ng-click="createShiftPattern(shiftPatternName)">
+          <button class="button button-balanced" ng-click="createShiftPattern(shiftPatternName, abbreviation)">
             <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
             Create
           </button>

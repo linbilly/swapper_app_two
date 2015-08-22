@@ -105,10 +105,46 @@ angular.module('starter.services')
     return minutes
   }
 
+  ShiftType.noErrors = function($scope, shiftParams, abbreviation) {
+    var errors = true
+    if (!ShiftType.checkNameFilledIn(shiftParams)) {
+      $scope.inputError = true
+      errors = false
+    }
+
+    if (!ShiftType.checkAbbreviationFilledIn(abbreviation)) {
+      $scope.abbInputError = true
+      errors = false
+    } else if (!ShiftType.checkAbbreviationLength(abbreviation)) {
+      $scope.lengthError = true
+      errors = false
+    }
+
+    return errors
+  }
+
   ShiftType.checkNameFilledIn = function(shiftParams) {
     if (typeof shiftParams === "undefined") {
       return false
     } else if (shiftParams.trim() == "") {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  ShiftType.checkAbbreviationFilledIn = function(abbreviation) {
+    if (typeof abbreviation === "undefined") {
+      return false
+    } else if (abbreviation.trim() == "") {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  ShiftType.checkAbbreviationLength = function(abbreviation) {
+    if (abbreviation.length > 2) {
       return false
     } else {
       return true

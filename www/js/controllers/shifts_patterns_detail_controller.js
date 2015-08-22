@@ -37,6 +37,7 @@ angular.module('starter.controllers')
       setEndTime()
       ShiftType.checkNextDayEnd($scope)
       $scope.shiftPatternName = $scope.shiftPattern.name
+      $scope.abbreviation = $scope.shiftPattern.abbreviation
     }
   }
 
@@ -50,7 +51,10 @@ angular.module('starter.controllers')
 
   $scope.saveShiftPattern = function(shiftPatternName, abbreviation) {
     $scope.inputError = false
-    if (ShiftType.checkNameFilledIn(shiftPatternName)) {
+    $scope.abbInputError = false
+    $scope.lengthError = false
+    
+    if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
       var shiftParams = {
         name: shiftPatternName,
         abbreviation: abbreviation,
@@ -59,8 +63,6 @@ angular.module('starter.controllers')
         duration: ShiftType.getDuration($scope)
       }
       Api.updateShiftPattern($stateParams.patternId, shiftParams)
-    } else {
-      $scope.inputError = true
     }
   }
 

@@ -44,19 +44,21 @@ angular.module('starter.controllers')
     $scope.shiftPattern.end_minute = 30
   }
 
-  $scope.createShiftPattern = function(shiftPatternName) {
+  $scope.createShiftPattern = function(shiftPatternName, abbreviation) {
     $scope.inputError = false
-    if (ShiftType.checkNameFilledIn(shiftPatternName)) {
+    $scope.abbInputError = false
+    $scope.lengthError = false
+
+    if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
       var shiftParams = {
         name: shiftPatternName,
+        abbreviation: abbreviation,
         start_hour: $scope.shiftPattern.start_hour,
         start_minute: $scope.shiftPattern.start_minute,
         duration: ShiftType.getDuration($scope)
       }
       Api.createShiftPattern($stateParams.groupId, shiftParams)
       $scope.shiftPatternName = "" // Clear it out in case user wants to create another one
-    } else {
-      $scope.inputError = true
     }
   }
 
