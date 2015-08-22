@@ -45,13 +45,19 @@ angular.module('starter.controllers')
   }
 
   $scope.createShiftPattern = function(shiftPatternName) {
-    var shiftParams = {
-      name: shiftPatternName,
-      start_hour: $scope.shiftPattern.start_hour,
-      start_minute: $scope.shiftPattern.start_minute,
-      duration: ShiftType.getDuration($scope)
+    $scope.inputError = false
+    if (ShiftType.checkNameFilledIn(shiftPatternName)) {
+      var shiftParams = {
+        name: shiftPatternName,
+        start_hour: $scope.shiftPattern.start_hour,
+        start_minute: $scope.shiftPattern.start_minute,
+        duration: ShiftType.getDuration($scope)
+      }
+      Api.createShiftPattern($stateParams.groupId, shiftParams)
+      $scope.shiftPatternName = "" // Clear it out in case user wants to create another one
+    } else {
+      $scope.inputError = true
     }
-    Api.createShiftPattern($stateParams.groupId, shiftParams)
   }
 
   $scope.$on('shiftTypeCreated', function(event, args) {

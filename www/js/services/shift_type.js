@@ -105,6 +105,16 @@ angular.module('starter.services')
     return minutes
   }
 
+  ShiftType.checkNameFilledIn = function(shiftParams) {
+    if (typeof shiftParams === "undefined") {
+      return false
+    } else if (shiftParams.trim() == "") {
+      return false
+    } else {
+      return true
+    }
+  }
+
   return ShiftType;
 })
 
