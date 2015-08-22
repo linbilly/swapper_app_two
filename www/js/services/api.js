@@ -34,6 +34,7 @@ app.factory('Api', function($http, $rootScope) {
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
       Api.groups = result.groups
+      makeGroupsEasyToQuery()
       $rootScope.$broadcast("groupsFetched");
     });
   }
@@ -88,6 +89,13 @@ app.factory('Api', function($http, $rootScope) {
     })
   }
 
+  function makeGroupsEasyToQuery() {
+    Api.groupsObj = {}
+    for (var groupIndex = 0; groupIndex < Api.groups.length; groupIndex++) {
+      Api.groupsObj[Api.groups[groupIndex].id] = Api.groups[groupIndex]
+    };
+  }
+
   // Shift types / patterns
   // ===========================================================================
 
@@ -100,6 +108,15 @@ app.factory('Api', function($http, $rootScope) {
       Api.groupsWithShiftTypes = JSON.parse(result.shift_types)
       makeShiftTypesEasyToQuery()
       $rootScope.$broadcast("shiftTypesFetched");
+    });
+  }
+
+  Api.createShiftPattern = function(groupId, shiftParams) {
+    var createShiftPatternUrl = root_url + "shift-types/" + groupId + "/create"
+    shiftParams["authentication_token"] = userToken()
+    shiftParams["group_id"] = groupId
+    $.post(createShiftPatternUrl, shiftParams).then(function(result){
+      $rootScope.$broadcast("shiftTypeCreated");
     });
   }
 

@@ -46,9 +46,9 @@ angular.module('starter.controllers')
     $scope.shiftPattern.end_minute = $scope.shiftEnd.getMinutes()
   }
 
-  $scope.saveShiftPattern = function() {
+  $scope.saveShiftPattern = function(shiftPatternName) {
     var shiftParams = {
-      name: $scope.shiftPatternName,
+      name: shiftPatternName,
       start_hour: $scope.shiftPattern.start_hour,
       start_minute: $scope.shiftPattern.start_minute,
       duration: TimeAdjuster.getDuration($scope)
