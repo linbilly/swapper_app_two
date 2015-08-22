@@ -1,3 +1,7 @@
-.shift-pattern-group-name {
+.shifts-patterns .shift-pattern-group-name {
   font-weight: bold;
+}
+
+.shifts-patterns .add-pattern {
+  text-decoration: none;
 }
