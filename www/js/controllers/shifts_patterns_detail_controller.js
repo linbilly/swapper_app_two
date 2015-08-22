@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api, TimeAdjuster) {
+.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster) {
   $ionicNavBarDelegate.showBackButton(false)
 
   if (!Api.groupsWithShiftTypes) {
@@ -33,9 +33,11 @@ angular.module('starter.controllers')
   }
 
   function setup() {
-    setEndTime()
-    TimeAdjuster.checkNextDayEnd($scope)
-    $scope.shiftPatternName = $scope.shiftPattern.name
+    if ($scope.shiftPattern) {
+      setEndTime()
+      TimeAdjuster.checkNextDayEnd($scope)
+      $scope.shiftPatternName = $scope.shiftPattern.name
+    }
   }
 
   function setEndTime() {
@@ -57,6 +59,18 @@ angular.module('starter.controllers')
   }
 
   $scope.deleteShiftPattern = function() {
-    Api.deleteShiftPattern($stateParams.patternId)
+    swal({
+      title: "Are you sure?",
+      text: "Deleting is forever...",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yup!",
+      closeOnConfirm: false
+    }, function(){
+      Api.deleteShiftPattern($stateParams.patternId)
+      swal("Deleted!", "Your shift pattern has been deleted.", "success");
+      $state.go('tab.shifts-patterns', {}, {reload: true});
+    });
   }
 })
