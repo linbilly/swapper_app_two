@@ -16,8 +16,11 @@
             Add pattern
           </a>
         </div>
-        <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item-icon-right" href="#/tab/shifts/patterns/{{shiftType.id}}">
-          {{shiftType.name}}
+        <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item item-icon-right" href="#/tab/shifts/patterns/{{shiftType.id}}">
+          {{shiftType.abbreviation}}: {{shiftType.name}}
+          <span class="item-note">
+            {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
+          </span>
           <i class="icon ion-chevron-right icon-accessory"></i>
         </ion-item>
       </ion-list>
