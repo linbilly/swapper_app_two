@@ -56,6 +56,7 @@ angular.module('starter.controllers')
       duration: TimeAdjuster.getDuration($scope)
     }
     Api.updateShiftPattern($stateParams.patternId, shiftParams)
+    $state.go('tab.shifts-patterns', {}, {reload: true});
   }
 
   $scope.deleteShiftPattern = function() {
