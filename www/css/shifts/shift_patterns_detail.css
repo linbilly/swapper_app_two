@@ -10,6 +10,10 @@
   font-size: 14px;
 }
 
+.shift-pattern-list .item-stacked-label {
+  padding: 5px !important;
+}
+
 .shift-name-input {
   font-size: 18px !important;
 }

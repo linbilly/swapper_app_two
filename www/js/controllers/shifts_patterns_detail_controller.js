@@ -48,11 +48,12 @@ angular.module('starter.controllers')
     $scope.shiftPattern.end_minute = $scope.shiftEnd.getMinutes()
   }
 
-  $scope.saveShiftPattern = function(shiftPatternName) {
+  $scope.saveShiftPattern = function(shiftPatternName, abbreviation) {
     $scope.inputError = false
     if (ShiftType.checkNameFilledIn(shiftPatternName)) {
       var shiftParams = {
         name: shiftPatternName,
+        abbreviation: abbreviation,
         start_hour: $scope.shiftPattern.start_hour,
         start_minute: $scope.shiftPattern.start_minute,
         duration: ShiftType.getDuration($scope)
