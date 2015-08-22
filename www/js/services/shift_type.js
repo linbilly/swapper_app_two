@@ -1,9 +1,9 @@
 angular.module('starter.services')
 
-.factory('TimeAdjuster', function() {
-  var TimeAdjuster = {};
+.factory('ShiftType', function() {
+  var ShiftType = {};
 
-  TimeAdjuster.upHour = function($event, $scope) {
+  ShiftType.upHour = function($event, $scope) {
     var ele = $($event.target)
     if (ele.hasClass("start")) {
       if ($scope.shiftPattern.start_hour == 23) {
@@ -18,10 +18,10 @@ angular.module('starter.services')
         $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour + 1
       }
     }
-    TimeAdjuster.checkNextDayEnd($scope)
+    ShiftType.checkNextDayEnd($scope)
   }
 
-  TimeAdjuster.upMinute = function($event, $scope) {
+  ShiftType.upMinute = function($event, $scope) {
     var ele = $($event.target)
     if (ele.hasClass("start")) {
       if ($scope.shiftPattern.start_minute == 55) {
@@ -36,10 +36,10 @@ angular.module('starter.services')
         $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute + 5
       }
     }
-    TimeAdjuster.checkNextDayEnd($scope)
+    ShiftType.checkNextDayEnd($scope)
   }
 
-  TimeAdjuster.downHour = function($event, $scope) {
+  ShiftType.downHour = function($event, $scope) {
     var ele = $($event.target)
     if (ele.hasClass("start")) {
       if ($scope.shiftPattern.start_hour == 0) {
@@ -54,10 +54,10 @@ angular.module('starter.services')
         $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour - 1
       }
     }
-    TimeAdjuster.checkNextDayEnd($scope)
+    ShiftType.checkNextDayEnd($scope)
   }
 
-  TimeAdjuster.downMinute = function($event, $scope) {
+  ShiftType.downMinute = function($event, $scope) {
     var ele = $($event.target)
     if (ele.hasClass("start")) {
       if ($scope.shiftPattern.start_minute == 0) {
@@ -72,10 +72,10 @@ angular.module('starter.services')
         $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute - 5
       }
     }
-    TimeAdjuster.checkNextDayEnd($scope)
+    ShiftType.checkNextDayEnd($scope)
   }
 
-  TimeAdjuster.checkNextDayEnd = function($scope) {
+  ShiftType.checkNextDayEnd = function($scope) {
     if ($scope.shiftPattern.start_hour > $scope.shiftPattern.end_hour) {
       $scope.nextDayEnd = true
     } else if ($scope.shiftPattern.start_hour == $scope.shiftPattern.end_hour && $scope.shiftPattern.start_minute >= $scope.shiftPattern.end_minute) {
@@ -85,7 +85,7 @@ angular.module('starter.services')
     }
   }
 
-  TimeAdjuster.getDuration = function($scope) {
+  ShiftType.getDuration = function($scope) {
     var minutes = 0
     if ($scope.nextDayEnd) {
       minutes += (24 - $scope.shiftPattern.start_hour) * 60
@@ -93,10 +93,10 @@ angular.module('starter.services')
     } else {
       minutes += ($scope.shiftPattern.end_hour - $scope.shiftPattern.start_hour) * 60
     }
-    return TimeAdjuster.minutesDifference(minutes, $scope)
+    return ShiftType.minutesDifference(minutes, $scope)
   }
 
-  TimeAdjuster.minutesDifference = function(minutes, $scope) {
+  ShiftType.minutesDifference = function(minutes, $scope) {
     if ($scope.shiftPattern.end_minute > $scope.shiftPattern.start_minute) {
       minutes += $scope.shiftPattern.end_minute - $scope.shiftPattern.start_minute
     } else {
@@ -105,7 +105,7 @@ angular.module('starter.services')
     return minutes
   }
 
-  return TimeAdjuster;
+  return ShiftType;
 })
 
 .filter('numberFixedLen', function () {

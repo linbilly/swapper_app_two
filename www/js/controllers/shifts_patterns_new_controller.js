@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster, Notification) {
+.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.shiftPattern = {}
 
@@ -17,24 +17,24 @@ angular.module('starter.controllers')
   });
 
   $scope.upHour = function($event) {
-    TimeAdjuster.upHour($event, $scope)
+    ShiftType.upHour($event, $scope)
   }
 
   $scope.upMinute = function($event) {
-    TimeAdjuster.upMinute($event, $scope)
+    ShiftType.upMinute($event, $scope)
   }
 
   $scope.downHour = function($event) {
-    TimeAdjuster.downHour($event, $scope)
+    ShiftType.downHour($event, $scope)
   }
 
   $scope.downMinute = function($event) {
-    TimeAdjuster.downMinute($event, $scope)
+    ShiftType.downMinute($event, $scope)
   }
 
   function setup() {
     setInitialHours()
-    TimeAdjuster.checkNextDayEnd($scope)
+    ShiftType.checkNextDayEnd($scope)
   }
 
   function setInitialHours() {
@@ -49,7 +49,7 @@ angular.module('starter.controllers')
       name: shiftPatternName,
       start_hour: $scope.shiftPattern.start_hour,
       start_minute: $scope.shiftPattern.start_minute,
-      duration: TimeAdjuster.getDuration($scope)
+      duration: ShiftType.getDuration($scope)
     }
     Api.createShiftPattern($stateParams.groupId, shiftParams)
   }
