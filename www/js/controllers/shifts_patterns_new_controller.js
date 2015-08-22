@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api, TimeAdjuster) {
+.controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, TimeAdjuster) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.shiftPattern = {}
 
@@ -52,5 +52,6 @@ angular.module('starter.controllers')
       duration: TimeAdjuster.getDuration($scope)
     }
     Api.createShiftPattern($stateParams.groupId, shiftParams)
+    $state.go('tab.shifts-patterns', {}, {reload: true});
   }
 })
