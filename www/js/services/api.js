@@ -133,6 +133,20 @@ app.factory('Api', function($http, $rootScope) {
     })
   }
 
+  Api.deleteShiftPattern = function(id) {
+    var deleteShiftPatternUrl = root_url + "shift-types/" + id + "/delete"
+    $.ajax({
+      url: deleteShiftPatternUrl,
+      method: "DELETE",
+      data: {
+        authentication_token: userToken()
+      }
+    })
+    .done(function() {
+      $rootScope.$broadcast("shiftTypeDeleted");
+    })
+  }
+
   function makeShiftTypesEasyToQuery() {
     Api.shiftTypes = {}
     for (var groupIndex = 0; groupIndex < Api.groupsWithShiftTypes.length; groupIndex++) {

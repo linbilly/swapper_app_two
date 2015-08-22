@@ -37,3 +37,7 @@
 .shift-patterns-detail .action-buttons-holder {
   padding: 15px;
 }
+
+.shift-patterns-detail .action-buttons-holder .delete-link {
+  margin-top: 10px;
+}

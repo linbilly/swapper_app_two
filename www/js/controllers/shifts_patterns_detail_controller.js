@@ -55,4 +55,8 @@ angular.module('starter.controllers')
     }
     Api.updateShiftPattern($stateParams.patternId, shiftParams)
   }
+
+  $scope.deleteShiftPattern = function() {
+    Api.deleteShiftPattern($stateParams.patternId)
+  }
 })
