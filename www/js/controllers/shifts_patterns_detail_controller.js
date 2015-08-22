@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api) {
+.controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api, TimeAdjuster) {
   $ionicNavBarDelegate.showBackButton(false)
 
   if (!Api.groupsWithShiftTypes) {
@@ -17,80 +17,24 @@ angular.module('starter.controllers')
   });
 
   $scope.upHour = function($event) {
-    var ele = $($event.target)
-    if (ele.hasClass("start")) {
-      if ($scope.shiftPattern.start_hour == 23) {
-        $scope.shiftPattern.start_hour = 0
-      } else {
-        $scope.shiftPattern.start_hour = $scope.shiftPattern.start_hour + 1
-      }
-    } else {
-      if ($scope.shiftPattern.end_hour == 23) {
-        $scope.shiftPattern.end_hour = 0
-      } else {
-        $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour + 1
-      }
-    }
-    checkNextDayEnd()
+    TimeAdjuster.upHour($event, $scope)
   }
 
   $scope.upMinute = function($event) {
-    var ele = $($event.target)
-    if (ele.hasClass("start")) {
-      if ($scope.shiftPattern.start_minute == 55) {
-        $scope.shiftPattern.start_minute = 0
-      } else {
-        $scope.shiftPattern.start_minute = $scope.shiftPattern.start_minute + 5
-      }
-    } else {
-      if ($scope.shiftPattern.end_minute == 55) {
-        $scope.shiftPattern.end_minute = 0
-      } else {
-        $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute + 5
-      }
-    }
-    checkNextDayEnd()
+    TimeAdjuster.upMinute($event, $scope)
   }
 
   $scope.downHour = function($event) {
-    var ele = $($event.target)
-    if (ele.hasClass("start")) {
-      if ($scope.shiftPattern.start_hour == 0) {
-        $scope.shiftPattern.start_hour = 23
-      } else {
-        $scope.shiftPattern.start_hour = $scope.shiftPattern.start_hour - 1
-      }
-    } else {
-      if ($scope.shiftPattern.end_hour == 0) {
-        $scope.shiftPattern.end_hour = 23
-      } else {
-        $scope.shiftPattern.end_hour = $scope.shiftPattern.end_hour - 1
-      }
-    }
-    checkNextDayEnd()
+    TimeAdjuster.downHour($event, $scope)
   }
 
   $scope.downMinute = function($event) {
-    var ele = $($event.target)
-    if (ele.hasClass("start")) {
-      if ($scope.shiftPattern.start_minute == 0) {
-        $scope.shiftPattern.start_minute = 55
-      } else {
-        $scope.shiftPattern.start_minute = $scope.shiftPattern.start_minute - 5
-      }
-    } else {
-      if ($scope.shiftPattern.end_minute == 0) {
-        $scope.shiftPattern.end_minute = 55
-      } else {
-        $scope.shiftPattern.end_minute = $scope.shiftPattern.end_minute - 5
-      }
-    }
-    checkNextDayEnd()
+    TimeAdjuster.downMinute($event, $scope)
   }
 
   function setup() {
     setEndTime()
-    checkNextDayEnd()
+    TimeAdjuster.checkNextDayEnd($scope)
     $scope.shiftPatternName = $scope.shiftPattern.name
   }
 
@@ -102,44 +46,14 @@ angular.module('starter.controllers')
     $scope.shiftPattern.end_minute = $scope.shiftEnd.getMinutes()
   }
 
-  function checkNextDayEnd() {
-    if ($scope.shiftPattern.start_hour > $scope.shiftPattern.end_hour) {
-      $scope.nextDayEnd = true
-    } else if ($scope.shiftPattern.start_hour == $scope.shiftPattern.end_hour && $scope.shiftPattern.start_minute >= $scope.shiftPattern.end_minute) {
-      $scope.nextDayEnd = true
-    } else {
-      $scope.nextDayEnd = false
-    }
-  }
-
   $scope.saveShiftPattern = function() {
     var shiftParams = {
       name: $scope.shiftPatternName,
       start_hour: $scope.shiftPattern.start_hour,
       start_minute: $scope.shiftPattern.start_minute,
-      duration: getDuration()
+      duration: TimeAdjuster.getDuration($scope)
     }
     Api.updateShiftPattern($stateParams.patternId, shiftParams)
-  }
-
-  function getDuration() {
-    var minutes = 0
-    if ($scope.nextDayEnd) {
-      minutes += (24 - $scope.shiftPattern.start_hour) * 60
-      minutes += $scope.shiftPattern.end_hour * 60
-    } else {
-      minutes += ($scope.shiftPattern.end_hour - $scope.shiftPattern.start_hour) * 60
-    }
-    return minutesDifference(minutes)
-  }
-
-  function minutesDifference(minutes) {
-    if ($scope.shiftPattern.end_minute > $scope.shiftPattern.start_minute) {
-      minutes += $scope.shiftPattern.end_minute - $scope.shiftPattern.start_minute
-    } else {
-      minutes -= $scope.shiftPattern.start_minute - $scope.shiftPattern.end_minute
-    }
-    return minutes
   }
 })
 
