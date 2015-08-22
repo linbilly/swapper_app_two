@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
   ShiftPopover.renderPopover($scope)
   $scope.loader = true;
+  $scope.message = Api.message
 
   $scope.$on('$ionicView.enter', function(){
     Api.getShiftPatterns()

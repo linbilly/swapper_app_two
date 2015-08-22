@@ -116,7 +116,7 @@ app.factory('Api', function($http, $rootScope) {
     shiftParams["authentication_token"] = userToken()
     shiftParams["group_id"] = groupId
     $.post(createShiftPatternUrl, shiftParams).then(function(result){
-      $rootScope.$broadcast("shiftTypeCreated");
+      $rootScope.$broadcast("shiftTypeCreated", {name: result.shift_type.name});
     });
   }
 
@@ -128,8 +128,8 @@ app.factory('Api', function($http, $rootScope) {
       method: "PUT",
       data: shiftParams
     })
-    .done(function() {
-      $rootScope.$broadcast("shiftTypeUpdated");
+    .done(function(result) {
+      $rootScope.$broadcast("shiftTypeUpdated", {name: result.shift_type.name});
     })
   }
 
@@ -142,8 +142,8 @@ app.factory('Api', function($http, $rootScope) {
         authentication_token: userToken()
       }
     })
-    .done(function() {
-      $rootScope.$broadcast("shiftTypeDeleted");
+    .done(function(result) {
+      $rootScope.$broadcast("shiftTypeDeleted", {name: result.shift_type.name});
     })
   }
 

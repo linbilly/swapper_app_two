@@ -52,6 +52,10 @@ angular.module('starter.controllers')
       duration: TimeAdjuster.getDuration($scope)
     }
     Api.createShiftPattern($stateParams.groupId, shiftParams)
-    $state.go('tab.shifts-patterns', {}, {reload: true});
   }
+
+  $scope.$on('shiftTypeCreated', function(event, args) {
+    Api.message = args.name + " successfully created"
+    $state.go('tab.shifts-patterns', {}, {reload: true});
+  });
 })

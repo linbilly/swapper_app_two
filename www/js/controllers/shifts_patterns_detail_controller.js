@@ -56,7 +56,6 @@ angular.module('starter.controllers')
       duration: TimeAdjuster.getDuration($scope)
     }
     Api.updateShiftPattern($stateParams.patternId, shiftParams)
-    $state.go('tab.shifts-patterns', {}, {reload: true});
   }
 
   $scope.deleteShiftPattern = function() {
@@ -67,11 +66,18 @@ angular.module('starter.controllers')
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
       confirmButtonText: "Yup!",
-      closeOnConfirm: false
     }, function(){
       Api.deleteShiftPattern($stateParams.patternId)
-      swal("Deleted!", "Your shift pattern has been deleted.", "success");
-      $state.go('tab.shifts-patterns', {}, {reload: true});
     });
   }
+
+  $scope.$on('shiftTypeUpdated', function(event, args) {
+    Api.message = args.name + " successfully updated"
+    $state.go('tab.shifts-patterns', {}, {reload: true});
+  });
+
+  $scope.$on('shiftTypeDeleted', function(event, args) {
+    Api.message = args.name + " successfully deleted"
+    $state.go('tab.shifts-patterns', {}, {reload: true});
+  });
 })
