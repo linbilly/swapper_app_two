@@ -20,9 +20,9 @@
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content class="has-top-nav">
-    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="swapTab">
+    <div class="shifts-input" ng-controller="ShiftsSwapCtrl" ng-show="swapTab" style>
       <div class="calendar-holder">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="false" active-slide="12">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" delegate-handle="swap">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
               <span class="icon-holder back-icon" ng-click="previousSlide()">
@@ -63,9 +63,9 @@
       </div>
     </div>
 
-    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
+    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab" style>
       <div class="calendar-holder">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="false" active-slide="12">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" delegate-handle="input">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
               <span class="icon-holder back-icon" ng-click="previousSlide()">

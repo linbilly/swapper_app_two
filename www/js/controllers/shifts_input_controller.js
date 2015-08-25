@@ -6,10 +6,10 @@ angular.module('starter.controllers')
   $scope.calendarObjects = Calendar.setupCalendarObjects()
 
   $scope.previousSlide = function() {
-    $ionicSlideBoxDelegate.previous()
+    $ionicSlideBoxDelegate.$getByHandle('input').previous()
   }
 
   $scope.nextSlide = function() {
-    $ionicSlideBoxDelegate.next()
+    $ionicSlideBoxDelegate.$getByHandle('input').next()
   }
 })
