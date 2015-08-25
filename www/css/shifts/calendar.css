@@ -1,6 +1,5 @@
 .calendar-holder .row {
-  padding-left: 0px;
-  padding-right: 0px;
+  padding: 0px;
 }
 
 .month-bar {
@@ -27,12 +26,6 @@
 .days-of-week-bar {
   background-color: grey;
   color: white;
-  margin-bottom: -5px;
-}
-
-.days-of-week-bar .row {
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 
 .days-of-week-bar .col {
@@ -44,11 +37,19 @@
   background-color: grey;
 }
 
+.dates .row {
+  margin-top: 0px;
+}
+
 .dates .col {
   text-align: center;
   position: relative;
   min-height: 35px;
   padding: 0px;
+}
+
+.dates .date-col.active {
+  background-color: yellow;
 }
 
 .dates .col.not-current-month {
@@ -58,12 +59,12 @@
 .dates .col .date-number {
   font-size: 8px;
   position: absolute;
-  top: 1px;
+  top: -5px;
   left: 1px;
 }
 
 .dates .col .content-text {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .dates .row {

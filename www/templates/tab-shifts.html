@@ -49,7 +49,7 @@
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'">
+                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)">
                   <div class="date-number">
                     {{date.dayNum}}
                   </div>
