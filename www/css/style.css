@@ -45,3 +45,7 @@ ion-scroll[direction=y] {
   /*stroke: #444;
   fill: #444;*/
 }
+
+.has-top-nav {
+  margin-top: 44px;
+}

@@ -70,6 +70,6 @@ angular.module('starter.controllers')
     $scope.actionButtonText = "Create"
     $scope.buttonClicked = false
     Notification.message = args.name + " successfully created"
-    $state.go('tab.shifts-patterns', {}, {reload: true});
+    $state.go('tab.shifts', {tab: "patterns"}, {reload: true});
   });
 })

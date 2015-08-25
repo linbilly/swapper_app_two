@@ -1,9 +1,48 @@
-<ion-view view-title="Calendar">
-  <ion-nav-buttons side="right" >
+<ion-view view-title="Shifts" cache-view="false">
+  <!-- <ion-nav-buttons side="right" >
     <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
-  </ion-nav-buttons>
+  </ion-nav-buttons> -->
 
-  <ion-content>
-    Calendar
+  <div class="tabs-striped tabs-top tabs-background-calm tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item" ng-class="viewTab ? 'active' : ''" ng-click="viewTabClicked()">
+        View
+      </a>
+      <a class="tab-item" ng-class="inputTab ? 'active' : ''" ng-click="inputTabClicked()">
+        Input
+      </a>
+      <a class="tab-item" ng-class="patternsTab ? 'active' : ''" ng-click="patternsTabClicked()">
+        Patterns
+      </a>
+    </div>
+  </div>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
+  <ion-content class="has-top-nav">
+
+    <div class="shifts-patterns" ng-controller="ShiftsPatternsCtrl" ng-show="patternsTab">
+      <notification ng-model="message" ng-show="message"></notification>
+      <div class="list">
+        <ion-list ng-repeat="group in groupsWithShiftTypes">
+          <div class="item item-divider shift-pattern-group">
+            <div class="shift-pattern-group-name">
+              {{group.name}}
+            </div>
+            <a class="add-pattern positive" href="#/tab/shifts/patterns/{{group.id}}/new">
+              <i class="icon ion-android-add-circle"></i>
+              Add pattern
+            </a>
+          </div>
+          <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item item-icon-right" href="#/tab/shifts/patterns/{{shiftType.id}}">
+            {{shiftType.abbreviation}}: {{shiftType.name}}
+            <span class="item-note">
+              {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
+            </span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

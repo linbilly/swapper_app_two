@@ -69,7 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.shifts', {
-    url: '/shifts',
+    url: '/shifts/:tab',
     views: {
       'tab-shifts': {
         templateUrl: 'templates/tab-shifts.html',

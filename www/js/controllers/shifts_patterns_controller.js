@@ -6,9 +6,7 @@ angular.module('starter.controllers')
   $scope.loader = true;
   $scope.message = Notification.message
 
-  $scope.$on('$ionicView.enter', function(){
-    Api.getShiftPatterns()
-  });
+  Api.getShiftPatterns()
 
   $scope.popoverClicked = function() {
     ShiftPopover.popoverClicked($scope)
