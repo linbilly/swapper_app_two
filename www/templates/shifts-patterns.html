@@ -2,8 +2,10 @@
   <ion-nav-buttons side="right" >
     <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
     <notification ng-model="message" ng-show="message"></notification>
     <div class="list">
       <ion-list ng-repeat="group in groupsWithShiftTypes">

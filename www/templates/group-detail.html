@@ -3,8 +3,10 @@
   <ion-nav-buttons side="left" >
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/groups">Groups</a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
     <div class="detailed-group-header-holder">
       <div class="title">
         <h4>

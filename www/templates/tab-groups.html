@@ -2,8 +2,10 @@
   <ion-nav-buttons side="right" >
     <a class="button button-icon icon ion-plus-round" href="#/tab/groups/create"></a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <ion-spinner icon="lines" ng-show="loader"></ion-spinner>
     <ion-list>
       <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/tab/groups/{{group.id}}">
         {{group.name}}
