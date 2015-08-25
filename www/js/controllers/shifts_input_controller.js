@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsInputCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, Api, ShiftPopover) {
+.controller('ShiftsInputCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, ShiftPopover) {
   $ionicNavBarDelegate.showBackButton(false)
   ShiftPopover.renderPopover($scope)
   setupCalendarObjects()
@@ -152,5 +152,13 @@ angular.module('starter.controllers')
     }
 
     throw new Error("Unable to copy obj! Its type isn't supported.");
+  }
+
+  $scope.previousSlide = function() {
+    $ionicSlideBoxDelegate.previous()
+  }
+
+  $scope.nextSlide = function() {
+    $ionicSlideBoxDelegate.next()
   }
 })

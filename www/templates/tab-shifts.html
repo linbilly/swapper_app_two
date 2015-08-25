@@ -22,25 +22,40 @@
   <ion-content class="has-top-nav">
     <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
       <div class="calendar-holder">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="false">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="false" active-slide="12">
           <ion-slide ng-repeat="month in calendarObjects">
-            <div class="month-bar">
-              <h1>{{month.title}}</h1>
+            <div class="month-bar stable-bg">
+              <span class="icon-holder back-icon" ng-click="previousSlide()">
+                <i class="icon ion-ios-arrow-back"></i>
+              </span>
+              <span>
+                {{month.title}}
+              </span>
+              <span class="icon-holder forward-icon" ng-click="nextSlide()">
+                <i class="icon ion-ios-arrow-forward"></i>
+              </span>
             </div>
             <div class="days-of-week-bar">
               <div class="row">
-                <div class="col">S</div>
+                <div class="col special">S</div>
                 <div class="col">M</div>
                 <div class="col">T</div>
                 <div class="col">W</div>
                 <div class="col">T</div>
                 <div class="col">F</div>
-                <div class="col">S</div>
+                <div class="col special">S</div>
               </div>
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col" ng-repeat="date in row">{{date.dayNum}}</div>
+                <div class="col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'">
+                  <div class="date-number">
+                    {{date.dayNum}}
+                  </div>
+                  <div class="content-text">
+                    Dx
+                  </div>
+                </div>
               </div>
             </div>
           </ion-slide>
