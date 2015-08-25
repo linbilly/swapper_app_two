@@ -20,7 +20,7 @@
   <ion-content class="has-top-nav">
 
     <div ng-controller="CalendarCtrl" ng-show="!patternsTab">
-      <div class="calendar-holder" ng-if="calendarObjects">
+      <div class="calendar-holder" ng-if="calendarObjects && !patternsTab">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="12">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
