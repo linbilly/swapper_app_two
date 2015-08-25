@@ -12,7 +12,7 @@ angular.module('starter.controllers')
   }
 
   $scope.dateSelected = function($event) {
-    $(".active").removeClass("active")
+    $(".dates .active").removeClass("active")
 
     var ele = null
     if ($($event.target).hasClass("date-col")) {
