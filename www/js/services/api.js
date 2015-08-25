@@ -1,6 +1,6 @@
-var app = angular.module('starter.services', [])
+angular.module('starter.services')
 
-app.factory('Api', function($http, $rootScope) {
+.factory('Api', function($http, $rootScope) {
   var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.0.10:3000/api/";
   // var root_url = "https://swapper-app.herokuapp.com/api/";
@@ -159,12 +159,34 @@ app.factory('Api', function($http, $rootScope) {
     };
   }
 
+  // Shifts
+  // ===========================================================================
+
+  Api.getAllShifts = function() {
+    var getAllShiftsUrl = root_url + "shifts"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(getAllShiftsUrl, params).then(function(result) {
+      Api.shifts = makeShiftsEasyToQuery(JSON.parse(result.shifts))
+      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shifts})
+    });
+  }
+
+  function makeShiftsEasyToQuery(shifts) {
+    var easyShifts = {}
+    for (var i = 0; i < shifts.length; i++) {
+      easyShifts[shifts[i].start_date] = shifts[i]
+    };
+    return easyShifts
+  }
+
   // General
   // ===========================================================================
 
   function userToken() {
-    return window.localStorage['token']
-    // return "a_oBj-m7pF8mQ7ei2Gr_"
+    // return window.localStorage['token']
+    return "54PEJRB2svix4sZrRbGF"
   }
 
   return Api;

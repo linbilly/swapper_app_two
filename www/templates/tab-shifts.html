@@ -1,8 +1,4 @@
 <ion-view view-title="Shifts" cache-view="false">
-  <!-- <ion-nav-buttons side="right" >
-    <a class="button button-icon icon ion-android-more-vertical" ng-click="popover.show($event)"></a>
-  </ion-nav-buttons> -->
-
   <div class="tabs-striped tabs-top tabs-background-calm tabs-color-light">
     <div class="tabs">
       <a class="tab-item" ng-class="swapTab ? 'active' : ''" ng-click="swapTabClicked()">
@@ -16,13 +12,15 @@
       </a>
     </div>
   </div>
+  
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
+
   <ion-content class="has-top-nav">
 
     <div ng-controller="CalendarCtrl" ng-show="!patternsTab">
-      <div class="calendar-holder">
+      <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="12">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
@@ -54,7 +52,10 @@
                     {{date.dayNum}}
                   </div>
                   <div class="content-text">
-                    Dx
+                    <div ng-if="date.abbreviation">
+                      Dx
+                      <!-- {{date.abbreviation.shift_type.abbreviation}} -->
+                    </div>
                   </div>
                 </div>
               </div>

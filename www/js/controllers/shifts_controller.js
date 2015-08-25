@@ -1,11 +1,14 @@
 var app = angular.module('starter.controllers')
 
-app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, ShiftPopover) {
-  ShiftPopover.renderPopover($scope)
+app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, Calendar) {
+  Api.getAllShifts()
+  $scope.loader = true
 
-  $scope.popoverClicked = function() {
-    ShiftPopover.popoverClicked($scope)
-  }
+  $scope.$on('shiftsFetched', function(event, args) {
+    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts)
+    $scope.$apply()
+    $scope.loader = false
+  })
 
   if ($stateParams.tab == "input") {
     inputTabActions()
@@ -31,26 +34,17 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
     $scope.swapTab = true
     $scope.inputTab = false
     $scope.patternsTab = false
-    print()
   }
 
   function inputTabActions() {
     $scope.swapTab = false
     $scope.inputTab = true
     $scope.patternsTab = false
-    print()
   }
 
   function patternsTabActions() {
     $scope.swapTab = false
     $scope.inputTab = false
     $scope.patternsTab = true
-    print()
-  }
-
-  function print() {
-    console.log($scope.swapTab)
-    console.log($scope.inputTab)
-    console.log($scope.patternsTab)
   }
 })

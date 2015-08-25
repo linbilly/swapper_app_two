@@ -1,9 +1,7 @@
 angular.module('starter.controllers')
 
-.controller('CalendarCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
+.controller('CalendarCtrl', function($scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api) {
   $ionicNavBarDelegate.showBackButton(false)
-
-  $scope.calendarObjects = Calendar.setupCalendarObjects()
 
   $scope.previousSlide = function() {
     $ionicSlideBoxDelegate.previous()
@@ -15,7 +13,7 @@ angular.module('starter.controllers')
 
   $scope.dateSelected = function($event) {
     $(".active").removeClass("active")
-    
+
     var ele = null
     if ($($event.target).hasClass("date-col")) {
       ele = $($event.target)

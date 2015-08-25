@@ -1,9 +1,9 @@
 angular.module('starter.services')
 
-.factory('Calendar', function(General) {
+.factory('Calendar', function(General, Notification, Api) {
   var Calendar = {};
 
-  Calendar.setupCalendarObjects = function() {
+  Calendar.setupCalendarObjects = function(shifts) {
     var calendarObjects = []
     var startEndDates = startEndDateObjects()
     var currentDate = new Date();
@@ -12,7 +12,7 @@ angular.module('starter.services')
       firstDay = addMonths(firstDay, i)
 
       var title = monthNames(firstDay.getMonth()) + " " + firstDay.getFullYear()
-      var rows = fillRows(firstDay)
+      var rows = fillRows(firstDay, shifts)
 
       calendarObjects.push({
         title: title,
@@ -45,7 +45,7 @@ angular.module('starter.services')
     return names[index]
   }
 
-  function fillRows(firstDay) {
+  function fillRows(firstDay, shifts) {
     var firstRowDayOfWeekStart = firstDay.getDay()
     var days = daysInMonth(firstDay)
     var rowsRequired = calcRowsRequired(firstDay, firstRowDayOfWeekStart, days)
@@ -62,14 +62,16 @@ angular.module('starter.services')
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
           row.push({
             dayNum: tempDate.getDate(),
-            isInCurrentMonth: false
+            isInCurrentMonth: false,
+            abbreviation: shifts[formatedShiftDate(tempDate, tempDate.getDate())]
           })
         };
 
         for (var dayOfWeek = firstRowDayOfWeekStart; dayOfWeek < 7; dayOfWeek++) {
           row.push({
             dayNum: dayCount,
-            isInCurrentMonth: true
+            isInCurrentMonth: true,
+            abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
           })
           dayCount += 1
         };
@@ -82,13 +84,15 @@ angular.module('starter.services')
           if (dayCount <= days) {
             row.push({
               dayNum: dayCount,
-              isInCurrentMonth: true
+              isInCurrentMonth: true,
+              abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
             })
             dayCount += 1
           } else {
             row.push({
               dayNum: nextMonthDayCount,
-              isInCurrentMonth: false
+              isInCurrentMonth: false,
+              abbreviation: shifts[formatedShiftDate(addMonths(firstDay, 1), nextMonthDayCount)]
             })
             nextMonthDayCount += 1
           }
@@ -97,6 +101,18 @@ angular.module('starter.services')
       rows.push(row)
     };
     return rows
+  }
+
+  function formatedShiftDate(dateObj, day) {
+    return dateObj.getFullYear().toString() + "-" + zeroPad(dateObj.getMonth() + 1) + "-" + zeroPad(day)
+  }
+
+  function zeroPad(num) {
+    if (num < 10) {
+      return "0" + num.toString()
+    } else {
+      return num.toString()
+    }
   }
 
   function calcRowsRequired(firstDay, firstRowDayOfWeekStart, days) {
