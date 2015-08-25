@@ -70,7 +70,18 @@
     </div>
 
     <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
-      Input
+      <div class="shift-input-buttons-holder">
+        <span ng-repeat="shift in shiftTypes">
+          <button class="button button-small button-balanced">
+            {{shift}}
+          </button>
+        </span>
+        <span>
+          <button class="button button-small button-stable">
+            Skip
+          </button>
+        </span>
+      </div>
     </div>
 
     <div class="shifts-patterns" ng-controller="ShiftsPatternsCtrl" ng-show="patternsTab">

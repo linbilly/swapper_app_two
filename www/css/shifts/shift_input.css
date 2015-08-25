@@ -1,0 +1,8 @@
+.shift-input-buttons-holder {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.shift-input-buttons-holder button {
+  padding: 3px 12px;
+}
