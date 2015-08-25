@@ -3,6 +3,8 @@ angular.module('starter.controllers')
 .controller('ShiftsPatternsNewCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.shiftPattern = {}
+  $scope.actionButtonText = "Create"
+  $scope.buttonClicked = false
 
   if (!Api.groups) {
     Api.getGroups()
@@ -50,6 +52,8 @@ angular.module('starter.controllers')
     $scope.lengthError = false
 
     if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
+      $scope.buttonClicked = true
+      $scope.actionButtonText = "Creating"
       var shiftParams = {
         name: shiftPatternName,
         abbreviation: abbreviation,
@@ -63,6 +67,8 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftTypeCreated', function(event, args) {
+    $scope.actionButtonText = "Create"
+    $scope.buttonClicked = false
     Notification.message = args.name + " successfully created"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });

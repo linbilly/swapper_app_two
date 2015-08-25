@@ -2,6 +2,8 @@ angular.module('starter.controllers')
 
 .controller('ShiftsPatternsDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, Api, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
+  $scope.actionButtonText = "Save"
+  $scope.buttonClicked = false
 
   if (!Api.groupsWithShiftTypes) {
     // For testing only - if loading the page directly without first loading shift patterns
@@ -55,6 +57,8 @@ angular.module('starter.controllers')
     $scope.lengthError = false
     
     if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
+      $scope.buttonClicked = true
+      $scope.actionButtonText = "Saving"
       var shiftParams = {
         name: shiftPatternName,
         abbreviation: abbreviation,
@@ -80,6 +84,8 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftTypeUpdated', function(event, args) {
+    $scope.actionButtonText = "Save"
+    $scope.buttonClicked = false
     Notification.message = args.name + " successfully updated"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });
