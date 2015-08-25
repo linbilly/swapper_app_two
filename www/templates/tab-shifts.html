@@ -20,9 +20,10 @@
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content class="has-top-nav">
-    <div class="shifts-input" ng-controller="ShiftsSwapCtrl" ng-show="swapTab" style>
+
+    <div ng-controller="CalendarCtrl" ng-show="!patternsTab">
       <div class="calendar-holder">
-        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" delegate-handle="swap">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="12">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
               <span class="icon-holder back-icon" ng-click="previousSlide()">
@@ -63,47 +64,12 @@
       </div>
     </div>
 
-    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab" style>
-      <div class="calendar-holder">
-        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" delegate-handle="input">
-          <ion-slide ng-repeat="month in calendarObjects">
-            <div class="month-bar stable-bg">
-              <span class="icon-holder back-icon" ng-click="previousSlide()">
-                <i class="icon ion-ios-arrow-back"></i>
-              </span>
-              <span>
-                {{month.title}}
-              </span>
-              <span class="icon-holder forward-icon" ng-click="nextSlide()">
-                <i class="icon ion-ios-arrow-forward"></i>
-              </span>
-            </div>
-            <div class="days-of-week-bar">
-              <div class="row">
-                <div class="col special">S</div>
-                <div class="col">M</div>
-                <div class="col">T</div>
-                <div class="col">W</div>
-                <div class="col">T</div>
-                <div class="col">F</div>
-                <div class="col special">S</div>
-              </div>
-            </div>
-            <div class="dates">
-              <div class="row" ng-repeat="row in month.rows">
-                <div class="col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'">
-                  <div class="date-number">
-                    {{date.dayNum}}
-                  </div>
-                  <div class="content-text">
-                    Dx
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ion-slide>
-        </ion-slide-box>
-      </div>
+    <div class="shifts-input" ng-controller="ShiftsSwapCtrl" ng-show="swapTab">
+      Swap
+    </div>
+
+    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
+      Input
     </div>
 
     <div class="shifts-patterns" ng-controller="ShiftsPatternsCtrl" ng-show="patternsTab">
