@@ -1,24 +1,9 @@
-angular.module('starter.controllers')
+angular.module('starter.services')
 
-.controller('ShiftsInputCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, ShiftPopover) {
-  $ionicNavBarDelegate.showBackButton(false)
-  ShiftPopover.renderPopover($scope)
-  setupCalendarObjects()
+.factory('Calendar', function(General) {
+  var Calendar = {};
 
-  function startEndDateObjects() {
-    var today = new Date();
-    var startDate = new Date();
-    var endDate = new Date();
-    startDate.setFullYear(today.getFullYear() - 1)
-    endDate.setFullYear(today.getFullYear() + 1)
-    return {
-      today: today,
-      start: startDate,
-      end: endDate
-    }
-  }
-
-  function setupCalendarObjects() {
+  Calendar.setupCalendarObjects = function() {
     var calendarObjects = []
     var startEndDates = startEndDateObjects()
     var currentDate = new Date();
@@ -34,7 +19,20 @@ angular.module('starter.controllers')
         rows: rows
       })
     };
-    $scope.calendarObjects = calendarObjects
+    return calendarObjects
+  }
+
+  function startEndDateObjects() {
+    var today = new Date();
+    var startDate = new Date();
+    var endDate = new Date();
+    startDate.setFullYear(today.getFullYear() - 1)
+    endDate.setFullYear(today.getFullYear() + 1)
+    return {
+      today: today,
+      start: startDate,
+      end: endDate
+    }
   }
 
   function addMonths(dateObj, num) {
@@ -60,7 +58,7 @@ angular.module('starter.controllers')
       if (i == 0) {
 
         for (var dayOfWeek = 0; dayOfWeek < firstRowDayOfWeekStart; dayOfWeek++) {
-          var tempDate = clone(firstDay)
+          var tempDate = General.clone(firstDay)
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
           row.push({
             dayNum: tempDate.getDate(),
@@ -101,10 +99,6 @@ angular.module('starter.controllers')
     return rows
   }
 
-  function fillFirstRow() {
-
-  }
-
   function calcRowsRequired(firstDay, firstRowDayOfWeekStart, days) {
     var daysToSubtract = 7 - firstRowDayOfWeekStart
     var daysRemaining = days - daysToSubtract
@@ -116,49 +110,5 @@ angular.module('starter.controllers')
     return new Date(firstDay.getFullYear(), firstDay.getMonth() + 1, 0).getDate();
   }
 
-  $scope.popoverClicked = function() {
-    ShiftPopover.popoverClicked($scope)
-  }
-
-  function clone(obj) {
-    var copy;
-
-    // Handle the 3 simple types, and null or undefined
-    if (null == obj || "object" != typeof obj) return obj;
-
-    // Handle Date
-    if (obj instanceof Date) {
-      copy = new Date();
-      copy.setTime(obj.getTime());
-      return copy;
-    }
-
-    // Handle Array
-    if (obj instanceof Array) {
-      copy = [];
-      for (var i = 0, len = obj.length; i < len; i++) {
-        copy[i] = clone(obj[i]);
-      }
-      return copy;
-    }
-
-    // Handle Object
-    if (obj instanceof Object) {
-      copy = {};
-      for (var attr in obj) {
-        if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
-      }
-      return copy;
-    }
-
-    throw new Error("Unable to copy obj! Its type isn't supported.");
-  }
-
-  $scope.previousSlide = function() {
-    $ionicSlideBoxDelegate.previous()
-  }
-
-  $scope.nextSlide = function() {
-    $ionicSlideBoxDelegate.next()
-  }
+  return Calendar;
 })
