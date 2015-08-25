@@ -12,11 +12,11 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
   } else if ($stateParams.tab == "patterns") {
     patternsTabActions()
   } else {
-    viewTabActions()
+    swapTabActions()
   }
 
-  $scope.viewTabClicked = function() {
-    viewTabActions()
+  $scope.swapTabClicked = function() {
+    swapTabActions()
   }
 
   $scope.inputTabClicked = function() {
@@ -27,20 +27,20 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
     patternsTabActions()
   }
 
-  function viewTabActions() {
-    $scope.viewTab = true
+  function swapTabActions() {
+    $scope.swapTab = true
     $scope.inputTab = false
     $scope.patternsTab = false
   }
 
   function inputTabActions() {
-    $scope.viewTab = false
+    $scope.swapTab = false
     $scope.inputTab = true
     $scope.patternsTab = false
   }
 
   function patternsTabActions() {
-    $scope.viewTab = false
+    $scope.swapTab = false
     $scope.inputTab = false
     $scope.patternsTab = true
   }
