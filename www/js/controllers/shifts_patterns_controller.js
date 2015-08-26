@@ -8,10 +8,6 @@ angular.module('starter.controllers')
 
   Api.getShiftPatterns()
 
-  $scope.popoverClicked = function() {
-    ShiftPopover.popoverClicked($scope)
-  }
-
   $scope.fetchShiftPatterns = function() {
     Api.getShiftPatterns()
   };
