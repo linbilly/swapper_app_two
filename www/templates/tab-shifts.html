@@ -47,14 +47,13 @@
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)" data-date="{{date.year}}-{{date.month}}-{{date.dayNum}}">
+                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}">
                   <div class="date-number">
                     {{date.dayNum}}
                   </div>
                   <div class="content-text">
                     <div ng-if="date.abbreviation">
-                      Dx
-                      <!-- {{date.abbreviation.shift_type.abbreviation}} -->
+                      {{date.abbreviation.shift_type.abbreviation}}
                     </div>
                   </div>
                 </div>
@@ -78,7 +77,7 @@
         </span>
         <span>
           <button class="button button-small button-stable">
-            Skip
+            Off
           </button>
         </span>
       </div>

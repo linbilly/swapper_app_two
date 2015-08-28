@@ -191,6 +191,14 @@ angular.module('starter.services')
     return easyShifts
   }
 
+  Api.createShift = function(shiftParams, selected, abbreviation) {
+    var createShiftUrl = root_url + "shifts/create"
+    shiftParams["authentication_token"] = userToken()
+    $.post(createShiftUrl, shiftParams).then(function(result){
+      $rootScope.$broadcast("shiftCreated", {abbreviation: abbreviation, selected: selected});
+    });
+  }
+
   // General
   // ===========================================================================
 
