@@ -19,15 +19,28 @@ angular.module('starter.controllers')
     var ele = $($event.target)
     var abbreviation = ele.text().trim()
     var selected = $(".col.date-col.active")
+
+    selected.find(".content-text").text(abbreviation)
+
     var shiftParams = {
       shift_type_id: ele.attr("data-shift-type-id"),
       group_id: ele.attr("data-group-id"),
       start_date: selected.attr("data-date")
     }
-    Api.createShift(shiftParams, selected, abbreviation)
+    Api.createShift(shiftParams, selected)
+  }
+
+  $scope.deleteShift = function($event) {
+    var ele = $($event.target)
+    var selected = $(".col.date-col.active")
+
+    selected.find(".content-text").text("")
+    var shiftId = selected.attr("data-shift-id")
+
+    Api.deleteShift(shiftId)
   }
 
   $scope.$on('shiftCreated', function(event, args) {
-    args.selected.find(".content-text").text(args.abbreviation)
+    args.selected.attr("data-shift-id", args.shift.id)
   });
 })

@@ -191,12 +191,23 @@ angular.module('starter.services')
     return easyShifts
   }
 
-  Api.createShift = function(shiftParams, selected, abbreviation) {
+  Api.createShift = function(shiftParams, selected) {
     var createShiftUrl = root_url + "shifts/create"
     shiftParams["authentication_token"] = userToken()
     $.post(createShiftUrl, shiftParams).then(function(result){
-      $rootScope.$broadcast("shiftCreated", {abbreviation: abbreviation, selected: selected});
+      $rootScope.$broadcast("shiftCreated", {selected: selected, shift: result.shift});
     });
+  }
+
+  Api.deleteShift = function(shiftId) {
+    var deleteShiftUrl = root_url + "shifts/" + shiftId + "/delete"
+    $.ajax({
+      url: deleteShiftUrl,
+      method: "DELETE",
+      data: {
+        authentication_token: userToken()
+      }
+    })
   }
 
   // General

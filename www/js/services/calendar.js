@@ -65,7 +65,7 @@ angular.module('starter.services')
             month: tempDate.getMonth() + 1,
             year: tempDate.getFullYear(),
             isInCurrentMonth: false,
-            abbreviation: shifts[formatedShiftDate(tempDate, tempDate.getDate())]
+            shift: shifts[formatedShiftDate(tempDate, tempDate.getDate())]
           })
         };
 
@@ -75,7 +75,7 @@ angular.module('starter.services')
             month: firstDay.getMonth() + 1,
             year: firstDay.getFullYear(),
             isInCurrentMonth: true,
-            abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
+            shift: shifts[formatedShiftDate(firstDay, dayCount)]
           })
           dayCount += 1
         };
@@ -91,7 +91,7 @@ angular.module('starter.services')
               isInCurrentMonth: true,
               month: firstDay.getMonth() + 1,
               year: firstDay.getFullYear(),
-              abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
+              shift: shifts[formatedShiftDate(firstDay, dayCount)]
             })
             dayCount += 1
           } else {
@@ -102,7 +102,7 @@ angular.module('starter.services')
               month: nextMonth.getMonth() + 1,
               year: nextMonth.getFullYear(),
               isInCurrentMonth: false,
-              abbreviation: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
+              shift: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
             })
             nextMonthDayCount += 1
           }
