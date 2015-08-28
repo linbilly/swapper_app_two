@@ -62,6 +62,8 @@ angular.module('starter.services')
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
           row.push({
             dayNum: tempDate.getDate(),
+            month: tempDate.getMonth() + 1,
+            year: tempDate.getFullYear(),
             isInCurrentMonth: false,
             abbreviation: shifts[formatedShiftDate(tempDate, tempDate.getDate())]
           })
@@ -70,6 +72,8 @@ angular.module('starter.services')
         for (var dayOfWeek = firstRowDayOfWeekStart; dayOfWeek < 7; dayOfWeek++) {
           row.push({
             dayNum: dayCount,
+            month: firstDay.getMonth() + 1,
+            year: firstDay.getFullYear(),
             isInCurrentMonth: true,
             abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
           })
@@ -85,14 +89,20 @@ angular.module('starter.services')
             row.push({
               dayNum: dayCount,
               isInCurrentMonth: true,
+              month: firstDay.getMonth() + 1,
+              year: firstDay.getFullYear(),
               abbreviation: shifts[formatedShiftDate(firstDay, dayCount)]
             })
             dayCount += 1
           } else {
+            var nextMonth = General.clone(firstDay)
+            nextMonth = addMonths(nextMonth, 1)
             row.push({
               dayNum: nextMonthDayCount,
+              month: nextMonth.getMonth() + 1,
+              year: nextMonth.getFullYear(),
               isInCurrentMonth: false,
-              abbreviation: shifts[formatedShiftDate(addMonths(firstDay, 1), nextMonthDayCount)]
+              abbreviation: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
             })
             nextMonthDayCount += 1
           }

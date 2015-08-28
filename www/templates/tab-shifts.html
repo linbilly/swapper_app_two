@@ -47,7 +47,7 @@
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)">
+                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)" data-date="{{date.year}}-{{date.month}}-{{date.dayNum}}">
                   <div class="date-number">
                     {{date.dayNum}}
                   </div>
@@ -72,7 +72,7 @@
     <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
       <div class="shift-input-buttons-holder">
         <span ng-repeat="shift in shiftTypes">
-          <button class="button button-small button-balanced">
+          <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
             {{shift.abbreviation}}
           </button>
         </span>
