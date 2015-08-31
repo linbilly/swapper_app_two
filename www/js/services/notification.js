@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('Notification', function() {
+.service('Notification', function() {
   var Notification = {};
 
   return Notification;

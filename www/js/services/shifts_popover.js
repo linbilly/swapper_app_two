@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('ShiftPopover', function($ionicPopover) {
+.service('ShiftPopover', function($ionicPopover) {
   var ShiftPopover = {};
 
   ShiftPopover.renderPopover = function($scope) {

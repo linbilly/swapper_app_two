@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('Calendar', function(General, Notification, Api) {
+.service('Calendar', function(General, Notification, Api) {
   var Calendar = {};
 
   Calendar.setupCalendarObjects = function(shifts) {

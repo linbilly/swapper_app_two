@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('ShiftType', function() {
+.service('ShiftType', function() {
   var ShiftType = {};
 
   ShiftType.upHour = function($event, $scope) {

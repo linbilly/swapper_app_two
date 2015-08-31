@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('General', function() {
+.service('General', function() {
   var General = {};
 
   General.clone = function(obj) {
