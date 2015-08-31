@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
+.controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, Api, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
 
 
@@ -53,23 +53,32 @@ angular.module('starter.controllers')
     var selected = $(".col.date-col.active")
     selected.removeClass("active")
     if (selected.next().length == 0) { // if last date in row
-      if (selected.parents().next().length == 0) { // if last date in month
+      if (selected.parents(".row").next().length == 0) { // if last date in month
         var todayInText = selected.attr("data-date")
         $rootScope.$broadcast("goToNextCalendarSlide", {nextDay: nextDayInText(todayInText)});
       } else {
-        selected.parents().next().find(".col.date-col").first().addClass("active")
+        selected.parents(".row").next().find(".col.date-col").first().addClass("active")
       }
     } else {
       selected.next().addClass("active")
     }
   }
 
+  function highlightNextDayFromPreviousSlide(date) {
+    $(".col.date-col.active").removeClass("active")
+    var nextDay = $(".dates").find("[data-date='" + date + "']");
+    nextDay.addClass("active")
+  }
+
   $scope.$on('arrivedOnNextCalendarSlide', function(event, args) {
-    
+    highlightNextDayFromPreviousSlide(args.nextDay)
   });
 
   function nextDayInText(today) {
     var splitDate = today.split("-")
-    parseInt(splitDate[2]) + 1
+    var currentDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
+    var nextDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
+    nextDate.setDate(currentDate.getDate() + 1)
+    return nextDate.getDate() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getFullYear()
   }
 })

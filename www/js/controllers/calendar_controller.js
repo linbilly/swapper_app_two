@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('CalendarCtrl', function($scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api) {
+.controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api) {
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.previousSlide = function() {
@@ -22,4 +22,9 @@ angular.module('starter.controllers')
     }
     ele.addClass("active")
   }
+
+  $scope.$on('goToNextCalendarSlide', function(event, args) {
+    $ionicSlideBoxDelegate.next()
+    $rootScope.$broadcast("arrivedOnNextCalendarSlide", {nextDay: args.nextDay});
+  });
 })
