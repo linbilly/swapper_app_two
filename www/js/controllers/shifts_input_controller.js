@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsInputCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
+.controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
 
 
@@ -21,6 +21,7 @@ angular.module('starter.controllers')
     var selected = $(".col.date-col.active")
 
     selected.find(".content-text").text(abbreviation)
+    highlightNextDay()
 
     var shiftParams = {
       shift_type_id: ele.attr("data-shift-type-id"),
@@ -33,14 +34,42 @@ angular.module('starter.controllers')
   $scope.deleteShift = function($event) {
     var ele = $($event.target)
     var selected = $(".col.date-col.active")
-
-    selected.find(".content-text").text("")
     var shiftId = selected.attr("data-shift-id")
 
-    Api.deleteShift(shiftId)
+    if (shiftId) {
+      selected.find(".content-text").text("")
+      highlightNextDay()
+      Api.deleteShift(shiftId)
+    } else {
+      highlightNextDay()
+    }
   }
 
   $scope.$on('shiftCreated', function(event, args) {
     args.selected.attr("data-shift-id", args.shift.id)
   });
+
+  function highlightNextDay() {
+    var selected = $(".col.date-col.active")
+    selected.removeClass("active")
+    if (selected.next().length == 0) { // if last date in row
+      if (selected.parents().next().length == 0) { // if last date in month
+        var todayInText = selected.attr("data-date")
+        $rootScope.$broadcast("goToNextCalendarSlide", {nextDay: nextDayInText(todayInText)});
+      } else {
+        selected.parents().next().find(".col.date-col").first().addClass("active")
+      }
+    } else {
+      selected.next().addClass("active")
+    }
+  }
+
+  $scope.$on('arrivedOnNextCalendarSlide', function(event, args) {
+    
+  });
+
+  function nextDayInText(today) {
+    var splitDate = today.split("-")
+    parseInt(splitDate[2]) + 1
+  }
 })
