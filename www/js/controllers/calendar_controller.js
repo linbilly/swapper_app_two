@@ -12,7 +12,7 @@ angular.module('starter.controllers')
   }
 
   $scope.dateSelected = function($event) {
-    $(".dates .active").removeClass("active")
+    removeAllHighlightedCells()
 
     var ele = null
     if ($($event.target).hasClass("date-col")) {
@@ -20,11 +20,28 @@ angular.module('starter.controllers')
     } else {
       ele = $($event.target).parents(".date-col")
     }
-    ele.addClass("active")
+    var selectedDate = ele.attr("data-date")
+    var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
+    for (var i = 0; i < selectedCells.length; i++) {
+      $(selectedCells[i]).addClass("active")
+    };
+  }
+
+  $scope.highlightACell = function() {
+    var currentSlide = $($("ion-slide")[$ionicSlideBoxDelegate.currentIndex()])
+    var hightlightedCell = currentSlide.find(".col.date-col.active")
+    if (hightlightedCell.length == 0) {
+      removeAllHighlightedCells()
+      currentSlide.find(".col.date-col").first().addClass("active")
+    }
   }
 
   $scope.$on('goToNextCalendarSlide', function(event, args) {
     $ionicSlideBoxDelegate.next()
     $rootScope.$broadcast("arrivedOnNextCalendarSlide", {nextDay: args.nextDay});
   });
+
+  function removeAllHighlightedCells() {
+    $(".dates .active").removeClass("active")
+  }
 })

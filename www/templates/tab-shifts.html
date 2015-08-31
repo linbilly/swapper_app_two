@@ -21,7 +21,7 @@
 
     <div ng-controller="CalendarCtrl" class="calender-display">
       <div class="calendar-holder" ng-if="calendarObjects">
-        <ion-slide-box show-pager="false" auto-play="false" active-slide="12">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" on-slide-changed="highlightACell()">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
               <span class="icon-holder back-icon" ng-click="previousSlide()">
