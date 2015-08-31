@@ -1,13 +1,13 @@
 <ion-view view-title="Shifts" cache-view="false">
   <div class="tabs-striped tabs-top tabs-background-calm tabs-color-light">
     <div class="tabs">
-      <a class="tab-item" ng-class="swapTab ? 'active' : ''" ng-click="swapTabClicked()">
+      <a class="tab-item swap-tab" ng-class="swapTab ? 'active' : ''" ng-click="swapTabClicked()">
         Swap
       </a>
-      <a class="tab-item" ng-class="inputTab ? 'active' : ''" ng-click="inputTabClicked()">
+      <a class="tab-item input-tab" ng-class="inputTab ? 'active' : ''" ng-click="inputTabClicked()">
         Input
       </a>
-      <a class="tab-item" ng-class="patternsTab ? 'active' : ''" ng-click="patternsTabClicked()">
+      <a class="tab-item patterns-tab" ng-class="patternsTab ? 'active' : ''" ng-click="patternsTabClicked()">
         Patterns
       </a>
     </div>
@@ -19,8 +19,8 @@
 
   <ion-content class="has-top-nav">
 
-    <div ng-controller="CalendarCtrl" ng-show="!patternsTab">
-      <div class="calendar-holder" ng-if="calendarObjects && !patternsTab">
+    <div ng-controller="CalendarCtrl" class="calender-display">
+      <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="12">
           <ion-slide ng-repeat="month in calendarObjects">
             <div class="month-bar stable-bg">
@@ -64,11 +64,11 @@
       </div>
     </div>
 
-    <div class="shifts-input" ng-controller="ShiftsSwapCtrl" ng-show="swapTab">
+    <div class="shifts-input swap-tab-contents hide" ng-controller="ShiftsSwapCtrl">
       Swap
     </div>
 
-    <div class="shifts-input" ng-controller="ShiftsInputCtrl" ng-show="inputTab">
+    <div class="shifts-input input-tab-contents hide" ng-controller="ShiftsInputCtrl">
       <div class="shift-input-buttons-holder">
         <span ng-repeat="shift in shiftTypes">
           <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div class="shifts-patterns" ng-controller="ShiftsPatternsCtrl" ng-show="patternsTab">
+    <div class="shifts-patterns patterns-tab-contents hide" ng-controller="ShiftsPatternsCtrl">
       <notification ng-model="message" ng-show="message"></notification>
       <div class="list">
         <ion-list ng-repeat="group in groupsWithShiftTypes">

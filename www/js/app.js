@@ -78,25 +78,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.shifts-input', {
-    url: '/shifts/input',
-    views: {
-      'tab-shifts': {
-        templateUrl: 'templates/shifts-input.html',
-        controller: 'ShiftsInputCtrl'
-      }
-    }
-  })
+  // .state('tab.shifts-input', {
+  //   url: '/shifts/input',
+  //   views: {
+  //     'tab-shifts': {
+  //       templateUrl: 'templates/shifts-input.html',
+  //       controller: 'ShiftsInputCtrl'
+  //     }
+  //   }
+  // })
 
-  .state('tab.shifts-patterns', {
-    url: '/shifts/patterns',
-    views: {
-      'tab-shifts': {
-        templateUrl: 'templates/shifts-patterns.html',
-        controller: 'ShiftsPatternsCtrl'
-      }
-    }
-  })
+  // .state('tab.shifts-patterns', {
+  //   url: '/shifts/patterns',
+  //   views: {
+  //     'tab-shifts': {
+  //       templateUrl: 'templates/shifts-patterns.html',
+  //       controller: 'ShiftsPatternsCtrl'
+  //     }
+  //   }
+  // })
 
   .state('tab.shifts-patterns-detail', {
     url: '/shifts/patterns/:patternId',

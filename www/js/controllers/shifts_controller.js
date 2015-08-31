@@ -13,7 +13,8 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
   if ($stateParams.tab == "input") {
     inputTabActions()
   } else if ($stateParams.tab == "patterns") {
-    patternsTabActions()
+    // patternsTabActions()
+    setTimeout( patternsTabActions, 200 );
   } else {
     swapTabActions()
   }
@@ -31,20 +32,38 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
   }
 
   function swapTabActions() {
-    $scope.swapTab = true
-    $scope.inputTab = false
-    $scope.patternsTab = false
+    $(".calender-display").removeClass("hide")
+    
+    $(".swap-tab-contents").removeClass("hide")
+    $(".input-tab-contents").addClass("hide")
+    $(".patterns-tab-contents").addClass("hide")
+
+    $(".swap-tab").addClass("active")
+    $(".input-tab").removeClass("active")
+    $(".patterns-tab").removeClass("active")
   }
 
   function inputTabActions() {
-    $scope.swapTab = false
-    $scope.inputTab = true
-    $scope.patternsTab = false
+    $(".calender-display").removeClass("hide")
+
+    $(".swap-tab-contents").addClass("hide")
+    $(".input-tab-contents").removeClass("hide")
+    $(".patterns-tab-contents").addClass("hide")
+
+    $(".swap-tab").removeClass("active")
+    $(".input-tab").addClass("active")
+    $(".patterns-tab").removeClass("active")
   }
 
   function patternsTabActions() {
-    $scope.swapTab = false
-    $scope.inputTab = false
-    $scope.patternsTab = true
+    $(".calender-display").addClass("hide")
+
+    $(".swap-tab-contents").addClass("hide")
+    $(".input-tab-contents").addClass("hide")
+    $(".patterns-tab-contents").removeClass("hide")
+
+    $(".swap-tab").removeClass("active")
+    $(".input-tab").removeClass("active")
+    $(".patterns-tab").addClass("active")
   }
 })
