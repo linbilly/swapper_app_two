@@ -19,8 +19,12 @@ angular.module('starter.controllers')
     var ele = $($event.target)
     var abbreviation = ele.text().trim()
     var selected = $(".col.date-col.active")
+    var selectedDate = $(".col.date-col.active").attr("data-date")
+    var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
 
-    selected.find(".content-text").text(abbreviation)
+    for (var i = 0; i < selectedCells.length; i++) {
+      $(selectedCells[i]).find(".content-text").text(abbreviation)
+    };
     highlightNextDay()
 
     var shiftParams = {
@@ -37,7 +41,12 @@ angular.module('starter.controllers')
     var shiftId = selected.attr("data-shift-id")
 
     if (shiftId) {
-      selected.find(".content-text").text("")
+      var selectedDate = $(".col.date-col.active").attr("data-date")
+      var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
+      for (var i = 0; i < selectedCells.length; i++) {
+        $(selectedCells[i]).find(".content-text").text("")
+        $(selectedCells[i]).attr("data-shift-id", "")
+      };
       highlightNextDay()
       Api.deleteShift(shiftId)
     } else {
@@ -46,7 +55,12 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftCreated', function(event, args) {
-    args.selected.attr("data-shift-id", args.shift.id)
+    var selected = args.selected
+    var selectedDate = selected.attr("data-date")
+    var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
+    for (var i = 0; i < selectedCells.length; i++) {
+      $(selectedCells[i]).attr("data-shift-id", args.shift.id)
+    };
   });
 
   function highlightNextDay() {
