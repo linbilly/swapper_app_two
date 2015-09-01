@@ -1,6 +1,16 @@
 @charset "UTF-8";
 
 @import
+  // Custom
+  "custom/calendar/calendar",
+  "custom/calendar/shift_input",
+  "custom/calendar/shift_patterns",
+  "custom/calendar/shift_patterns_detail",
+
+  "custom/directives/notification",
+
+  "custom/general/groups/detail",
+
   // Ionicons
   "ionicons/ionicons.scss",
 
@@ -52,5 +62,3 @@
   "original_ionic/animations",
   "original_ionic/transitions";
 
-  // Custom
-  // "custom/test";

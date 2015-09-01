@@ -15,6 +15,192 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.calendar-holder .row {
+  padding: 0px; }
+
+.month-bar {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px; }
+
+.month-bar .icon-holder {
+  font-size: 24px; }
+
+.month-bar .back-icon {
+  position: absolute;
+  left: 5px; }
+
+.month-bar .forward-icon {
+  position: absolute;
+  right: 5px; }
+
+.days-of-week-bar {
+  background-color: grey;
+  color: white; }
+
+.days-of-week-bar .col {
+  background-color: lightgrey;
+  text-align: center; }
+
+.days-of-week-bar .col.special {
+  background-color: grey; }
+
+.dates .row {
+  margin-top: 0px; }
+
+.dates .col {
+  text-align: center;
+  position: relative;
+  min-height: 45px;
+  font-size: 20px;
+  padding: 0px; }
+
+.dates .date-col.active {
+  background-color: #FFFF9D; }
+
+.dates .col.not-current-month {
+  color: lightgrey; }
+
+.dates .col .date-number {
+  font-size: 12px;
+  position: absolute;
+  top: -3px;
+  left: 2px; }
+
+.dates .col .content-text {
+  padding-top: 20px; }
+
+.dates .row {
+  border-bottom: 1px solid #f8f8f8;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.dates .row:first-child {
+  border-top: none; }
+
+.dates .row:last-child {
+  border-bottom: none; }
+
+.dates .row .col {
+  border-left: 1px solid #f8f8f8;
+  border-right: 1px solid #f8f8f8;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.dates .row .col:first-child {
+  border-left: none; }
+
+.dates .row .col:last-child {
+  border-right: none; }
+
+.shift-input-buttons-holder {
+  margin-top: 10px;
+  text-align: center; }
+
+.shift-input-buttons-holder button {
+  font-size: 20px;
+  padding: 10px 15px;
+  margin-bottom: 10px; }
+
+.shift-input-buttons-holder button.standard-issue {
+  color: black; }
+
+.bottom-block {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center; }
+
+.shifts-patterns .shift-pattern-group {
+  white-space: normal !important; }
+
+.shifts-patterns .shift-pattern-group-name {
+  font-weight: bold;
+  margin-bottom: 5px; }
+
+.shifts-patterns .add-pattern {
+  text-decoration: none; }
+
+.shift-patterns-detail h4 {
+  margin-left: 15px; }
+
+.shift-pattern-list {
+  margin-bottom: 0px; }
+
+.shift-pattern-list .input-label {
+  font-size: 14px; }
+
+.shift-pattern-list .item-stacked-label {
+  padding: 5px !important; }
+
+.shift-name-input {
+  font-size: 18px !important; }
+
+.shift-patterns-detail .time-section-holder {
+  padding: 5px;
+  border-bottom: 1px solid #ddd; }
+
+.shift-patterns-detail .times-holder {
+  width: 100px;
+  font-size: 30px; }
+
+.shift-patterns-detail .up-hour-icon, .shift-patterns-detail .down-hour-icon {
+  margin-left: 8px; }
+
+.shift-patterns-detail .up-minute-icon, .shift-patterns-detail .down-minute-icon {
+  margin-left: 30px; }
+
+.shift-patterns-detail .action-buttons-holder {
+  padding: 15px; }
+
+.shift-patterns-detail .action-buttons-holder .delete-link {
+  margin-top: 10px; }
+
+.notification-box {
+  background-color: #33cd5f;
+  color: white;
+  padding: 15px 10px; }
+
+.notification-box .clear-button-holder {
+  text-align: right; }
+
+.notification-box .clear-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  color: #33cd5f;
+  text-align: center;
+  line-height: 1.3;
+  display: inline-block; }
+
+.notification-box .clear-button:before {
+  content: "×"; }
+
+.detailed-group-header-holder {
+  padding: 16px; }
+
+.detailed-group-header-holder button {
+  margin-top: 8px; }
+
+.detailed-group-header-holder button.clicked {
+  padding-left: 50px; }
+
+.detailed-group-header-holder .leave-group-link {
+  margin-left: -20px;
+  line-height: 4.6; }
+
+.detailed-group-header-holder .join-leave-loader {
+  position: absolute;
+  top: 10px;
+  left: 10px; }
+
+.detailed-group-footer-holder {
+  padding: 16px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
