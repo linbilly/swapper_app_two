@@ -150,11 +150,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  // if none of the above states are matched, use this as the fallback
+  // ===========================================================
+  // Fallback
+  // ===========================================================
+
   $urlRouterProvider.otherwise('/tab/general/index');
 
-  $ionicConfigProvider.tabs.position("bottom"); //Places them at the bottom for all OS
-  $ionicConfigProvider.tabs.style("standard"); //Makes them all look the same across all OS
-  $ionicConfigProvider.navBar.alignTitle('center'); // Center's headers for Android
+  // ===========================================================
+  // General Configurations
+  // ===========================================================
 
+  $ionicConfigProvider.tabs.position("bottom"); // Place tabs at the bottom for all OS
+  $ionicConfigProvider.tabs.style("standard"); // Make tabs all look the same across all OS
+  $ionicConfigProvider.navBar.alignTitle('center'); // Center headers for Android
 });
