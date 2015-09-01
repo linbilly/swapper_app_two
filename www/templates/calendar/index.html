@@ -4,6 +4,7 @@
   </div>
 
   <ion-content>
+    <style media="screen" type="text/css">.scroll{height:100%;}</style>
 
     <div ng-controller="CalendarCtrl" class="calender-display">
       <div class="calendar-holder" ng-if="calendarObjects">
@@ -52,16 +53,21 @@
 
     <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl">
       <div class="shift-input-buttons-holder">
-        <span ng-repeat="shift in shiftTypes">
-          <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
-            {{shift.abbreviation}}
-          </button>
-        </span>
-        <span>
-          <button class="button button-small button-stable" ng-click="deleteShift($event)">
-            Off
-          </button>
-        </span>
+        <div class="bottom-block">
+          <span ng-repeat="shift in shiftTypes">
+            <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
+              {{shift.abbreviation}}
+            </button>
+          </span>
+          <span>
+            <button class="button button-small standard-issue button-stable" ng-click="deleteShift($event)">
+              Off
+            </button>
+            <button class="button button-small standard-issue button-energized" ng-click="">
+              Swap
+            </button>
+          </span>
+        </div>
       </div>
     </div>
     

@@ -4,5 +4,18 @@
 }
 
 .shift-input-buttons-holder button {
-  padding: 3px 12px;
+  font-size: 20px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.shift-input-buttons-holder button.standard-issue {
+  color: black;
+}
+
+.bottom-block {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
 }
