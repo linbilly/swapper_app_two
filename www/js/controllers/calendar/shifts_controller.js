@@ -13,5 +13,6 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts)
     $scope.$apply()
     $scope.loader = false
+    Calendar.highlightToday()
   })
 })

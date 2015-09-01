@@ -49,9 +49,9 @@
   padding: 0px;
 }
 
-.dates .date-col.active {
+/*.dates .date-col.active {
   background-color: #FFFF9D;
-}
+}*/
 
 .dates .col.not-current-month {
   color: lightgrey;

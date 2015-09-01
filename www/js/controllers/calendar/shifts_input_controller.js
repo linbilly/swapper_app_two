@@ -7,14 +7,7 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftTypesFetched', function(event, args) {
     $scope.shiftTypes = Api.inputButtons
-    highlightToday()
   });
-
-  function highlightToday() {
-    var today = new Date()
-    var todayCell = $(".dates").find("[data-date='" + today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear() + "']");
-    todayCell.addClass("active")
-  }
 
   $scope.createShift = function($event) {
     var ele = $($event.target)
@@ -26,7 +19,7 @@ angular.module('starter.controllers')
     for (var i = 0; i < selectedCells.length; i++) {
       $(selectedCells[i]).find(".content-text").text(abbreviation)
     };
-    highlightNextDay()
+    Calendar.highlightNextDay()
 
     var shiftParams = {
       shift_type_id: ele.attr("data-shift-type-id"),
@@ -48,10 +41,10 @@ angular.module('starter.controllers')
         $(selectedCells[i]).find(".content-text").text("")
         $(selectedCells[i]).attr("data-shift-id", "")
       };
-      highlightNextDay()
+      Calendar.highlightNextDay()
       Api.deleteShift(shiftId)
     } else {
-      highlightNextDay()
+      Calendar.highlightNextDay()
     }
   }
 
@@ -64,36 +57,7 @@ angular.module('starter.controllers')
     };
   });
 
-  function highlightNextDay() {
-    var selected = $(".col.date-col.active")
-    selected.removeClass("active")
-    if (selected.next().length == 0) { // if last date in row
-      if (selected.parents(".row").next().length == 0) { // if last date in month
-        var todayInText = selected.attr("data-date")
-        $rootScope.$broadcast("goToNextCalendarSlide", {nextDay: nextDayInText(todayInText)});
-      } else {
-        selected.parents(".row").next().find(".col.date-col").first().addClass("active")
-      }
-    } else {
-      selected.next().addClass("active")
-    }
-  }
-
-  function highlightNextDayFromPreviousSlide(date) {
-    $(".col.date-col.active").removeClass("active")
-    var nextDay = $(".dates").find("[data-date='" + date + "']");
-    nextDay.addClass("active")
-  }
-
   $scope.$on('arrivedOnNextCalendarSlide', function(event, args) {
-    highlightNextDayFromPreviousSlide(args.nextDay)
+    Calendar.highlightNextDayFromPreviousSlide(args.nextDay)
   });
-
-  function nextDayInText(today) {
-    var splitDate = today.split("-")
-    var currentDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
-    var nextDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
-    nextDate.setDate(currentDate.getDate() + 1)
-    return nextDate.getDate() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getFullYear()
-  }
 })

@@ -1,7 +1,45 @@
 angular.module('starter.services')
 
-.service('Calendar', function(General, Notification, Api) {
+.service('Calendar', function($rootScope, $ionicSlideBoxDelegate, General, Notification, Api) {
   var Calendar = {};
+
+  Calendar.highlightToday = function() {
+    var today = new Date()
+    var todayCell = $(".dates").find("[data-date='" + today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear() + "']");
+    todayCell.addClass("active")
+  }
+
+  Calendar.highlightNextDay = function() {
+    var selected = $(".col.date-col.active")
+    var currentSlide = $($("ion-slide")[$ionicSlideBoxDelegate.currentIndex()])
+    var visibleSelected = currentSlide.find(".col.date-col.active")
+    selected.removeClass("active")
+
+    if (visibleSelected.next().length == 0) { // if last date in row
+      if (visibleSelected.parents(".row").next().length == 0) { // if last date in month
+        var todayInText = visibleSelected.attr("data-date")
+        $rootScope.$broadcast("goToNextCalendarSlide", {nextDay: nextDayInText(todayInText)});
+      } else {
+        visibleSelected.parents(".row").next().find(".col.date-col").first().addClass("active")
+      }
+    } else {
+      selected.next().addClass("active")
+    }
+  }
+
+  Calendar.highlightNextDayFromPreviousSlide = function(date) {
+    $(".col.date-col.active").removeClass("active")
+    var nextDay = $(".dates").find("[data-date='" + date + "']");
+    nextDay.addClass("active")
+  }
+
+  function nextDayInText(today) {
+    var splitDate = today.split("-")
+    var currentDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
+    var nextDate = new Date(splitDate[2], parseInt(splitDate[1]) - 1, splitDate[0]) // Year, Month, Date
+    nextDate.setDate(currentDate.getDate() + 1)
+    return nextDate.getDate() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getFullYear()
+  }
 
   Calendar.setupCalendarObjects = function(shifts) {
     var calendarObjects = []
