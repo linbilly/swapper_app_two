@@ -1,0 +1,98 @@
+<ion-view>
+<ion-nav-title>Edit</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/patterns/index">Patterns</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="shift-patterns-detail">
+      <h4>
+        {{shiftPattern.group.name}}
+      </h4>
+      <div class="list shift-pattern-list">
+        <label class="item item-input item-stacked-label">
+          <div class="row">
+            <div class="col col-67">
+              <span class="input-label">Shift pattern name:</span>
+              <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName">
+              <span class="input-label assertive" ng-show="inputError">Please fill in</span>
+            </div>
+            <div class="col col-33">
+              <span class="input-label">Abbreviation:</span>
+              <input class="shift-name-input" type="text" placeholder="E.g. Dx" ng-model="abbreviation">
+              <span class="input-label assertive" ng-show="abbInputError">Please fill in</span>
+              <span class="input-label assertive" ng-show="lengthError">2 letters max</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+
+      <div class="time-section-holder">
+        <div class="row">
+          <div class="col">
+            <p>
+              Start time:
+            </p>
+
+            <div class="times-holder">
+              <div>
+                <i class="icon ion-arrow-up-b up-hour-icon start" ng-click="upHour($event)"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon start" ng-click="upMinute($event)"></i>
+              </div>
+              <div>
+                {{shiftPattern.start_hour | numberFixedLen: 2}} : {{shiftPattern.start_minute | numberFixedLen: 2}}
+              </div>
+              <div>
+                <i class="icon ion-arrow-down-b down-hour-icon start" ng-click="downHour($event)"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon start" ng-click="downMinute($event)"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <p>
+              End time:
+              <span ng-show="nextDayEnd">
+                *
+              </span>
+            </p>
+
+            <div class="times-holder">
+              <div>
+                <i class="icon ion-arrow-up-b up-hour-icon end" ng-click="upHour($event)"></i>
+                <i class="icon ion-arrow-up-b up-minute-icon end" ng-click="upMinute($event)"></i>
+              </div>
+              <div>
+                {{shiftPattern.end_hour | numberFixedLen: 2}} : {{shiftPattern.end_minute | numberFixedLen: 2}}
+              </div>
+              <div>
+                <i class="icon ion-arrow-down-b down-hour-icon end" ng-click="downHour($event)"></i>
+                <i class="icon ion-arrow-down-b down-minute-icon end" ng-click="downMinute($event)"></i>
+              </div>
+            </div>
+            <div ng-show="nextDayEnd">
+              * Ends the next day
+            </div>
+          </div>
+
+
+        </div>
+
+        
+      </div>
+      <div class="action-buttons-holder">
+        <div>
+          <button class="button button-balanced" ng-click="saveShiftPattern(shiftPatternName, abbreviation)" ng-disabled="buttonClicked">
+            {{actionButtonText}}
+          </button>
+          <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
+          <div class="delete-link">
+            <a class="assertive" ng-click="deleteShiftPattern()">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

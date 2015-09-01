@@ -38,62 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.group-create', {
-    url: '/groups/create',
-    views: {
-      'tab-groups': {
-        templateUrl: 'templates/group-create.html',
-        controller: 'GroupCreateCtrl'
-      }
-    }
-  })
-
   .state('tab.shifts', {
     url: '/shifts/:tab',
     views: {
       'tab-shifts': {
         templateUrl: 'templates/tab-shifts.html',
         controller: 'ShiftsCtrl'
-      }
-    }
-  })
-
-  // .state('tab.shifts-input', {
-  //   url: '/shifts/input',
-  //   views: {
-  //     'tab-shifts': {
-  //       templateUrl: 'templates/shifts-input.html',
-  //       controller: 'ShiftsInputCtrl'
-  //     }
-  //   }
-  // })
-
-  // .state('tab.shifts-patterns', {
-  //   url: '/shifts/patterns',
-  //   views: {
-  //     'tab-shifts': {
-  //       templateUrl: 'templates/shifts-patterns.html',
-  //       controller: 'ShiftsPatternsCtrl'
-  //     }
-  //   }
-  // })
-
-  .state('tab.shifts-patterns-detail', {
-    url: '/shifts/patterns/:patternId',
-    views: {
-      'tab-shifts': {
-        templateUrl: 'templates/shifts-patterns-detail.html',
-        controller: 'ShiftsPatternsDetailCtrl'
-      }
-    }
-  })
-
-  .state('tab.shifts-patterns-new', {
-    url: '/shifts/patterns/:groupId/new',
-    views: {
-      'tab-shifts': {
-        templateUrl: 'templates/shifts-patterns-new.html',
-        controller: 'ShiftsPatternsNewCtrl'
       }
     }
   })
@@ -141,15 +91,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('tab.group-detail', {
     url: '/groups/:groupId',
     views: {
-      'tab-groups': {
+      'tab-general': {
         templateUrl: 'templates/group-detail.html',
         controller: 'GroupDetailCtrl'
       }
     }
   })
 
+  .state('tab.group-create', {
+    url: '/groups/create',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/group-create.html',
+        controller: 'GroupCreateCtrl'
+      }
+    }
+  })
+
+  .state('tab.shifts-patterns', {
+    url: '/general/patterns/index',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/shift_patterns/index.html',
+        controller: 'ShiftsPatternsCtrl'
+      }
+    }
+  })
+
+  .state('tab.shifts-patterns-new', {
+    url: '/general/patterns/:groupId/new',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/shift_patterns/new.html',
+        controller: 'ShiftsPatternsNewCtrl'
+      }
+    }
+  })
+
+  .state('tab.shifts-patterns-detail', {
+    url: '/general/patterns/:patternId',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/shift_patterns/detail.html',
+        controller: 'ShiftsPatternsDetailCtrl'
+      }
+    }
+  })
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/groups');
+  $urlRouterProvider.otherwise('/tab/general/index');
 
   $ionicConfigProvider.tabs.position("bottom"); //Places them at the bottom for all OS
   $ionicConfigProvider.tabs.style("standard"); //Makes them all look the same across all OS

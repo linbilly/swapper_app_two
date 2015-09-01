@@ -1,0 +1,33 @@
+<ion-view class="shifts-patterns" view-title="Shift patterns" ng-init="fetchShiftPatterns()" cache-view="false">
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">General</a>
+  </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
+  <ion-content>
+    <div class="shifts-patterns patterns-tab-contents">
+      <notification ng-model="message" ng-show="message"></notification>
+      <div class="list">
+        <ion-list ng-repeat="group in groupsWithShiftTypes">
+          <div class="item item-divider shift-pattern-group">
+            <div class="shift-pattern-group-name">
+              {{group.name}}
+            </div>
+            <a class="add-pattern positive" href="#/tab/general/patterns/{{group.id}}/new">
+              <i class="icon ion-android-add-circle"></i>
+              Add pattern
+            </a>
+          </div>
+          <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item item-icon-right" href="#/tab/general/patterns/{{shiftType.id}}">
+            {{shiftType.abbreviation}}: {{shiftType.name}}
+            <span class="item-note">
+              {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
+            </span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
