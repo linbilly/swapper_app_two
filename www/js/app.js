@@ -36,7 +36,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: "templates/tabs.html"
   })
 
-  // Each tab has its own nav history stack:
+  // ===========================================================
+  // Calendar
+  // ===========================================================
 
   .state('tab.shifts', {
     url: '/shifts/:tab',
@@ -47,6 +49,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+  // ===========================================================
+  // Swaps
+  // ===========================================================
 
   .state('tab.chats', {
     url: '/chats',
