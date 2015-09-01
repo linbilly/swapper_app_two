@@ -45,7 +45,7 @@ angular.module('starter.services')
     var calendarObjects = []
     var startEndDates = startEndDateObjects()
     var currentDate = new Date();
-    for (var i = -12; i < 13; i++) { // 25 is for 25 months (1 year ahead and 1 year behind)
+    for (var i = -3; i < 12; i++) { // 25 is for 25 months (1 year ahead and 1 year behind)
       var firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
       firstDay = addMonths(firstDay, i)
 
