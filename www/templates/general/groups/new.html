@@ -1,0 +1,26 @@
+<ion-view view-title="Create Group">
+  <ion-nav-buttons side="left" >
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/index">Groups</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input" >
+      <input type="text" placeholder="Group Title" ng-model="groupTitle">
+    </label>
+    <!-- <label class="item item-input">
+      <input type="text" placeholder="First Name" ng-model="firstName">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Last Name" ng-model="lastName">
+    </label>
+
+    <label class="item item-input">
+      <input type="password"  placeholder="Password" ng-model="password">
+    </label> -->
+    <button class="button button-block button-positive" ng-click="createGroup(groupTitle)">
+      Submit
+    </button>
+  </div>
+
+  </ion-content>
+</ion-view>

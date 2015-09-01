@@ -68,6 +68,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  // ===========================================================
+  // General
+  // ===========================================================
+
   .state('tab.general', {
     url: '/general/index',
     views: {
@@ -78,8 +82,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  // ===========================================================
+  // General / Groups
+  // ===========================================================
+
   .state('tab.groups', {
-    url: '/groups/index',
+    url: '/general/groups/index',
     views: {
       'tab-general': {
         templateUrl: 'templates/general/groups/index.html',
@@ -88,25 +96,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.group-detail', {
-    url: '/groups/:groupId',
+  .state('tab.group-create', {
+    url: '/general/groups/create',
     views: {
       'tab-general': {
-        templateUrl: 'templates/group-detail.html',
+        templateUrl: 'templates/general/groups/new.html',
+        controller: 'GroupCreateCtrl'
+      }
+    }
+  })
+
+  .state('tab.group-detail', {
+    url: '/general/groups/:groupId',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/groups/detail.html',
         controller: 'GroupDetailCtrl'
       }
     }
   })
 
-  .state('tab.group-create', {
-    url: '/groups/create',
-    views: {
-      'tab-general': {
-        templateUrl: 'templates/group-create.html',
-        controller: 'GroupCreateCtrl'
-      }
-    }
-  })
+  // ===========================================================
+  // General / Shift Patterns
+  // ===========================================================
 
   .state('tab.shifts-patterns', {
     url: '/general/patterns/index',
