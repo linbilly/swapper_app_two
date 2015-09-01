@@ -81,8 +81,8 @@ ion-scroll[direction=y] {
   .days-of-week-bar .col {
     background-color: lightgrey;
     text-align: center; }
-  .days-of-week-bar.special {
-    background-color: grey; }
+    .days-of-week-bar .col.special {
+      background-color: grey; }
 
 .dates .row {
   margin-top: 0px;
@@ -116,10 +116,10 @@ ion-scroll[direction=y] {
     left: 2px; }
   .dates .col .content-text {
     padding-top: 20px; }
-.dates.not-current-month {
-  color: lightgrey; }
 .dates .date-col.active {
   background-color: #FFFF9D; }
+.dates .date-col.not-current-month {
+  color: lightgrey; }
 
 .shift-input-buttons-holder {
   margin-top: 10px;

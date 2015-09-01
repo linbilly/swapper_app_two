@@ -30,11 +30,12 @@
   .col {
     background-color: lightgrey;
     text-align: center;
+    
+    &.special {
+      background-color: grey;
+    }
   }
 
-  &.special {
-    background-color: grey;
-  }
 }
 
 .dates {
@@ -52,7 +53,6 @@
     &:last-child {
       border-bottom: none;
     }
-
   }
 
   .col {
@@ -87,13 +87,13 @@
     }
   }
 
-  &.not-current-month {
-    color: lightgrey;
-  }
-
   .date-col {
     &.active {
       background-color: #FFFF9D;
+    }
+
+    &.not-current-month {
+      color: lightgrey;
     }
   }
 }
