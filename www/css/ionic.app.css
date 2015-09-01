@@ -131,12 +131,6 @@ ion-scroll[direction=y] {
     .shift-input-buttons-holder button.standard-issue {
       color: black; }
 
-.bottom-block {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  text-align: center; }
-
 .shifts-patterns .shift-pattern-group {
   white-space: normal !important; }
 .shifts-patterns .shift-pattern-group-name {
