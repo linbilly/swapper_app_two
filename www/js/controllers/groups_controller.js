@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-.controller('GroupsCtrl', function($scope, Api) {
+.controller('GroupsCtrl', function($scope, $ionicNavBarDelegate, Api) {
+  $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true;
   $scope.fetchGroups = function() {
     Api.getGroups()

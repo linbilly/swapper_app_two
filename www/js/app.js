@@ -38,32 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.groups', {
-    url: '/groups',
-    views: {
-      'tab-groups': {
-        templateUrl: 'templates/tab-groups.html',
-        controller: 'GroupsCtrl'
-      }
-    }
-  })
-
   .state('tab.group-create', {
     url: '/groups/create',
     views: {
       'tab-groups': {
         templateUrl: 'templates/group-create.html',
         controller: 'GroupCreateCtrl'
-      }
-    }
-  })
-
-  .state('tab.group-detail', {
-    url: '/groups/:groupId',
-    views: {
-      'tab-groups': {
-        templateUrl: 'templates/group-detail.html',
-        controller: 'GroupDetailCtrl'
       }
     }
   })
@@ -146,7 +126,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'GeneralCtrl'
       }
     }
-  });
+  })
+
+  .state('tab.groups', {
+    url: '/groups/index',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/groups/group-index.html',
+        controller: 'GroupsCtrl'
+      }
+    }
+  })
+
+  .state('tab.group-detail', {
+    url: '/groups/:groupId',
+    views: {
+      'tab-groups': {
+        templateUrl: 'templates/group-detail.html',
+        controller: 'GroupDetailCtrl'
+      }
+    }
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/groups');

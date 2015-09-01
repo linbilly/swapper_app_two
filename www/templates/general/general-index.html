@@ -1,23 +1,26 @@
 <ion-view view-title="General">
   <ion-content>
     <div class="list">
-      <label class="item item-input" >
-      <input type="email" placeholder="Email" ng-model="email">
-    </label>
-    <label class="item item-input">
-      <input type="text" placeholder="First Name" ng-model="firstName">
-    </label>
-    <label class="item item-input">
-      <input type="text" placeholder="Last Name" ng-model="lastName">
-    </label>
 
-    <label class="item item-input">
-      <input type="password"  placeholder="Password" ng-model="password">
-    </label>
-    <button class="button button-block button-positive" ng-click="createUser(email, firstName, lastName, password)">
-      Submit
-    </button>
-  </div>
+      <a class="item item-icon-left item-icon-right" href="#/tab/groups/index">
+        <i class="icon ion-ios-people"></i>
+        Groups
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-ios-calendar"></i>
+        Shift patterns
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-person"></i>
+        Account
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+    </div>
 
   </ion-content>
 </ion-view>
