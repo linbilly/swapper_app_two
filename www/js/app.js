@@ -40,11 +40,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Calendar
   // ===========================================================
 
-  .state('tab.shifts', {
-    url: '/shifts/:tab',
+  .state('tab.calendar', {
+    url: '/calendar/index',
     views: {
-      'tab-shifts': {
-        templateUrl: 'templates/tab-shifts.html',
+      'tab-calendar': {
+        templateUrl: 'templates/calendar/index.html',
         controller: 'ShiftsCtrl'
       }
     }

@@ -3,6 +3,7 @@ angular.module('starter.controllers')
 .controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, Api, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
 
+  Api.getShiftPatterns()
 
   $scope.$on('shiftTypesFetched', function(event, args) {
     $scope.shiftTypes = Api.inputButtons

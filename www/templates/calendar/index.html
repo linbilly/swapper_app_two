@@ -1,0 +1,69 @@
+<ion-view view-title="Calendar" cache-view="false">
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
+
+  <ion-content>
+
+    <div ng-controller="CalendarCtrl" class="calender-display">
+      <div class="calendar-holder" ng-if="calendarObjects">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="12" on-slide-changed="highlightACell()">
+          <ion-slide ng-repeat="month in calendarObjects">
+            <div class="month-bar stable-bg">
+              <span class="icon-holder back-icon" ng-click="previousSlide()">
+                <i class="icon ion-ios-arrow-back"></i>
+              </span>
+              <span>
+                {{month.title}}
+              </span>
+              <span class="icon-holder forward-icon" ng-click="nextSlide()">
+                <i class="icon ion-ios-arrow-forward"></i>
+              </span>
+            </div>
+            <div class="days-of-week-bar">
+              <div class="row">
+                <div class="col special">S</div>
+                <div class="col">M</div>
+                <div class="col">T</div>
+                <div class="col">W</div>
+                <div class="col">T</div>
+                <div class="col">F</div>
+                <div class="col special">S</div>
+              </div>
+            </div>
+            <div class="dates">
+              <div class="row" ng-repeat="row in month.rows">
+                <div class="col date-col" ng-repeat="date in row" ng-class="date.isInCurrentMonth ? '' : 'not-current-month'" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}">
+                  <div class="date-number">
+                    {{date.dayNum}}
+                  </div>
+                  <div class="content-text">
+                    <div ng-if="date.shift">
+                      {{date.shift.shift_type.abbreviation}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+    </div>
+
+    <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl">
+      <div class="shift-input-buttons-holder">
+        <span ng-repeat="shift in shiftTypes">
+          <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
+            {{shift.abbreviation}}
+          </button>
+        </span>
+        <span>
+          <button class="button button-small button-stable" ng-click="deleteShift($event)">
+            Off
+          </button>
+        </span>
+      </div>
+    </div>
+    
+  </ion-content>
+</ion-view>
