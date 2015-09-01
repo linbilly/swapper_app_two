@@ -157,6 +157,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // ===========================================================
+  // General / Shift Patterns
+  // ===========================================================
+
+  .state('tab.account', {
+    url: '/general/account/new',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/account/new.html',
+        controller: 'SignUpCtrl'
+      }
+    }
+  })
+
+  // ===========================================================
   // Fallback
   // ===========================================================
 
