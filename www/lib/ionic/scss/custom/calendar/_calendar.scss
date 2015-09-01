@@ -89,7 +89,7 @@
 
   .date-col {
     &.active {
-      background-color: #FFFF9D;
+      background-color: $highlight;
     }
 
     &.not-current-month {
