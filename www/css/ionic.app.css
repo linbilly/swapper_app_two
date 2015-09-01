@@ -81,14 +81,12 @@ $dark:                            #444 !default;
 .shift-input-buttons-holder {
   margin-top: 10px;
   text-align: center; }
-
-.shift-input-buttons-holder button {
-  font-size: 20px;
-  padding: 10px 15px;
-  margin-bottom: 10px; }
-
-.shift-input-buttons-holder button.standard-issue {
-  color: black; }
+  .shift-input-buttons-holder button {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-bottom: 10px; }
+    .shift-input-buttons-holder button.standard-issue {
+      color: black; }
 
 .bottom-block {
   position: absolute;
@@ -98,11 +96,9 @@ $dark:                            #444 !default;
 
 .shifts-patterns .shift-pattern-group {
   white-space: normal !important; }
-
 .shifts-patterns .shift-pattern-group-name {
   font-weight: bold;
   margin-bottom: 5px; }
-
 .shifts-patterns .add-pattern {
   text-decoration: none; }
 
@@ -111,12 +107,10 @@ $dark:                            #444 !default;
 
 .shift-pattern-list {
   margin-bottom: 0px; }
-
-.shift-pattern-list .input-label {
-  font-size: 14px; }
-
-.shift-pattern-list .item-stacked-label {
-  padding: 5px !important; }
+  .shift-pattern-list .input-label {
+    font-size: 14px; }
+  .shift-pattern-list .item-stacked-label {
+    padding: 5px !important; }
 
 .shift-name-input {
   font-size: 18px !important; }
@@ -124,22 +118,17 @@ $dark:                            #444 !default;
 .shift-patterns-detail .time-section-holder {
   padding: 5px;
   border-bottom: 1px solid #ddd; }
-
 .shift-patterns-detail .times-holder {
   width: 100px;
   font-size: 30px; }
-
 .shift-patterns-detail .up-hour-icon, .shift-patterns-detail .down-hour-icon {
   margin-left: 8px; }
-
 .shift-patterns-detail .up-minute-icon, .shift-patterns-detail .down-minute-icon {
   margin-left: 30px; }
-
 .shift-patterns-detail .action-buttons-holder {
   padding: 15px; }
-
-.shift-patterns-detail .action-buttons-holder .delete-link {
-  margin-top: 10px; }
+  .shift-patterns-detail .action-buttons-holder .delete-link {
+    margin-top: 10px; }
 
 .notification-box {
   background-color: #33cd5f;

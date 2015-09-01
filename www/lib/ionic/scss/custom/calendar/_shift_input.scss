@@ -1,16 +1,16 @@
 .shift-input-buttons-holder {
   margin-top: 10px;
   text-align: center;
-}
 
-.shift-input-buttons-holder button {
-  font-size: 20px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-}
+  button {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
 
-.shift-input-buttons-holder button.standard-issue {
-  color: black;
+    &.standard-issue {
+      color: black;
+    }
+  }
 }
 
 .bottom-block {

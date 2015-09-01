@@ -1,47 +1,52 @@
-.shift-patterns-detail h4 {
-  margin-left: 15px;
+.shift-patterns-detail {
+  h4 {
+    margin-left: 15px;
+  }
 }
 
 .shift-pattern-list {
   margin-bottom: 0px;
-}
 
-.shift-pattern-list .input-label {
-  font-size: 14px;
-}
+  .input-label {
+    font-size: 14px;
+  }
 
-.shift-pattern-list .item-stacked-label {
-  padding: 5px !important;
+  .item-stacked-label {
+    padding: 5px !important;
+  }
 }
 
 .shift-name-input {
   font-size: 18px !important;
 }
 
-.shift-patterns-detail .time-section-holder {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-}
+.shift-patterns-detail {
+  .time-section-holder {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
 
-.shift-patterns-detail .times-holder {
-  width: 100px;
-  font-size: 30px;
-}
+  .times-holder {
+    width: 100px;
+    font-size: 30px;
+  }
 
-.shift-patterns-detail .up-hour-icon,
-.shift-patterns-detail .down-hour-icon {
-  margin-left: 8px;
-}
+  .up-hour-icon,
+  .down-hour-icon {
+    margin-left: 8px;
+  }
 
-.shift-patterns-detail .up-minute-icon,
-.shift-patterns-detail .down-minute-icon {
-  margin-left: 30px;
-}
+  .up-minute-icon,
+  .down-minute-icon {
+    margin-left: 30px;
+  }
 
-.shift-patterns-detail .action-buttons-holder {
-  padding: 15px;
-}
+  .action-buttons-holder {
+    padding: 15px;
+    
+    .delete-link {
+      margin-top: 10px;
+    }
+  }
 
-.shift-patterns-detail .action-buttons-holder .delete-link {
-  margin-top: 10px;
 }
