@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl">
+    <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
       <div class="shift-input-buttons-holder">
         <div class="bottom-block">
           <span ng-repeat="shift in shiftTypes">
