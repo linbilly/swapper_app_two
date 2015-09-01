@@ -132,7 +132,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/groups/index',
     views: {
       'tab-general': {
-        templateUrl: 'templates/groups/index.html',
+        templateUrl: 'templates/general/groups/index.html',
         controller: 'GroupsCtrl'
       }
     }
