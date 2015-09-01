@@ -54,22 +54,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Swaps
   // ===========================================================
 
-  .state('tab.chats', {
-    url: '/chats',
+  .state('tab.swaps', {
+    url: '/swaps/index',
     views: {
-      'tab-chats': {
-        templateUrl: 'templates/tab-chats.html',
-        controller: 'ChatsCtrl'
-      }
-    }
-  })
-
-  .state('tab.chat-detail', {
-    url: '/chats/:chatId',
-    views: {
-      'tab-chats': {
-        templateUrl: 'templates/chat-detail.html',
-        controller: 'ChatDetailCtrl'
+      'tab-swaps': {
+        templateUrl: 'templates/swaps/index.html',
+        controller: 'SwapsCtrl'
       }
     }
   })
