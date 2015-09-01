@@ -7609,9 +7609,6 @@ a.button {
     transform: scale(1);
     opacity: 1; } }
 
-.dates .date-col.active {
-  background-color: #FFFF9D; }
-
 [nav-view-transition="ios"] [nav-view="entering"], [nav-view-transition="ios"] [nav-view="leaving"] {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
