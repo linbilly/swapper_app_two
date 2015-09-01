@@ -174,5 +174,17 @@ angular.module('starter.services')
     return new Date(firstDay.getFullYear(), firstDay.getMonth() + 1, 0).getDate();
   }
 
+  Calendar.dateYear = function() {
+    var today = new Date()
+    var dateYear = today.getMonth() + "-" + today.getFullYear()
+    return dateYear
+  }
+
+  Calendar.needReload = function(dateYear) {
+    // return window.localStorage['timeLastReloaded'] != dateYear
+    return true
+    // return false
+  }
+
   return Calendar;
 })
