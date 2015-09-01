@@ -55,7 +55,7 @@
       <div class="shift-input-buttons-holder">
         <div class="bottom-block">
           <span ng-repeat="shift in shiftTypes">
-            <button class="button button-small button-balanced" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
+            <button class="button button-small" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
               {{shift.abbreviation}}
             </button>
           </span>
