@@ -4,12 +4,12 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
   $scope.dateYear = Calendar.dateYear()
 
   if (Calendar.needReload($scope.dateYear)) {
+    $scope.loader = true
     loadShifts()
   }
   
   function loadShifts() {
     Api.getAllShifts()
-    $scope.loader = true
   }
 
   $scope.$on('shiftsFetched', function(event, args) {
