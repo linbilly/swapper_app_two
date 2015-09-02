@@ -211,6 +211,14 @@ angular.module('starter.services')
     })
   }
 
+  Api.setOwnShiftToSwap = function(shiftParams, shiftId) {
+    var setOwnShiftToSwapUrl = root_url + "shifts/" + shiftId + "/swap"
+    shiftParams["authentication_token"] = userToken()
+    $.post(setOwnShiftToSwapUrl, shiftParams).then(function(result){
+      $rootScope.$broadcast("ownShiftSwapSet");
+    });
+  }
+
   // General
   // ===========================================================================
 

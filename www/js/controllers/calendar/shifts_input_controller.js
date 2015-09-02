@@ -34,13 +34,11 @@ angular.module('starter.controllers')
     var shiftId = selected.attr("data-shift-id")
 
     if (shiftId) {
-      swapModal()
-    } else {
-      
+      openSwapModal(shiftId)
     }
   }
 
-  function swapModal() {
+  function openSwapModal(shiftId) {
     swal({
       title: "Swap me!",
       text: "Write an optional message to go with your swap:",
@@ -49,14 +47,16 @@ angular.module('starter.controllers')
       closeOnConfirm: false,
       animation: "slide-from-top",
       confirmButtonText: "Swap",
+      showLoaderOnConfirm: true,
       inputPlaceholder: "E.g. No night shifts plz..."
     }, function(inputValue) {
-      if (inputValue === false) return false;
-      if (inputValue === "") {
-        swal.showInputError("You need to write something!");
-        return false
+      var shiftParams = {
+        notes: inputValue
       }
-      swal("Nice!", "You wrote: " + inputValue, "success");
+      Api.setOwnShiftToSwap(shiftParams, shiftId)
+      $scope.$on('ownShiftSwapSet', function(event, args) {
+        swal("Your shift is now up for grabs!", null, "success");
+      })
     });
   }
 
