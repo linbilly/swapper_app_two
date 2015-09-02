@@ -34,11 +34,11 @@ angular.module('starter.controllers')
     var shiftId = selected.attr("data-shift-id")
 
     if (shiftId) {
-      openSwapModal(shiftId)
+      openSwapModal(shiftId, selected)
     }
   }
 
-  function openSwapModal(shiftId) {
+  function openSwapModal(shiftId, selected) {
     swal({
       title: "Swap me!",
       text: "Write an optional message to go with your swap:",
@@ -53,12 +53,14 @@ angular.module('starter.controllers')
       var shiftParams = {
         notes: inputValue
       }
-      Api.setOwnShiftToSwap(shiftParams, shiftId)
-      $scope.$on('ownShiftSwapSet', function(event, args) {
-        swal("Your shift is now up for grabs!", null, "success");
-      })
+      Api.setOwnShiftToSwap(shiftParams, shiftId, selected)
     });
   }
+
+  $scope.$on('ownShiftSwapSet', function(event, args) {
+    swal("Your shift is now up for grabs!", null, "success");
+    args.selected.addClass("swap")
+  })
 
   $scope.deleteShift = function() {
     var selected = $(".col.date-col.active")
