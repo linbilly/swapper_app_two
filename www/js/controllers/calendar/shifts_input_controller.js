@@ -29,8 +29,7 @@ angular.module('starter.controllers')
     Api.createShift(shiftParams, selected)
   }
 
-  $scope.deleteShift = function($event) {
-    var ele = $($event.target)
+  $scope.deleteShift = function() {
     var selected = $(".col.date-col.active")
     var shiftId = selected.attr("data-shift-id")
 
