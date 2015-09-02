@@ -72,6 +72,7 @@ angular.module('starter.controllers')
       for (var i = 0; i < selectedCells.length; i++) {
         $(selectedCells[i]).find(".content-text").text("")
         $(selectedCells[i]).attr("data-shift-id", "")
+        $(selectedCells[i]).removeClass("swap")
       };
       Calendar.highlightNextDay()
       Api.deleteShift(shiftId)
