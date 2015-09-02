@@ -60,6 +60,7 @@ angular.module('starter.controllers')
   $scope.$on('ownShiftSwapSet', function(event, args) {
     swal("Your shift is now up for grabs!", null, "success");
     args.selected.addClass("swap")
+    args.selected.attr("notes", args.shift.notes)
   })
 
   $scope.deleteShift = function() {

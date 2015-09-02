@@ -33,7 +33,7 @@
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-swap="{{date.shift.swap}}" data-start-time="{{formatStartTime(date.shift)}}">
+                <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.notes}}">
                   <div class="date-number">
                     {{date.dayNum}}
                   </div>
@@ -49,6 +49,11 @@
         </ion-slide-box>
       </div>
     </div>
+
+    <!-- <div class="notes-display">
+      <div class="empty-notes" ng-show="calendar.emptyNote">|</div>
+      <div class="actual-note" ng-show="!calendar.emptyNote"></div>
+    </div> -->
 
     <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
       <div class="shift-input-buttons-holder">

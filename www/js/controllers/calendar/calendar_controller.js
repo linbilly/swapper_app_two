@@ -26,6 +26,7 @@ angular.module('starter.controllers', [])
       $(selectedCells[i]).addClass("active")
     };
     
+    updateNotes(ele)
     Calendar.updateSwapButtonStatus(ele)
   }
 
@@ -52,5 +53,15 @@ angular.module('starter.controllers', [])
   $scope.formatStartTime = function(shift) {
     var str = General.formatStartTimeFromCalendar(shift)
     return str
+  }
+
+  function updateNotes(ele) {
+    var notes = ele.attr("data-notes")
+    if (notes) {
+      $(".notes-display .actual-note").text(notes)
+      Calendar.emptyNote = false
+    } else {
+      Calendar.emptyNote = true
+    }
   }
 })

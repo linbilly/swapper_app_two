@@ -215,7 +215,7 @@ angular.module('starter.services')
     var setOwnShiftToSwapUrl = root_url + "shifts/" + shiftId + "/swap"
     shiftParams["authentication_token"] = userToken()
     $.post(setOwnShiftToSwapUrl, shiftParams).then(function(result){
-      $rootScope.$broadcast("ownShiftSwapSet", {selected: selected});
+      $rootScope.$broadcast("ownShiftSwapSet", {selected: selected, shift: result.shift});
     });
   }
 

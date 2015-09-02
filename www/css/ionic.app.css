@@ -123,6 +123,11 @@ ion-scroll[direction=y] {
 .dates .date-col.swap {
   color: #BEEB9F; }
 
+.notes-display {
+  padding: 10px 10px 0px 10px; }
+  .notes-display .empty-notes {
+    color: transparent; }
+
 .shift-input-buttons-holder {
   margin-top: 10px;
   text-align: center; }
