@@ -51,7 +51,7 @@ angular.module('starter.controllers')
       inputPlaceholder: "E.g. No night shifts plz..."
     }, function(inputValue) {
       var shiftParams = {
-        notes: inputValue
+        swap_notes: inputValue
       }
       Api.setOwnShiftToSwap(shiftParams, shiftId, selected)
     });
