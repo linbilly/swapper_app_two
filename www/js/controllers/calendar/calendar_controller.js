@@ -50,10 +50,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.formatStartTime = function(shift) {
-    if (shift) {
-      return General.zeroPad(shift.shift_type.start_hour) + ":" + General.zeroPad(shift.shift_type.start_minute)
-    } else {
-      return ""
-    }
+    var str = General.formatStartTimeFromCalendar(shift)
+    return str
   }
 })

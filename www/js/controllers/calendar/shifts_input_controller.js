@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, Api, Calendar) {
+.controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
 
   Api.getShiftPatterns()
@@ -86,6 +86,7 @@ angular.module('starter.controllers')
     var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
     for (var i = 0; i < selectedCells.length; i++) {
       $(selectedCells[i]).attr("data-shift-id", args.shift.id)
+      $(selectedCells[i]).attr("data-start-time", General.formatStartTime(args.shift_type))
     };
   });
 

@@ -196,7 +196,7 @@ angular.module('starter.services')
     var createShiftUrl = root_url + "shifts/create"
     shiftParams["authentication_token"] = userToken()
     $.post(createShiftUrl, shiftParams).then(function(result){
-      $rootScope.$broadcast("shiftCreated", {selected: selected, shift: result.shift});
+      $rootScope.$broadcast("shiftCreated", {selected: selected, shift: result.shift, shift_type: result.shift_type});
     });
   }
 

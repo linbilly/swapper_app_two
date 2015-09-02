@@ -45,5 +45,17 @@ angular.module('starter.services')
     }
   }
 
+  General.formatStartTimeFromCalendar = function(shift) {
+    if (shift) {
+      return General.formatStartTime(shift.shift_type)
+    } else {
+      return ""
+    }
+  }
+
+  General.formatStartTime = function(shift_type) {
+    return General.zeroPad(shift_type.start_hour) + ":" + General.zeroPad(shift_type.start_minute)
+  }
+
   return General;
 })
