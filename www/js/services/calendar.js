@@ -43,7 +43,8 @@ angular.module('starter.services')
   Calendar.updateSwapButtonStatus = function(currentHighlighted) {
     var hasShift = currentHighlighted.attr("data-shift-id") != ""
     var inFuture = dateIsInFuture(currentHighlighted)
-    if (hasShift && inFuture) {
+    var alreadySwapped = currentHighlighted.hasClass("swap")
+    if (hasShift && inFuture && !alreadySwapped) {
       $(".swap-button").prop('disabled', false);
     } else {
       $(".swap-button").prop('disabled', true);
