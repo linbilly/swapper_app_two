@@ -41,8 +41,9 @@ angular.module('starter.services')
   }
 
   Calendar.updateSwapButtonStatus = function(currentHighlighted) {
-    var canSwap = currentHighlighted.attr("data-shift-id") != ""
-    if (canSwap) {
+    var hasShift = currentHighlighted.attr("data-shift-id") != ""
+    var inFuture = dateIsInFuture(currentHighlighted)
+    if (hasShift && inFuture) {
       $(".swap-button").prop('disabled', false);
     } else {
       $(".swap-button").prop('disabled', true);
@@ -168,15 +169,26 @@ angular.module('starter.services')
   }
 
   function formatedShiftDate(dateObj, day) {
-    return dateObj.getFullYear().toString() + "-" + zeroPad(dateObj.getMonth() + 1) + "-" + zeroPad(day)
+    return dateObj.getFullYear().toString() + "-" + General.zeroPad(dateObj.getMonth() + 1) + "-" + General.zeroPad(day)
   }
 
-  function zeroPad(num) {
-    if (num < 10) {
-      return "0" + num.toString()
+  function dateIsInFuture(currentHighlighted) {
+    // str is in DD-MM-YYYY
+    // need it in YYYY-MM-DD
+    var startTime = currentHighlighted.attr("data-start-time")
+    if (startTime) {
+      var dateArr = currentHighlighted.attr("data-date").split("-").reverse()
+      var paddedDateArr = []
+      for (var i = 0; i < dateArr.length; i++) {
+        paddedDateArr.push(General.zeroPad(dateArr[i]))
+      };
+      var startTimeAndDate = new Date(paddedDateArr.join("-") + "T" + startTime + ":00Z")
+      startTimeAndDate.setTime(startTimeAndDate.getTime() + startTimeAndDate.getTimezoneOffset() * 60 * 1000)
+      return startTimeAndDate >= new Date()
     } else {
-      return num.toString()
+      return false
     }
+    var dateStr = currentHighlighted.attr("data-date")
   }
 
   function calcRowsRequired(firstDay, firstRowDayOfWeekStart, days) {

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
+.controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.previousSlide = function() {
@@ -47,5 +47,13 @@ angular.module('starter.controllers', [])
 
   function removeAllHighlightedCells() {
     $(".dates .active").removeClass("active")
+  }
+
+  $scope.formatStartTime = function(shift) {
+    if (shift) {
+      return General.zeroPad(shift.shift_type.start_hour) + ":" + General.zeroPad(shift.shift_type.start_minute)
+    } else {
+      return ""
+    }
   }
 })

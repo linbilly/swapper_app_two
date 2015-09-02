@@ -37,5 +37,13 @@ angular.module('starter.services')
     throw new Error("Unable to copy obj! Its type isn't supported.");
   }
 
+  General.zeroPad = function(num) {
+    if (parseInt(num) < 10) {
+      return "0" + num.toString()
+    } else {
+      return num.toString()
+    }
+  }
+
   return General;
 })
