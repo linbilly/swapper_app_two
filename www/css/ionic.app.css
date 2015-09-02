@@ -120,6 +120,8 @@ ion-scroll[direction=y] {
   background-color: #FFFF9D; }
 .dates .date-col.not-current-month {
   color: lightgrey; }
+.dates .date-col.swap {
+  color: #BEEB9F; }
 
 .shift-input-buttons-holder {
   margin-top: 10px;

@@ -95,6 +95,10 @@
     &.not-current-month {
       color: lightgrey;
     }
+
+    &.swap {
+      color: $energized;
+    }
   }
 }
 
