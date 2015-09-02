@@ -170,19 +170,19 @@ body.stop-scrolling {
     opacity: 0;
     visibility: hidden; }
   .sweet-alert button {
-    // background-color: #8CD4F5;
-    background-color: $energized !important;
+    background-color: #8CD4F5;
     color: white;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     font-size: 17px;
     font-weight: 500;
-    -webkit-border-radius: 4px;
+    -webkit-border-radius: 0px;
     border-radius: 0px !important;
     padding: 10px 32px;
     margin: 26px 5px 0 5px;
     cursor: pointer; }
     .sweet-alert button.confirm{
+      background-color: $energized !important;
       color: $text-on-energized;
     }
     .sweet-alert button:focus {
