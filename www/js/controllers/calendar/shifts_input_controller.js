@@ -29,6 +29,37 @@ angular.module('starter.controllers')
     Api.createShift(shiftParams, selected)
   }
 
+  $scope.swapShift = function() {
+    var selected = $(".col.date-col.active")
+    var shiftId = selected.attr("data-shift-id")
+
+    if (shiftId) {
+      swapModal()
+    } else {
+      
+    }
+  }
+
+  function swapModal() {
+    swal({
+      title: "Swap me!",
+      text: "Write an optional message to go with your swap:",
+      type: "input",
+      showCancelButton: true,
+      closeOnConfirm: false,
+      animation: "slide-from-top",
+      confirmButtonText: "Swap",
+      inputPlaceholder: "E.g. No night shifts plz..."
+    }, function(inputValue) {
+      if (inputValue === false) return false;
+      if (inputValue === "") {
+        swal.showInputError("You need to write something!");
+        return false
+      }
+      swal("Nice!", "You wrote: " + inputValue, "success");
+    });
+  }
+
   $scope.deleteShift = function() {
     var selected = $(".col.date-col.active")
     var shiftId = selected.attr("data-shift-id")
