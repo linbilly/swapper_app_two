@@ -7,6 +7,9 @@ angular.module('starter.services')
     var today = new Date()
     var todayCell = $(".dates").find("[data-date='" + today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear() + "']");
     todayCell.addClass("active")
+    var currentSlide = $($("ion-slide")[$ionicSlideBoxDelegate.currentIndex()])
+    var visibleSelected = currentSlide.find(".col.date-col.active")
+    Calendar.updateSwapButtonStatus(visibleSelected)
   }
 
   Calendar.highlightNextDay = function() {
@@ -20,10 +23,13 @@ angular.module('starter.services')
         var todayInText = visibleSelected.attr("data-date")
         $rootScope.$broadcast("goToNextCalendarSlide", {nextDay: nextDayInText(todayInText)});
       } else {
-        visibleSelected.parents(".row").next().find(".col.date-col").first().addClass("active")
+        var nextDay = visibleSelected.parents(".row").next().find(".col.date-col").first()
+        nextDay.addClass("active")
+        Calendar.updateSwapButtonStatus(nextDay)
       }
     } else {
-      selected.next().addClass("active")
+      visibleSelected.next().addClass("active")
+      Calendar.updateSwapButtonStatus(visibleSelected.next())
     }
   }
 
@@ -31,6 +37,16 @@ angular.module('starter.services')
     $(".col.date-col.active").removeClass("active")
     var nextDay = $(".dates").find("[data-date='" + date + "']");
     nextDay.addClass("active")
+    Calendar.updateSwapButtonStatus(nextDay)
+  }
+
+  Calendar.updateSwapButtonStatus = function(currentHighlighted) {
+    var canSwap = currentHighlighted.attr("data-shift-id") != ""
+    if (canSwap) {
+      $(".swap-button").prop('disabled', false);
+    } else {
+      $(".swap-button").prop('disabled', true);
+    }
   }
 
   function nextDayInText(today) {

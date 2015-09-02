@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api) {
+.controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.previousSlide = function() {
@@ -25,6 +25,8 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < selectedCells.length; i++) {
       $(selectedCells[i]).addClass("active")
     };
+    
+    Calendar.updateSwapButtonStatus(ele)
   }
 
   $scope.highlightACell = function() {
@@ -32,7 +34,9 @@ angular.module('starter.controllers', [])
     var hightlightedCell = currentSlide.find(".col.date-col.active")
     if (hightlightedCell.length == 0) {
       removeAllHighlightedCells()
-      currentSlide.find(".col.date-col").first().addClass("active")
+      var nextDay = currentSlide.find(".col.date-col").first()
+      nextDay.addClass("active")
+      Calendar.updateSwapButtonStatus(nextDay)
     }
   }
 
