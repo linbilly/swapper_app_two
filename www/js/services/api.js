@@ -219,6 +219,20 @@ angular.module('starter.services')
     });
   }
 
+  // Swaps
+  // ===========================================================================
+
+  Api.getOwnShiftsWithSwaps = function() {
+    var ownShiftsWithSwapsUrl = root_url + "shifts/swaps"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(ownShiftsWithSwapsUrl, params).then(function(result) {
+      Api.ownShiftsWithSwaps = JSON.parse(result.shifts)
+      $rootScope.$broadcast("ownShiftsWithSwapsFetched")
+    });
+  }
+
   // General
   // ===========================================================================
 

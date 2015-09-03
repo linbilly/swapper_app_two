@@ -57,5 +57,16 @@ angular.module('starter.services')
     return General.zeroPad(shift_type.start_hour) + ":" + General.zeroPad(shift_type.start_minute)
   }
 
+  General.abbreviatedMonth = function(startDate) {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    var monthIndex = startDate.split("-")[1]
+    return months[parseInt(monthIndex) - 1]
+  }
+
+  General.dateFromString = function(startDate) {
+    // YYYY-MM-DD
+    return startDate.split("-")[2]
+  }
+
   return General;
 })

@@ -1,30 +1,39 @@
-<ion-view view-title="Swaps">
+<ion-view view-title="Swaps" cache-view="false">
   <ion-tabs class="tabs-positive tabs-icon-only tabs-top">
 
     <ion-tab title="My Swaps" on-select="mySwapsTabSelected()">
       <ion-view>
+        <div class="row loader-holder">
+          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+        </div>
         <ion-content>
           <div class="list">
 
-            <a class="item item-avatar" href="#">
-              <img src="venkman.jpg">
-              <h2>Venkman</h2>
-              <p>Back off, man. I'm a scientist.</p>
-            </a>
-
-            <a class="item item-avatar" href="#">
-              <img src="venkman.jpg">
-              <h2>Venkman</h2>
-              <p>Back off, man. I'm a scientist.</p>
+            <a class="item item-avatar item-icon-right" href="#" ng-repeat="shift in ownShiftsWithSwaps">
+              <div class="date-as-square">
+                <div class="month">
+                  {{abbreviatedMonth(shift.start_date)}}
+                </div>
+                <div class="day">
+                  {{dateFromString(shift.start_date)}}
+                </div>
+              </div>
+              <h2>{{shift.shift_type.name}}</h2>
+              <p>{{shift.group.name}}</p>
+              <i class="icon ion-chevron-right icon-accessory"></i>
             </a>
 
           </div>
+          <div class="double-tab-bottom-buffer"></div>
         </ion-content>
       </ion-view>
     </ion-tab>
 
     <ion-tab title="Pending" on-select="pendingTabSelected()">
       <ion-view>
+        <div class="row loader-holder">
+          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+        </div>
         <ion-content>
           <div class="list card">
 
@@ -69,6 +78,9 @@
 
     <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()">
       <ion-view>
+        <div class="row loader-holder">
+          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+        </div>
         <ion-content>
           <div class="list card">
 

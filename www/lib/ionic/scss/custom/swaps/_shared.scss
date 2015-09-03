@@ -1,0 +1,24 @@
+.item-avatar {
+  .date-as-square {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    text-align: center;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    background-color: $energized;
+    border-radius: 50%;
+    font-size: 12px;
+
+    .month {
+      margin-top: 4px;
+      margin-bottom: -7px;
+    }
+  }
+}
+
+.double-tab-bottom-buffer {
+  height: 30px;
+}
