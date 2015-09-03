@@ -9,7 +9,7 @@
         <ion-content>
           <div class="list">
 
-            <a class="item item-avatar item-icon-right" href="#" ng-repeat="shift in ownShiftsWithSwaps">
+            <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
               <div class="date-as-square">
                 <div class="month">
                   {{abbreviatedMonth(shift.start_date)}}

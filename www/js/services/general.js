@@ -68,5 +68,10 @@ angular.module('starter.services')
     return startDate.split("-")[2]
   }
 
+  General.findById = function(arr, id) {
+    var result = $.grep(arr, function(e){ return e.id == id; });
+    return result[0]
+  }
+
   return General;
 })

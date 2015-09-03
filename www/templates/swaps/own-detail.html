@@ -1,0 +1,30 @@
+<ion-view>
+<ion-nav-title>Details</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index">My Swaps</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="swap-own-detail-holder">
+      <h4>
+        {{shift.shift_type.name}}
+      </h4>
+
+      <p>
+        {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
+      </p>
+      <p>
+        {{shift.group.name}}
+      </p>
+
+      <div class="action-buttons-holder">
+        <div>
+          <div class="delete-link">
+            <a class="assertive" ng-click="">
+              Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

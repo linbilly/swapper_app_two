@@ -228,6 +228,9 @@ ion-scroll[direction=y] {
 .double-tab-bottom-buffer {
   height: 30px; }
 
+.swap-own-detail-holder {
+  padding: 15px; }
+
 body.stop-scrolling {
   height: 100%;
   overflow: hidden; }

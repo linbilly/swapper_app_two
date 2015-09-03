@@ -64,6 +64,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.swaps-own-detail', {
+    url: '/swaps/own/:shiftId/detail',
+    views: {
+      'tab-swaps': {
+        templateUrl: 'templates/swaps/own-detail.html',
+        controller: 'SwapsOwnDetailCtrl'
+      }
+    }
+  })
+
   // ===========================================================
   // General
   // ===========================================================
