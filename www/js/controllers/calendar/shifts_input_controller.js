@@ -13,6 +13,30 @@ angular.module('starter.controllers')
     var ele = $($event.target)
     var abbreviation = ele.text().trim()
     var selected = $(".col.date-col.active")
+    if (abbreviation == selected.find(".content-text").text().trim()) {
+      Calendar.highlightNextDay()
+    } else {
+      if (selected.hasClass("swap")) {
+        swal({
+          title: "Woah there!",
+          text: "You have already put this shift up for a swap. If you want to change the shift, the swap will be removed.",
+          type: "warning",
+          showCancelButton: true,
+          closeOnConfirm: true,
+          animation: "slide-from-top",
+          confirmButtonText: "OK"
+        }, function(inputValue) {
+          selected.removeClass("swap")
+          continueCreatingShift(ele, abbreviation, selected)
+        });
+        $("fieldset").addClass("hide")
+      } else {
+        continueCreatingShift(ele, abbreviation, selected)
+      }
+    }
+  }
+
+  function continueCreatingShift(ele, abbreviation, selected) {
     var selectedDate = $(".col.date-col.active").attr("data-date")
     var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
 
