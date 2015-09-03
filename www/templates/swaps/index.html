@@ -8,27 +8,31 @@
         </div>
         <ion-content>
           <notification ng-model="message" ng-show="message"></notification>
-          <div class="list" ng-if="ownShiftsWithSwaps.length > 0">
+          <div ng-show="!loader">
+            <div>
+              <div class="list" ng-if="ownShiftsWithSwaps.length > 0">
+                <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
+                  <div class="date-as-square">
+                    <div class="month">
+                      {{abbreviatedMonth(shift.start_date)}}
+                    </div>
+                    <div class="day">
+                      {{dateFromString(shift.start_date)}}
+                    </div>
+                  </div>
+                  <h2>{{shift.shift_type.name}}</h2>
+                  <p>{{shift.group.name}}</p>
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
 
-            <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
-              <div class="date-as-square">
-                <div class="month">
-                  {{abbreviatedMonth(shift.start_date)}}
-                </div>
-                <div class="day">
-                  {{dateFromString(shift.start_date)}}
-                </div>
               </div>
-              <h2>{{shift.shift_type.name}}</h2>
-              <p>{{shift.group.name}}</p>
-              <i class="icon ion-chevron-right icon-accessory"></i>
-            </a>
-
+              <div class="double-tab-bottom-buffer"></div>
+            </div>
+            
+            <div ng-if="ownShiftsWithSwaps.length == 0">
+              Harro
+            </div>
           </div>
-          <div ng-if="ownShiftsWithSwaps.length == 0">
-            Harro
-          </div>
-          <div class="double-tab-bottom-buffer"></div>
         </ion-content>
       </ion-view>
     </ion-tab>

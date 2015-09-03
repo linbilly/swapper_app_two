@@ -5,6 +5,7 @@ angular.module('starter.controllers')
   $scope.loader = true
 
   if (Api.ownShiftsWithSwaps) {
+    $scope.loader = false
     $scope.shift = General.findById(Api.ownShiftsWithSwaps, $stateParams.shiftId)
   } else {
     // In case user jumps straight to the detail page
