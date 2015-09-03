@@ -94,18 +94,38 @@ angular.module('starter.controllers')
     var shiftId = selected.attr("data-shift-id")
 
     if (shiftId) {
-      var selectedDate = $(".col.date-col.active").attr("data-date")
-      var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
-      for (var i = 0; i < selectedCells.length; i++) {
-        $(selectedCells[i]).find(".content-text").text("")
-        $(selectedCells[i]).attr("data-shift-id", "")
-        $(selectedCells[i]).removeClass("swap")
-      };
-      Calendar.highlightNextDay()
-      Api.deleteShift(shiftId)
+      if (selected.hasClass("swap")) {
+        swal({
+          title: "Woah there!",
+          text: "You have already put this shift up for a swap. If you want to delete the shift, the swap will be removed.",
+          type: "warning",
+          showCancelButton: true,
+          closeOnConfirm: true,
+          animation: "slide-from-top",
+          confirmButtonText: "OK"
+        }, function(inputValue) {
+          selected.removeClass("swap")
+          continueDeletingShift(shiftId)
+        });
+        $("fieldset").addClass("hide")
+      } else {
+        continueDeletingShift(shiftId)
+      }
     } else {
       Calendar.highlightNextDay()
     }
+  }
+
+  function continueDeletingShift(shiftId) {
+    var selectedDate = $(".col.date-col.active").attr("data-date")
+    var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
+    for (var i = 0; i < selectedCells.length; i++) {
+      $(selectedCells[i]).find(".content-text").text("")
+      $(selectedCells[i]).attr("data-shift-id", "")
+      $(selectedCells[i]).removeClass("swap")
+    };
+    Calendar.highlightNextDay()
+    Api.deleteShift(shiftId)
   }
 
   $scope.$on('shiftCreated', function(event, args) {
