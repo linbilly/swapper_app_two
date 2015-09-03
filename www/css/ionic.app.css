@@ -58,6 +58,9 @@ ion-scroll[direction=y] {
   /*stroke: #444;
   fill: #444;*/ }
 
+a {
+  color: #97D2C4; }
+
 .calendar-holder .row {
   padding: 0px; }
 

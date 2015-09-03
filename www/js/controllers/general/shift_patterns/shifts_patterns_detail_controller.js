@@ -73,7 +73,7 @@ angular.module('starter.controllers')
   $scope.deleteShiftPattern = function() {
     swal({
       title: "Are you sure?",
-      text: "Deleting is forever...",
+      text: "Any shifts with this pattern will also be deleted.",
       type: "warning",
       showCancelButton: true,
       showLoaderOnConfirm: true,
@@ -81,6 +81,7 @@ angular.module('starter.controllers')
     }, function(){
       Api.deleteShiftPattern($stateParams.patternId)
     });
+    $("fieldset").addClass("hide")
   }
 
   $scope.$on('shiftTypeUpdated', function(event, args) {

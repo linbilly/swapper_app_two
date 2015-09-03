@@ -9,8 +9,8 @@
         <ion-content>
           <notification ng-model="message" ng-show="message"></notification>
           <div ng-show="!loader">
-            <div>
-              <div class="list" ng-if="ownShiftsWithSwaps.length > 0">
+            <div ng-if="ownShiftsWithSwaps.length > 0">
+              <div class="list">
                 <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
                   <div class="date-as-square">
                     <div class="month">
@@ -28,9 +28,33 @@
               </div>
               <div class="double-tab-bottom-buffer"></div>
             </div>
-            
+
             <div ng-if="ownShiftsWithSwaps.length == 0">
-              Harro
+              <div class="card">
+                <div class="item item-text-wrap">
+                  <p>
+                    You haven't listed any shifts you want to swap yet.
+                  </p>
+                  <br>
+                  <p>
+                    To swap a shift you have:
+                  </p>
+                  <br>
+                  <p>
+                    1. Go to the <a href="#/tab/calendar/index">Calendar tab</a>
+                  </p>
+                  <p>
+                    2. Select a shift
+                  </p>
+                  <p>
+                    3. Click swap
+                  </p>
+                  <br>
+                  <p>
+                    Shifts you want to swap will then show up here.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </ion-content>

@@ -39,6 +39,7 @@ angular.module('starter.controllers')
   }
 
   function openSwapModal(shiftId, selected) {
+    $("fieldset").removeClass("hide")
     swal({
       title: "Swap me!",
       text: "Write an optional message to go with your swap:",
@@ -58,7 +59,8 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('ownShiftSwapSet', function(event, args) {
-    swal("Your shift is now up for grabs!", null, "success");
+    swal("Your shift is now up for grabs!", "You can view it in the \"Swaps\" tab.", "success")
+    $("fieldset").addClass("hide")
     args.selected.addClass("swap")
     args.selected.attr("notes", args.shift.notes)
   })
