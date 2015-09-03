@@ -73,5 +73,9 @@ angular.module('starter.services')
     return result[0]
   }
 
+  General.stringDateToWords = function(startDate) {
+    return General.abbreviatedMonth(startDate) + " " + General.dateFromString(startDate) + ", " + startDate.split("-")[0]
+  }
+
   return General;
 })

@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api, General, ShiftType) {
+.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
@@ -25,4 +25,23 @@ angular.module('starter.controllers')
       return ""
     }
   }
+
+  $scope.cancelOwnSwap = function() {
+    swal({
+      title: "Are you sure?",
+      text: "This shift will no longer be up for grabs by others",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "Yup!",
+    }, function(){
+      Api.cancelOwnShiftToSwap($stateParams.shiftId)
+    });
+  }
+
+  $scope.$on('ownShiftSwapCancelled', function(event, args) {
+    Notification.message = "Your swap for " + args.shiftType.name + " on " + General.stringDateToWords(args.shift.start_date) + " has been cancelled"
+    $state.go('tab.swaps', {}, {reload: true});
+    $ionicHistory.clearHistory()
+  });
 })

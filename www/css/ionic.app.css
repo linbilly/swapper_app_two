@@ -175,8 +175,7 @@ ion-scroll[direction=y] {
     margin-top: 10px; }
 
 .notification-box {
-  background-color: #33cd5f;
-  color: white;
+  background-color: #BEEB9F;
   padding: 15px 10px; }
   .notification-box .clear-button-holder {
     text-align: right; }

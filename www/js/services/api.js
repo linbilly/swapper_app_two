@@ -219,6 +219,16 @@ angular.module('starter.services')
     });
   }
 
+  Api.cancelOwnShiftToSwap = function(shiftId) {
+    var cancelOwnShiftToSwapUrl = root_url + "shifts/" + shiftId + "/cancel-swap"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.post(cancelOwnShiftToSwapUrl, params).then(function(result){
+      $rootScope.$broadcast("ownShiftSwapCancelled", {shift: result.shift, shiftType: result.shift_type});
+    });
+  }
+
   // Swaps
   // ===========================================================================
 

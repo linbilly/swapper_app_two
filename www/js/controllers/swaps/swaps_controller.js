@@ -3,6 +3,10 @@ angular.module('starter.controllers')
 .controller('SwapsCtrl', function($scope, $ionicNavBarDelegate, Api, General) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
+  if (Notification.message) {
+    $scope.message = Notification.message
+    Notification.message = null
+  }
 
   $scope.mySwapsTabSelected = function() {
     Api.getOwnShiftsWithSwaps()

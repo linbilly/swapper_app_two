@@ -76,7 +76,7 @@ angular.module('starter.controllers')
       text: "Deleting is forever...",
       type: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      showLoaderOnConfirm: true,
       confirmButtonText: "Yup!",
     }, function(){
       Api.deleteShiftPattern($stateParams.patternId)

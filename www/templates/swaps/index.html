@@ -7,6 +7,7 @@
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
         </div>
         <ion-content>
+          <notification ng-model="message" ng-show="message"></notification>
           <div class="list">
 
             <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
@@ -35,6 +36,7 @@
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
         </div>
         <ion-content>
+          <notification ng-model="message" ng-show="message"></notification>
           <div class="list card">
 
             <div class="item item-avatar">
@@ -82,6 +84,7 @@
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
         </div>
         <ion-content>
+          <notification ng-model="message" ng-show="message"></notification>
           <div class="list card">
 
             <div class="item item-avatar">
