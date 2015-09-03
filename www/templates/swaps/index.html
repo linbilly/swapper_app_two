@@ -8,7 +8,7 @@
         </div>
         <ion-content>
           <notification ng-model="message" ng-show="message"></notification>
-          <div class="list">
+          <div class="list" ng-if="ownShiftsWithSwaps.length > 0">
 
             <a class="item item-avatar item-icon-right" href="#/tab/swaps/own/{{shift.id}}/detail" ng-repeat="shift in ownShiftsWithSwaps">
               <div class="date-as-square">
@@ -24,6 +24,9 @@
               <i class="icon ion-chevron-right icon-accessory"></i>
             </a>
 
+          </div>
+          <div ng-if="ownShiftsWithSwaps.length == 0">
+            Harro
           </div>
           <div class="double-tab-bottom-buffer"></div>
         </ion-content>
