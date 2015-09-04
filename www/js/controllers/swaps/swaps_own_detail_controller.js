@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType) {
+.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 

@@ -1,7 +1,7 @@
 <ion-view view-title="Swaps" cache-view="false">
   <ion-tabs class="tabs-positive tabs-icon-only tabs-top">
 
-    <ion-tab title="My Swaps" on-select="mySwapsTabSelected()">
+    <ion-tab title="My Swaps" on-select="mySwapsTabSelected()" ng-controller="SwapsOwnCtrl">
       <ion-view>
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -61,7 +61,7 @@
       </ion-view>
     </ion-tab>
 
-    <ion-tab title="Pending" on-select="pendingTabSelected()">
+    <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()">
       <ion-view>
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -109,7 +109,7 @@
       </ion-view>
     </ion-tab>
 
-    <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()">
+    <ion-tab title="Pending" on-select="pendingTabSelected()">
       <ion-view>
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
