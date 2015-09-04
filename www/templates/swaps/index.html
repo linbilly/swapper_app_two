@@ -61,7 +61,7 @@
       </ion-view>
     </ion-tab>
 
-    <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()">
+    <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()" ng-controller="SwapsUpForGrabsCtrl">
       <ion-view>
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -109,7 +109,7 @@
       </ion-view>
     </ion-tab>
 
-    <ion-tab title="Pending" on-select="pendingTabSelected()">
+    <ion-tab title="Pending" on-select="pendingTabSelected()" ng-controller="SwapsPendingCtrl">
       <ion-view>
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>

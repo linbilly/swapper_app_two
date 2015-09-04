@@ -18,12 +18,4 @@ angular.module('starter.controllers')
   $scope.dateFromString = function(startDate) {
     return General.dateFromString(startDate)
   }
-
-  $scope.pendingTabSelected = function() {
-    console.log("Pending")
-  }
-
-  $scope.upForGrabsTabSelected = function() {
-    console.log("Up for Grabs")
-  }
 })
