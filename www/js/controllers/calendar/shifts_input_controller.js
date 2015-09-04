@@ -7,6 +7,7 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftTypesFetched', function(event, args) {
     $scope.shiftTypes = Api.inputButtons
+    $scope.$apply()
   });
 
   $scope.createShift = function($event) {
