@@ -78,7 +78,9 @@ angular.module('starter.controllers')
       showLoaderOnConfirm: true,
       inputPlaceholder: "E.g. No night shifts plz..."
     }, function(inputValue) {
-      if (inputValue) {
+      if (inputValue === false) {
+        return false;
+      } else {
         var shiftParams = {
           swap_notes: inputValue
         }

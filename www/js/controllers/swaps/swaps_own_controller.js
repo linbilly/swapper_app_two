@@ -7,7 +7,6 @@ angular.module('starter.controllers')
 
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
     $scope.ownShiftsWithSwaps = Api.ownShiftsWithSwaps
-    $scope.$apply()
     $scope.loader = false
   });
 })
