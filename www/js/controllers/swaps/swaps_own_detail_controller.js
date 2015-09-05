@@ -42,6 +42,7 @@ angular.module('starter.controllers')
     }, function(){
       Api.cancelOwnShiftToSwap($stateParams.shiftId)
     });
+    $("fieldset").addClass("hide")
   }
 
   $scope.$on('ownShiftSwapCancelled', function(event, args) {
