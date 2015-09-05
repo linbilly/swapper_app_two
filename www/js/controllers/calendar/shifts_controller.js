@@ -1,6 +1,6 @@
 var app = angular.module('starter.controllers')
 
-app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, Calendar) {
+app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, Api, Calendar) {
   $scope.dateYear = Calendar.dateYear()
   $scope.calendar = Calendar
   $scope.calendar.emptyNote = true
@@ -18,6 +18,8 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
     window.localStorage['timeLastReloaded'] = $scope.dateYear
-    Calendar.highlightToday()
+    $timeout(function() {
+      Calendar.highlightToday()
+    }, 500)
   })
 })
