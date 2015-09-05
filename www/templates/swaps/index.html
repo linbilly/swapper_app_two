@@ -67,55 +67,50 @@
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
         </div>
         <ion-content>
-          <notification ng-model="message" ng-show="message"></notification>
-          <div class="list card up-for-grabs-list" ng-repeat="shift in shiftsUpForGrabs">
-
-            <div class="item item-avatar">
-              <div class="date-as-square">
-                <div class="month">
-                  {{abbreviatedMonth(shift.start_date)}}
-                </div>
-                <div class="day">
-                  {{dateFromString(shift.start_date)}}
-                </div>
-              </div>
-              <h2>{{shift.shift_type.name}}</h2>
-              <p>
-                {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
-              </p>
+          <div ng-controller="CalendarCtrl" class="calender-display">
+            <div class="calendar-holder" ng-if="calendarObjects">
+              <ion-slide-box show-pager="false" auto-play="false" active-slide="3" on-slide-changed="highlightACell()">
+                <ion-slide ng-repeat="month in calendarObjects">
+                  <div class="month-bar stable-bg">
+                    <span class="icon-holder back-icon" ng-click="previousSlide()">
+                      <i class="icon ion-ios-arrow-back"></i>
+                    </span>
+                    <span>
+                      {{month.title}}
+                    </span>
+                    <span class="icon-holder forward-icon" ng-click="nextSlide()">
+                      <i class="icon ion-ios-arrow-forward"></i>
+                    </span>
+                  </div>
+                  <div class="days-of-week-bar">
+                    <div class="row">
+                      <div class="col special">S</div>
+                      <div class="col">M</div>
+                      <div class="col">T</div>
+                      <div class="col">W</div>
+                      <div class="col">T</div>
+                      <div class="col">F</div>
+                      <div class="col special">S</div>
+                    </div>
+                  </div>
+                  <div class="dates">
+                    <div class="row" ng-repeat="row in month.rows">
+                      <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.notes}}">
+                        <div class="date-number">
+                          {{date.dayNum}}
+                        </div>
+                        <div class="content-text">
+                          <div ng-if="date.shift">
+                            {{date.shift.shift_type.abbreviation}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ion-slide>
+              </ion-slide-box>
             </div>
-
-            <div class="item item-body">
-              <p>
-                <b>
-                  {{shift.user.first_name}} {{shift.user.last_name}}
-                </b>
-              </p>
-              <p>
-                {{shift.group.name}}
-              </p>
-              <p>
-                {{shift.swap_notes}}
-              </p>
-              <p>
-                <a href="#" class="subdued">1 Offer</a>
-                <a href="#" class="subdued">5 Comments</a>
-              </p>
-            </div>
-
-            <div class="item tabs tabs-secondary tabs-icon-left">
-              <a class="tab-item" href="#">
-                <i class="icon ion-arrow-swap"></i>
-                Offer to Swap
-              </a>
-              <a class="tab-item" href="#">
-                <i class="icon ion-chatbox"></i>
-                Comment
-              </a>
-            </div>
-
           </div>
-          <div class="double-tab-bottom-buffer"></div>
         </ion-content>
       </ion-view>
     </ion-tab>
