@@ -111,8 +111,10 @@ angular.module('starter.controllers')
           animation: "slide-from-top",
           confirmButtonText: "OK"
         }, function(inputValue) {
-          selected.removeClass("swap")
-          continueDeletingShift(shiftId)
+          if (inputValue) {
+            selected.removeClass("swap")
+            continueDeletingShift(shiftId)
+          }
         });
         $("fieldset").addClass("hide")
       } else {
