@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   // $ionicNavBarDelegate.showBackButton(false)
 
   $scope.loader = true
+  $scope.day = $stateParams.day
 
   Api.getShiftsUpForGrabs($stateParams.day)
 
@@ -32,5 +33,9 @@ angular.module('starter.controllers')
       // In case shift has not loaded yet
       return ""
     }
+  }
+
+  $scope.offerToSwap = function(shiftId) {
+    debugger
   }
 })
