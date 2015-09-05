@@ -13,8 +13,8 @@ angular.module('starter.controllers')
   })
 
   $scope.upForGrabsTabSelected = function() {
-    // $scope.loader = true
-    // $scope.calendarObjects = null
-    // Api.getAllShifts()
+    $scope.loader = true
+    $scope.calendarObjects = null
+    Api.getAllShifts()
   }
 })
