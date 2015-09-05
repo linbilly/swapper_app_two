@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsUpForGrabsCtrl', function($scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, $timeout, $ionicHistory, Api, Calendar, General) {
+.controller('SwapsUpForGrabsCtrl', function($scope, $ionicNavBarDelegate, $timeout, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
 
   Api.getAllShifts()
@@ -10,7 +10,6 @@ angular.module('starter.controllers')
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts)
     $scope.$apply()
     $scope.loader = false
-    window.localStorage['timeLastReloaded'] = $scope.dateYear
     Calendar.highlightToday()
   })
 
@@ -22,9 +21,5 @@ angular.module('starter.controllers')
     $timeout(function() {
       Calendar.highlightToday()
     }, 500)
-  }
-
-  function reloadSlideBox() {
-    $ionicSlideBoxDelegate.update()
   }
 })
