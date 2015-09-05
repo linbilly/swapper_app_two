@@ -116,24 +116,28 @@ angular.module('starter.services')
         for (var dayOfWeek = 0; dayOfWeek < firstRowDayOfWeekStart; dayOfWeek++) {
           var tempDate = General.clone(firstDay)
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
+          var dateAsString = formatedShiftDate(tempDate, tempDate.getDate())
           row.push({
             dayNum: tempDate.getDate(),
             month: tempDate.getMonth() + 1,
             year: tempDate.getFullYear(),
             isInCurrentMonth: false,
-            shift: shifts[formatedShiftDate(tempDate, tempDate.getDate())],
-            availableShifts: availableShifts[formatedShiftDate(tempDate, tempDate.getDate())]
+            dateAsString: dateAsString,
+            shift: shifts[dateAsString],
+            availableShifts: availableShifts[dateAsString]
           })
         };
 
         for (var dayOfWeek = firstRowDayOfWeekStart; dayOfWeek < 7; dayOfWeek++) {
+          var dateAsString = formatedShiftDate(firstDay, dayCount)
           row.push({
             dayNum: dayCount,
             month: firstDay.getMonth() + 1,
             year: firstDay.getFullYear(),
             isInCurrentMonth: true,
-            shift: shifts[formatedShiftDate(firstDay, dayCount)],
-            availableShifts: availableShifts[formatedShiftDate(firstDay, dayCount)]
+            dateAsString: dateAsString,
+            shift: shifts[dateAsString],
+            availableShifts: availableShifts[dateAsString]
           })
           dayCount += 1
         };
@@ -144,25 +148,29 @@ angular.module('starter.services')
 
         for (var dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
           if (dayCount <= days) {
+            var dateAsString = formatedShiftDate(firstDay, dayCount)
             row.push({
               dayNum: dayCount,
               isInCurrentMonth: true,
               month: firstDay.getMonth() + 1,
               year: firstDay.getFullYear(),
-              shift: shifts[formatedShiftDate(firstDay, dayCount)],
-              availableShifts: availableShifts[formatedShiftDate(firstDay, dayCount)]
+              dateAsString: dateAsString,
+              shift: shifts[dateAsString],
+              availableShifts: availableShifts[dateAsString]
             })
             dayCount += 1
           } else {
             var nextMonth = General.clone(firstDay)
             nextMonth = addMonths(nextMonth, 1)
+            var dateAsString = formatedShiftDate(nextMonth, nextMonthDayCount)
             row.push({
               dayNum: nextMonthDayCount,
               month: nextMonth.getMonth() + 1,
               year: nextMonth.getFullYear(),
               isInCurrentMonth: false,
-              shift: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)],
-              availableShifts: availableShifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
+              dateAsString: dateAsString,
+              shift: shifts[dateAsString],
+              availableShifts: availableShifts[dateAsString]
             })
             nextMonthDayCount += 1
           }

@@ -69,7 +69,7 @@
         <ion-content>
           <div ng-controller="CalendarCtrl" class="calender-display">
             <div class="calendar-holder" ng-if="calendarObjects">
-              <ion-slide-box show-pager="false" auto-play="false" active-slide="3" on-slide-changed="highlightACell()">
+              <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
                 <ion-slide ng-repeat="month in calendarObjects">
                   <div class="month-bar stable-bg">
                     <span class="icon-holder back-icon" ng-click="previousSlide()">
@@ -95,7 +95,7 @@
                   </div>
                   <div class="dates">
                     <div class="row" ng-repeat="row in month.rows">
-                      <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.notes}}">
+                      <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}">
                         <div class="date-number">
                           {{date.dayNum}}
                         </div>

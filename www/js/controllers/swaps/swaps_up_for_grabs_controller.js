@@ -11,16 +11,11 @@ angular.module('starter.controllers')
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
     $scope.$apply()
     $scope.loader = false
-    Calendar.highlightToday()
   })
 
   $scope.upForGrabsTabSelected = function() {
     $scope.loader = true
     $scope.calendarObjects = null
     Api.getAllShifts()
-
-    $timeout(function() {
-      Calendar.highlightToday()
-    }, 500)
   }
 })
