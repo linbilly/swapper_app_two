@@ -76,10 +76,12 @@ angular.module('starter.controllers')
       showLoaderOnConfirm: true,
       inputPlaceholder: "E.g. No night shifts plz..."
     }, function(inputValue) {
-      var shiftParams = {
-        swap_notes: inputValue
+      if (inputValue) {
+        var shiftParams = {
+          swap_notes: inputValue
+        }
+        Api.setOwnShiftToSwap(shiftParams, shiftId, selected)
       }
-      Api.setOwnShiftToSwap(shiftParams, shiftId, selected)
     });
   }
 
