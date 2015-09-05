@@ -26,9 +26,11 @@ angular.module('starter.controllers')
           closeOnConfirm: true,
           animation: "slide-from-top",
           confirmButtonText: "OK"
-        }, function(inputValue) {
-          selected.removeClass("swap")
-          continueCreatingShift(ele, abbreviation, selected)
+        }, function(isConfirm) {
+          if (isConfirm) {
+            selected.removeClass("swap")
+            continueCreatingShift(ele, abbreviation, selected)
+          }
         });
         $("fieldset").addClass("hide")
       } else {
