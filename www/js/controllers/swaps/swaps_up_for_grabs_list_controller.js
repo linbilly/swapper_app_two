@@ -3,11 +3,9 @@ angular.module('starter.controllers')
 .controller('SwapsUpForGrabsListCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
 
-  if ($stateParams.day == "all") {
-    Api.getShiftsUpForGrabs()
-  } else {
-    $scope.shiftsUpForGrabs = Calendar.availableShifts[$stateParams.day]
-  }
+  $scope.loader = true
+
+  Api.getShiftsUpForGrabs($stateParams.day)
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
