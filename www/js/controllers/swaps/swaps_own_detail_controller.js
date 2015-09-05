@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
 .controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Notification) {
-  $ionicNavBarDelegate.showBackButton(false)
+  // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
   if (Api.ownShiftsWithSwaps) {
@@ -17,6 +17,10 @@ angular.module('starter.controllers')
     $scope.$apply()
     $scope.loader = false
   });
+
+  $scope.clearHistory = function() {
+    $ionicHistory.clearHistory()
+  }
 
   $scope.prettyEndTime = function(shiftType) {
     if (shiftType) {
