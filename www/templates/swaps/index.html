@@ -68,43 +68,54 @@
         </div>
         <ion-content>
           <notification ng-model="message" ng-show="message"></notification>
-          <div class="list card">
+          <div class="list card up-for-grabs-list" ng-repeat="shift in shiftsUpForGrabs">
 
             <div class="item item-avatar">
-              <img src="mcfly.jpg">
-              <h2>Marty McFly</h2>
-              <p>November 05, 1955</p>
+              <div class="date-as-square">
+                <div class="month">
+                  {{abbreviatedMonth(shift.start_date)}}
+                </div>
+                <div class="day">
+                  {{dateFromString(shift.start_date)}}
+                </div>
+              </div>
+              <h2>{{shift.shift_type.name}}</h2>
+              <p>
+                {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
+              </p>
             </div>
 
             <div class="item item-body">
-              <img class="full-image" src="delorean.jpg">
               <p>
-                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-                the content is from a card-body consisting of an image and paragraph text. The footer
-                consists of tabs, icons aligned left, within the card-footer.
+                <b>
+                  {{shift.user.first_name}} {{shift.user.last_name}}
+                </b>
               </p>
               <p>
-                <a href="#" class="subdued">1 Like</a>
+                {{shift.group.name}}
+              </p>
+              <p>
+                {{shift.swap_notes}}
+              </p>
+              <p>
+                <a href="#" class="subdued">1 Offer</a>
                 <a href="#" class="subdued">5 Comments</a>
               </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
               <a class="tab-item" href="#">
-                <i class="icon ion-thumbsup"></i>
-                Like
+                <i class="icon ion-arrow-swap"></i>
+                Offer to Swap
               </a>
               <a class="tab-item" href="#">
                 <i class="icon ion-chatbox"></i>
                 Comment
               </a>
-              <a class="tab-item" href="#">
-                <i class="icon ion-share"></i>
-                Share
-              </a>
             </div>
 
           </div>
+          <div class="double-tab-bottom-buffer"></div>
         </ion-content>
       </ion-view>
     </ion-tab>

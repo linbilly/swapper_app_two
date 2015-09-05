@@ -48,3 +48,11 @@ ion-scroll[direction=y] {
 a {
   color: $positive;
 }
+
+.tab-item {
+  color: white !important;
+
+  &.tab-item-active {
+    color: $highlight !important;
+  }
+}

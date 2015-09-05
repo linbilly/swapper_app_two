@@ -243,12 +243,24 @@ angular.module('starter.services')
     });
   }
 
+  Api.getShiftsUpForGrabs = function() {
+    var getShiftsUpForGrabsUrl = root_url + "shifts/available"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(getShiftsUpForGrabsUrl, params).then(function(result) {
+      Api.shiftsUpForGrabs = JSON.parse(result.shifts)
+      $rootScope.$broadcast("shiftsUpForGrabsFetched")
+    });
+  }
+
   // General
   // ===========================================================================
 
   function userToken() {
     // return window.localStorage['token']
-    return "x83d5tzjWkFfuyeqtmKF" // Localhost
+    // return "x83d5tzjWkFfuyeqtmKF" // Localhost User 1
+    return "bHYDPVeRZRFyrgs1p1zU" // Localhost User 2
     // return "-Hx86xtNJ_w5QxM4o9Eu" // Heroku
   }
 

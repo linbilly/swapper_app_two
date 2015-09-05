@@ -10,12 +10,4 @@ angular.module('starter.controllers')
     $scope.$apply()
     $scope.loader = false
   });
-
-  $scope.abbreviatedMonth = function(startDate) {
-    return General.abbreviatedMonth(startDate)
-  }
-
-  $scope.dateFromString = function(startDate) {
-    return General.dateFromString(startDate)
-  }
 })

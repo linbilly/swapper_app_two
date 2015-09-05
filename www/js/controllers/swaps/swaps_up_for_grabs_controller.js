@@ -2,9 +2,14 @@ angular.module('starter.controllers')
 
 .controller('SwapsUpForGrabsCtrl', function($scope, $ionicNavBarDelegate, Api) {
   $ionicNavBarDelegate.showBackButton(false)
-  $scope.loader = true
 
   $scope.upForGrabsTabSelected = function() {
-    console.log("Up for Grabs")
+    Api.getShiftsUpForGrabs()
   }
+
+  $scope.$on('shiftsUpForGrabsFetched', function(event, args) {
+    $scope.shiftsUpForGrabs = Api.shiftsUpForGrabs
+    $scope.$apply()
+    $scope.loader = false
+  });
 })

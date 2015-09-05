@@ -61,6 +61,11 @@ ion-scroll[direction=y] {
 a {
   color: #97D2C4; }
 
+.tab-item {
+  color: white !important; }
+  .tab-item.tab-item-active {
+    color: #FFFF9D !important; }
+
 .calendar-holder .row {
   padding: 0px; }
 
@@ -95,8 +100,6 @@ a {
   box-sizing: border-box; }
   .dates .row:first-child {
     border-top: none; }
-  .dates .row:last-child {
-    border-bottom: none; }
 .dates .col {
   text-align: center;
   position: relative;
@@ -232,6 +235,9 @@ a {
 
 .swap-own-detail-holder {
   padding: 15px; }
+
+.up-for-grabs-list .item-body p {
+  margin: 5px 0px; }
 
 body.stop-scrolling {
   height: 100%;
