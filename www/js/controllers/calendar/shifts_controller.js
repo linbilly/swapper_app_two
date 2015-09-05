@@ -15,7 +15,8 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, Api, 
   }
 
   $scope.$on('shiftsFetched', function(event, args) {
-    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts)
+    console.log("shifts controller")
+    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
     window.localStorage['timeLastReloaded'] = $scope.dateYear
     Calendar.highlightToday()

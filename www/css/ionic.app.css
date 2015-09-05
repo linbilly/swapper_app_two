@@ -128,6 +128,13 @@ a {
   color: lightgrey; }
 .dates .date-col.swap {
   color: #BEEB9F; }
+.dates .date-col .num-shifts-available-on-calendar {
+  background-color: #BEEB9F;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 auto; }
 
 .notes-display {
   padding: 10px 10px 0px 10px; }

@@ -103,6 +103,11 @@
                           <div ng-if="date.shift">
                             {{date.shift.shift_type.abbreviation}}
                           </div>
+                          <div ng-if="date.availableShifts">
+                            <div class="num-shifts-available-on-calendar">
+                              {{date.availableShifts.length}}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

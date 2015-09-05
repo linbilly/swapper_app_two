@@ -180,7 +180,7 @@ angular.module('starter.services')
     }
     $.get(getAllShiftsUrl, params).then(function(result) {
       Api.shifts = makeShiftsEasyToQuery(JSON.parse(result.shifts))
-      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shifts})
+      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shifts, available_shifts: result.available_shifts})
     });
   }
 

@@ -59,7 +59,7 @@ angular.module('starter.services')
     return nextDate.getDate() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getFullYear()
   }
 
-  Calendar.setupCalendarObjects = function(shifts) {
+  Calendar.setupCalendarObjects = function(shifts, availableShifts) {
     var calendarObjects = []
     var startEndDates = startEndDateObjects()
     var currentDate = new Date();
@@ -68,13 +68,14 @@ angular.module('starter.services')
       firstDay = addMonths(firstDay, i)
 
       var title = monthNames(firstDay.getMonth()) + " " + firstDay.getFullYear()
-      var rows = fillRows(firstDay, shifts)
+      var rows = fillRows(firstDay, shifts, availableShifts)
 
       calendarObjects.push({
         title: title,
         rows: rows
       })
     };
+    Calendar.objects = calendarObjects
     return calendarObjects
   }
 
@@ -101,7 +102,7 @@ angular.module('starter.services')
     return names[index]
   }
 
-  function fillRows(firstDay, shifts) {
+  function fillRows(firstDay, shifts, availableShifts) {
     var firstRowDayOfWeekStart = firstDay.getDay()
     var days = daysInMonth(firstDay)
     var rowsRequired = calcRowsRequired(firstDay, firstRowDayOfWeekStart, days)
@@ -112,7 +113,6 @@ angular.module('starter.services')
       var row = []
 
       if (i == 0) {
-
         for (var dayOfWeek = 0; dayOfWeek < firstRowDayOfWeekStart; dayOfWeek++) {
           var tempDate = General.clone(firstDay)
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
@@ -121,7 +121,8 @@ angular.module('starter.services')
             month: tempDate.getMonth() + 1,
             year: tempDate.getFullYear(),
             isInCurrentMonth: false,
-            shift: shifts[formatedShiftDate(tempDate, tempDate.getDate())]
+            shift: shifts[formatedShiftDate(tempDate, tempDate.getDate())],
+            availableShifts: availableShifts[formatedShiftDate(tempDate, tempDate.getDate())]
           })
         };
 
@@ -131,7 +132,8 @@ angular.module('starter.services')
             month: firstDay.getMonth() + 1,
             year: firstDay.getFullYear(),
             isInCurrentMonth: true,
-            shift: shifts[formatedShiftDate(firstDay, dayCount)]
+            shift: shifts[formatedShiftDate(firstDay, dayCount)],
+            availableShifts: availableShifts[formatedShiftDate(firstDay, dayCount)]
           })
           dayCount += 1
         };
@@ -147,7 +149,8 @@ angular.module('starter.services')
               isInCurrentMonth: true,
               month: firstDay.getMonth() + 1,
               year: firstDay.getFullYear(),
-              shift: shifts[formatedShiftDate(firstDay, dayCount)]
+              shift: shifts[formatedShiftDate(firstDay, dayCount)],
+              availableShifts: availableShifts[formatedShiftDate(firstDay, dayCount)]
             })
             dayCount += 1
           } else {
@@ -158,7 +161,8 @@ angular.module('starter.services')
               month: nextMonth.getMonth() + 1,
               year: nextMonth.getFullYear(),
               isInCurrentMonth: false,
-              shift: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
+              shift: shifts[formatedShiftDate(nextMonth, nextMonthDayCount)],
+              availableShifts: availableShifts[formatedShiftDate(nextMonth, nextMonthDayCount)]
             })
             nextMonthDayCount += 1
           }

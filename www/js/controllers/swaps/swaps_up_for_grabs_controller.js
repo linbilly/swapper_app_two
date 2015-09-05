@@ -7,7 +7,8 @@ angular.module('starter.controllers')
   General.upForGrabsController = $scope
 
   $scope.$on('shiftsFetched', function(event, args) {
-    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts)
+    console.log("up for grabs controller")
+    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
     $scope.$apply()
     $scope.loader = false
     Calendar.highlightToday()
