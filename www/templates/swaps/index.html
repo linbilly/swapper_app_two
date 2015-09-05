@@ -103,10 +103,12 @@
                           <div ng-if="date.shift">
                             {{date.shift.shift_type.abbreviation}}
                           </div>
-                          <div ng-if="date.availableShifts">
-                            <div class="num-shifts-available-on-calendar">
-                              {{date.availableShifts.length}}
-                            </div>
+                          <div ng-if="date.availableShifts" class="num-shifts-available-on-calendar-holder">
+                            <a href="#/tab/swaps/up-for-grabs/{{date.dateAsString}}/list">
+                              <div class="num-shifts-available-on-calendar in-calendar">
+                                {{date.availableShifts.length}}
+                              </div>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -119,9 +121,19 @@
           <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
             <div class="shift-input-buttons-holder">
               <div class="bottom-block">
-                <a class="button button-positive" href="#/tab/swaps/up-for-grabs/all/list">
-                  View All as List
-                </a>
+                <!-- <div>
+                  <div class="num-shifts-available-on-calendar outside-of-calendar">#</div>
+                  <div class="num-shifts-description">
+                    Tap to see specific days
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <br> -->
+                <div>
+                  <a class="button button-positive" href="#/tab/swaps/up-for-grabs/all/list">
+                    View All as List
+                  </a>
+                </div>
               </div>
             </div>
           </div>

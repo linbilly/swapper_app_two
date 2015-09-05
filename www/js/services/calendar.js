@@ -75,7 +75,7 @@ angular.module('starter.services')
         rows: rows
       })
     };
-    Calendar.objects = calendarObjects
+    Calendar.availableShifts = availableShifts
     return calendarObjects
   }
 

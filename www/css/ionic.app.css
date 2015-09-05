@@ -128,13 +128,23 @@ a {
   color: lightgrey; }
 .dates .date-col.swap {
   color: #BEEB9F; }
-.dates .date-col .num-shifts-available-on-calendar {
+.dates .date-col .num-shifts-available-on-calendar-holder a {
+  text-decoration: none;
+  color: black; }
+
+.num-shifts-available-on-calendar {
   background-color: #BEEB9F;
   font-size: 12px;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  margin: 0 auto; }
+  border-radius: 50%; }
+  .num-shifts-available-on-calendar.in-calendar {
+    margin: 0 auto; }
+  .num-shifts-available-on-calendar.outside-of-calendar {
+    float: left; }
+
+.num-shifts-description {
+  float: left; }
 
 .notes-display {
   padding: 10px 10px 0px 10px; }
