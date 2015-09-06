@@ -70,8 +70,13 @@ a {
   background-color: #FFFF9D;
   padding: 15px;
   font-size: 16px; }
+  .top-instructions .sub-instructions {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 10px; }
 
 .bottom-note {
+  text-align: center;
   padding: 15px; }
 
 .calendar-holder .row {

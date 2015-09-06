@@ -78,7 +78,11 @@ angular.module('starter.services')
   }
 
   General.inArray = function(obj, arr) {
-    return (arr.indexOf(obj) != -1);
+    if (arr) {
+      return (arr.indexOf(obj) != -1);
+    } else {
+      return false
+    }
   }
 
   return General;

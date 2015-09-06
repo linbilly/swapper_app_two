@@ -7,8 +7,19 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/up-for-grabs/{{day}}/list" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
   <ion-content>
-    <div class="top-instructions">
-      Please select the shifts you would like to offer as a swap
+    <div class="top-instructions" ng-if="shift_up_for_swap" ng-show="!loader">
+      <div>
+        <b>
+          <i class="icon ion-star"></i>
+          {{stringDateToWords(shift_up_for_swap.start_date)}}
+        </b>
+      </div>
+      <div>
+        {{shift_up_for_swap.shift_type.name}} ({{shift_up_for_swap.shift_type.start_hour | numberFixedLen: 2}}:{{shift_up_for_swap.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift_up_for_swap.shift_type)}})
+      </div>
+      <div class="sub-instructions">
+        Select the shifts you would like to offer as a swap. 
+      </div>
     </div>
 
     <div ng-controller="CalendarCtrl" class="calender-display">
@@ -56,9 +67,9 @@
       </div>
     </div>
 
-    <div class="bottom-note">
+    <div class="bottom-note" ng-show="!loader">
       <p>
-        Some shifts are not available to offer because Joe already has a shift on that day.
+        You cannot offer some shifts because {{shift_owner.first_name}} already has a shift on that day.
       </p>
     </div>
   </ion-content>

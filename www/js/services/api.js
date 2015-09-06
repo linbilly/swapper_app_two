@@ -192,7 +192,7 @@ angular.module('starter.services')
     }
     $.get(getAllShiftsSwappableForDayUrl, params).then(function(result) {
       Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
-      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shiftsSwappable, cannot_swap_shift_dates: result.cannot_swap_shift_dates})
+      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shiftsSwappable, cannot_swap_shift_dates: result.cannot_swap_shift_dates, shift_owner: result.shift_owner, shift_up_for_swap: result.shift_up_for_swap})
     });
   }
 
