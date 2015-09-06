@@ -94,6 +94,7 @@ angular.module('starter.controllers')
     $("fieldset").addClass("hide")
     args.selected.addClass("swap")
     args.selected.attr("notes", args.shift.notes)
+    Calendar.updateSwapButtonStatus(args.selected)
   })
 
   $scope.deleteShift = function() {
