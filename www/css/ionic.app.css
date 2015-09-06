@@ -66,6 +66,14 @@ a {
   .tab-item.tab-item-active {
     color: #FFFF9D !important; }
 
+.top-instructions {
+  background-color: #FFFF9D;
+  padding: 15px;
+  font-size: 16px; }
+
+.bottom-note {
+  padding: 15px; }
+
 .calendar-holder .row {
   padding: 0px; }
 
@@ -128,6 +136,8 @@ a {
   color: lightgrey; }
 .dates .date-col.swap {
   color: #BEEB9F; }
+.dates .date-col.cannot-offer-as-swap {
+  background-color: #f8f8f8; }
 .dates .date-col .num-shifts-available-on-calendar-holder a {
   text-decoration: none;
   color: black; }

@@ -184,6 +184,18 @@ angular.module('starter.services')
     });
   }
 
+  Api.getAllShiftsSwappable = function(shiftId) {
+    var getAllShiftsSwappableForDayUrl = root_url + "shifts/swappable"
+    var params = {
+      authentication_token: userToken(),
+      shift_id: shiftId
+    }
+    $.get(getAllShiftsSwappableForDayUrl, params).then(function(result) {
+      Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
+      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shiftsSwappable, cannot_swap_shift_dates: result.cannot_swap_shift_dates})
+    });
+  }
+
   function makeShiftsEasyToQuery(shifts) {
     var easyShifts = {}
     for (var i = 0; i < shifts.length; i++) {

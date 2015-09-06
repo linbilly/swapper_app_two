@@ -77,5 +77,9 @@ angular.module('starter.services')
     return General.abbreviatedMonth(startDate) + " " + General.dateFromString(startDate) + ", " + startDate.split("-")[0]
   }
 
+  General.inArray = function(obj, arr) {
+    return (arr.indexOf(obj) != -1);
+  }
+
   return General;
 })

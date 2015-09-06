@@ -117,19 +117,32 @@ angular.module('starter.services')
           var tempDate = General.clone(firstDay)
           tempDate.setDate(tempDate.getDate() - firstRowDayOfWeekStart + dayOfWeek)
           var dateAsString = formatedShiftDate(tempDate, tempDate.getDate())
+          var shift = shifts[dateAsString]
+          var canOfferAsSwap = false
+          if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            canOfferAsSwap = true
+          }
+
           row.push({
             dayNum: tempDate.getDate(),
             month: tempDate.getMonth() + 1,
             year: tempDate.getFullYear(),
             isInCurrentMonth: false,
             dateAsString: dateAsString,
-            shift: shifts[dateAsString],
-            availableShifts: availableShifts[dateAsString]
+            shift: shift,
+            availableShifts: availableShifts[dateAsString],
+            canOfferAsSwap: canOfferAsSwap
           })
         };
 
         for (var dayOfWeek = firstRowDayOfWeekStart; dayOfWeek < 7; dayOfWeek++) {
           var dateAsString = formatedShiftDate(firstDay, dayCount)
+          var shift = shifts[dateAsString]
+          var canOfferAsSwap = false
+          if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            canOfferAsSwap = true
+          }
+
           row.push({
             dayNum: dayCount,
             month: firstDay.getMonth() + 1,
@@ -137,7 +150,8 @@ angular.module('starter.services')
             isInCurrentMonth: true,
             dateAsString: dateAsString,
             shift: shifts[dateAsString],
-            availableShifts: availableShifts[dateAsString]
+            availableShifts: availableShifts[dateAsString],
+            canOfferAsSwap: canOfferAsSwap
           })
           dayCount += 1
         };
@@ -149,6 +163,12 @@ angular.module('starter.services')
         for (var dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
           if (dayCount <= days) {
             var dateAsString = formatedShiftDate(firstDay, dayCount)
+            var shift = shifts[dateAsString]
+            var canOfferAsSwap = false
+            if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+              canOfferAsSwap = true
+            }
+
             row.push({
               dayNum: dayCount,
               isInCurrentMonth: true,
@@ -156,13 +176,21 @@ angular.module('starter.services')
               year: firstDay.getFullYear(),
               dateAsString: dateAsString,
               shift: shifts[dateAsString],
-              availableShifts: availableShifts[dateAsString]
+              availableShifts: availableShifts[dateAsString],
+              canOfferAsSwap: canOfferAsSwap
             })
             dayCount += 1
+
           } else {
             var nextMonth = General.clone(firstDay)
             nextMonth = addMonths(nextMonth, 1)
             var dateAsString = formatedShiftDate(nextMonth, nextMonthDayCount)
+            var shift = shifts[dateAsString]
+            var canOfferAsSwap = false
+            if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+              canOfferAsSwap = true
+            }
+
             row.push({
               dayNum: nextMonthDayCount,
               month: nextMonth.getMonth() + 1,
@@ -170,7 +198,8 @@ angular.module('starter.services')
               isInCurrentMonth: false,
               dateAsString: dateAsString,
               shift: shifts[dateAsString],
-              availableShifts: availableShifts[dateAsString]
+              availableShifts: availableShifts[dateAsString],
+              canOfferAsSwap: canOfferAsSwap
             })
             nextMonthDayCount += 1
           }
