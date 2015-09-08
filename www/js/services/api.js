@@ -2,9 +2,9 @@ angular.module('starter.services')
 
 .service('Api', function($http, $rootScope) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-  // var root_url = "http://localhost:3000/api/";
+  var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
-  var root_url = "https://swapper-app.herokuapp.com/api/";
+  // var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
 
@@ -263,7 +263,6 @@ angular.module('starter.services')
     }
     $.get(getShiftsUpForGrabsUrl, params).then(function(result) {
       Api.shiftsUpForGrabs = JSON.parse(result.shifts)
-      debugger
       $rootScope.$broadcast("shiftsUpForGrabsFetched")
     });
   }
@@ -274,9 +273,9 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     // return "x83d5tzjWkFfuyeqtmKF" // Localhost User 1
-    // return "bHYDPVeRZRFyrgs1p1zU" // Localhost User 2
+    return "bHYDPVeRZRFyrgs1p1zU" // Localhost User 2
     // return "UUpR6C5Tb_7rXzWMKbqP" // Heroku User 1
-    return "A_Askb6uzJr9pz5iaXEH" // Heroku User 2
+    // return "A_Askb6uzJr9pz5iaXEH" // Heroku User 2
   }
 
   return Api;

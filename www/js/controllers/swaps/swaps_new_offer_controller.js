@@ -1,12 +1,23 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, Api, Calendar, General, ShiftType) {
+.controller('SwapsNewOfferCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
   $scope.day = $stateParams.day
 
   Api.getAllShiftsSwappable($stateParams.shiftId)
+
+  function goToRightDefaultSlide() {
+    var monthThatSwapIsIn = parseInt($scope.day.split("-")[1])
+    var today = new Date()
+    var todaysMonth = today.getMonth() + 1
+    var slideToGoTo = (monthThatSwapIsIn - todaysMonth) + 3
+
+    if (monthThatSwapIsIn != todaysMonth) {
+      $ionicSlideBoxDelegate.slide(slideToGoTo, 1000)
+    }
+  }
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
@@ -20,7 +31,8 @@ angular.module('starter.controllers')
     $scope.loader = false
     $timeout(function() {
       addStarToDateToSwap($scope.shift_up_for_swap.start_date)
-    }, 500)
+      goToRightDefaultSlide()
+    }, 1000)
   })
 
   $scope.multipleDatesSelected = function($event) {
