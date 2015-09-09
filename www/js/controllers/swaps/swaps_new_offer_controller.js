@@ -66,4 +66,19 @@ angular.module('starter.controllers')
     var dateToSwap = $(".dates").find("[data-date='" + parseInt(formattedDate[0]) + "-" + parseInt(formattedDate[1]) + "-" + parseInt(formattedDate[2]) + "']");
     dateToSwap.find(".content-text").html("<i class='ion-star'></i>")
   }
+
+  $scope.offerToSwap = function() {
+    var selectedDates = $(".date-col.active")
+    var selectedShiftIds = []
+
+    for (var i = 0; i < selectedDates.length; i++) {
+      selectedShiftIds.push($(selectedDates[i]).attr("data-shift-id"))
+    };
+
+    var shiftParams = {
+      shift_id: $stateParams.shiftId,
+      offered_shifts: selectedShiftIds
+    }
+    Api.offerToSwap(shiftParams)
+  }
 })

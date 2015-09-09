@@ -267,6 +267,14 @@ angular.module('starter.services')
     });
   }
 
+  Api.offerToSwap = function(shiftParams) {
+    var offerToSwapUrl = root_url + "swaps/create"
+    shiftParams["authentication_token"] = userToken()
+    $.post(offerToSwapUrl, shiftParams).then(function(result){
+      $rootScope.$broadcast("offeredToSwap");
+    });
+  }
+
   // General
   // ===========================================================================
 
@@ -274,6 +282,7 @@ angular.module('starter.services')
     // return window.localStorage['token']
     // return "x83d5tzjWkFfuyeqtmKF" // Localhost User 1
     return "bHYDPVeRZRFyrgs1p1zU" // Localhost User 2
+    // return "2cRmTTkhzeYSxNQS2xEN" // Localhost User 3
     // return "UUpR6C5Tb_7rXzWMKbqP" // Heroku User 1
     // return "A_Askb6uzJr9pz5iaXEH" // Heroku User 2
   }
