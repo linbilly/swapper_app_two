@@ -34,8 +34,4 @@ angular.module('starter.controllers')
       return ""
     }
   }
-
-  $scope.offerToSwap = function(shiftId) {
-    debugger
-  }
 })
