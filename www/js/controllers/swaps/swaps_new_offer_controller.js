@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType) {
+.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
@@ -80,5 +80,6 @@ angular.module('starter.controllers')
       offered_shifts: selectedShiftIds
     }
     Api.offerToSwap(shiftParams)
+    $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
   }
 })
