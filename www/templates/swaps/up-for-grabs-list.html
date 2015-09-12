@@ -35,13 +35,19 @@
             {{shift.swap_notes}}
           </p>
           <p>
-            <a href="#" class="subdued">1 Offer</a>
+            <a href="#" class="subdued">
+              <ng-pluralize count="shift.swaps.length" when="{'0': 'No Offers Yet', '1': '1 Offer', 'other': '{{shift.swaps.length}} Offers'}"></ng-pluralize>
+            </a>
             <a href="#" class="subdued">5 Comments</a>
           </p>
         </div>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" href="#/tab/swaps/up-for-grabs/offer/{{shift.id}}/{{day}}/new">
+          <a class="tab-item" ng-if="shift.already_offered_swap">
+            <i class="icon ion-checkmark"></i>
+            Already Offered
+          </a>
+          <a class="tab-item" href="#/tab/swaps/up-for-grabs/offer/{{shift.id}}/{{day}}/new" ng-if="!shift.already_offered_swap">
             <i class="icon ion-arrow-swap"></i>
             Offer to Swap
           </a>

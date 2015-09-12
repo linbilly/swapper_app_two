@@ -262,7 +262,7 @@ angular.module('starter.services')
       day: day
     }
     $.get(getShiftsUpForGrabsUrl, params).then(function(result) {
-      Api.shiftsUpForGrabs = JSON.parse(result.shifts)
+      Api.shiftsUpForGrabs = result.shifts
       $rootScope.$broadcast("shiftsUpForGrabsFetched")
     });
   }
