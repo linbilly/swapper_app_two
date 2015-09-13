@@ -36,4 +36,13 @@ angular.module('starter.controllers')
       return ""
     }
   }
+
+  $scope.countShiftsOffered = function(swaps) {
+    var shifts = []
+    var merged = []
+    for (var i = 0; i < swaps.length; i++) {
+      shifts.push(swaps[i].shifts)
+    };
+    return merged.concat(shifts).length
+  }
 })
