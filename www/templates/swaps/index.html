@@ -24,7 +24,7 @@
                   <p>{{shift.group.name}}</p>
                   <p>
                     <ng-pluralize count="countShiftsOffered(shift.swaps)" when="{'0': 'No Offers Yet', '1': '1 Offer ', 'other': '{{countShiftsOffered(shift.swaps)}} Offers '}"></ng-pluralize>
-                    <ng-pluralize count="shift.swaps.length" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
+                    <ng-pluralize count="shift.swaps.length || 0" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
                   </p>
                   <i class="icon ion-chevron-right icon-accessory"></i>
                 </a>

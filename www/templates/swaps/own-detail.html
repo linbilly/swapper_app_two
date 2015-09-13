@@ -23,7 +23,7 @@
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
       </p>
-      <p ng-if="shift.swaps.length == 0">
+      <p ng-if="!shift.swaps || shift.swaps.length == 0">
         No swaps offered yet
       </p>
 
@@ -38,7 +38,7 @@
       </div>
 
     </div>
-    <div class="list" ng-if="shift.swaps.length > 0">
+    <div class="list" ng-if="shift.swaps && shift.swaps.length > 0">
 
       <div ng-controller="CalendarCtrl" class="calender-display">
         <div class="calendar-holder" ng-if="calendarObjects">

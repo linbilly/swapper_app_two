@@ -36,7 +36,7 @@
         </p>
         <p>
           <a href="#" class="subdued">
-            <ng-pluralize count="shift.swaps.length" when="{'0': 'No Offers Yet', '1': '1 Offer', 'other': '{{shift.swaps.length}} Offers'}"></ng-pluralize>
+            <ng-pluralize count="shift.swaps.length || 0" when="{'0': 'No Offers Yet', '1': '1 Offer', 'other': '{{shift.swaps.length}} Offers'}"></ng-pluralize>
           </a>
           <a href="#" class="subdued">5 Comments</a>
         </p>
