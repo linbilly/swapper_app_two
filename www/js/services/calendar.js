@@ -108,6 +108,8 @@ angular.module('starter.services')
     var rowsRequired = calcRowsRequired(firstDay, firstRowDayOfWeekStart, days)
     var rows = []
     var dayCount = 1
+    var today = new Date()
+    var todayAsString = today.getFullYear() + "-" + General.zeroPad(today.getMonth() + 1) + "-" + General.zeroPad(today.getDate())
 
     for (var i = 0; i <= rowsRequired; i++) {
       var row = []
@@ -119,7 +121,7 @@ angular.module('starter.services')
           var dateAsString = formatedShiftDate(tempDate, tempDate.getDate())
           var shift = shifts[dateAsString]
           var canOfferAsSwap = false
-          if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+          if (shift && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
             canOfferAsSwap = true
           }
 
@@ -139,7 +141,7 @@ angular.module('starter.services')
           var dateAsString = formatedShiftDate(firstDay, dayCount)
           var shift = shifts[dateAsString]
           var canOfferAsSwap = false
-          if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+          if (shift && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
             canOfferAsSwap = true
           }
 
@@ -165,7 +167,7 @@ angular.module('starter.services')
             var dateAsString = formatedShiftDate(firstDay, dayCount)
             var shift = shifts[dateAsString]
             var canOfferAsSwap = false
-            if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            if (shift && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
               canOfferAsSwap = true
             }
 
@@ -187,7 +189,7 @@ angular.module('starter.services')
             var dateAsString = formatedShiftDate(nextMonth, nextMonthDayCount)
             var shift = shifts[dateAsString]
             var canOfferAsSwap = false
-            if (shift && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            if (shift && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
               canOfferAsSwap = true
             }
 
@@ -208,6 +210,10 @@ angular.module('starter.services')
       rows.push(row)
     };
     return rows
+  }
+
+  function inFuture(today, date) {
+    return today < date
   }
 
   function formatedShiftDate(dateObj, day) {
