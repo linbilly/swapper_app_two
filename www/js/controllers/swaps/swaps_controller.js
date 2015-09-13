@@ -38,11 +38,10 @@ angular.module('starter.controllers')
   }
 
   $scope.countShiftsOffered = function(swaps) {
-    var shifts = []
-    var merged = []
+    var num = 0
     for (var i = 0; i < swaps.length; i++) {
-      shifts.push(swaps[i].shifts)
+      num += swaps[i].offered_shifts.length
     };
-    return merged.concat(shifts).length
+    return num
   }
 })
