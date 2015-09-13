@@ -99,7 +99,7 @@
           <ng-pluralize count="shift.swaps.length" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
         </div>
 
-        <a class="item item-avatar {{offeredShift.start_date}}" ng-repeat="offeredShift in orderedOfferedShifts">
+        <div class="item item-avatar item-button-right {{offeredShift.start_date}}" ng-repeat="offeredShift in orderedOfferedShifts">
           <div class="date-as-square">
             <div class="month">
               {{abbreviatedMonth(offeredShift.start_date)}}
@@ -113,7 +113,11 @@
             {{offeredShift.shift_type.start_hour | numberFixedLen: 2}}:{{offeredShift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(offeredShift.shift_type)}}
           </p>
           <p>{{offeredShift.user.first_name}} {{offeredShift.user.last_name}}</p>
-        </a>
+
+          <button class="button button-positive accept-offered-swap-button">
+            Accept
+          </button>
+        </div>
       </div>
 
     </div>
