@@ -5,32 +5,40 @@
   </ion-nav-buttons>
   <ion-content>
     <div class="swap-own-detail-holder">
-      <h4>
-        {{shift.shift_type.abbreviation}}: {{shift.shift_type.name}}
-      </h4>
-
       <p>
-        {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
+        <b class="date-title">
+          <i class="icon ion-star"></i>
+          {{stringDateToWords(shift.start_date)}}
+        </b>
       </p>
       <p>
         {{shift.group.name}}
       </p>
+      <p>
+        {{shift.shift_type.abbreviation}}: {{shift.shift_type.name}}
+      </p>
+      <p>
+        {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
+      </p>
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
+      </p>
+      <p ng-if="shift.swaps.length == 0">
+        No swaps offered yet
       </p>
 
       <div class="action-buttons-holder">
         <div>
           <div class="delete-link">
             <a class="assertive" ng-click="cancelOwnSwap()">
-              Cancel
+              Cancel Swap
             </a>
           </div>
         </div>
       </div>
 
     </div>
-    <div class="list">
+    <div class="list" ng-if="shift.swaps.length > 0">
 
       <div ng-controller="CalendarCtrl" class="calender-display">
         <div class="calendar-holder" ng-if="calendarObjects">
@@ -84,7 +92,7 @@
         </div>
       </div>
 
-      <div ng-if="shift.swaps.length > 0">
+      <div>
         <div class="item item-divider">
           <ng-pluralize count="orderedOfferedShifts.length" when="{'0': '', '1': '1 Offer ', 'other': '{{orderedOfferedShifts.length}} Offers '}"></ng-pluralize>
           <ng-pluralize count="shift.swaps.length" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
@@ -105,10 +113,6 @@
           </p>
           <p>{{offeredShift.user.first_name}} {{offeredShift.user.last_name}}</p>
         </a>
-      </div>
-
-      <div ng-if="shift.swaps.length == 0">
-        No swaps offered yet
       </div>
 
     </div>

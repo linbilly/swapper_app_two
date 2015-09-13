@@ -267,6 +267,13 @@ a {
 
 .swap-own-detail-holder {
   padding: 15px; }
+  .swap-own-detail-holder .date-title {
+    font-size: 16px; }
+  .swap-own-detail-holder p {
+    margin-bottom: 5px; }
+
+.bottom-notification-text {
+  padding: 15px; }
 
 .up-for-grabs-list .item-body p {
   margin: 5px 0px; }

@@ -76,6 +76,12 @@ angular.module('starter.controllers')
     }
   }
 
+  $scope.stringDateToWords = function(startDate) {
+    if (startDate) {
+      return General.stringDateToWords(startDate)
+    }
+  }
+
   function orderByDateOfShiftOffered(shift) {
     var shifts = []
     for (var i = 0; i < shift.swaps.length; i++) {
