@@ -79,11 +79,9 @@
                       <div ng-if="date.shift">
                         {{date.shift.shift_type.abbreviation}}
                       </div>
-                      <div ng-if="date.availableShifts" class="num-shifts-available-on-calendar-holder">
-                        <a href="#/tab/swaps/up-for-grabs/{{date.dateAsString}}/list">
-                          <div class="num-shifts-available-on-calendar in-calendar">
-                            {{date.availableShifts.length}}
-                          </div>
+                      <div class="num-shifts-available-on-calendar-holder hide">
+                        <a ng-click="scrollToAnchor($event)">
+                          <div class="num-shifts-available-on-calendar in-calendar"></div>
                         </a>
                       </div>
                     </div>
@@ -101,7 +99,7 @@
           <ng-pluralize count="shift.swaps.length" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
         </div>
 
-        <a class="item item-avatar" ng-repeat="offeredShift in orderedOfferedShifts">
+        <a class="item item-avatar {{offeredShift.start_date}}" ng-repeat="offeredShift in orderedOfferedShifts">
           <div class="date-as-square">
             <div class="month">
               {{abbreviatedMonth(offeredShift.start_date)}}

@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, Api, General, ShiftType, Notification, Calendar) {
+.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
@@ -22,6 +22,7 @@ angular.module('starter.controllers')
 
   function setupView() {
     $timeout(function() {
+      highlightSwapsBeingOffered()
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
     }, 1000)
@@ -101,5 +102,32 @@ angular.module('starter.controllers')
       };
     };
     return General.compareByDate(shifts)
+  }
+
+  function highlightSwapsBeingOffered() {
+    for (var i = 0; i < $scope.orderedOfferedShifts.length; i++) {
+      var date = $scope.orderedOfferedShifts[i].start_date.split("-")
+      var dateToSwap = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+      dateToSwap.find(".num-shifts-available-on-calendar-holder").removeClass("hide")
+      var currentNum = dateToSwap.find(".num-shifts-available-on-calendar").text()
+      if (currentNum == "") {
+        currentNum = 0
+      } else {
+        currentNum = parseInt(currentNum)
+      }
+      dateToSwap.find(".num-shifts-available-on-calendar").text(currentNum + 1)
+      dateToSwap.find("a").attr("data-anchor-class", "." + $scope.orderedOfferedShifts[i].start_date)
+    };
+  }
+
+  $scope.scrollToAnchor = function($event) {
+    var ele = $($event.target)
+    if (ele.hasClass("num-shifts-available-on-calendar")) {
+      ele = ele.parents("a")
+    }
+    var anchor = ele.attr("data-anchor-class")
+    // debugger
+    var anchorOffset = $($(anchor)[0]).offset().top - 45
+    $ionicScrollDelegate.scrollTo(0, anchorOffset, [true])
   }
 })
