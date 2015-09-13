@@ -1,22 +1,35 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Notification) {
+.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Notification, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
   if (Api.ownShiftsWithSwaps) {
     $scope.loader = false
-    $scope.shift = General.findById(Api.ownShiftsWithSwaps, $stateParams.shiftId)
+    setShiftAndOfferedshifts()
   } else {
     // In case user jumps straight to the detail page
     Api.getOwnShiftsWithSwaps()
   }
 
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
-    $scope.shift = General.findById(Api.ownShiftsWithSwaps, $stateParams.shiftId)
+    setShiftAndOfferedshifts()
     $scope.$apply()
     $scope.loader = false
   });
+
+  function setShiftAndOfferedshifts() {
+    $scope.shift = General.findById(Api.ownShiftsWithSwaps, $stateParams.shiftId)
+    $scope.orderedOfferedShifts = orderByDateOfShiftOffered($scope.shift)
+  }
+
+  Api.getAllShifts()
+
+  $scope.$on('shiftsFetched', function(event, args) {
+    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
+    $scope.$apply()
+    $scope.loader = false
+  })
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
@@ -50,4 +63,28 @@ angular.module('starter.controllers')
     $state.go('tab.swaps', {}, {reload: true});
     $ionicHistory.clearHistory()
   });
+
+  $scope.abbreviatedMonth = function(startDate) {
+    if (startDate) {
+      return General.abbreviatedMonth(startDate)
+    }
+  }
+
+  $scope.dateFromString = function(startDate) {
+    if (startDate) {
+      return General.dateFromString(startDate)
+    }
+  }
+
+  function orderByDateOfShiftOffered(shift) {
+    var shifts = []
+    for (var i = 0; i < shift.swaps.length; i++) {
+      for (var index = 0; index < shift.swaps[i].offered_shifts.length; index++) {
+        shift.swaps[i].offered_shifts[index]["shift_type"] = shift.shift_type
+        shift.swaps[i].offered_shifts[index]["user"] = shift.swaps[i].user
+        shifts.push(shift.swaps[i].offered_shifts[index])
+      };
+    };
+    return General.compareByDate(shifts)
+  }
 })

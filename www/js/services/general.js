@@ -85,5 +85,17 @@ angular.module('starter.services')
     }
   }
 
+  function dateSort(a, b) {
+    if (a.start_date < b.start_date)
+      return -1;
+    if (a.start_date > b.start_date)
+      return 1;
+    return 0;
+  }
+
+  General.compareByDate = function(arr) {
+    return arr.sort(dateSort)
+  }
+
   return General;
 })
