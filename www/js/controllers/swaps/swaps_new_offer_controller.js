@@ -80,7 +80,7 @@ angular.module('starter.controllers')
       offered_shifts: selectedShiftIds
     }
     Api.offerToSwap(shiftParams)
-    Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + " for the " + $scope.shift_up_for_swap.shift_type.name + " shift on " + $scope.stringDateToWords($scope.shift_up_for_swap.start_date)
+    Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + " for: " + $scope.shift_up_for_swap.shift_type.name + " on " + $scope.stringDateToWords($scope.shift_up_for_swap.start_date)
     $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
   }
 })
