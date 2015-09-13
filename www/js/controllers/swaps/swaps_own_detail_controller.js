@@ -126,8 +126,8 @@ angular.module('starter.controllers')
       ele = ele.parents("a")
     }
     var anchor = ele.attr("data-anchor-class")
-    // debugger
-    var anchorOffset = $($(anchor)[0]).offset().top - 45
+    var currentPosition = $ionicScrollDelegate.getScrollPosition().top
+    var anchorOffset = $($(anchor)[0]).offset().top - 45 + currentPosition
     $ionicScrollDelegate.scrollTo(0, anchorOffset, [true])
   }
 })
