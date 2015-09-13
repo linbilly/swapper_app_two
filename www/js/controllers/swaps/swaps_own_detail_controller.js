@@ -98,6 +98,7 @@ angular.module('starter.controllers')
       for (var index = 0; index < shift.swaps[i].offered_shifts.length; index++) {
         shift.swaps[i].offered_shifts[index]["shift_type"] = shift.shift_type
         shift.swaps[i].offered_shifts[index]["user"] = shift.swaps[i].user
+        shift.swaps[i].offered_shifts[index]["swapId"] = shift.swaps[i].id
         shifts.push(shift.swaps[i].offered_shifts[index])
       };
     };
@@ -129,5 +130,12 @@ angular.module('starter.controllers')
     var currentPosition = $ionicScrollDelegate.getScrollPosition().top
     var anchorOffset = $($(anchor)[0]).offset().top - 45 + currentPosition
     $ionicScrollDelegate.scrollTo(0, anchorOffset, [true])
+  }
+
+  $scope.acceptSwap = function(offeredShift) {
+    var params = {
+      offered_shift_id: offeredShift.id
+    }
+    Api.acceptOfferedSwap(params, offeredShift.swapId)
   }
 })

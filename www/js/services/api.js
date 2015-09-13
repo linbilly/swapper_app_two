@@ -275,6 +275,15 @@ angular.module('starter.services')
     });
   }
 
+  Api.acceptOfferedSwap = function(params, swapId) {
+    var acceptOfferedSwapUrl = root_url + "swaps/" + swapId + "/accept"
+    params["authentication_token"] = userToken()
+    $.post(acceptOfferedSwapUrl, params).then(function(result){
+      $rootScope.$broadcast("swapAccepted");
+      debugger
+    });
+  }
+
   // General
   // ===========================================================================
 
