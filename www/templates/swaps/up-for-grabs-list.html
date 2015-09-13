@@ -5,7 +5,7 @@
   </ion-nav-buttons>
   <ion-content>
     <notification ng-model="message" ng-show="message"></notification>
-    <div class="list card up-for-grabs-list" ng-repeat="shift in shiftsUpForGrabs">
+    <div class="list card up-for-grabs-list" ng-repeat="shift in shiftsUpForGrabs" ng-if="shiftsUpForGrabs.length > 0">
 
       <div class="item item-avatar">
         <div class="date-as-square">
@@ -57,6 +57,33 @@
         </a>
       </div>
 
+    </div>
+
+    <div ng-if="shiftsUpForGrabs.length == 0">
+      <div class="card">
+        <div class="item item-text-wrap">
+          <p>
+            <b>
+              Nothing up for grabs yet! We'll notify you or you can check back again later :)
+            </b>
+          </p>
+          <br>
+          <p>
+            For shifts to show up here:
+          </p>
+          <br>
+          <p>
+            1. Other people need to put up shifts to they want to swap
+          </p>
+          <p>
+            2. You will only see shifts that don't conflict with your schedule
+          </p>
+          <br>
+          <p>
+            Happy swapping!
+          </p>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
