@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType) {
+.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
@@ -80,6 +80,7 @@ angular.module('starter.controllers')
       offered_shifts: selectedShiftIds
     }
     Api.offerToSwap(shiftParams)
+    Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + " for the " + $scope.shift_up_for_swap.shift_type.name + " shift on " + $scope.stringDateToWords($scope.shift_up_for_swap.start_date)
     $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
   }
 })

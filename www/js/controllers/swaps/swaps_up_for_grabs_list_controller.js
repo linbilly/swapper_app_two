@@ -1,10 +1,15 @@
 angular.module('starter.controllers')
 
-.controller('SwapsUpForGrabsListCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Calendar) {
+.controller('SwapsUpForGrabsListCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Calendar, Notification) {
   // $ionicNavBarDelegate.showBackButton(false)
 
   $scope.loader = true
   $scope.day = $stateParams.day
+
+  if (Notification.message) {
+    $scope.message = Notification.message
+    Notification.message = null
+  }
 
   Api.getShiftsUpForGrabs($stateParams.day)
 
