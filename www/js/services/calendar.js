@@ -262,5 +262,23 @@ angular.module('starter.services')
     // return false
   }
 
+  Calendar.goToRightDefaultSlide = function(date) {
+    var monthThatSwapIsIn = parseInt(date.split("-")[1])
+    var today = new Date()
+    var todaysMonth = today.getMonth() + 1
+    var slideToGoTo = (monthThatSwapIsIn - todaysMonth) + 3
+
+    if (monthThatSwapIsIn != todaysMonth) {
+      $ionicSlideBoxDelegate.slide(slideToGoTo, 1000)
+    }
+  }
+
+  Calendar.addStarToDateToSwap = function(startDate) {
+    var formattedDate = startDate.split("-").reverse()
+    var dateToSwap = $(".dates").find("[data-date='" + parseInt(formattedDate[0]) + "-" + parseInt(formattedDate[1]) + "-" + parseInt(formattedDate[2]) + "']");
+    dateToSwap.removeClass("swap")
+    dateToSwap.find(".content-text").html("<i class='ion-star'></i>")
+  }
+
   return Calendar;
 })

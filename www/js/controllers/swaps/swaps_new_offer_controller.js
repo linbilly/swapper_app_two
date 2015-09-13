@@ -8,17 +8,6 @@ angular.module('starter.controllers')
 
   Api.getAllShiftsSwappable($stateParams.shiftId)
 
-  function goToRightDefaultSlide() {
-    var monthThatSwapIsIn = parseInt($scope.day.split("-")[1])
-    var today = new Date()
-    var todaysMonth = today.getMonth() + 1
-    var slideToGoTo = (monthThatSwapIsIn - todaysMonth) + 3
-
-    if (monthThatSwapIsIn != todaysMonth) {
-      $ionicSlideBoxDelegate.slide(slideToGoTo, 1000)
-    }
-  }
-
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
   }
@@ -30,8 +19,8 @@ angular.module('starter.controllers')
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
     $timeout(function() {
-      addStarToDateToSwap($scope.shift_up_for_swap.start_date)
-      goToRightDefaultSlide()
+      Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
+      Calendar.goToRightDefaultSlide($scope.day)
     }, 1000)
   })
 
@@ -42,15 +31,17 @@ angular.module('starter.controllers')
     } else {
       ele = $($event.target).parents(".date-col")
     }
-    var selectedDate = ele.attr("data-date")
-    var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
-    for (var i = 0; i < selectedCells.length; i++) {
-      if ($(selectedCells[i]).hasClass("active")) {
-        $(selectedCells[i]).removeClass("active")
-      } else {
-        $(selectedCells[i]).addClass("active")
-      }
-    };
+    if (!ele.hasClass("cannot-offer-as-swap")) {
+      var selectedDate = ele.attr("data-date")
+      var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
+      for (var i = 0; i < selectedCells.length; i++) {
+        if ($(selectedCells[i]).hasClass("active")) {
+          $(selectedCells[i]).removeClass("active")
+        } else {
+          $(selectedCells[i]).addClass("active")
+        }
+      };
+    }
   }
 
   $scope.stringDateToWords = function(startDate) {
@@ -59,12 +50,6 @@ angular.module('starter.controllers')
 
   $scope.prettyEndTime = function(shiftType) {
     return ShiftType.prettyEndTime(shiftType)
-  }
-
-  function addStarToDateToSwap(startDate) {
-    var formattedDate = startDate.split("-").reverse()
-    var dateToSwap = $(".dates").find("[data-date='" + parseInt(formattedDate[0]) + "-" + parseInt(formattedDate[1]) + "-" + parseInt(formattedDate[2]) + "']");
-    dateToSwap.find(".content-text").html("<i class='ion-star'></i>")
   }
 
   $scope.offerToSwap = function() {

@@ -3,6 +3,9 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">My Swaps</a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
     <div class="swap-own-detail-holder">
       <p>
@@ -68,7 +71,7 @@
               </div>
               <div class="dates">
                 <div class="row" ng-repeat="row in month.rows">
-                  <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}">
+                  <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}">
                     <div class="date-number">
                       {{date.dayNum}}
                     </div>
