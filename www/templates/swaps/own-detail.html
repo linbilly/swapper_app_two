@@ -48,9 +48,10 @@
       </p>
 
       <div class="action-buttons-holder">
-        <button class="button button-energized approve-button">
+        <button class="button button-energized approve-button" ng-if="shift.has_accepted_a_swap">
           Approved
         </button>
+
         <div>
           <div class="delete-link">
             <a class="assertive" ng-click="cancelOwnSwap()">
