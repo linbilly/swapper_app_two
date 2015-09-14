@@ -18,7 +18,7 @@
         {{shift.group.name}}
       </p>
       <p>
-        {{shift.shift_type.abbreviation}}: {{shift.shift_type.name}}
+        {{shift.shift_type.name}}
       </p>
       <p>
         {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
@@ -26,6 +26,23 @@
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
       </p>
+      <div class="swapping-for-holder" ng-if="shift.has_accepted_a_swap">
+        <p>
+          <b class="date-title">
+          <i class="icon ion-arrow-swap"></i>
+            Swapping for: {{stringDateToWords(shift.offered_shift.start_date)}}
+          </b>
+        </p>
+        <p>
+          {{shift.offered_shift.name}}
+        </p>
+        <p>
+          {{shift.offered_shift_type.name}}
+        </p>
+        <p>
+          {{shift.offered_shift_type.start_hour | numberFixedLen: 2}}:{{shift.offered_shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.offered_shift_type)}}
+        </p>
+      </div>
       <p ng-if="!shift.swaps || shift.swaps.length == 0">
         No swaps offered yet
       </p>

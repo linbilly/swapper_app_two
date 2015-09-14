@@ -276,6 +276,10 @@ a {
     font-size: 16px; }
   .swap-own-detail-holder p {
     margin-bottom: 5px; }
+  .swap-own-detail-holder .swapping-for-holder {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid lightgrey; }
 
 .accept-offered-swap-button {
   margin-top: 10px !important;
