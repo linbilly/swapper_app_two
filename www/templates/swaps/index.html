@@ -93,7 +93,7 @@
               <div class="item item-divider">
                 {{status}}
               </div>
-              <a class="item item-avatar item-icon-right" href="" ng-repeat="swap in swaps">
+              <a class="item item-avatar item-icon-right" href="#/tab/swaps/offered/{{swap.id}}" ng-repeat="swap in swaps">
                 <div class="date-as-square">
                   <div class="month">
                     {{abbreviatedMonth(swap.shift.start_date)}}

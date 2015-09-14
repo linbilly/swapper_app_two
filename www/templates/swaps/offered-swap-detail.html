@@ -1,7 +1,7 @@
 <ion-view cache-view="false">
-<ion-nav-title></ion-nav-title>
+  <ion-nav-title></ion-nav-title>
   <ion-nav-buttons side="left">
-    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">My Swaps</a>
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">Swaps Offered</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -18,6 +18,9 @@
         {{shift.group.name}}
       </p>
       <p>
+        {{shift.user.first_name}} {{shift.user.last_name}}
+      </p>
+      <p>
         {{shift.shift_type.name}}
       </p>
       <p>
@@ -26,18 +29,18 @@
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
       </p>
-      <div class="swapping-for-holder" ng-if="shift.has_accepted_a_swap">
+      <div class="swapping-for-holder" ng-if="swap.state == 'Pending approval'">
         <p>
           <b class="date-title">
           <i class="icon ion-arrow-swap"></i>
-            Swapping for: {{stringDateToWords(shift.offered_shift.start_date)}}
+            Swapping for: {{stringDateToWords(swap.accepted_shift.start_date)}}
           </b>
         </p>
         <p>
-          {{shift.offered_shift_type.name}}
+          {{swap.accepted_shift.shift_type.name}}
         </p>
         <p>
-          {{shift.offered_shift_type.start_hour | numberFixedLen: 2}}:{{shift.offered_shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.offered_shift_type)}}
+          {{swap.accepted_shift.shift_type.start_hour | numberFixedLen: 2}}:{{swap.accepted_shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(swap.accepted_shift.shift_type)}}
         </p>
       </div>
       <p ng-if="!shift.swaps || shift.swaps.length == 0">
@@ -45,17 +48,9 @@
       </p>
 
       <div class="action-buttons-holder">
-        <button class="button button-energized approve-button" ng-if="shift.has_accepted_a_swap">
+        <button class="button button-energized approve-button" ng-if="swap.state == 'Pending approval'">
           Approved
         </button>
-
-        <div>
-          <div class="delete-link">
-            <a class="assertive" ng-click="cancelOwnSwap()">
-              Cancel Swap
-            </a>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -94,13 +89,13 @@
                       {{date.dayNum}}
                     </div>
                     <div class="content-text">
-                      <div ng-if="date.shift">
-                        {{date.shift.shift_type.abbreviation}}
-                      </div>
-                      <div class="num-shifts-available-on-calendar-holder hide">
-                        <a ng-click="scrollToAnchor($event)">
-                          <div class="num-shifts-available-on-calendar in-calendar"></div>
+                      <div ng-if="date.shift && isBeingOffered(date.shift)">
+                        <a class="shift-abbreviation-as-link" ng-click="scrollToAnchor($event)">
+                          {{date.shift.shift_type.abbreviation}}
                         </a>
+                      </div>
+                      <div ng-if="date.shift && !isBeingOffered(date.shift)">
+                        {{date.shift.shift_type.abbreviation}}
                       </div>
                     </div>
                   </div>
@@ -111,12 +106,11 @@
         </div>
       </div>
 
-      <div>
-        <div class="item item-divider">
-          <ng-pluralize count="orderedOfferedShifts.length" when="{'0': '', '1': '1 Offer ', 'other': '{{orderedOfferedShifts.length}} Offers '}"></ng-pluralize>
-          <ng-pluralize count="shift.swaps.length" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{shift.swaps.length}} People'}"></ng-pluralize>
-        </div>
+      <div class="item item-divider">
+        You offered: <a ng-if="swap.state == 'Open'">(Cancel all)</a>
+      </div>
 
+      <div>
         <div class="item item-avatar item-button-right {{offeredShift.start_date}}" ng-repeat="offeredShift in orderedOfferedShifts">
           <div class="date-as-square">
             <div class="month">
@@ -132,11 +126,11 @@
           </p>
           <p>{{offeredShift.user.first_name}} {{offeredShift.user.last_name}}</p>
 
-          <button class="button button-positive accept-offered-swap-button" ng-click="acceptSwap(offeredShift)" ng-if="!shift.has_accepted_a_swap">
-            Accept
+          <button class="button button-positive accept-offered-swap-button" ng-click="" ng-if="swap.state == 'Open'">
+            Cancel
           </button>
 
-          <div ng-if="shift.has_accepted_a_swap && offeredShift.id == shift.offered_shift.id">
+          <div ng-if="swap.state == 'Pending approval' && offeredShift.id == swap.accepted_shift.id">
             <i class="icon ion-checkmark-circled"></i>
             Pending approval
           </div>

@@ -74,6 +74,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.swaps-offered-swap-detail', {
+    url: '/swaps/offered/:swapId',
+    views: {
+      'tab-swaps': {
+        templateUrl: 'templates/swaps/offered-swap-detail.html',
+        controller: 'SwapsOfferedDetailCtrl'
+      }
+    }
+  })
+
   .state('tab.swaps-up-for-grabs-list', {
     url: '/swaps/up-for-grabs/:day/list',
     views: {
