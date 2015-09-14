@@ -91,34 +91,39 @@
           <div ng-show="!loader">
             <div>
               <div class="list">
-                <a class="item item-avatar item-icon-right" href="" ng-repeat="swap in swapsOffered">
-                  <div class="date-as-square">
-                    <div class="month">
-                      {{abbreviatedMonth(swap.shift.start_date)}}
-                    </div>
-                    <div class="day">
-                      {{dateFromString(swap.shift.start_date)}}
-                    </div>
+                <div ng-repeat="(status, swaps) in swapsOfferedByStatus">
+                  <div class="item item-divider">
+                    {{status}}
                   </div>
-                  <h2>{{swap.shift.shift_type.name}}</h2>
-                  <p>
-                    {{swap.shift.user.first_name}} {{swap.shift.user.last_name}}
-                  </p>
-                  <p>{{swap.shift.group.name}}</p>
-                  <p ng-if="!swap.shift.has_accepted_a_swap">
-                    <ng-pluralize count="countShiftsOffered(swap.shift.swaps)" when="{'0': 'No Offers Yet', '1': '1 Offer ', 'other': '{{countShiftsOffered(swap.shift.swaps)}} Offers '}"></ng-pluralize>
-                    <ng-pluralize count="swap.shift.swaps.length || 0" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{swap.shift.swaps.length}} People'}"></ng-pluralize>
-                  </p>
-                  <div class="has-accepted-a-swap-details" ng-if="swap.shift.has_accepted_a_swap">
+                  <a class="item item-avatar item-icon-right" href="" ng-repeat="swap in swaps">
+                    <div class="date-as-square">
+                      <div class="month">
+                        {{abbreviatedMonth(swap.shift.start_date)}}
+                      </div>
+                      <div class="day">
+                        {{dateFromString(swap.shift.start_date)}}
+                      </div>
+                    </div>
+                    <h2>{{swap.shift.shift_type.name}}</h2>
                     <p>
-                      Swap for: {{stringDateToWords(swap.accepted_shift.start_date)}}
+                      {{swap.shift.user.first_name}} {{swap.shift.user.last_name}}
                     </p>
-                    <p>
-                      Shift type: {{swap.accepted_shift.shift_type.name}}
+                    <p>{{swap.shift.group.name}}</p>
+                    <p ng-if="!swap.shift.has_accepted_a_swap">
+                      <ng-pluralize count="countShiftsOffered(swap.shift.swaps)" when="{'0': 'No Offers Yet', '1': '1 Offer ', 'other': '{{countShiftsOffered(swap.shift.swaps)}} Offers '}"></ng-pluralize>
+                      <ng-pluralize count="swap.shift.swaps.length || 0" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{swap.shift.swaps.length}} People'}"></ng-pluralize>
                     </p>
-                  </div>
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-                </a>
+                    <div class="has-accepted-a-swap-details" ng-if="swap.shift.has_accepted_a_swap">
+                      <p>
+                        Swap for: {{stringDateToWords(swap.accepted_shift.start_date)}}
+                      </p>
+                      <p>
+                        Shift type: {{swap.accepted_shift.shift_type.name}}
+                      </p>
+                    </div>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                  </a>
+                </div>
 
               </div>
               <div class="double-tab-bottom-buffer"></div>

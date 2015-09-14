@@ -4,12 +4,12 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.swapsOfferedTabSelected = function() {
-    $scope.loader = true
     Api.swapsOffered()
   }
 
   $scope.$on('swapsOfferedFetched', function(event, args) {
-    $scope.swapsOffered = Api.swapsOfferedByUser
+    // $scope.swapsOffered = Api.swapsOfferedByUser
+    $scope.swapsOfferedByStatus = Api.swapsOfferedByStatus
     $scope.loader = false
   });
 })

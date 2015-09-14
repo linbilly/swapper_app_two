@@ -308,8 +308,26 @@ angular.module('starter.services')
     }
     $.get(swapsOfferedUrl, params).then(function(result) {
       Api.swapsOfferedByUser = result.swaps
+      sortSwapsOfferedByStatus()
       $rootScope.$broadcast("swapsOfferedFetched")
     });
+  }
+
+  function sortSwapsOfferedByStatus() {
+    var swapsOfferedByStatusObj = {}
+    var openStatus = "Pending acceptance"
+    var pendingApprovalStatus = "Pending approval"
+    swapsOfferedByStatusObj[openStatus] = []
+    swapsOfferedByStatusObj[pendingApprovalStatus] = []
+    
+    for (var i = 0; i < Api.swapsOfferedByUser.length; i++) {
+      if (Api.swapsOfferedByUser[i].state == pendingApprovalStatus) {
+        swapsOfferedByStatusObj[pendingApprovalStatus].push(Api.swapsOfferedByUser[i])
+      } else {
+        swapsOfferedByStatusObj[openStatus].push(Api.swapsOfferedByUser[i])
+      }
+    };
+    Api.swapsOfferedByStatus = swapsOfferedByStatusObj
   }
 
   // General
