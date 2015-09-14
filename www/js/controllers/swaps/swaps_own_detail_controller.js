@@ -22,7 +22,11 @@ angular.module('starter.controllers')
 
   function setupView() {
     $timeout(function() {
-      highlightSwapsBeingOffered()
+      if ($scope.shift.has_accepted_a_swap) {
+        addSwapIconToAcceptedSwap()
+      } else {
+        highlightSwapsBeingOffered()
+      }
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
     }, 1000)
@@ -119,6 +123,12 @@ angular.module('starter.controllers')
       dateToSwap.find(".num-shifts-available-on-calendar").text(currentNum + 1)
       dateToSwap.find("a").attr("data-anchor-class", "." + $scope.orderedOfferedShifts[i].start_date)
     };
+  }
+
+  function addSwapIconToAcceptedSwap() {
+    var date = $scope.shift.offered_shift.start_date.split("-")
+    var acceptedSwapDate = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+    acceptedSwapDate.find(".content-text").html("<i class='icon ion-arrow-swap'></i>")
   }
 
   $scope.scrollToAnchor = function($event) {

@@ -280,6 +280,9 @@ a {
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid lightgrey; }
+  .swap-own-detail-holder .approve-button {
+    margin: 10px 0px;
+    color: black !important; }
 
 .accept-offered-swap-button {
   margin-top: 10px !important;

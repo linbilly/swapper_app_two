@@ -48,6 +48,9 @@
       </p>
 
       <div class="action-buttons-holder">
+        <button class="button button-energized approve-button">
+          Approved
+        </button>
         <div>
           <div class="delete-link">
             <a class="assertive" ng-click="cancelOwnSwap()">
@@ -131,9 +134,14 @@
           </p>
           <p>{{offeredShift.user.first_name}} {{offeredShift.user.last_name}}</p>
 
-          <button class="button button-positive accept-offered-swap-button" ng-click="acceptSwap(offeredShift)">
+          <button class="button button-positive accept-offered-swap-button" ng-click="acceptSwap(offeredShift)" ng-if="!shift.has_accepted_a_swap">
             Accept
           </button>
+
+          <div ng-if="shift.has_accepted_a_swap && offeredShift.id == shift.offered_shift.id">
+            <i class="icon ion-checkmark-circled"></i>
+            Pending approval
+          </div>
         </div>
       </div>
 
