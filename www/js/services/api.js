@@ -251,6 +251,7 @@ angular.module('starter.services')
     }
     $.get(ownShiftsWithSwapsUrl, params).then(function(result) {
       Api.ownShiftsWithSwaps = JSON.parse(result.shifts)
+      sortOwnShiftsByStatus()
       $rootScope.$broadcast("ownShiftsWithSwapsFetched")
     });
   }
@@ -280,8 +281,24 @@ angular.module('starter.services')
     params["authentication_token"] = userToken()
     $.post(acceptOfferedSwapUrl, params).then(function(result){
       $rootScope.$broadcast("swapAccepted");
-      debugger
     });
+  }
+
+  function sortOwnShiftsByStatus() {
+    var ownShiftsByStatusObj = {}
+    var openStatus = "Open"
+    var pendingApprovalStatus = "Pending approval"
+    ownShiftsByStatusObj[openStatus] = []
+    ownShiftsByStatusObj[pendingApprovalStatus] = []
+    
+    for (var i = 0; i < Api.ownShiftsWithSwaps.length; i++) {
+      if (Api.ownShiftsWithSwaps[i].has_accepted_a_swap) {
+        ownShiftsByStatusObj[pendingApprovalStatus].push(Api.ownShiftsWithSwaps[i])
+      } else {
+        ownShiftsByStatusObj[openStatus].push(Api.ownShiftsWithSwaps[i])
+      }
+    };
+    Api.ownShiftsByStatus = ownShiftsByStatusObj
   }
 
   // General
