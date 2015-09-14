@@ -82,46 +82,75 @@
     </ion-tab>
 
     <ion-tab title="Swaps Offered" on-select="swapsOfferedTabSelected()" ng-controller="SwapsOfferedCtrl">
-      <ion-view>
+      <ion-view cache-view="false">
         <div class="row loader-holder">
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
         </div>
         <ion-content>
           <notification ng-model="message" ng-show="message"></notification>
-          <div class="list card">
+          <div ng-show="!loader">
+            <div>
+              <div class="list">
+                <a class="item item-avatar item-icon-right" href="" ng-repeat="swap in swapsOffered">
+                  <div class="date-as-square">
+                    <div class="month">
+                      {{abbreviatedMonth(swap.shift.start_date)}}
+                    </div>
+                    <div class="day">
+                      {{dateFromString(swap.shift.start_date)}}
+                    </div>
+                  </div>
+                  <h2>{{swap.shift.shift_type.name}}</h2>
+                  <p>
+                    {{swap.shift.user.first_name}} {{swap.shift.user.last_name}}
+                  </p>
+                  <p>{{swap.shift.group.name}}</p>
+                  <p ng-if="!swap.shift.has_accepted_a_swap">
+                    <ng-pluralize count="countShiftsOffered(swap.shift.swaps)" when="{'0': 'No Offers Yet', '1': '1 Offer ', 'other': '{{countShiftsOffered(swap.shift.swaps)}} Offers '}"></ng-pluralize>
+                    <ng-pluralize count="swap.shift.swaps.length || 0" when="{'0': '', '1': 'from 1 Person', 'other': 'from {{swap.shift.swaps.length}} People'}"></ng-pluralize>
+                  </p>
+                  <div class="has-accepted-a-swap-details" ng-if="swap.shift.has_accepted_a_swap">
+                    <p>
+                      Swap for: {{stringDateToWords(swap.accepted_shift.start_date)}}
+                    </p>
+                    <p>
+                      Shift type: {{swap.accepted_shift.shift_type.name}}
+                    </p>
+                  </div>
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
 
-            <div class="item item-avatar">
-              <h2>Marty McFly</h2>
-              <p>November 05, 1955</p>
+              </div>
+              <div class="double-tab-bottom-buffer"></div>
             </div>
 
-            <div class="item item-body">
-              <p>
-                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-                the content is from a card-body consisting of an image and paragraph text. The footer
-                consists of tabs, icons aligned left, within the card-footer.
-              </p>
-              <p>
-                <a href="#" class="subdued">1 Like</a>
-                <a href="#" class="subdued">5 Comments</a>
-              </p>
+            <div ng-if="ownShiftsWithSwaps.length == 0">
+              <div class="card">
+                <div class="item item-text-wrap">
+                  <p>
+                    You haven't listed any shifts you want to swap yet.
+                  </p>
+                  <br>
+                  <p>
+                    To swap a shift you have:
+                  </p>
+                  <br>
+                  <p>
+                    1. Go to the <a href="#/tab/calendar/index">Calendar tab</a>
+                  </p>
+                  <p>
+                    2. Select a shift
+                  </p>
+                  <p>
+                    3. Click swap
+                  </p>
+                  <br>
+                  <p>
+                    Shifts you want to swap will then show up here.
+                  </p>
+                </div>
+              </div>
             </div>
-
-            <div class="item tabs tabs-secondary tabs-icon-left">
-              <a class="tab-item" href="#">
-                <i class="icon ion-thumbsup"></i>
-                Like
-              </a>
-              <a class="tab-item" href="#">
-                <i class="icon ion-chatbox"></i>
-                Comment
-              </a>
-              <a class="tab-item" href="#">
-                <i class="icon ion-share"></i>
-                Share
-              </a>
-            </div>
-
           </div>
         </ion-content>
       </ion-view>

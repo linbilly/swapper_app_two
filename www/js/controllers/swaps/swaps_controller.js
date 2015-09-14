@@ -16,6 +16,7 @@ angular.module('starter.controllers')
       $scope.subControllers.upForGrabsController.loader = true
       $scope.subControllers.upForGrabsController.calendarObjects = null
       Api.getOwnShiftsWithSwaps()
+      Api.swapsOffered()
       Api.getAllShifts()
     }
   })
@@ -43,5 +44,9 @@ angular.module('starter.controllers')
       num += swaps[i].offered_shifts.length
     };
     return num
+  }
+
+  $scope.stringDateToWords = function(startDate) {
+    return General.stringDateToWords(startDate)
   }
 })
