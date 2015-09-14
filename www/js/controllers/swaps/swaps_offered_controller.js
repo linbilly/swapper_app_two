@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOfferedCtrl', function($scope, $ionicNavBarDelegate, Api) {
+.controller('SwapsOfferedCtrl', function($scope, $ionicNavBarDelegate, $ionicTabsDelegate, Api) {
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.swapsOfferedTabSelected = function() {
@@ -12,4 +12,8 @@ angular.module('starter.controllers')
     $scope.swapsOfferedByStatus = Api.swapsOfferedByStatus
     $scope.loader = false
   });
+
+  $scope.goToUpForGrabsTab = function() {
+    $ionicTabsDelegate._instances[1].select(2) // Within the second set of tabs, go to the third tab
+  }
 })
