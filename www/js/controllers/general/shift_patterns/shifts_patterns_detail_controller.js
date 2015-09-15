@@ -10,11 +10,14 @@ angular.module('starter.controllers')
     Api.getShiftPatterns()
   } else {
     $scope.shiftPattern = Api.shiftTypes[$stateParams.patternId]
+    $scope.shiftPattern.entireDay = isEntireDay()
     setup()
   }
 
   $scope.$on('shiftTypesFetched', function() {
     $scope.shiftPattern = Api.shiftTypes[$stateParams.patternId]
+    $scope.swappable = $scope.shiftPattern.swappable
+    $scope.shiftPattern.entireDay = isEntireDay()
     setup()
   });
 
@@ -59,12 +62,28 @@ angular.module('starter.controllers')
     if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
       $scope.buttonClicked = true
       $scope.actionButtonText = "Saving"
+
+      var start_hour = null
+      var start_minute = null
+      var duration = null
+
+      if ($scope.shiftPattern.entireDay) {
+        start_hour = 0
+        start_minute = 0
+        duration = 1435
+      } else {
+        start_hour = $scope.shiftPattern.start_hour
+        start_minute = $scope.shiftPattern.start_minute
+        duration = ShiftType.getDuration($scope)
+      }
+
       var shiftParams = {
         name: shiftPatternName,
         abbreviation: abbreviation,
-        start_hour: $scope.shiftPattern.start_hour,
-        start_minute: $scope.shiftPattern.start_minute,
-        duration: ShiftType.getDuration($scope)
+        start_hour: start_hour,
+        start_minute: start_minute,
+        duration: duration,
+        swappable: $scope.shiftPattern.swappable
       }
       Api.updateShiftPattern($stateParams.patternId, shiftParams)
     }
@@ -82,6 +101,10 @@ angular.module('starter.controllers')
       Api.deleteShiftPattern($stateParams.patternId)
     });
     $("fieldset").addClass("hide")
+  }
+
+  function isEntireDay() {
+    return $scope.shiftPattern.start_hour == 0 && $scope.shiftPattern.start_minute == 0 && $scope.shiftPattern.duration == 1435
   }
 
   $scope.$on('shiftTypeUpdated', function(event, args) {

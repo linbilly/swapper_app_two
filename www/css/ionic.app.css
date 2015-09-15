@@ -226,7 +226,7 @@ a {
   margin-left: 15px; }
 
 .shift-pattern-list {
-  margin-bottom: 0px; }
+  margin-bottom: 0px !important; }
   .shift-pattern-list .input-label {
     font-size: 14px; }
   .shift-pattern-list .item-stacked-label {
@@ -234,6 +234,9 @@ a {
 
 .shift-name-input {
   font-size: 18px !important; }
+
+.swappable-toggle {
+  margin-bottom: 0px !important; }
 
 .shift-patterns-detail .time-section-holder {
   padding: 5px;

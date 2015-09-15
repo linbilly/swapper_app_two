@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view cache-view="false">
 <ion-nav-title>Edit</ion-nav-title>
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/patterns/index">Patterns</a>
@@ -26,8 +26,10 @@
         </label>
       </div>
 
+      <ion-toggle ng-model="shiftPattern.swappable" ng-checked="shiftPattern.swappable" toggle-class="toggle-positive">Swappable shift?</ion-toggle>
+      <ion-toggle ng-model="shiftPattern.entireDay" ng-checked="shiftPattern.entireDay" toggle-class="toggle-positive">Entire day?</ion-toggle>
 
-      <div class="time-section-holder">
+      <div class="time-section-holder" ng-show="!shiftPattern.entireDay">
         <div class="row">
           <div class="col">
             <p>
@@ -74,12 +76,9 @@
               * Ends the next day
             </div>
           </div>
-
-
-        </div>
-
-        
+        </div>        
       </div>
+
       <div class="action-buttons-holder">
         <div>
           <button class="button button-balanced" ng-click="saveShiftPattern(shiftPatternName, abbreviation)" ng-disabled="buttonClicked">

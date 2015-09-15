@@ -187,7 +187,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // ===========================================================
-  // General / Shift Patterns
+  // General / Account
   // ===========================================================
 
   .state('tab.account', {
