@@ -5,6 +5,8 @@ angular.module('starter.controllers')
   $scope.shiftPattern = {}
   $scope.actionButtonText = "Create"
   $scope.buttonClicked = false
+  $scope.shiftPattern.swappable = true
+  $scope.shiftPattern.entireDay = false
 
   if (!Api.groups) {
     Api.getGroups()
@@ -54,12 +56,28 @@ angular.module('starter.controllers')
     if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
       $scope.buttonClicked = true
       $scope.actionButtonText = "Creating"
+
+      var start_hour = null
+      var start_minute = null
+      var duration = null
+
+      if ($scope.shiftPattern.entireDay) {
+        start_hour = 0
+        start_minute = 0
+        duration = 1435
+      } else {
+        start_hour = $scope.shiftPattern.start_hour
+        start_minute = $scope.shiftPattern.start_minute
+        duration = ShiftType.getDuration($scope)
+      }
+
       var shiftParams = {
         name: shiftPatternName,
         abbreviation: abbreviation,
-        start_hour: $scope.shiftPattern.start_hour,
-        start_minute: $scope.shiftPattern.start_minute,
-        duration: ShiftType.getDuration($scope)
+        start_hour: start_hour,
+        start_minute: start_minute,
+        duration: duration,
+        swappable: $scope.shiftPattern.swappable
       }
       Api.createShiftPattern($stateParams.groupId, shiftParams)
       $scope.shiftPatternName = "" // Clear it out in case user wants to create another one
