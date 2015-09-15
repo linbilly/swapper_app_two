@@ -13,7 +13,7 @@ angular.module('starter')
       }
 
       function clearMessage() {
-        element.remove()
+        element.addClass("ng-hide")
         Notification.message = ""
       }
     }
