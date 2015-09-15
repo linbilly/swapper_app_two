@@ -58,6 +58,8 @@ angular.module('starter.controllers')
   }
 
   $scope.stringDateToWords = function(startDate) {
-    return General.stringDateToWords(startDate)
+    if (startDate) {
+      return General.stringDateToWords(startDate)
+    }
   }
 })
