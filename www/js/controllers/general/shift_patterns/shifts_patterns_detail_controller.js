@@ -16,9 +16,11 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftTypesFetched', function() {
     $scope.shiftPattern = Api.shiftTypes[$stateParams.patternId]
-    $scope.swappable = $scope.shiftPattern.swappable
-    $scope.shiftPattern.entireDay = isEntireDay()
-    setup()
+    if ($scope.shiftPattern) {
+      $scope.swappable = $scope.shiftPattern.swappable
+      $scope.shiftPattern.entireDay = isEntireDay()
+      setup()
+    }
   });
 
   $scope.upHour = function($event) {
