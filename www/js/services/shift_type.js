@@ -144,7 +144,7 @@ angular.module('starter.services')
   }
 
   ShiftType.checkAbbreviationLength = function(abbreviation) {
-    if (abbreviation.length > 2) {
+    if (abbreviation.length > 3) {
       return false
     } else {
       return true
