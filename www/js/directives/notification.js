@@ -6,7 +6,7 @@ angular.module('starter')
     link: function(scope, element, attrs){
       $timeout(function(){
         clearMessage()
-      }, 5000);
+      }, 10000);
 
       scope.clear = function() {
         clearMessage()
