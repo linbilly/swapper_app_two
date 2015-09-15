@@ -284,6 +284,14 @@ angular.module('starter.services')
     });
   }
 
+  Api.cancelOfferedSwap = function(params) {
+    var cancelOfferedSwapUrl = root_url + "swaps/cancel-offered-shift"
+    params["authentication_token"] = userToken()
+    $.post(cancelOfferedSwapUrl, params).then(function(result){
+      $rootScope.$broadcast("swapAccepted");
+    });
+  }
+
   function sortOwnShiftsByStatus() {
     var ownShiftsByStatusObj = {}
     var openStatus = "Open"
@@ -336,9 +344,9 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "jXPaBpL3DUEbsRjtoRCK" // Localhost User 1
-    // return "L_VynbEXbo8EorbsRMps" // Localhost User 2
-    // return "ztDmNDyzKYhkzn2jwsQS" // Localhost User 3
+    // return "4wNyzuS5eoj3zbZiA6yU" // Localhost User 1
+    return "8PWMsray2NqeQa4YAsfc" // Localhost User 2
+    // return "dfn9PpcgxQT8HwU4nymw" // Localhost User 3
 
     // return "UUpR6C5Tb_7rXzWMKbqP" // Heroku User 1
     // return "A_Askb6uzJr9pz5iaXEH" // Heroku User 2

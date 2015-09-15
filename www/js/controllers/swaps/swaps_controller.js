@@ -9,7 +9,7 @@ angular.module('starter.controllers')
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (toState.url == "/swaps/index") {
       notificationCheck()
-      $scope.subControllers.upForGrabsController.loader = true
+      $scope.loader = true
       $scope.subControllers.upForGrabsController.calendarObjects = null
       Api.getOwnShiftsWithSwaps()
       Api.swapsOffered()

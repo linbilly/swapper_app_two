@@ -110,7 +110,7 @@
         You offered: <a ng-if="swap.state == 'Open'">(Cancel all)</a>
       </div>
 
-      <div>
+      <div class="offered-shifts-list-holder">
         <div class="item item-avatar item-button-right {{offeredShift.start_date}}" ng-repeat="offeredShift in orderedOfferedShifts">
           <div class="date-as-square">
             <div class="month">
@@ -126,7 +126,7 @@
           </p>
           <p>{{offeredShift.user.first_name}} {{offeredShift.user.last_name}}</p>
 
-          <button class="button button-positive accept-offered-swap-button" ng-click="" ng-if="swap.state == 'Open'">
+          <button class="button button-positive accept-offered-swap-button" ng-click="cancelOfferedShift($event, offeredShift.id)" ng-if="swap.state == 'Open'">
             Cancel
           </button>
 

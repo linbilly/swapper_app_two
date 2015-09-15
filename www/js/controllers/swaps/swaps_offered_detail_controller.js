@@ -105,4 +105,32 @@ angular.module('starter.controllers')
       $ionicScrollDelegate.scrollTo(0, anchorOffset, [true])
     }
   }
+
+  $scope.cancelOfferedShift = function($event, offeredShiftId) {
+    swal({
+      title: "Are you sure?",
+      text: $scope.shift.user.first_name + " will be sad that you are no longer offering this shift to swap",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "Yup!",
+    }, function(){
+      var params = {
+        offered_shift_id: offeredShiftId,
+        swap_id: $stateParams.swapId
+      }
+      $($event.target).parents(".item").remove()
+      Api.cancelOfferedSwap(params)
+
+      if (noMoreSwaps()) {
+        Notification.message = "All offers to swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
+        $state.go('tab.swaps', {}, {reload: true});
+      }
+    });
+    $("fieldset").addClass("hide")
+  }
+
+  function noMoreSwaps() {
+    return $(".offered-shifts-list-holder .item").length == 0
+  }
 })
