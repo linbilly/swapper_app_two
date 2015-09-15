@@ -59,13 +59,21 @@ angular.module('starter.controllers')
   }
 
   $scope.cancelOwnSwap = function() {
+    var message = "This shift will no longer be up for grabs by others"
+
+    if ($scope.shift.has_accepted_a_swap) {
+      message = "You have already accepted a swap. Make sure you tell your supervisor that you are no longer doing the swap!"
+    } else if ($scope.orderedOfferedShifts.length > 0) {
+      message += ". Those who have already offered you swaps will be notified that your shift is no longer available to swap."
+    }
+
     swal({
       title: "Are you sure?",
-      text: "This shift will no longer be up for grabs by others",
+      text: message,
       type: "warning",
       showCancelButton: true,
       showLoaderOnConfirm: true,
-      confirmButtonText: "Yup!",
+      confirmButtonText: "OK!",
     }, function(){
       Api.cancelOwnShiftToSwap($stateParams.shiftId)
     });
