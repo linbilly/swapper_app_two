@@ -148,4 +148,9 @@ angular.module('starter.controllers')
     }
     Api.acceptOfferedSwap(params, offeredShift.swapId)
   }
+
+  $scope.$on('swapAccepted', function(event, args) {
+    Notification.message = "Swap successfully accepted"
+    $state.go('tab.swaps', {}, {reload: true});
+  });
 })
