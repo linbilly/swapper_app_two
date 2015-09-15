@@ -33,7 +33,7 @@
             </div>
             <div class="dates">
               <div class="row" ng-repeat="row in month.rows">
-                <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.notes}}">
+                <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.notes}}" data-swappable="{{date.shift.shift_type.swappable}}">
                   <div class="date-number">
                     {{date.dayNum}}
                   </div>

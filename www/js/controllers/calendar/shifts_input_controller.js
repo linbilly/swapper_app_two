@@ -144,6 +144,7 @@ angular.module('starter.controllers')
     var selectedCells = $(".dates").find("[data-date='" + selectedDate + "']");
     for (var i = 0; i < selectedCells.length; i++) {
       $(selectedCells[i]).attr("data-shift-id", args.shift.id)
+      $(selectedCells[i]).attr("data-swappable", args.shift_type.swappable)
       $(selectedCells[i]).attr("data-start-time", General.formatStartTime(args.shift_type))
     };
   });

@@ -44,7 +44,8 @@ angular.module('starter.services')
     var hasShift = currentHighlighted.attr("data-shift-id") != ""
     var inFuture = dateIsInFuture(currentHighlighted)
     var alreadySwapped = currentHighlighted.hasClass("swap")
-    if (hasShift && inFuture && !alreadySwapped) {
+    var swappable = currentHighlighted.attr("data-swappable") == "true"
+    if (hasShift && inFuture && !alreadySwapped && swappable) {
       $(".swap-button").prop('disabled', false);
     } else {
       $(".swap-button").prop('disabled', true);
