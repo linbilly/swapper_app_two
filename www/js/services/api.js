@@ -284,11 +284,19 @@ angular.module('starter.services')
     });
   }
 
-  Api.cancelOfferedSwap = function(params) {
-    var cancelOfferedSwapUrl = root_url + "swaps/cancel-offered-shift"
+  Api.cancelOfferedShift = function(params) {
+    var cancelOfferedShiftUrl = root_url + "swaps/cancel-offered-shift"
     params["authentication_token"] = userToken()
-    $.post(cancelOfferedSwapUrl, params).then(function(result){
-      $rootScope.$broadcast("swapAccepted");
+    $.post(cancelOfferedShiftUrl, params).then(function(result){
+      $rootScope.$broadcast("offeredShiftCancelled");
+    });
+  }
+
+  Api.cancelAllOfferedShifts = function(params) {
+    var cancelAllOfferedShiftsUrl = root_url + "swaps/cancel-all-offered-shifts"
+    params["authentication_token"] = userToken()
+    $.post(cancelAllOfferedShiftsUrl, params).then(function(result){
+      $rootScope.$broadcast("allOfferedShiftsCancelled");
     });
   }
 

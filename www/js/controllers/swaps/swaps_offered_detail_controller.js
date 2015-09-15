@@ -119,13 +119,34 @@ angular.module('starter.controllers')
         offered_shift_id: offeredShiftId,
         swap_id: $stateParams.swapId
       }
-      $($event.target).parents(".item").remove()
-      Api.cancelOfferedSwap(params)
+      Api.cancelOfferedShift(params)
 
       if (noMoreSwaps()) {
         Notification.message = "All offers to swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
         $state.go('tab.swaps', {}, {reload: true});
+      } else {
+        $($event.target).parents(".item").remove()
       }
+    });
+    $("fieldset").addClass("hide")
+  }
+
+  $scope.cancelAllOfferedShifts = function() {
+    swal({
+      title: "Are you sure?",
+      text: $scope.shift.user.first_name + " will be sad!",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "Yup!",
+    }, function(){
+      var params = {
+        swap_id: $stateParams.swapId
+      }
+      Api.cancelAllOfferedShifts(params)
+
+      Notification.message = "All offers to swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
+      $state.go('tab.swaps', {}, {reload: true});
     });
     $("fieldset").addClass("hide")
   }

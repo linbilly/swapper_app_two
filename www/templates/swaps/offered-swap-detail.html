@@ -107,7 +107,7 @@
       </div>
 
       <div class="item item-divider">
-        You offered: <a ng-if="swap.state == 'Open'">(Cancel all)</a>
+        You offered: <a ng-if="swap.state == 'Open'" ng-click="cancelAllOfferedShifts()">(Cancel all)</a>
       </div>
 
       <div class="offered-shifts-list-holder">
