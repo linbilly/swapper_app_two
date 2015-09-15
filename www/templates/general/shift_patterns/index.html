@@ -14,21 +14,40 @@
             <div class="shift-pattern-group-name">
               {{group.name}}
             </div>
+            <div class="admin-text-in-group-divider" ng-if="group.user_is_admin">
+              (You are an admin for this group)
+            </div>
             <a class="add-pattern positive" href="#/tab/general/patterns/{{group.id}}/new">
               <i class="icon ion-android-add-circle"></i>
               Add pattern
             </a>
           </div>
-          <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item item-icon-right" href="#/tab/general/patterns/{{shiftType.id}}">
-            {{shiftType.abbreviation}}: {{shiftType.name}}
-            <span class="item-note" ng-if="shiftType.swappable">
-              {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
-            </span>
-            <span class="item-note" ng-if="!shiftType.swappable">
-              Not swappable
-            </span>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-          </ion-item>
+
+          <div ng-if="group.user_is_admin">
+            <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item item-icon-right" href="#/tab/general/patterns/{{shiftType.id}}">
+              {{shiftType.abbreviation}}: {{shiftType.name}}
+              <span class="item-note" ng-if="shiftType.swappable">
+                {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
+              </span>
+              <span class="item-note" ng-if="!shiftType.swappable">
+                Not swappable
+              </span>
+              <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+          </div>
+
+          <div ng-if="!group.user_is_admin" class="item-not-in-admin">
+            <ion-item ng-repeat="shiftType in group.shift_types" type="item-text-wrap" class="item" href="#/tab/general/patterns/{{shiftType.id}}">
+              {{shiftType.abbreviation}}: {{shiftType.name}}
+              <span class="item-note" ng-if="shiftType.swappable">
+                {{shiftType.start_hour | numberFixedLen: 2}}:{{shiftType.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shiftType)}}
+              </span>
+              <span class="item-note" ng-if="!shiftType.swappable">
+                Not swappable
+              </span>
+            </ion-item>
+          </div>
+
         </ion-list>
       </div>
     </div>
