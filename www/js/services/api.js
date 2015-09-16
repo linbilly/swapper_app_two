@@ -369,14 +369,24 @@ angular.module('starter.services')
     Api.swapsOfferedByStatus = swapsOfferedByStatusObj
   }
 
+  Api.approveSwap = function(shiftId) {
+    var approveSwapUrl = root_url + "shifts/" + shiftId + "/approve-swap"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.post(approveSwapUrl, params).then(function(result){
+      $rootScope.$broadcast("swapApproved");
+    });
+  }
+
   // General
   // ===========================================================================
 
   function userToken() {
     // return window.localStorage['token']
     
-    // return "eV3JC56r4q8Qnu8ZtVpS" // Localhost User 1
-    return "eCnznbmmyynvWkXh7NwS" // Localhost User 2
+    return "eV3JC56r4q8Qnu8ZtVpS" // Localhost User 1
+    // return "eCnznbmmyynvWkXh7NwS" // Localhost User 2
     // return "U7DCc7T1BMMrGyAQA1DC" // Localhost User 3
 
     // return "UUpR6C5Tb_7rXzWMKbqP" // Heroku User 1

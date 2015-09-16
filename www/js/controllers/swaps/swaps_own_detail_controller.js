@@ -161,4 +161,39 @@ angular.module('starter.controllers')
     Notification.message = "Swap successfully accepted"
     $state.go('tab.swaps', {}, {reload: true});
   });
+
+  $scope.approved = function() {
+    swal({
+      title: "Are you sure?",
+      text: "Approving this swap will update your calendar accordingly. You can see a record of the swap in the notifications tab.",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "OK!",
+    }, function(){
+      Api.approveSwap($scope.shift.id)
+    });
+    $("fieldset").addClass("hide")
+  }
+
+  $scope.$on('swapApproved', function(event, args) {
+    Notification.message = "Swap approved and calendar successfully updated."
+    $state.go('tab.swaps', {}, {reload: true});
+  });
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
