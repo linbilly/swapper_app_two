@@ -34,9 +34,9 @@ angular.module('starter.services')
       authentication_token: userToken()
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
-      Api.groups = result.groups
+      Api.groups = JSON.parse(result.groups)
       makeGroupsEasyToQuery()
-      $rootScope.$broadcast("groupsFetched");
+      $rootScope.$broadcast("groupsFetched", {userId: result.user_id});
     });
   }
 
