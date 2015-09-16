@@ -10,6 +10,7 @@ angular.module('starter.controllers')
   $scope.$on('swapsOfferedFetched', function(event, args) {
     $scope.swapsOffered = Api.swapsOfferedByUser
     $scope.swapsOfferedByStatus = Api.swapsOfferedByStatus
+    $scope.$apply()
     $scope.loader = false
   });
 
