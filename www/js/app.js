@@ -51,6 +51,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // ===========================================================
+  // Comments
+  // ===========================================================
+
+  .state('tab.swaps-comments', {
+    url: '/swaps/comments/:shiftId',
+    views: {
+      'tab-swaps': {
+        templateUrl: 'templates/swaps/comments/view.html',
+        controller: 'CommentsCtrl'
+      }
+    }
+  })
+
+  // ===========================================================
   // Swaps
   // ===========================================================
 
