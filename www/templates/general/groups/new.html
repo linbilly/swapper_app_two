@@ -3,23 +3,21 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/index">Groups</a>
   </ion-nav-buttons>
   <ion-content>
-    <div class="list">
-      <label class="item item-input" >
-      <input type="text" placeholder="Group Title" ng-model="groupTitle">
-    </label>
-    <!-- <label class="item item-input">
-      <input type="text" placeholder="First Name" ng-model="firstName">
-    </label>
-    <label class="item item-input">
-      <input type="text" placeholder="Last Name" ng-model="lastName">
-    </label>
+    <div class="list group-input-list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Group Name</span>
+        <input type="text" placeholder="E.g. St. Paul's Cardiac Unit" ng-model="groupTitle">
+      </label>
+    </div>
 
-    <label class="item item-input">
-      <input type="password"  placeholder="Password" ng-model="password">
-    </label> -->
-    <button class="button button-block button-positive" ng-click="createGroup(groupTitle)">
-      Submit
-    </button>
+    <div class="bottom-note">
+      <div class="text-before-submit">
+        You will be an admin in this group.
+      </div>
+      <button class="button button-positive" ng-click="createGroup(groupTitle)">
+        Submit
+      </button>
+    </div>
   </div>
 
   </ion-content>

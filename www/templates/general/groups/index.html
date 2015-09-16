@@ -1,4 +1,4 @@
-<ion-view view-title="Groups" ng-init="fetchGroups()">
+<ion-view view-title="Groups" cache-view="false">
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">General</a>
   </ion-nav-buttons>
@@ -9,6 +9,7 @@
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
+    <notification ng-model="message" ng-show="message"></notification>
     <ion-list>
       <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/tab/general/groups/{{group.id}}">
         {{group.name}}

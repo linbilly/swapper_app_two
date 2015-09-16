@@ -213,6 +213,12 @@ a {
 .detailed-group-footer-holder {
   padding: 16px; }
 
+.group-input-list {
+  margin-bottom: 0px !important; }
+
+.text-before-submit {
+  margin-bottom: 10px; }
+
 .shifts-patterns .shift-pattern-group {
   white-space: normal !important; }
 .shifts-patterns .shift-pattern-group-name {
