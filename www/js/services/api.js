@@ -150,7 +150,8 @@ angular.module('starter.services')
 
   function makeShiftTypesEasyToQuery() {
     Api.shiftTypes = {}
-    Api.inputButtons = []
+    Api.inputButtonsByGroup = {}
+    // Api.inputButtons = []
     for (var groupIndex = 0; groupIndex < Api.groupsWithShiftTypes.length; groupIndex++) {
       if (Api.groupsWithShiftTypes[groupIndex].shift_types.length > 0) {
         for (var shiftTypeIndex = 0; shiftTypeIndex < Api.groupsWithShiftTypes[groupIndex].shift_types.length; shiftTypeIndex++) {
@@ -160,9 +161,13 @@ angular.module('starter.services')
           Api.shiftTypes[shiftType.id] = shiftType
           Api.shiftTypes[shiftType.id]["group"] = group
 
-          Api.inputButtons.push({
+          if (!Api.inputButtonsByGroup[group.name]) {
+            Api.inputButtonsByGroup[group.name] = []
+          }
+
+          Api.inputButtonsByGroup[group.name].push({
             abbreviation: shiftType.abbreviation,
-            shiftTypeId: shiftType.id,
+            id: shiftType.id,
             groupId: group.id
           })
         };

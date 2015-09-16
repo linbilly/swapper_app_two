@@ -6,7 +6,7 @@ angular.module('starter.controllers')
   Api.getShiftPatterns()
 
   $scope.$on('shiftTypesFetched', function(event, args) {
-    $scope.shiftTypes = Api.inputButtons
+    $scope.shiftTypesByGroup = Api.inputButtonsByGroup
     $scope.$apply()
   });
 
@@ -152,4 +152,8 @@ angular.module('starter.controllers')
   $scope.$on('arrivedOnNextCalendarSlide', function(event, args) {
     Calendar.highlightNextDayFromPreviousSlide(args.nextDay)
   });
+
+  $scope.numKeys = function() {
+    return General.numKeys($scope.shiftTypesByGroup)
+  }
 })

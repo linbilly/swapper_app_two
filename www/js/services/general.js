@@ -102,5 +102,13 @@ angular.module('starter.services')
     return arr.sort(dateSort)
   }
 
+  General.numKeys = function(obj) {
+    if (obj) {
+      return Object.keys(obj).length
+    } else {
+      return 0
+    }
+  }
+
   return General;
 })

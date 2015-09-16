@@ -58,19 +58,50 @@
     <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
       <div class="shift-input-buttons-holder">
         <div class="bottom-block">
-          <span ng-repeat="shift in shiftTypes">
-            <button class="button button-small button-positive" data-shift-type-id="{{shift.shiftTypeId}}" data-group-id="{{shift.groupId}}" ng-click="createShift($event)">
-              {{shift.abbreviation}}
-            </button>
-          </span>
-          <span>
-            <button class="button button-small standard-issue button-stable" ng-click="deleteShift()">
-              Off
-            </button>
-            <button class="button button-small standard-issue button-energized swap-button" ng-disabled="disableSwap" ng-click="swapShift()">
-              Swap
-            </button>
-          </span>
+
+          <div ng-if="numKeys() == 1">
+            <div ng-repeat="(groupName, shiftTypes) in shiftTypesByGroup">
+              <span ng-repeat="shiftType in shiftTypes">
+                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.shiftTypeId}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
+                  {{shiftType.abbreviation}}
+                </button>
+              </span>
+              <span>
+                <button class="button button-small standard-issue button-stable" ng-click="deleteShift()">
+                  Off
+                </button>
+                <button class="button button-small standard-issue button-energized swap-button" ng-disabled="disableSwap" ng-click="swapShift()">
+                  Swap
+                </button>
+              </span>
+            </div>
+          </div>
+
+          <div ng-if="numKeys() > 1">
+            <div ng-repeat="(groupName, shiftTypes) in shiftTypesByGroup">
+              <div>
+                {{groupName}}
+              </div>
+              <span ng-repeat="shiftType in shiftTypes">
+                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.shiftTypeId}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
+                  {{shiftType.abbreviation}}
+                </button>
+              </span>
+            </div>
+            <div>
+              General
+            </div>
+            <div>
+              <span>
+                <button class="button button-small standard-issue button-stable" ng-click="deleteShift()">
+                  Off
+                </button>
+                <button class="button button-small standard-issue button-energized swap-button" ng-disabled="disableSwap" ng-click="swapShift()">
+                  Swap
+                </button>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
