@@ -79,6 +79,9 @@ a {
   text-align: center;
   padding: 15px; }
 
+.button-energized {
+  color: black !important; }
+
 .calendar-holder .row {
   padding: 0px; }
 

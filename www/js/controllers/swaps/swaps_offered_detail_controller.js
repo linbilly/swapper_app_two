@@ -3,15 +3,7 @@ angular.module('starter.controllers')
 .controller('SwapsOfferedDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
-
-  if (Api.swapsOfferedByUser) {
-    setSwapAndShifts()
-    $scope.loader = false
-    setupView()
-  } else {
-    // In case user jumps straight to the detail page
-    Api.swapsOffered()
-  }
+  Api.swapsOffered()
 
   $scope.$on('swapsOfferedFetched', function(event, args) {
     setSwapAndShifts()

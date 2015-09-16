@@ -1,0 +1,82 @@
+<ion-view cache-view="false">
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
+  <ion-nav-title>Offer</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/offered/{{swapId}}" ng-click="clearHistory()">Back</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="top-instructions" ng-if="shift_up_for_swap" ng-show="!loader">
+      <div>
+        <b>
+          <i class="icon ion-star"></i>
+          {{stringDateToWords(shift_up_for_swap.start_date)}}
+        </b>
+      </div>
+      <div>
+        {{shift_up_for_swap.shift_type.name}} ({{shift_up_for_swap.shift_type.start_hour | numberFixedLen: 2}}:{{shift_up_for_swap.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift_up_for_swap.shift_type)}})
+      </div>
+      <div class="sub-instructions">
+        Select the shifts you would like to offer as a swap. Previously selected shifts are already highlighted.
+      </div>
+    </div>
+
+    <div ng-controller="CalendarCtrl" class="calender-display">
+      <div class="calendar-holder" ng-if="calendarObjects">
+        <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
+          <ion-slide ng-repeat="month in calendarObjects">
+            <div class="month-bar stable-bg">
+              <span class="icon-holder back-icon" ng-click="previousSlide()">
+                <i class="icon ion-ios-arrow-back"></i>
+              </span>
+              <span>
+                {{month.title}}
+              </span>
+              <span class="icon-holder forward-icon" ng-click="nextSlide()">
+                <i class="icon ion-ios-arrow-forward"></i>
+              </span>
+            </div>
+            <div class="days-of-week-bar">
+              <div class="row">
+                <div class="col special">S</div>
+                <div class="col">M</div>
+                <div class="col">T</div>
+                <div class="col">W</div>
+                <div class="col">T</div>
+                <div class="col">F</div>
+                <div class="col special">S</div>
+              </div>
+            </div>
+            <div class="dates">
+              <div class="row" ng-repeat="row in month.rows">
+                <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap, 'cannot-offer-as-swap': !date.canOfferAsSwap}" ng-click="multipleDatesSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-notes="{{date.shift.notes}}">
+                  <div class="date-number">
+                    {{date.dayNum}}
+                  </div>
+                  <div class="content-text">
+                    <div ng-if="date.shift">
+                      {{date.shift.shift_type.abbreviation}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+    </div>
+
+    <div class="bottom-note" ng-show="!loader">
+      <div>
+        <a class="button button-positive" ng-click="updateSwap()">
+          Update Offers
+        </a>
+      </div>
+      <br>
+      <p>
+        You cannot offer some shifts because they're in the past, the shift pattern is not a swappable one, or {{shift_owner.first_name}} already has a shift on that day.
+      </p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -192,7 +192,16 @@ angular.module('starter.services')
     }
     $.get(getAllShiftsSwappableForDayUrl, params).then(function(result) {
       Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
-      $rootScope.$broadcast("shiftsFetched", {shifts: Api.shiftsSwappable, cannot_swap_shift_dates: result.cannot_swap_shift_dates, shift_owner: result.shift_owner, shift_up_for_swap: result.shift_up_for_swap})
+      $rootScope.$broadcast(
+        "swappableShiftsFetched",
+        {
+          shifts: Api.shiftsSwappable,
+          cannot_swap_shift_dates: result.cannot_swap_shift_dates,
+          shift_owner: result.shift_owner,
+          shift_up_for_swap: result.shift_up_for_swap,
+          swap: result.swap
+        }
+      )
     });
   }
 
@@ -273,6 +282,14 @@ angular.module('starter.services')
     shiftParams["authentication_token"] = userToken()
     $.post(offerToSwapUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("offeredToSwap");
+    });
+  }
+
+  Api.updateSwap = function(shiftParams, swapId) {
+    var updateSwapUrl = root_url + "swaps/" + swapId + "/update"
+    shiftParams["authentication_token"] = userToken()
+    $.post(updateSwapUrl, shiftParams).then(function(result){
+      $rootScope.$broadcast("updatedSwap");
     });
   }
 

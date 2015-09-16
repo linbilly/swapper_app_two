@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
+.controller('SwapsEditOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
   $scope.day = $stateParams.day
+  $scope.swapId = $stateParams.swapId
 
   Api.getAllShiftsSwappable($stateParams.shiftId)
 
@@ -16,11 +17,13 @@ angular.module('starter.controllers')
     Calendar.cannot_swap_shift_dates = args.cannot_swap_shift_dates
     $scope.shift_owner = args.shift_owner
     $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
+    $scope.swap = JSON.parse(args.swap)
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
     $timeout(function() {
       Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
       Calendar.goToRightDefaultSlide($scope.day)
+      highlightSwapsBeingOffered()
     }, 1000)
   })
 
@@ -52,7 +55,7 @@ angular.module('starter.controllers')
     return ShiftType.prettyEndTime(shiftType)
   }
 
-  $scope.offerToSwap = function() {
+  $scope.updateSwap = function() {
     var selectedDates = $(".date-col.active")
     var selectedShiftIds = []
 
@@ -64,8 +67,16 @@ angular.module('starter.controllers')
       shift_id: $stateParams.shiftId,
       offered_shifts: selectedShiftIds
     }
-    Api.offerToSwap(shiftParams)
-    Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + ". You can see it on the \"Swaps\" tab under \"Swaps Offered\"."
-    $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
+    Api.updateSwap(shiftParams, $scope.swapId)
+    $state.go('tab.swaps-offered-swap-detail', {swapId: $scope.swapId}, {reload: true});
+  }
+
+  function highlightSwapsBeingOffered() {
+    for (var i = 0; i < $scope.swap.offered_shifts.length; i++) {
+      var date = $scope.swap.offered_shifts[i].start_date.split("-")
+      var dateToSwap = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+      dateToSwap.find("a").attr("data-anchor-class", "." + $scope.swap.offered_shifts[i].start_date)
+      dateToSwap.addClass("active")
+    };
   }
 })

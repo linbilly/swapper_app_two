@@ -104,6 +104,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.swaps-edit-offer', {
+    url: '/swaps/up-for-grabs/offer/:shiftId/:day/edit/:swapId',
+    views: {
+      'tab-swaps': {
+        templateUrl: 'templates/swaps/edit-offer.html',
+        controller: 'SwapsEditOfferCtrl'
+      }
+    }
+  })
+
   // ===========================================================
   // General
   // ===========================================================
