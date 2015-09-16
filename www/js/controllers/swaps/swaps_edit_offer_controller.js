@@ -73,8 +73,8 @@ angular.module('starter.controllers')
 
   function highlightSwapsBeingOffered() {
     for (var i = 0; i < $scope.swap.offered_shifts.length; i++) {
-      var date = $scope.swap.offered_shifts[i].start_date.split("-")
-      var dateToSwap = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+      var date = General.railsDateToCalendarDate($scope.swap.offered_shifts[i].start_date)
+      var dateToSwap = $(".dates").find("[data-date='" + date + "']");
       dateToSwap.find("a").attr("data-anchor-class", "." + $scope.swap.offered_shifts[i].start_date)
       dateToSwap.addClass("active")
     };

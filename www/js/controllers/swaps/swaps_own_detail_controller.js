@@ -119,8 +119,8 @@ angular.module('starter.controllers')
 
   function highlightSwapsBeingOffered() {
     for (var i = 0; i < $scope.orderedOfferedShifts.length; i++) {
-      var date = $scope.orderedOfferedShifts[i].start_date.split("-")
-      var dateToSwap = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+      var date = General.railsDateToCalendarDate($scope.orderedOfferedShifts[i].start_date)
+      var dateToSwap = $(".dates").find("[data-date='" + date + "']");
       dateToSwap.find(".num-shifts-available-on-calendar-holder").removeClass("hide")
       var currentNum = dateToSwap.find(".num-shifts-available-on-calendar").text()
       if (currentNum == "") {
@@ -134,8 +134,8 @@ angular.module('starter.controllers')
   }
 
   function addSwapIconToAcceptedSwap() {
-    var date = $scope.shift.offered_shift.start_date.split("-")
-    var acceptedSwapDate = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+    var date = General.railsDateToCalendarDate($scope.shift.offered_shift.start_date)
+    var acceptedSwapDate = $(".dates").find("[data-date='" + date + "']");
     acceptedSwapDate.find(".content-text").html("<i class='icon ion-arrow-swap'></i>")
   }
 
