@@ -26,8 +26,13 @@ angular.module('starter.controllers')
 
   function setSwapAndShifts() {
     $scope.swap = General.findById(Api.swapsOfferedByUser, $stateParams.swapId)
-    $scope.shift = $scope.swap.shift
-    $scope.orderedOfferedShifts = General.compareByDate($scope.swap.offered_shifts)
+    if ($scope.swap) {
+      $scope.shift = $scope.swap.shift
+      $scope.orderedOfferedShifts = General.compareByDate($scope.swap.offered_shifts)
+    } else {
+      // In case user was still on this page when shift was removed
+      $state.go('tab.swaps', {}, {reload: true});
+    }
   }
 
   Api.getAllShifts()
