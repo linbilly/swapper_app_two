@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.service('Api', function($http, $rootScope) {
+.service('Api', function($http, $rootScope, General) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
@@ -335,6 +335,12 @@ angular.module('starter.services')
     var pendingApprovalStatus = "Pending approval"
     swapsOfferedByStatusObj[openStatus] = []
     swapsOfferedByStatusObj[pendingApprovalStatus] = []
+
+    for (var i = 0; i < Api.swapsOfferedByUser.length; i++) {
+      Api.swapsOfferedByUser[i]["start_date"] = Api.swapsOfferedByUser[i].shift.start_date
+    };
+
+    Api.swapsOfferedByUser = General.compareByDate(Api.swapsOfferedByUser)
     
     for (var i = 0; i < Api.swapsOfferedByUser.length; i++) {
       if (Api.swapsOfferedByUser[i].state == pendingApprovalStatus) {
