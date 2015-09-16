@@ -85,6 +85,11 @@ angular.module('starter.services')
     }
   }
 
+  General.railsDateToCalendarDate = function(startDate) {
+    var date = startDate.split("-")
+    return parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0])
+  }
+
   function dateSort(a, b) {
     if (a.start_date < b.start_date)
       return -1;

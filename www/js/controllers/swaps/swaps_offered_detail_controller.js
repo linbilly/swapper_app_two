@@ -75,16 +75,16 @@ angular.module('starter.controllers')
 
   function highlightSwapsBeingOffered() {
     for (var i = 0; i < $scope.swap.offered_shifts.length; i++) {
-      var date = $scope.swap.offered_shifts[i].start_date.split("-")
-      var dateToSwap = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+      var date = General.railsDateToCalendarDate($scope.swap.offered_shifts[i].start_date)
+      var dateToSwap = $(".dates").find("[data-date='" + date + "']");
       dateToSwap.find("a").attr("data-anchor-class", "." + $scope.swap.offered_shifts[i].start_date)
       dateToSwap.addClass("active")
     };
   }
 
   function addSwapIconToAcceptedSwap() {
-    var date = $scope.swap.accepted_shift.start_date.split("-")
-    var acceptedSwapDate = $(".dates").find("[data-date='" + parseInt(date[2]) + "-" + parseInt(date[1]) + "-" + parseInt(date[0]) + "']");
+    var date = General.railsDateToCalendarDate($scope.swap.accepted_shift.start_date)
+    var acceptedSwapDate = $(".dates").find("[data-date='" + date + "']");
     acceptedSwapDate.find(".content-text").html("<i class='icon ion-arrow-swap'></i>")
   }
 
@@ -98,7 +98,8 @@ angular.module('starter.controllers')
     }
   }
 
-  $scope.cancelOfferedShift = function($event, offeredShiftId) {
+  $scope.cancelOfferedShift = function($event, offeredShiftId, startDate) {
+    $scope.startDate = startDate
     swal({
       title: "Are you sure?",
       text: $scope.shift.user.first_name + " will be sad that you are no longer offering this shift to swap",
@@ -114,6 +115,9 @@ angular.module('starter.controllers')
       Api.cancelOfferedShift(params)
 
       $($event.target).parents(".item").remove()
+      var date = General.railsDateToCalendarDate($scope.startDate)
+      $(".dates").find("[data-date='" + date + "']").removeClass("active")
+
       if (offeredShiftId == $scope.swap.accepted_shift_id) {
         Notification.message = "Accepted swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
         $state.go('tab.swaps', {}, {reload: true});
