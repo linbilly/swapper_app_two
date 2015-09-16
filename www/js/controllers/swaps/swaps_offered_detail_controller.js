@@ -121,14 +121,13 @@ angular.module('starter.controllers')
       }
       Api.cancelOfferedShift(params)
 
+      $($event.target).parents(".item").remove()
       if (offeredShiftId == $scope.swap.accepted_shift_id) {
         Notification.message = "Accepted swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
         $state.go('tab.swaps', {}, {reload: true});
       } else if (noMoreSwaps()) {
         Notification.message = "All offers to swap cancelled for " + $scope.shift.shift_type.name + " on " + General.stringDateToWords($scope.shift.start_date)
         $state.go('tab.swaps', {}, {reload: true});
-      } else {
-        $($event.target).parents(".item").remove()
       }
     });
     $("fieldset").addClass("hide")
