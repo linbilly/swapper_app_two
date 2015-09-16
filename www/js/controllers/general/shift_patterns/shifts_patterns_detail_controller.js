@@ -94,7 +94,7 @@ angular.module('starter.controllers')
   $scope.deleteShiftPattern = function() {
     swal({
       title: "Are you sure?",
-      text: "Any shifts with this pattern will also be deleted.",
+      text: "Any shifts with this pattern will also be deleted, for all users in your group. Please make sure that is OK!",
       type: "warning",
       showCancelButton: true,
       showLoaderOnConfirm: true,
