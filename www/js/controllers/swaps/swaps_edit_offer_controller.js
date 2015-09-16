@@ -18,13 +18,18 @@ angular.module('starter.controllers')
     $scope.shift_owner = args.shift_owner
     $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
     $scope.swap = JSON.parse(args.swap)
-    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
-    $scope.loader = false
-    $timeout(function() {
-      Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
-      Calendar.goToRightDefaultSlide($scope.day)
-      highlightSwapsBeingOffered()
-    }, 1000)
+    if ($scope.swap) {
+      $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
+      $scope.loader = false
+      $timeout(function() {
+        Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
+        Calendar.goToRightDefaultSlide($scope.day)
+        highlightSwapsBeingOffered()
+      }, 1000)
+    } else {
+      // In case user was still on this page when shift was removed
+      $state.go('tab.swaps', {}, {reload: true});
+    }
   })
 
   $scope.multipleDatesSelected = function($event) {
