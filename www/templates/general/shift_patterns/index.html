@@ -14,13 +14,22 @@
             <div class="shift-pattern-group-name">
               {{group.name}}
             </div>
-            <div class="admin-text-in-group-divider" ng-if="group.user_is_admin">
-              (You are an admin for this group)
+            <div class="text-in-group-divider" ng-if="group.user_is_admin">
+              You are an admin for this group. Admins can add, update, or delete shift patterns for their groups. Shift patterns will show up in the order in which they were created.
             </div>
-            <a class="add-pattern positive" href="#/tab/general/patterns/{{group.id}}/new">
+            <a class="add-pattern positive" href="#/tab/general/patterns/{{group.id}}/new" ng-if="group.user_is_admin">
               <i class="icon ion-android-add-circle"></i>
               Add pattern
             </a>
+            <div class="text-in-group-divider" ng-if="!group.user_is_admin">
+              <div>
+                <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'No admins', '1': 'Admin:', 'other': 'Admins:'}"></ng-pluralize>
+                <span ng-repeat="user in group.admin_users">{{user.first_name}} {{user.last_name}}</span>
+              </div>
+              <div>
+                Only <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'admins', '1': 'the group admin', 'other': 'group admins'}"></ng-pluralize> can update shift patterns. Please reach out to <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'them', '1': 'him/her', 'other': 'them'}"></ng-pluralize> if you would like something changed.
+              </div>
+            </div>
           </div>
 
           <div ng-if="group.user_is_admin">

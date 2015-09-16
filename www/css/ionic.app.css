@@ -218,8 +218,10 @@ a {
 .shifts-patterns .shift-pattern-group-name {
   font-weight: bold;
   margin-bottom: 5px; }
-.shifts-patterns .admin-text-in-group-divider {
-  margin-bottom: 5px; }
+.shifts-patterns .text-in-group-divider {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: normal; }
 .shifts-patterns .item-not-in-admin a {
   padding: 16px !important; }
 .shifts-patterns .add-pattern {
