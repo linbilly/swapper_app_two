@@ -62,7 +62,7 @@
           <div ng-if="numKeys() == 1">
             <div ng-repeat="(groupName, shiftTypes) in shiftTypesByGroup">
               <span ng-repeat="shiftType in shiftTypes">
-                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.shiftTypeId}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
+                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.id}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
                   {{shiftType.abbreviation}}
                 </button>
               </span>
@@ -83,7 +83,7 @@
                 {{groupName}}
               </div>
               <span ng-repeat="shiftType in shiftTypes">
-                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.shiftTypeId}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
+                <button class="button button-small button-positive" data-shift-type-id="{{shiftType.id}}" data-group-id="{{shiftType.groupId}}" ng-click="createShift($event)">
                   {{shiftType.abbreviation}}
                 </button>
               </span>
