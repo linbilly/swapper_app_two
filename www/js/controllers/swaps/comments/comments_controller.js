@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicScrollDelegate, Api, General, ShiftType) {
+.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $ionicScrollDelegate, Api, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.sending = false
@@ -16,6 +16,10 @@ angular.module('starter.controllers')
     $scope.$apply()
     $ionicScrollDelegate.scrollBottom([true])
   });
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
+  };
 
   $scope.stringDateToWords = function(startDate) {
     if (startDate) {
