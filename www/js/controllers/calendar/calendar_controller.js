@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers')
 
 .controller('CalendarCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $ionicSlideBoxDelegate, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
