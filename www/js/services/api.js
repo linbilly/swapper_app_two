@@ -2,9 +2,9 @@ angular.module('starter.services')
 
 .service('Api', function($http, $rootScope, General) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-  var root_url = "http://localhost:3000/api/";
+  // var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
-  // var root_url = "https://swapper-app.herokuapp.com/api/";
+  var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
 
@@ -427,12 +427,13 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "CQPaAJxziaKRLyE6FNWX" // Localhost User 1
+    // return "CQPaAJxziaKRLyE6FNWX" // Localhost User 1
     // return "Ak5UcAzym3aqVZPprvy9" // Localhost User 2
     // return "4g4RyXo1SH_ZmsgJw97A" // Localhost User 3
 
-    // return "UUpR6C5Tb_7rXzWMKbqP" // Heroku User 1
-    // return "A_Askb6uzJr9pz5iaXEH" // Heroku User 2
+    // return "nwj3NX4n3d3kBbmuTAWs" // Heroku User 1
+    return "wQ7JkBUoEZ5Gy_r2Fy7t" // Heroku User 2
+    // return "wuEQyRAGMzV_qszBvS5c" // Heroku User 3
   }
 
   return Api;
