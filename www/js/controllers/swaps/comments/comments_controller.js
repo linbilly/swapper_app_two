@@ -10,6 +10,7 @@ angular.module('starter.controllers')
   $scope.$on('commentsFetched', function(event, args) {
     $scope.shift = args.shift
     $scope.comments = Api.comments
+    $scope.userId = args.userId
     $scope.loader = false
     $scope.sending = false
     $scope.$apply()
@@ -40,8 +41,30 @@ angular.module('starter.controllers')
         shift_id: $scope.shift.id
       }
       Api.createComment(params)
-      Api.getComments($stateParams.shiftId)
-      $scope.message = ""
     }
+  }
+
+  $scope.$on('commentCreated', function(event, args) {
+    Api.getComments($stateParams.shiftId)
+    $scope.message = ""
+  });
+
+  $scope.$on('commentDeleted', function(event, args) {
+    Api.getComments($stateParams.shiftId)
+    $scope.message = ""
+  });
+
+  $scope.deleteComment = function(commentId) {
+    swal({
+      title: "Are you sure?",
+      text: "This will delete your comment.",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "Yup!",
+    }, function(){
+      Api.deleteComment(commentId)
+    });
+    $("fieldset").addClass("hide")
   }
 })

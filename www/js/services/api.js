@@ -394,7 +394,7 @@ angular.module('starter.services')
     }
     $.get(getCommentsUrl, params).then(function(result){
       Api.comments = result.comments
-      $rootScope.$broadcast("commentsFetched", {shift: result.shift});
+      $rootScope.$broadcast("commentsFetched", {shift: result.shift, userId: result.user_id});
     });
   }
 
@@ -404,6 +404,21 @@ angular.module('starter.services')
     $.post(createCommentUrl, params).then(function(result){
       $rootScope.$broadcast("commentCreated");
     });
+  }
+
+  Api.deleteComment = function(commentId) {
+    var deleteCommentUrl = root_url + "comments/" + commentId + "/destroy"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.ajax({
+      url: deleteCommentUrl,
+      method: "DELETE",
+      data: params
+    })
+    .done(function() {
+      $rootScope.$broadcast("commentDeleted");
+    })
   }
 
   // General

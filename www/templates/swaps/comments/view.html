@@ -38,7 +38,7 @@
     <div class="list comment-list">
       <div class="item" ng-repeat="comment in comments">
         <h2>{{comment.message}}</h2>
-        <p>{{comment.user.first_name}} {{comment.user.last_name}} - <span am-time-ago="comment.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span></p>
+        <p>{{comment.user.first_name}} {{comment.user.last_name}} - <span am-time-ago="comment.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span><span ng-if="userId == comment.user.id"> - <a ng-click="deleteComment(comment.id)">delete</a></span></p>
       </div>
     </div>
   </ion-content>
