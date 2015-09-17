@@ -53,6 +53,11 @@
 
   .send-button {
     padding-top: 10px;
+
+    .dots-spinner svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
   }
 }
 

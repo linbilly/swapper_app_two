@@ -3,14 +3,16 @@ angular.module('starter.controllers')
 .controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicScrollDelegate, Api, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
+  $scope.sending = false
 
   Api.getComments($stateParams.shiftId)
 
   $scope.$on('commentsFetched', function(event, args) {
     $scope.shift = args.shift
     $scope.comments = Api.comments
-    $scope.$apply()
     $scope.loader = false
+    $scope.sending = false
+    $scope.$apply()
     $ionicScrollDelegate.scrollBottom([true])
   });
 
@@ -32,6 +34,7 @@ angular.module('starter.controllers')
   $scope.sendMessage = function() {
     var message = $scope.message.trim()
     if (message != "") {
+      $scope.sending = true
       var params = {
         message: message,
         shift_id: $scope.shift.id

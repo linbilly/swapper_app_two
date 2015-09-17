@@ -48,7 +48,8 @@
       <textarea placeholder="Write a comment" class="comment-message-textarea" ng-model="message" tagged-autogrow></textarea>
     </div>
     <div class="col-20 button button-energized send-button" ng-click="sendMessage()" ng-enter="sendMessage()">
-      <i class="icon ion-android-send"></i>
+      <i class="icon ion-android-send" ng-show="!sending"></i>
+      <ion-spinner class="dots-spinner" icon="dots" ng-show="sending"></ion-spinner>
     </div>
   </div>
 </ion-view>
