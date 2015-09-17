@@ -264,9 +264,6 @@ a {
   .shift-patterns-detail .action-buttons-holder .delete-link {
     margin-top: 10px; }
 
-.comment-page .scroll {
-  height: 100%; }
-
 .comments-top-holder {
   position: fixed;
   width: 100%;
@@ -306,9 +303,6 @@ a {
     .message-row .send-button .dots-spinner svg {
       width: 20px !important;
       height: 20px !important; }
-
-.comment-bottom-buffer {
-  height: 98px; }
 
 .item-avatar .date-as-square {
   position: absolute;
