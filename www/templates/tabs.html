@@ -6,13 +6,18 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-background-positive tabs-color-light">
 
   <!-- Calendar Tab -->
-  <ion-tab title="Calendar" icon="ion-calendar" href="#/tab/calendar/index">
+  <ion-tab title="Calendar" icon-off="ion-ios-calendar-outline" icon-on="ion-ios-calendar" href="#/tab/calendar/index">
     <ion-nav-view name="tab-calendar"></ion-nav-view>
   </ion-tab>
 
   <!-- Swaps Tab -->
   <ion-tab title="Swaps" icon-off="ion-arrow-swap" icon-on="ion-arrow-swap" href="#/tab/swaps/index">
     <ion-nav-view name="tab-swaps"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Notifications Tab -->
+  <ion-tab title="Notifications" icon-off="ion-ios-bell-outline" icon-on="ion-ios-bell" href="#/tab/notifications/index">
+    <ion-nav-view name="tab-notifications"></ion-nav-view>
   </ion-tab>
 
   <!-- General Tab -->
