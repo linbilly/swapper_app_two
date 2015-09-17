@@ -5,16 +5,31 @@
 }
 
 .comments-top-holder {
+  position: fixed;
+  width: 100%;
+  top: 44px;
   padding: 15px;
   background-color: $highlight;
   border-bottom: 1px solid lightgrey;
+  z-index: 100;
+
+  .row {
+    padding: 0px !important;
+  }
 
   p {
     margin-bottom: 5px;
   }
+
+  .icon-holder {
+    text-align: center;
+    font-size: 24px;
+  }
 }
 
 .comment-list {
+  margin-top: 55px;
+
   h2 {
     white-space: normal !important;
     margin-bottom: 5px !important;
@@ -42,5 +57,5 @@
 }
 
 .comment-bottom-buffer {
-  height: 44px;
+  height: 98px;
 }

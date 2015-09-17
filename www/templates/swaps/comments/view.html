@@ -3,14 +3,22 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
-  <ion-content class="comment-page">
-    <div class="comments-top-holder">
-      <p>
-        <b class="date-title">
-          <i class="icon ion-star"></i>
-          {{stringDateToWords(shift.start_date)}}
-        </b>
-      </p>
+  <div class="comments-top-holder">
+    <div class="row">
+      <div class="col-90">
+        <p>
+          <b class="date-title">
+            <i class="icon ion-star"></i>
+            {{stringDateToWords(shift.start_date)}}
+          </b>
+        </p>
+      </div>
+      <div class="col-10 icon-holder">
+        <i class="icon ion-android-arrow-dropup-circle" ng-click="showAdditionalDetails = false" ng-show="showAdditionalDetails"></i>
+        <i class="icon ion-android-arrow-dropdown-circle" ng-click="showAdditionalDetails = true" ng-show="!showAdditionalDetails"></i>
+      </div>
+    </div>
+    <div class="additional-details" ng-show="showAdditionalDetails">
       <p>
         {{shift.shift_type.name}} ({{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}})
       </p>
@@ -23,8 +31,9 @@
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
       </p>
-
     </div>
+  </div>
+  <ion-content class="comment-page">
     <div class="list comment-list">
       <div class="item" ng-repeat="comment in comments">
         <h2>{{comment.message}}</h2>

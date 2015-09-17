@@ -268,15 +268,26 @@ a {
   height: 100%; }
 
 .comments-top-holder {
+  position: fixed;
+  width: 100%;
+  top: 44px;
   padding: 15px;
   background-color: #FFFF9D;
-  border-bottom: 1px solid lightgrey; }
+  border-bottom: 1px solid lightgrey;
+  z-index: 100; }
+  .comments-top-holder .row {
+    padding: 0px !important; }
   .comments-top-holder p {
     margin-bottom: 5px; }
+  .comments-top-holder .icon-holder {
+    text-align: center;
+    font-size: 24px; }
 
-.comment-list h2 {
-  white-space: normal !important;
-  margin-bottom: 5px !important; }
+.comment-list {
+  margin-top: 55px; }
+  .comment-list h2 {
+    white-space: normal !important;
+    margin-bottom: 5px !important; }
 
 .message-row {
   padding: 0px !important;
@@ -294,7 +305,7 @@ a {
     padding-top: 10px; }
 
 .comment-bottom-buffer {
-  height: 44px; }
+  height: 98px; }
 
 .item-avatar .date-as-square {
   position: absolute;
