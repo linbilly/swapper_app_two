@@ -264,6 +264,13 @@ a {
   .shift-patterns-detail .action-buttons-holder .delete-link {
     margin-top: 10px; }
 
+.notifications-list i.notification-type-icon {
+  height: 62px !important;
+  color: #BEEB9F;
+  text-align: center; }
+.notifications-list h2 {
+  white-space: normal !important; }
+
 .comments-top-holder {
   position: fixed;
   width: 100%;

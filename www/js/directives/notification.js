@@ -18,4 +18,13 @@ angular.module('starter')
       }
     }
   }
-});
+})
+
+.directive('comment', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/comment.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})

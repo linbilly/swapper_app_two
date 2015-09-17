@@ -1,5 +1,9 @@
 <ion-view view-title="Notifications">
   <ion-content>
-    Harro
+    <div class="list notifications-list">
+      <div ng-repeat="notification in notifications">
+        <comment ng-model="notification"></comment>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
