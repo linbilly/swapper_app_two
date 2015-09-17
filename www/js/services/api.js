@@ -398,6 +398,14 @@ angular.module('starter.services')
     });
   }
 
+  Api.createComment = function(params) {
+    var createCommentUrl = root_url + "comments/create"
+    params["authentication_token"] = userToken()
+    $.post(createCommentUrl, params).then(function(result){
+      $rootScope.$broadcast("commentCreated");
+    });
+  }
+
   // General
   // ===========================================================================
 

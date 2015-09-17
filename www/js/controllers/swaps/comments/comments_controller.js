@@ -26,4 +26,18 @@ angular.module('starter.controllers')
       return ""
     }
   }
+
+  $scope.sendMessage = function() {
+    var params = {
+      message: $scope.message,
+      shift_id: $scope.shift.id
+    }
+    Api.createComment(params)
+  }
+
+  $scope.jsTime = function(rubyTime) {
+    // 2015-09-17T16:25:37.973Z
+    var date = new Date(rubyTime.split(".")[0])
+    return date
+  }
 })
