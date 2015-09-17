@@ -35,10 +35,10 @@
           {{shift.swap_notes}}
         </p>
         <p>
-          <a href="#" class="subdued">
+          <a class="subdued">
             <ng-pluralize count="shift.swaps.length || 0" when="{'0': 'No Offers Yet', '1': '1 Offer', 'other': '{{shift.swaps.length}} Offers'}"></ng-pluralize>
           </a>
-          <a href="#" class="subdued">5 Comments</a>
+          <a href="#/tab/swaps/comments/{{shift.id}}" class="subdued"><ng-pluralize count="shift.comments.length || 0" when="{'0': '0 Comments', '1': '1 Comment', 'other': '{{shift.comments.length}} Comments'}"></ng-pluralize></a>
         </p>
       </div>
 
