@@ -384,6 +384,20 @@ angular.module('starter.services')
     });
   }
 
+  // Comments
+  // ===========================================================================
+
+  Api.getComments = function(shiftId) {
+    var getCommentsUrl = root_url + "comments/" + shiftId
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(getCommentsUrl, params).then(function(result){
+      Api.comments = result.comments
+      $rootScope.$broadcast("commentsFetched", {shift: result.shift});
+    });
+  }
+
   // General
   // ===========================================================================
 
