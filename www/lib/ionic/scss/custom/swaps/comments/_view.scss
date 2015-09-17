@@ -14,6 +14,13 @@
   }
 }
 
+.comment-list {
+  h2 {
+    white-space: normal !important;
+    margin-bottom: 5px !important;
+  }
+}
+
 .message-row {
   padding: 0px !important;
   position: fixed;
@@ -32,4 +39,8 @@
   .send-button {
     padding-top: 10px;
   }
+}
+
+.comment-bottom-buffer {
+  height: 44px;
 }

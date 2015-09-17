@@ -25,19 +25,20 @@
       </p>
 
     </div>
-    <div class="list">
+    <div class="list comment-list">
       <div class="item" ng-repeat="comment in comments">
         <h2>{{comment.message}}</h2>
         <p>{{comment.user.first_name}} {{comment.user.last_name}} - <span am-time-ago="comment.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span></p>
       </div>
     </div>
+    <div class="comment-bottom-buffer"></div>
 
   </ion-content>
   <div class="row message-row">
     <div class="col-80">
       <textarea placeholder="Write a comment" class="comment-message-textarea" ng-model="message" tagged-autogrow></textarea>
     </div>
-    <div class="col-20 button button-energized send-button" ng-click="sendMessage()">
+    <div class="col-20 button button-energized send-button" ng-click="sendMessage()" ng-enter="sendMessage()">
       <i class="icon ion-android-send"></i>
     </div>
   </div>

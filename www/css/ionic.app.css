@@ -274,6 +274,10 @@ a {
   .comments-top-holder p {
     margin-bottom: 5px; }
 
+.comment-list h2 {
+  white-space: normal !important;
+  margin-bottom: 5px !important; }
+
 .message-row {
   padding: 0px !important;
   position: fixed;
@@ -288,6 +292,9 @@ a {
     line-height: 1.3; }
   .message-row .send-button {
     padding-top: 10px; }
+
+.comment-bottom-buffer {
+  height: 44px; }
 
 .item-avatar .date-as-square {
   position: absolute;
