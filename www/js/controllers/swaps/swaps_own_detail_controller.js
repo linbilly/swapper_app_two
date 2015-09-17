@@ -3,15 +3,7 @@ angular.module('starter.controllers')
 .controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
-
-  if (Api.ownShiftsWithSwaps) {
-    setShiftAndOfferedshifts()
-    $scope.loader = false
-    setupView()
-  } else {
-    // In case user jumps straight to the detail page
-    Api.getOwnShiftsWithSwaps()
-  }
+  Api.getOwnShiftsWithSwaps()
 
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
     setShiftAndOfferedshifts()

@@ -286,6 +286,10 @@ a {
     white-space: normal !important;
     margin-bottom: 5px !important; }
 
+.no-comments-yet {
+  margin-top: 55px;
+  padding: 15px; }
+
 .message-row {
   padding: 0px !important;
   position: fixed;
