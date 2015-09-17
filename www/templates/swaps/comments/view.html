@@ -3,8 +3,8 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="swap-own-detail-holder">
+  <ion-content class="comment-page">
+    <div class="comments-top-holder">
       <p>
         <b class="date-title">
           <i class="icon ion-star"></i>
@@ -12,18 +12,27 @@
         </b>
       </p>
       <p>
+        {{shift.shift_type.name}} ({{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}})
+      </p>
+      <p>
+        {{shift.user.first_name}} {{shift.user.last_name}}
+      </p>
+      <p>
         {{shift.group.name}}
-      </p>
-      <p>
-        {{shift.shift_type.name}}
-      </p>
-      <p>
-        {{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}}
       </p>
       <p ng-if="shift.swap_notes">
         Notes: {{shift.swap_notes}}
       </p>
 
     </div>
+
   </ion-content>
+  <div class="row message-row">
+    <div class="col-80">
+      <textarea placeholder="Write a comment" class="comment-message-textarea" ng-model="message" tagged-autogrow></textarea>
+    </div>
+    <div class="col-20 button button-energized send-button">
+      <i class="icon ion-android-send"></i>
+    </div>
+  </div>
 </ion-view>

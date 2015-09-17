@@ -264,6 +264,31 @@ a {
   .shift-patterns-detail .action-buttons-holder .delete-link {
     margin-top: 10px; }
 
+.comment-page .scroll {
+  height: 100%; }
+
+.comments-top-holder {
+  padding: 15px;
+  background-color: #FFFF9D;
+  border-bottom: 1px solid lightgrey; }
+  .comments-top-holder p {
+    margin-bottom: 5px; }
+
+.message-row {
+  padding: 0px !important;
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 49px;
+  background-color: #BEEB9F; }
+  .message-row .comment-message-textarea {
+    width: 100%;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.3; }
+  .message-row .send-button {
+    padding-top: 10px; }
+
 .item-avatar .date-as-square {
   position: absolute;
   top: 16px;
