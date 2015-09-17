@@ -2,7 +2,8 @@
   <ion-content>
     <div class="list notifications-list">
       <div ng-repeat="notification in notifications">
-        <comment ng-model="notification"></comment>
+        <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>
+        <join-group ng-model="notification" ng-if="notification.category == 'JoinGroup'"></join-group>
       </div>
     </div>
   </ion-content>

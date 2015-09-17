@@ -28,3 +28,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('joinGroup', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/join_group.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})
