@@ -3,6 +3,20 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" ng-click="goBack()">Back</a>
   </ion-nav-buttons>
+  <ion-content class="comment-page">
+    <div class="list comment-list" ng-if="comments.length > 0">
+      <div class="item" ng-repeat="comment in comments">
+        <h2>{{comment.message}}</h2>
+        <p>{{comment.user.first_name}} {{comment.user.last_name}} - <span am-time-ago="comment.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span><span ng-if="userId == comment.user.id"> - <a ng-click="deleteComment(comment.id)">delete</a></span></p>
+      </div>
+    </div>
+    <div ng-if="comments.length == 0">
+      <div class="no-comments-yet">
+        No comments yet - write the first!
+      </div>
+    </div>
+  </ion-content>
+
   <div class="comments-top-holder">
     <div class="row">
       <div class="col-90">
@@ -33,20 +47,6 @@
       </p>
     </div>
   </div>
-
-  <ion-content class="comment-page">
-    <div class="list comment-list" ng-if="comments.length > 0">
-      <div class="item" ng-repeat="comment in comments">
-        <h2>{{comment.message}}</h2>
-        <p>{{comment.user.first_name}} {{comment.user.last_name}} - <span am-time-ago="comment.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span><span ng-if="userId == comment.user.id"> - <a ng-click="deleteComment(comment.id)">delete</a></span></p>
-      </div>
-    </div>
-    <div ng-if="comments.length == 0">
-      <div class="no-comments-yet">
-        No comments yet - write the first!
-      </div>
-    </div>
-  </ion-content>
 
   <div class="row message-row">
     <div class="col-80">
