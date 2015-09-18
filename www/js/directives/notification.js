@@ -46,3 +46,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('swapAccepted', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/swap_accepted.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})
