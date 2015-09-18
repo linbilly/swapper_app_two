@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsUpForGrabsCtrl', function($scope, $ionicNavBarDelegate, $timeout, Api, Calendar, General) {
+.controller('SwapsUpForGrabsCtrl', function($scope, $ionicNavBarDelegate, $timeout, $state, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
 
   Api.getAllShifts()
@@ -16,5 +16,9 @@ angular.module('starter.controllers')
     $scope.loader = true
     $scope.calendarObjects = null
     Api.getAllShifts()
+  }
+
+  $scope.goToViewAllAsList = function() {
+    $state.go('tab.swaps-up-for-grabs-list', {day: "all"}, {reload: true});
   }
 })

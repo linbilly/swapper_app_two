@@ -217,25 +217,17 @@
               </ion-slide-box>
             </div>
           </div>
-          <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
-            <div class="shift-input-buttons-holder">
-              <div class="bottom-block">
-                <!-- <div>
-                  <div class="num-shifts-available-on-calendar outside-of-calendar">#</div>
-                  <div class="num-shifts-description">
-                    Tap to see specific days
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-                <br> -->
-                <div>
-                  <button class="button button-small button-positive" href="#/tab/swaps/up-for-grabs/all/list">
-                    View All as List
-                  </button>
-                </div>
+
+          <div class="shift-input-buttons-holder">
+            <div class="bottom-block">
+              <div>
+                <button class="button button-small button-positive" ng-click="goToViewAllAsList()">
+                  View All as List
+                </button>
               </div>
             </div>
           </div>
+
         </ion-content>
       </ion-view>
     </ion-tab>

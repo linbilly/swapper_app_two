@@ -140,9 +140,9 @@
         </div>
       </div>
 
-      <div class="bottom-note" ng-show="!loader">
+      <div class="bottom-note" ng-show="!loader" ng-if="swap.state == 'Open'">
         <div>
-          <button class="button button-energized" href="#/tab/swaps/up-for-grabs/offer/{{shift.id}}/{{shift.start_date}}/edit/{{swap.id}}">
+          <button class="button button-energized" ng-click="goToEditShifts()">
             Edit Shifts Offered
           </button>
         </div>

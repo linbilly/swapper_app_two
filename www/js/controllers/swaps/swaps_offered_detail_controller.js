@@ -176,4 +176,8 @@ angular.module('starter.controllers')
     Notification.message = "Swap approved and calendar successfully updated."
     $state.go('tab.swaps', {}, {reload: true});
   });
+
+  $scope.goToEditShifts = function() {
+    $state.go('tab.swaps-edit-offer', {shiftId: $scope.shift.id, day: $scope.shift.start_date, swapId: $scope.swap.id}, {reload: true});
+  }
 })
