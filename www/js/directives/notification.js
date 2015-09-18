@@ -37,3 +37,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('swapOffered', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/swap_offered.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})

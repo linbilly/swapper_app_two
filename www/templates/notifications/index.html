@@ -4,6 +4,7 @@
       <div ng-repeat="notification in notifications">
         <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>
         <join-group ng-model="notification" ng-if="notification.category == 'JoinGroup'"></join-group>
+        <swap-offered ng-model="notification" ng-if="notification.category == 'SwapOffered'"></swap-offered>
       </div>
     </div>
   </ion-content>
