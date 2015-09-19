@@ -13,14 +13,18 @@
           <div class="row">
             <div class="col col-67">
               <span class="input-label">Shift pattern name:</span>
-              <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName">
+              <label>
+                <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName">
+              </label>
               <span class="input-label assertive" ng-show="inputError">Please fill in</span>
             </div>
             <div class="col col-33">
               <span class="input-label">Abbreviation:</span>
-              <input class="shift-name-input" type="text" placeholder="E.g. Dx" ng-model="abbreviation">
+              <label>
+                <input class="shift-name-input" type="text" placeholder="E.g. Dx" ng-model="abbreviation">
+              </label>
               <span class="input-label assertive" ng-show="abbInputError">Please fill in</span>
-              <span class="input-label assertive" ng-show="lengthError">2 letters max</span>
+              <span class="input-label assertive" ng-show="lengthError">3 letters max</span>
             </div>
           </div>
         </label>
