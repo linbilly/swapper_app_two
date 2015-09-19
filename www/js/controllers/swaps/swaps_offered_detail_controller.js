@@ -7,8 +7,8 @@ angular.module('starter.controllers')
 
   $scope.$on('swapsOfferedFetched', function(event, args) {
     setSwapAndShifts()
-    $scope.$apply()
     $scope.loader = false
+    $scope.$apply()
     setupView()
   });
 

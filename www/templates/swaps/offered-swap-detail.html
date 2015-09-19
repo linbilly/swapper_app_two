@@ -57,7 +57,7 @@
       </div>
 
     </div>
-    <div class="list" ng-if="shift.swaps && shift.swaps.length > 0">
+    <div class="list" ng-if="!loader && shift.swaps && shift.swaps.length > 0">
 
       <div ng-controller="CalendarCtrl" class="calender-display">
         <div class="calendar-holder" ng-if="calendarObjects">
@@ -140,7 +140,7 @@
         </div>
       </div>
 
-      <div class="bottom-note" ng-show="!loader" ng-if="swap.state == 'Open'">
+      <div class="bottom-note" ng-if="swap.state == 'Open'">
         <div>
           <button class="button button-energized" ng-click="goToEditShifts()">
             Edit Shifts Offered
