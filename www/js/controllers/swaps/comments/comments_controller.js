@@ -71,4 +71,9 @@ angular.module('starter.controllers')
     });
     $("fieldset").addClass("hide")
   }
+
+  $scope.showAdditionalDetailsIconClicked = function($event) {
+    $(".icon-holder").rotate($(".icon-holder"), 180)
+    $scope.showAdditionalDetails = !$scope.showAdditionalDetails
+  }
 })

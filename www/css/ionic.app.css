@@ -285,7 +285,10 @@ a {
     margin-bottom: 5px; }
   .comments-top-holder .icon-holder {
     text-align: center;
-    font-size: 24px; }
+    font-size: 24px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear; }
 
 .platform-ios .comments-top-holder {
   top: 64px !important; }
