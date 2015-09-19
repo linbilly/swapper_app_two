@@ -2,14 +2,12 @@ angular.module('starter.controllers')
 
 .controller('SwapsCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $timeout, Api, General, Notification, ShiftType, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
-  $scope.loader = true
   $scope.subControllers = General
 
   // Not disabling cache on the view so that the tab state is maintained
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (toState.url == "/swaps/index") {
       notificationCheck()
-      $scope.loader = true
       $scope.subControllers.upForGrabsController.calendarObjects = null
       Api.getOwnShiftsWithSwaps()
       Api.swapsOffered()

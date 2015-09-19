@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.swapsOfferedTabSelected = function() {
+    $scope.swapsOfferedLoader = true
     Api.swapsOffered()
   }
 
@@ -11,7 +12,7 @@ angular.module('starter.controllers')
     $scope.swapsOffered = Api.swapsOfferedByUser
     $scope.swapsOfferedByStatus = Api.swapsOfferedByStatus
     $scope.$apply()
-    $scope.loader = false
+    $scope.swapsOfferedLoader = false
   });
 
   $scope.goToUpForGrabsTab = function() {

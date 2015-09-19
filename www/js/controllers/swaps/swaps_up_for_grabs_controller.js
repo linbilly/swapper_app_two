@@ -6,17 +6,17 @@ angular.module('starter.controllers')
   Api.getAllShifts()
   General.upForGrabsController = $scope
 
-  $scope.$on('shiftsFetched', function(event, args) {
-    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
-    $scope.$apply()
-    $scope.loader = false
-  })
-
   $scope.upForGrabsTabSelected = function() {
-    $scope.loader = true
+    $scope.upForGrabsLoader = true
     $scope.calendarObjects = null
     Api.getAllShifts()
   }
+
+  $scope.$on('shiftsFetched', function(event, args) {
+    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
+    $scope.$apply()
+    $scope.upForGrabsLoader = false
+  })
 
   $scope.goToViewAllAsList = function() {
     $state.go('tab.swaps-up-for-grabs-list', {day: "all"}, {reload: true});
