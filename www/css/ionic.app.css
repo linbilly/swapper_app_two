@@ -287,6 +287,9 @@ a {
     text-align: center;
     font-size: 24px; }
 
+.platform-ios .comments-top-holder {
+  top: 64px !important; }
+
 .comment-list {
   margin-top: 55px; }
   .comment-list h2 {
