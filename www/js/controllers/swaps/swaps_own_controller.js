@@ -10,6 +10,7 @@ angular.module('starter.controllers')
     $scope.ownShiftsWithSwaps = Api.ownShiftsWithSwaps
     $scope.ownShiftsByStatus = Api.ownShiftsByStatus
     $scope.mySwapsLoader = false
+    $scope.$apply()
   });
 
   $scope.stringDateToWords = function(startDate) {
