@@ -14,8 +14,16 @@ angular.module('starter.controllers')
     $scope.loader = false
     $scope.sending = false
     $scope.$apply()
+    removeFooterClasses()
     $ionicScrollDelegate.scrollBottom([true])
   });
+
+  function removeFooterClasses() {
+    // Otherwise CSS gets F'd up. But need this for iOS keyboard to work properly.
+    $(".comments-page-footer").removeClass("bar")
+    $(".comments-page-footer").removeClass("bar-footer")
+    $(".comments-page-footer").removeClass("has-tabs")
+  }
 
   $scope.goBack = function() {
     $ionicHistory.goBack();

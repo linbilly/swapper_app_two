@@ -445,8 +445,8 @@ angular.module('starter.services')
     // return "wwz5axL3gYZ8vK8_9pwC" // Localhost User 2
     // return "xDoyRGun168ez4QGnnqm" // Localhost User 3
 
-    // return "Qyosfz7dc7EDiHzv9e_n" // Heroku User 1
-    return "vTGWRGo1rSTyJcHoBWNx" // Heroku User 2
+    return "Qyosfz7dc7EDiHzv9e_n" // Heroku User 1
+    // return "vTGWRGo1rSTyJcHoBWNx" // Heroku User 2
     // return "QGq5fExajmx-6syQLac7" // Heroku User 3
   }
 

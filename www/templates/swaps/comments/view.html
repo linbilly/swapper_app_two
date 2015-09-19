@@ -46,14 +46,19 @@
       </p>
     </div>
   </div>
+  <ion-footer-bar keyboard-attach class="comments-page-footer">
 
-  <div class="row message-row">
-    <div class="col-80">
-      <textarea placeholder="Write a comment" class="comment-message-textarea" ng-model="message" tagged-autogrow></textarea>
+    <div class="row message-row" keyboard-attach>
+      <div class="col-80">
+        <textarea placeholder="Write a comment" class="comment-message-textarea" ng-model="message" tagged-autogrow></textarea>
+        <div class="android-message-row-buffer"></div>
+        <div class="ios-message-row-buffer hide-on-keyboard-open"></div>
+      </div>
+      <div class="col-20 button button-energized send-button" ng-click="sendMessage()" ng-enter="sendMessage()">
+        <i class="icon ion-android-send" ng-show="!sending"></i>
+        <ion-spinner class="dots-spinner" icon="dots" ng-show="sending"></ion-spinner>
+      </div>
     </div>
-    <div class="col-20 button button-energized send-button" ng-click="sendMessage()" ng-enter="sendMessage()">
-      <i class="icon ion-android-send" ng-show="!sending"></i>
-      <ion-spinner class="dots-spinner" icon="dots" ng-show="sending"></ion-spinner>
-    </div>
-  </div>
+  </ion-footer-bar>
+
 </ion-view>
