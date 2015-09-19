@@ -1,6 +1,9 @@
 <ion-view view-title="Notifications">
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <div class="list notifications-list">
+    <div class="list notifications-list" ng-show="!loader">
       <div ng-repeat="notification in notifications">
         <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>
         <join-group ng-model="notification" ng-if="notification.category == 'JoinGroup'"></join-group>
