@@ -14,8 +14,8 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftsFetched', function(event, args) {
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, args.available_shifts)
-    $scope.$apply()
     $scope.upForGrabsLoader = false
+    $scope.$apply()
   })
 
   $scope.goToViewAllAsList = function() {
