@@ -122,7 +122,7 @@ angular.module('starter.services')
           var dateAsString = formatedShiftDate(tempDate, tempDate.getDate())
           var shift = shifts[dateAsString]
           var canOfferAsSwap = false
-          if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+          if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
 
@@ -142,7 +142,7 @@ angular.module('starter.services')
           var dateAsString = formatedShiftDate(firstDay, dayCount)
           var shift = shifts[dateAsString]
           var canOfferAsSwap = false
-          if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+          if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
 
@@ -168,7 +168,7 @@ angular.module('starter.services')
             var dateAsString = formatedShiftDate(firstDay, dayCount)
             var shift = shifts[dateAsString]
             var canOfferAsSwap = false
-            if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
 
@@ -190,7 +190,7 @@ angular.module('starter.services')
             var dateAsString = formatedShiftDate(nextMonth, nextMonthDayCount)
             var shift = shifts[dateAsString]
             var canOfferAsSwap = false
-            if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates)) {
+            if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
 

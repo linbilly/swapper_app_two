@@ -2,9 +2,9 @@ angular.module('starter.services')
 
 .service('Api', function($http, $rootScope, General) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-  // var root_url = "http://localhost:3000/api/";
+  var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
-  var root_url = "https://swapper-app.herokuapp.com/api/";
+  // var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
 
@@ -202,6 +202,7 @@ angular.module('starter.services')
         {
           shifts: Api.shiftsSwappable,
           cannot_swap_shift_dates: result.cannot_swap_shift_dates,
+          shifts_already_accepted: result.shifts_already_accepted,
           shift_owner: result.shift_owner,
           shift_up_for_swap: result.shift_up_for_swap,
           swap: result.swap
@@ -441,13 +442,13 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    // return "4jjYKr5tx9KzBrx2fmHD" // Localhost User 1
-    // return "wwz5axL3gYZ8vK8_9pwC" // Localhost User 2
-    // return "xDoyRGun168ez4QGnnqm" // Localhost User 3
+    // return "s2nDEUnEmyWfZaNqC_p2" // Localhost User 1
+    return "E6Gz2rdNsB9eDanJyH_j" // Localhost User 2
+    // return "Tb28rtqUxZATRb82h-PG" // Localhost User 3
 
-    return "Qyosfz7dc7EDiHzv9e_n" // Heroku User 1
-    // return "vTGWRGo1rSTyJcHoBWNx" // Heroku User 2
-    // return "QGq5fExajmx-6syQLac7" // Heroku User 3
+    // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
+    // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
+    // return "77uiN2ARUxHV_C-p492z" // Heroku User 3
   }
 
   return Api;

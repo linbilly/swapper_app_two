@@ -14,6 +14,7 @@ angular.module('starter.controllers')
 
   $scope.$on('swappableShiftsFetched', function(event, args) {
     Calendar.cannot_swap_shift_dates = args.cannot_swap_shift_dates
+    Calendar.shifts_already_accepted = args.shifts_already_accepted
     $scope.shift_owner = args.shift_owner
     $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
