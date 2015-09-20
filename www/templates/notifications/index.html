@@ -3,12 +3,48 @@
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div class="list notifications-list" ng-show="!loader">
-      <div ng-repeat="notification in notifications">
-        <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>
-        <join-group ng-model="notification" ng-if="notification.category == 'JoinGroup'"></join-group>
-        <swap-offered ng-model="notification" ng-if="notification.category == 'SwapOffered'"></swap-offered>
-        <swap-accepted ng-model="notification" ng-if="notification.category == 'SwapAccepted'"></swap-accepted>
+    <div ng-show="!loader">
+      <div class="list notifications-list">
+        <div ng-repeat="notification in notifications" ng-if="notifications.length > 0">
+          <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>
+          <join-group ng-model="notification" ng-if="notification.category == 'JoinGroup'"></join-group>
+          <swap-offered ng-model="notification" ng-if="notification.category == 'SwapOffered'"></swap-offered>
+          <swap-accepted ng-model="notification" ng-if="notification.category == 'SwapAccepted'"></swap-accepted>
+          <swap-approved ng-model="notification" ng-if="notification.category == 'SwapApproved'"></swap-approved>
+        </div>
+      </div>
+      <div ng-if="notifications.length == 0">
+        <div class="card">
+          <div class="item item-text-wrap">
+            <p>
+              No notifications yet!
+            </p>
+            <br>
+            <p>
+              Notifications will show up here when:
+            </p>
+            <br>
+            <p>
+              1. There's a swap you can take being offered
+            </p>
+            <p>
+              2. Someone offers you a swap
+            </p>
+            <p>
+              3. Someone accepts your swap
+            </p>
+            <p>
+              4. Someone comments on a swap you're a part of
+            </p>
+            <p>
+              5. And much more :)
+            </p>
+            <br>
+            <p>
+              Check back often!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </ion-content>
