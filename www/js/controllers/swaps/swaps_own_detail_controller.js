@@ -7,9 +7,11 @@ angular.module('starter.controllers')
 
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
     setShiftAndOfferedshifts()
-    $scope.$apply()
-    $scope.loader = false
-    setupView()
+    if ($scope.shift) {
+      $scope.$apply()
+      $scope.loader = false
+      setupView()
+    }
   });
 
   function setupView() {
@@ -26,7 +28,9 @@ angular.module('starter.controllers')
 
   function setShiftAndOfferedshifts() {
     $scope.shift = General.findById(Api.ownShiftsWithSwaps, $stateParams.shiftId)
-    $scope.orderedOfferedShifts = orderByDateOfShiftOffered($scope.shift)
+    if ($scope.shift) {
+      $scope.orderedOfferedShifts = orderByDateOfShiftOffered($scope.shift)
+    }
   }
 
   Api.getAllShifts()
