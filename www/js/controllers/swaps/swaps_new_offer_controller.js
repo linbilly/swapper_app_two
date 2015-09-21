@@ -3,6 +3,7 @@ angular.module('starter.controllers')
 .controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
+  $scope.shiftsSelectedError = false
 
   $scope.day = $stateParams.day
 
@@ -54,19 +55,25 @@ angular.module('starter.controllers')
   }
 
   $scope.offerToSwap = function() {
+    $scope.shiftsSelectedError = false
     var selectedDates = $(".date-col.active")
-    var selectedShiftIds = []
 
-    for (var i = 0; i < selectedDates.length; i++) {
-      selectedShiftIds.push($(selectedDates[i]).attr("data-shift-id"))
-    };
+    if (selectedDates.length == 0) {
+      $scope.shiftsSelectedError = true
+    } else {
+      var selectedShiftIds = []
 
-    var shiftParams = {
-      shift_id: $stateParams.shiftId,
-      offered_shifts: selectedShiftIds
+      for (var i = 0; i < selectedDates.length; i++) {
+        selectedShiftIds.push($(selectedDates[i]).attr("data-shift-id"))
+      };
+
+      var shiftParams = {
+        shift_id: $stateParams.shiftId,
+        offered_shifts: selectedShiftIds
+      }
+      Api.offerToSwap(shiftParams)
+      Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + ". You can see it on the \"Swaps\" tab under \"Swaps Offered\"."
+      $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
     }
-    Api.offerToSwap(shiftParams)
-    Notification.message = "Swap successfully offered to " + $scope.shift_owner.first_name + ". You can see it on the \"Swaps\" tab under \"Swaps Offered\"."
-    $state.go('tab.swaps-up-for-grabs-list', {day: $scope.day}, {reload: true});
   }
 })
