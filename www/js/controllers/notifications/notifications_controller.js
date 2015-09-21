@@ -9,4 +9,9 @@ angular.module('starter.controllers')
     $scope.loader = false
     $scope.$apply()
   })
+
+  $scope.read = function($event, notificationId) {
+    $($event.target).removeClass("not-read")
+    Api.readNotifications(notificationId)
+  }
 })

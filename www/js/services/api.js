@@ -441,6 +441,16 @@ angular.module('starter.services')
     });
   }
 
+  Api.readNotifications = function(notificationId) {
+    var readNotificationsUrl = root_url + "notifications/" + notificationId + "/read"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.post(readNotificationsUrl, params).then(function(result){
+      $rootScope.$broadcast("notificationRead");
+    });
+  }
+
   // General
   // ===========================================================================
 

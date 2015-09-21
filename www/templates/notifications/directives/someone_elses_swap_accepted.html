@@ -1,4 +1,4 @@
-<a class="item item-icon-left">
+<a class="item item-icon-left" ng-href="" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
   <i class="icon ion-heart-broken notification-type-icon"></i>
   <h2>{{details.owner_name}} accepted someone else's swap offer for the {{details.shift_type}} shift you had offered to take</h2>
   <p am-time-ago="notification.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></p>

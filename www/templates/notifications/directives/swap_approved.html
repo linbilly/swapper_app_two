@@ -1,4 +1,4 @@
-<a class="item item-icon-left item-icon-right" href="#/tab/calendar/index">
+<a class="item item-icon-left item-icon-right" ng-href="#/tab/calendar/index" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
   <i class="icon ion-arrow-swap notification-type-icon"></i>
   <h2 ng-if="details.offerer_full_name">Swap approved! Your {{details.your_shift_type}} shift on {{details.your_shift_date_time}} for {{details.offerer_name_with_possessive}} {{details.offerer_shift_type}} shift on {{details.offerer_shift_date_time}}</h2>
   <h2 ng-if="details.owner_full_name">Swap approved! Your original {{details.your_shift_type}} shift on {{details.your_shift_date_time}} for {{details.owner_name_with_possessive}} {{details.owner_shift_type}} shift on {{details.owner_shift_date_time}}</h2>

@@ -1,4 +1,4 @@
-<a class="item item-icon-left item-icon-right" href="#/tab/swaps/up-for-grabs/offer/{{details.shift_id}}/{{details.day}}/new">
+<a class="item item-icon-left item-icon-right" ng-href="#/tab/swaps/up-for-grabs/offer/{{details.shift_id}}/{{details.day}}/new" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
   <i class="icon ion-android-calendar notification-type-icon"></i>
   <h2>{{details.owner_name}} put a {{details.shift_type}} shift up for grabs that you can take</h2>
   <p am-time-ago="notification.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></p>
