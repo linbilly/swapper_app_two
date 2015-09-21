@@ -82,3 +82,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('someoneElsesSwapAccepted', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/someone_elses_swap_accepted.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})
