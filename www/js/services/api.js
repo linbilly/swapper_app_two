@@ -21,8 +21,12 @@ angular.module('starter.services')
       sex: sex
     }
     $.post(createUserUrl, params).then(function(result) {
-      Api.user = result.user;
-      $rootScope.$broadcast("userCreated");
+      if (result.status == 200) {
+        Api.user = result.user;
+        $rootScope.$broadcast("userCreated");
+      } else {
+        $rootScope.$broadcast("userCreated", {error: result.message});
+      }
     });
   }
 

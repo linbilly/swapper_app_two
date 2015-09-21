@@ -198,6 +198,11 @@ a {
 
 .account-sign-up-list input {
   font-size: 16px !important; }
+.account-sign-up-list .item {
+  padding: 10px 16px !important; }
+
+.error-on-submit {
+  margin-bottom: 10px; }
 
 .detailed-group-header-holder {
   padding: 16px; }
