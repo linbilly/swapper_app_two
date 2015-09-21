@@ -7,6 +7,7 @@ angular.module('starter.controllers')
 
   $scope.createUser = function(email, firstName, lastName, password, sex) {
     if (noErrors(email, firstName, lastName, password, sex)) {
+      $scope.loader = true
       Api.createUser(email, firstName, lastName, password, sex)
     }
   }
@@ -14,10 +15,11 @@ angular.module('starter.controllers')
   $scope.$on('userCreated', function(event, args) {
     if (args && args.error) {
       $scope.emailTakenError = true
+      $scope.loader = false
       $scope.$apply()
     } else {
     	window.localStorage['token'] =  Api.user.authentication_token;
-      $state.go('tab.groups', {}, {reload: true})
+      $state.go('tab.general', {}, {reload: true})
     }
   })
 

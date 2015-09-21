@@ -2,8 +2,11 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">General</a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <div class="list account-sign-up-list">
+    <div class="list account-sign-up-list" ng-show="!loader">
       <form name="signUp">
         <div class="item item-divider">
           Please fill in
@@ -39,7 +42,7 @@
         </label>
       </form>
     </div>
-    <div class="bottom-note">
+    <div class="bottom-note" ng-show="!loader">
       <div class="error-on-submit assertive" ng-show="emailTakenError">
         Email has already been taken
       </div>
