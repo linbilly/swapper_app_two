@@ -11,13 +11,14 @@ angular.module('starter.services')
   // Users
   // ===========================================================================
 
-  Api.createUser = function(email, firstName, lastName, password) {
+  Api.createUser = function(email, firstName, lastName, password, sex) {
     var createUserUrl = root_url + "users/create"
     var params = {
       first_name: firstName,
       last_name: lastName,
       email: email,
-      password: password
+      password: password,
+      sex: sex
     }
     $.post(createUserUrl, params).then(function(result) {
       Api.user = result.user;

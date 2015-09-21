@@ -196,6 +196,9 @@ a {
     .notification-box .clear-button:before {
       content: "×"; }
 
+.account-sign-up-list input {
+  font-size: 16px !important; }
+
 .detailed-group-header-holder {
   padding: 16px; }
   .detailed-group-header-holder button {
