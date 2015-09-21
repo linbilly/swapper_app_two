@@ -77,3 +77,9 @@ a {
 .button-energized {
   color: $text-on-energized !important;
 }
+
+.notification-main-tab {
+  .badge {
+    opacity: 1 !important;
+  }
+}

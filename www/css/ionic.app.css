@@ -82,6 +82,9 @@ a {
 .button-energized {
   color: black !important; }
 
+.notification-main-tab .badge {
+  opacity: 1 !important; }
+
 .calendar-holder .row {
   padding: 0px; }
 

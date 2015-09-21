@@ -2,6 +2,7 @@ angular.module('starter.controllers')
 
 .controller('NotificationsCtrl', function($scope, Api) {
   Api.getNotifications()
+  Api.numUnreadNotifications()
   $scope.loader = true
 
   $scope.$on('notificationsFetched', function(event, args) {

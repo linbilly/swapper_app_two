@@ -24,7 +24,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/comment.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -33,7 +33,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/join_group.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -42,7 +42,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/swap_offered.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -51,7 +51,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/swap_accepted.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -60,7 +60,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/swap_approved.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -69,7 +69,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/shift_available.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -78,7 +78,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/swap_cancelled.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -87,7 +87,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/someone_elses_swap_accepted.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })
@@ -96,7 +96,7 @@ angular.module('starter')
   return {
     templateUrl: "templates/notifications/directives/swap_offers_cancelled.html",
     link: function(scope, element, attrs) {
-      scope.details = JSON.parse(scope.notification.details)
+      scope.details = scope.notification.details
     }
   }
 })

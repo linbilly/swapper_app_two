@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.service('Api', function($http, $rootScope, General) {
+.service('Api', function($http, $rootScope, General, Notification) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
@@ -441,13 +441,25 @@ angular.module('starter.services')
     });
   }
 
+  Api.numUnreadNotifications = function() {
+    var numUnreadNotificationsUrl = root_url + "notifications/num-unread"
+    var params = {
+      authentication_token: userToken()
+    }
+    $.get(numUnreadNotificationsUrl, params).then(function(result){
+      Notification.numUnread = result.num_unread
+      $rootScope.$broadcast("numUnreadNotificationsFetched");
+    });
+  }
+
   Api.readNotifications = function(notificationId) {
     var readNotificationsUrl = root_url + "notifications/" + notificationId + "/read"
     var params = {
       authentication_token: userToken()
     }
     $.post(readNotificationsUrl, params).then(function(result){
-      $rootScope.$broadcast("notificationRead");
+      Notification.numUnread = result.num_unread
+      $rootScope.$broadcast("notificationMarkedAsRead");
     });
   }
 
@@ -457,9 +469,9 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "Rr_ih_i48sqvs_xEPFwE" // Localhost User 1
-    // return "8f9GyWNe1VxNbWbvnCVS" // Localhost User 2
-    // return "q_-9kQ_-Aj7ojDuKWR7Q" // Localhost User 3
+    // return "99X9BVxbb4uRzt_e_1ax" // Localhost User 1
+    return "SjLAzB4rfeAm16ACn1x1" // Localhost User 2
+    // return "sHL-aDWp7Uyr9S6zayKY" // Localhost User 3
 
     // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
     // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
