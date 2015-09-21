@@ -91,3 +91,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('swapOffersCancelled', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/swap_offers_cancelled.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})
