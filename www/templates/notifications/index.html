@@ -1,4 +1,4 @@
-<ion-view view-title="Notifications">
+<ion-view view-title="Notifications" cache-view="false">
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
@@ -11,6 +11,7 @@
           <swap-offered ng-model="notification" ng-if="notification.category == 'SwapOffered'"></swap-offered>
           <swap-accepted ng-model="notification" ng-if="notification.category == 'SwapAccepted'"></swap-accepted>
           <swap-approved ng-model="notification" ng-if="notification.category == 'SwapApproved'"></swap-approved>
+          <shift-available ng-model="notification" ng-if="notification.category == 'ShiftAvailable'"></shift-available>
         </div>
       </div>
       <div ng-if="notifications.length == 0">

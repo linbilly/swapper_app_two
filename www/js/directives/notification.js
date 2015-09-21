@@ -55,3 +55,21 @@ angular.module('starter')
     }
   }
 })
+
+.directive('swapApproved', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/swap_approved.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})
+
+.directive('shiftAvailable', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/shift_available.html",
+    link: function(scope, element, attrs) {
+      scope.details = JSON.parse(scope.notification.details)
+    }
+  }
+})

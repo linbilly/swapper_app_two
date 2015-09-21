@@ -442,9 +442,9 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "mG7TFZSrdyGfuuC3GJPu" // Localhost User 1
-    // return "CLLVuZ7NxhnzCFurnpbK" // Localhost User 2
-    // return "tc-sMosdUUjs4N47xT5D" // Localhost User 3
+    // return "nTX3t6FSsQPSq2Dn9dMP" // Localhost User 1
+    return "1GbXAogr2nhzy2GMsb2H" // Localhost User 2
+    // return "y_Ed-PaC3FSadsw-Sm-L" // Localhost User 3
 
     // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
     // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
