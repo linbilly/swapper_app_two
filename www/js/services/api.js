@@ -206,6 +206,8 @@ angular.module('starter.services')
         "swappableShiftsFetched",
         {
           shifts: Api.shiftsSwappable,
+          already_offered_swap: result.already_offered_swap,
+          offered_swap: result.offered_swap,
           cannot_swap_shift_dates: result.cannot_swap_shift_dates,
           shifts_already_accepted: result.shifts_already_accepted,
           shift_owner: result.shift_owner,
@@ -469,8 +471,8 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "99X9BVxbb4uRzt_e_1ax" // Localhost User 1
-    // return "SjLAzB4rfeAm16ACn1x1" // Localhost User 2
+    // return "99X9BVxbb4uRzt_e_1ax" // Localhost User 1
+    return "SjLAzB4rfeAm16ACn1x1" // Localhost User 2
     // return "sHL-aDWp7Uyr9S6zayKY" // Localhost User 3
 
     // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
