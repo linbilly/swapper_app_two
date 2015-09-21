@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOfferedDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
+.controller('SwapsOfferedDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   Api.swapsOffered()
@@ -13,7 +13,7 @@ angular.module('starter.controllers')
   });
 
   function setupView() {
-    $timeout(function() {
+    $scope.setupInterval = $interval(function() {
       if ($scope.swap.state == "Pending approval") {
         addSwapIconToAcceptedSwap()
       } else {
@@ -21,7 +21,10 @@ angular.module('starter.controllers')
       }
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
-    }, 1000)
+      if ($(".ion-star").length > 0) {
+        $interval.cancel($scope.setupInterval)
+      }
+    }, 100)
   }
 
   function setSwapAndShifts() {
