@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsEditOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
+.controller('SwapsEditOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
 
@@ -21,11 +21,14 @@ angular.module('starter.controllers')
     if ($scope.swap) {
       $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
       $scope.loader = false
-      $timeout(function() {
+      $scope.setupInterval = $interval(function() {
         Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
         Calendar.goToRightDefaultSlide($scope.day)
         highlightSwapsBeingOffered()
-      }, 1000)
+        if ($(".ion-star").length > 0) {
+          $interval.cancel($scope.setupInterval)
+        }
+      }, 100)
     } else {
       // In case user was still on this page when shift was removed
       $state.go('tab.swaps', {}, {reload: true});

@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, Api, Calendar, General, ShiftType, Notification) {
+.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, $interval, Api, Calendar, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.shiftsSelectedError = false
@@ -20,10 +20,13 @@ angular.module('starter.controllers')
     $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
-    $timeout(function() {
+    $scope.setupInterval = $interval(function() {
       Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
       Calendar.goToRightDefaultSlide($scope.day)
-    }, 1000)
+      if ($(".ion-star").length > 0) {
+        $interval.cancel($scope.setupInterval)
+      }
+    }, 100)
   })
 
   $scope.multipleDatesSelected = function($event) {
