@@ -10,6 +10,17 @@ angular.module('starter.services')
     var currentSlide = $($("ion-slide")[$ionicSlideBoxDelegate.currentIndex()])
     var visibleSelected = currentSlide.find(".col.date-col.active")
     Calendar.updateSwapButtonStatus(visibleSelected)
+    updateNotes(visibleSelected)
+  }
+
+  function updateNotes(ele) {
+    var notes = ele.attr("data-notes")
+    if (notes) {
+      $(".notes-display .actual-note").text(notes)
+      Calendar.emptyNote = false
+    } else {
+      Calendar.emptyNote = true
+    }
   }
 
   Calendar.highlightNextDay = function() {

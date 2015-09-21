@@ -1,7 +1,9 @@
 .notes-display {
-  padding: 10px 10px 0px 10px;
+  // padding: 10px 10px 0px 10px;
+  padding: 10px;
+  border: 1px solid lightgrey;
 
   .empty-notes {
-    color: transparent;
+    color: lightgrey;
   }
 }
