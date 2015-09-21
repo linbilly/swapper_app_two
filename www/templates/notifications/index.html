@@ -12,6 +12,7 @@
           <swap-accepted ng-model="notification" ng-if="notification.category == 'SwapAccepted'"></swap-accepted>
           <swap-approved ng-model="notification" ng-if="notification.category == 'SwapApproved'"></swap-approved>
           <shift-available ng-model="notification" ng-if="notification.category == 'ShiftAvailable'"></shift-available>
+          <swap-cancelled ng-model="notification" ng-if="notification.category == 'SwapCancelled'"></swap-cancelled>
         </div>
       </div>
       <div ng-if="notifications.length == 0">
