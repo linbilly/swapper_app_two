@@ -57,7 +57,7 @@
       </div>
 
     </div>
-    <div class="list" ng-if="!loader && shift.swaps && shift.swaps.length > 0">
+    <div class="list" ng-show="!loader" ng-if="shift.swaps && shift.swaps.length > 0">
 
       <div ng-controller="CalendarCtrl" class="calender-display">
         <div class="calendar-holder" ng-if="calendarObjects">

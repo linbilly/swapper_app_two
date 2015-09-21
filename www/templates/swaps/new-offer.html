@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div ng-controller="CalendarCtrl" class="calender-display">
+    <div ng-controller="CalendarCtrl" class="calender-display" ng-show="!loader">
       <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
           <ion-slide ng-repeat="month in calendarObjects">
