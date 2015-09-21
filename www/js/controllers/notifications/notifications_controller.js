@@ -15,4 +15,11 @@ angular.module('starter.controllers')
     $($event.target).removeClass("not-read")
     Api.readNotifications(notificationId)
   }
+
+  $scope.onlyMarkAsRead = function($event, notificationId) {
+    $event.preventDefault()
+    $($event.target).parents(".item").removeClass("not-read")
+    $($event.target).parents(".mark-as-read-holder").remove()
+    Api.readNotifications(notificationId)
+  }
 })

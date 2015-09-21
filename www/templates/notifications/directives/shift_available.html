@@ -1,6 +1,6 @@
 <a class="item item-icon-left item-icon-right" ng-href="#/tab/swaps/up-for-grabs/offer/{{details.shift_id}}/{{details.day}}/new" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
   <i class="icon ion-android-calendar notification-type-icon"></i>
   <h2>{{details.owner_name}} put a {{details.shift_type}} shift up for grabs on {{details.shift_date_time}} that you can take</h2>
-  <p am-time-ago="notification.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></p>
+  <p><span am-time-ago="notification.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></span><span class="mark-as-read-holder" ng-if="!notification.read"> - <span ng-click="onlyMarkAsRead($event, notification.id)">mark as read</span></span></p>
   <i class="icon ion-chevron-right icon-accessory"></i>
 </a>
