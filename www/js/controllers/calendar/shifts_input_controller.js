@@ -3,6 +3,9 @@ angular.module('starter.controllers')
 .controller('ShiftsInputCtrl', function($rootScope, $scope, $ionicPopover, $ionicNavBarDelegate, Api, Calendar, General) {
   $ionicNavBarDelegate.showBackButton(false)
 
+  $scope.calendar = Calendar
+  $scope.calendar.emptyNote = true
+
   Api.getShiftPatterns()
 
   $scope.$on('shiftTypesFetched', function(event, args) {
@@ -146,6 +149,7 @@ angular.module('starter.controllers')
       $(selectedCells[i]).attr("data-shift-id", args.shift.id)
       $(selectedCells[i]).attr("data-swappable", args.shift_type.swappable)
       $(selectedCells[i]).attr("data-start-time", General.formatStartTime(args.shift_type))
+      debugger
       $(selectedCells[i]).attr("data-notes", args.shift.group.name)
     };
   });

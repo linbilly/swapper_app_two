@@ -2,8 +2,6 @@ var app = angular.module('starter.controllers')
 
 app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, Api, Calendar) {
   $scope.dateYear = Calendar.dateYear()
-  $scope.calendar = Calendar
-  $scope.calendar.emptyNote = true
 
   if (Calendar.needReload($scope.dateYear)) {
     $scope.loader = true

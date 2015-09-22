@@ -50,12 +50,13 @@
       </div>
     </div>
 
-    <div class="notes-display">
-      <div class="empty-notes" ng-show="calendar.emptyNote">Notes</div>
-      <div class="actual-note" ng-show="!calendar.emptyNote"></div>
-    </div>
 
     <div class="shifts-input input-tab-contents" ng-controller="ShiftsInputCtrl" ng-show="!loader">
+      <div class="notes-display" ng-if="numKeys() > 1">
+        <div class="empty-notes" ng-show="calendar.emptyNote">Notes</div>
+        <div class="actual-note" ng-show="!calendar.emptyNote"></div>
+      </div>
+
       <div class="shift-input-buttons-holder">
         <div class="bottom-block">
 
