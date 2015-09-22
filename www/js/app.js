@@ -182,6 +182,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.group-create-countries', {
+    url: '/general/groups/create/countries',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/groups/countries.html',
+        controller: 'GroupCreateCountriesCtrl'
+      }
+    }
+  })
+
   .state('tab.group-detail', {
     url: '/general/groups/:groupId',
     views: {

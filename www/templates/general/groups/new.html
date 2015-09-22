@@ -1,4 +1,4 @@
-<ion-view view-title="Create Group">
+<ion-view view-title="Create Group" cache-view="false">
   <ion-nav-buttons side="left" >
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/index">Groups</a>
   </ion-nav-buttons>
@@ -8,6 +8,11 @@
         <span class="input-label">Group Name</span>
         <input type="text" placeholder="E.g. St. Paul's Cardiac Unit" ng-model="groupTitle">
       </label>
+      <a class="item item-icon-right" ng-href="#/tab/general/groups/create/countries" ng-click="storeGroupTitle(groupTitle)">
+        <h2>Country</h2>
+        <p>{{country}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
     </div>
 
     <div class="bottom-note">
