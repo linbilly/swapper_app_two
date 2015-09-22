@@ -1,0 +1,18 @@
+<ion-view view-title="Provinces" cache-view="false">
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/create">Back</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+
+      <label class="item item-radio" ng-repeat="province in provinces" ng-click="provinceSelected(province.name, province.id)">
+        <input type="radio" name="all-countries" ng-model="provinceName" value="province.id">
+        <div class="item-content">
+          {{province.name}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+
+    </div>
+  </ion-content>
+</ion-view>

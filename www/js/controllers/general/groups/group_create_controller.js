@@ -5,6 +5,8 @@ angular.module('starter.controllers')
 
   displayGroupTitle()
   displayCountry()
+  displayProvince()
+  displayState()
 
   function displayGroupTitle() {
     if (Group.groupTitle) {
@@ -17,8 +19,27 @@ angular.module('starter.controllers')
   function displayCountry() {
     if (Locations.selectedCountryName) {
       $scope.country = Locations.selectedCountryName
+      $scope.countryId = Locations.selectedCountryId
     } else {
       $scope.country = "Please select"
+    }
+  }
+
+  function displayProvince() {
+    if (Locations.selectedProvinceName) {
+      $scope.province = Locations.selectedProvinceName
+      $scope.provinceId = Locations.selectedProvinceId
+    } else {
+      $scope.province = "Please select"
+    }
+  }
+
+  function displayState() {
+    if (Locations.selectedStateName) {
+      $scope.state = Locations.selectedStateName
+      $scope.stateId = Locations.selectedStateId
+    } else {
+      $scope.state = "Please select"
     }
   }
 

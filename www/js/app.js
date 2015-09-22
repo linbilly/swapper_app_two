@@ -192,6 +192,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.group-create-provinces', {
+    url: '/general/groups/create/provinces',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/groups/provinces.html',
+        controller: 'GroupCreateProvincesCtrl'
+      }
+    }
+  })
+
+  .state('tab.group-create-states', {
+    url: '/general/groups/create/states',
+    views: {
+      'tab-general': {
+        templateUrl: 'templates/general/groups/states.html',
+        controller: 'GroupCreateStatesCtrl'
+      }
+    }
+  })
+
   .state('tab.group-detail', {
     url: '/general/groups/:groupId',
     views: {

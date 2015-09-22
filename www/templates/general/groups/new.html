@@ -13,6 +13,16 @@
         <p>{{country}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </a>
+      <a class="item item-icon-right" ng-href="#/tab/general/groups/create/provinces" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'ca'">
+        <h2>Province</h2>
+        <p>{{province}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+      <a class="item item-icon-right" ng-href="#/tab/general/groups/create/states" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'us'">
+        <h2>State</h2>
+        <p>{{state}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
     </div>
 
     <div class="bottom-note">
