@@ -45,12 +45,9 @@ angular.module('starter.services')
     });
   }
 
-  Api.createGroup = function(groupName) {
+  Api.createGroup = function(params) {
     var createGroupUrl = root_url + "groups/create"
-    var params = {
-      authentication_token: userToken(),
-      name: groupName
-    }
+    params["authentication_token"] = userToken()
     $.post(createGroupUrl, params).then(function(result){
       $rootScope.$broadcast("groupCreated");
     });

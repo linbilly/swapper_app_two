@@ -47,7 +47,15 @@ angular.module('starter.controllers')
   $scope.createGroup = function (groupName){
     clearErrors()
     if (noErrors(groupName)) {
-      Api.createGroup(groupName)
+      var params = {
+        group_name: groupName,
+        country: Locations.selectedCountryName,
+        country_code: Locations.selectedCountryId,
+        province_state: provinceState(),
+        province_state_code: provinceStateId()
+      }
+
+      Api.createGroup(params)
       Notification.message = groupName + " successfully created."
       clearAllSavedValues()
       $state.go('tab.groups', {}, {reload: true});
@@ -120,6 +128,26 @@ angular.module('starter.controllers')
       }
     } else {
       return true
+    }
+  }
+
+  function provinceState() {
+    if (Locations.selectedProvinceName) {
+      return Locations.selectedProvinceName
+    } else if (Locations.selectedStateName) {
+      return Locations.selectedStateName
+    } else {
+      return null
+    }
+  }
+
+  function provinceStateId() {
+    if (Locations.selectedProvinceId) {
+      return Locations.selectedProvinceId
+    } else if (Locations.selectedStateId) {
+      return Locations.selectedStateId
+    } else {
+      return null
     }
   }
 })
