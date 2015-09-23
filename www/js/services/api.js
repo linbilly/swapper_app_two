@@ -187,6 +187,7 @@ angular.module('starter.services')
     }
     $.get(getAllShiftsUrl, params).then(function(result) {
       Api.shifts = makeShiftsEasyToQuery(JSON.parse(result.shifts))
+      Api.holidays = result.holidays
       $rootScope.$broadcast("shiftsFetched", {shifts: Api.shifts, available_shifts: result.available_shifts})
     });
   }

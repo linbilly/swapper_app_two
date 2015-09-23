@@ -73,6 +73,11 @@ angular.module('starter.services')
     return result[0]
   }
 
+  General.findByDate = function(arr, date) {
+    var result = $.grep(arr, function(e){ return e.date == date; });
+    return result[0]
+  }
+
   General.stringDateToWords = function(startDate) {
     return General.abbreviatedMonth(startDate) + " " + General.dateFromString(startDate) + ", " + startDate.split("-")[0]
   }

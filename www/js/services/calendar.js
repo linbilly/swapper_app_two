@@ -136,6 +136,7 @@ angular.module('starter.services')
           if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
+          var holiday = General.findByDate(Api.holidays, dateAsString)
 
           row.push({
             dayNum: tempDate.getDate(),
@@ -145,7 +146,8 @@ angular.module('starter.services')
             dateAsString: dateAsString,
             shift: shift,
             availableShifts: availableShifts[dateAsString],
-            canOfferAsSwap: canOfferAsSwap
+            canOfferAsSwap: canOfferAsSwap,
+            holiday: holiday
           })
         };
 
@@ -156,6 +158,7 @@ angular.module('starter.services')
           if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
+          var holiday = General.findByDate(Api.holidays, dateAsString)
 
           row.push({
             dayNum: dayCount,
@@ -165,7 +168,8 @@ angular.module('starter.services')
             dateAsString: dateAsString,
             shift: shifts[dateAsString],
             availableShifts: availableShifts[dateAsString],
-            canOfferAsSwap: canOfferAsSwap
+            canOfferAsSwap: canOfferAsSwap,
+            holiday: holiday
           })
           dayCount += 1
         };
@@ -182,6 +186,7 @@ angular.module('starter.services')
             if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
+            var holiday = General.findByDate(Api.holidays, dateAsString)
 
             row.push({
               dayNum: dayCount,
@@ -191,7 +196,8 @@ angular.module('starter.services')
               dateAsString: dateAsString,
               shift: shifts[dateAsString],
               availableShifts: availableShifts[dateAsString],
-              canOfferAsSwap: canOfferAsSwap
+              canOfferAsSwap: canOfferAsSwap,
+              holiday: holiday
             })
             dayCount += 1
 
@@ -204,6 +210,7 @@ angular.module('starter.services')
             if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
+            var holiday = General.findByDate(Api.holidays, dateAsString)
 
             row.push({
               dayNum: nextMonthDayCount,
@@ -213,7 +220,8 @@ angular.module('starter.services')
               dateAsString: dateAsString,
               shift: shifts[dateAsString],
               availableShifts: availableShifts[dateAsString],
-              canOfferAsSwap: canOfferAsSwap
+              canOfferAsSwap: canOfferAsSwap,
+              holiday: holiday
             })
             nextMonthDayCount += 1
           }
