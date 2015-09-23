@@ -10,8 +10,11 @@
     <div class="detailed-group-header-holder">
       <div class="title">
         <h4>
-          {{groupName}}
+          {{group.name}}
         </h4>
+        <p>
+          Located in: <span ng-if="group.province_state">{{group.province_state}}, </span>{{group.country}}
+        </p>
       </div>
       <div>
         {{message}}

@@ -7,7 +7,7 @@ angular.module('starter.controllers')
   Api.groupDetails($stateParams.groupId)
 
   $scope.$on('groupDetailsFetched', function() {
-    $scope.groupName = Api.group.name
+    $scope.group = Api.group
     $scope.users = Api.groupUsers
     $scope.loader = false
     $scope.buttonClicked = false
