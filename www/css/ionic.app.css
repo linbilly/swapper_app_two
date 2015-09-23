@@ -149,6 +149,8 @@ a {
   color: #BEEB9F; }
 .dates .date-col.cannot-offer-as-swap {
   background-color: #f8f8f8; }
+.dates .date-col.holiday {
+  color: red !important; }
 .dates .date-col .num-shifts-available-on-calendar-holder a {
   text-decoration: none;
   color: black; }

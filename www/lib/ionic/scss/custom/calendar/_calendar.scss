@@ -105,6 +105,10 @@
       // color: white !important;
     }
 
+    &.holiday {
+      color: $assertive !important;
+    }
+
     .num-shifts-available-on-calendar-holder {
       a {
         text-decoration: none;

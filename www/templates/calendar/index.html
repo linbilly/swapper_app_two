@@ -35,7 +35,7 @@
               <div class="row" ng-repeat="row in month.rows">
                 <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap, 'holiday': date.holiday}" ng-click="dateSelected($event)" data-date="{{date.dayNum}}-{{date.month}}-{{date.year}}" data-shift-id="{{date.shift.id}}" data-start-time="{{formatStartTime(date.shift)}}" data-notes="{{date.shift.group.name}}" data-swappable="{{date.shift.shift_type.swappable}}" data-holiday="{{date.holiday.name}}">
                   <div class="date-number">
-                    {{date.dayNum}}
+                    {{date.dayNum}}<span ng-if="date.holiday">*</span>
                   </div>
                   <div class="content-text">
                     <div ng-if="date.shift">
