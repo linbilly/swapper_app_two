@@ -26,6 +26,18 @@
     </div>
 
     <div class="bottom-note">
+      <div class="error-on-submit assertive" ng-show="groupNameError">
+        Please enter a group name
+      </div>
+      <div class="error-on-submit assertive" ng-show="countryError">
+        Please select a country
+      </div>
+      <div class="error-on-submit assertive" ng-show="provinceError">
+        Please select a province
+      </div>
+      <div class="error-on-submit assertive" ng-show="stateError">
+        Please select a state
+      </div>
       <div class="text-before-submit">
         You will be an admin in this group.
       </div>
