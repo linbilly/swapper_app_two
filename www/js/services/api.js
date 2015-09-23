@@ -39,7 +39,7 @@ angular.module('starter.services')
       authentication_token: userToken()
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
-      Api.groups = JSON.parse(result.groups)
+      Api.groups = result.groups
       makeGroupsEasyToQuery()
       $rootScope.$broadcast("groupsFetched", {userId: result.user_id});
     });
@@ -468,9 +468,9 @@ angular.module('starter.services')
   function userToken() {
     // return window.localStorage['token']
     
-    return "99X9BVxbb4uRzt_e_1ax" // Localhost User 1
-    // return "SjLAzB4rfeAm16ACn1x1" // Localhost User 2
-    // return "ZBmNJbN7TxysrgsaFkaQ" // Localhost User 3
+    return "KHTTusxPysFNxPtYhxFe" // Localhost User 1
+    // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
+    // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
     // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
     // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
