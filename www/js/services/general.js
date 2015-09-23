@@ -73,9 +73,15 @@ angular.module('starter.services')
     return result[0]
   }
 
-  General.findByDate = function(arr, date) {
+  General.findByHolidayDate = function(arr, date) {
     var result = $.grep(arr, function(e){ return e.date == date; });
-    return result[0]
+    var holidays = []
+    for (var i = 0; i < result.length; i++) {
+      if ($.inArray(result[i].name, holidays) == -1) {
+        holidays.push(result[i].name)
+      }
+    };
+    return holidays.join(", ")
   }
 
   General.stringDateToWords = function(startDate) {

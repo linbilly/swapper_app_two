@@ -145,7 +145,7 @@ angular.module('starter.services')
           if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
-          var holiday = General.findByDate(Api.holidays, dateAsString)
+          var holiday = General.findByHolidayDate(Api.holidays, dateAsString)
 
           row.push({
             dayNum: tempDate.getDate(),
@@ -167,7 +167,7 @@ angular.module('starter.services')
           if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
             canOfferAsSwap = true
           }
-          var holiday = General.findByDate(Api.holidays, dateAsString)
+          var holiday = General.findByHolidayDate(Api.holidays, dateAsString)
 
           row.push({
             dayNum: dayCount,
@@ -195,7 +195,7 @@ angular.module('starter.services')
             if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
-            var holiday = General.findByDate(Api.holidays, dateAsString)
+            var holiday = General.findByHolidayDate(Api.holidays, dateAsString)
 
             row.push({
               dayNum: dayCount,
@@ -219,7 +219,7 @@ angular.module('starter.services')
             if (shift && shift.shift_type.swappable && inFuture(todayAsString, dateAsString) && !General.inArray(dateAsString, Calendar.cannot_swap_shift_dates) && !General.inArray(shift.id, Calendar.shifts_already_accepted)) {
               canOfferAsSwap = true
             }
-            var holiday = General.findByDate(Api.holidays, dateAsString)
+            var holiday = General.findByHolidayDate(Api.holidays, dateAsString)
 
             row.push({
               dayNum: nextMonthDayCount,
