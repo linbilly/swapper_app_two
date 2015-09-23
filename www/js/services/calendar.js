@@ -10,13 +10,22 @@ angular.module('starter.services')
     var currentSlide = $($("ion-slide")[$ionicSlideBoxDelegate.currentIndex()])
     var visibleSelected = currentSlide.find(".col.date-col.active")
     Calendar.updateSwapButtonStatus(visibleSelected)
-    updateNotes(visibleSelected)
+    Calendar.updateNotes(visibleSelected)
   }
 
-  function updateNotes(ele) {
-    var notes = ele.attr("data-notes")
-    if (notes) {
-      $(".notes-display .actual-note").text(notes)
+  Calendar.updateNotes = function(ele) {
+    var holiday = ele.attr("data-holiday")
+    var groupName = ele.attr("data-group-name")
+    var note = null
+
+    if (holiday) {
+      note = holiday + "<br>" + groupName
+    } else if (groupName) {
+      note = groupName
+    }
+
+    if (note) {
+      $(".notes-display .actual-note").html(note)
       Calendar.emptyNote = false
     } else {
       Calendar.emptyNote = true

@@ -26,7 +26,7 @@ angular.module('starter.controllers')
       $(selectedCells[i]).addClass("active")
     };
     
-    updateNotes(ele)
+    Calendar.updateNotes(ele)
     Calendar.updateSwapButtonStatus(ele)
   }
 
@@ -37,7 +37,7 @@ angular.module('starter.controllers')
       removeAllHighlightedCells()
       var nextDay = currentSlide.find(".col.date-col").first()
       nextDay.addClass("active")
-      updateNotes(hightlightedCell)
+      Calendar.updateNotes(hightlightedCell)
       Calendar.updateSwapButtonStatus(nextDay)
     }
   }
@@ -54,15 +54,5 @@ angular.module('starter.controllers')
   $scope.formatStartTime = function(shift) {
     var str = General.formatStartTimeFromCalendar(shift)
     return str
-  }
-
-  function updateNotes(ele) {
-    var notes = ele.attr("data-notes")
-    if (notes) {
-      $(".notes-display .actual-note").text(notes)
-      Calendar.emptyNote = false
-    } else {
-      Calendar.emptyNote = true
-    }
   }
 })

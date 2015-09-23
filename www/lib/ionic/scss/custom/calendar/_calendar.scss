@@ -80,6 +80,10 @@
       position: absolute;
       top: 2px;
       left: 2px;
+
+      &.holiday {
+        color: $assertive !important;
+      }
     }
     
     .content-text {
@@ -103,10 +107,6 @@
     &.cannot-offer-as-swap {
       background-color: #f8f8f8;
       // color: white !important;
-    }
-
-    &.holiday {
-      color: $assertive !important;
     }
 
     .num-shifts-available-on-calendar-holder {

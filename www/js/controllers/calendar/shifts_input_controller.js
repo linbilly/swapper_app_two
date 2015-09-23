@@ -149,8 +149,7 @@ angular.module('starter.controllers')
       $(selectedCells[i]).attr("data-shift-id", args.shift.id)
       $(selectedCells[i]).attr("data-swappable", args.shift_type.swappable)
       $(selectedCells[i]).attr("data-start-time", General.formatStartTime(args.shift_type))
-      debugger
-      $(selectedCells[i]).attr("data-notes", args.shift.group.name)
+      $(selectedCells[i]).attr("data-group-name", args.shift.group.name)
     };
   });
 
