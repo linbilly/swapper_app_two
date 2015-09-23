@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.states = Locations.states()
+  $scope.stateName = Locations.selectedStateName
 
   $scope.stateSelected = function(stateName, stateId) {
     Locations.selectedStateName = stateName

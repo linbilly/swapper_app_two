@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
 
   $scope.countries = Locations.countries()
+  $scope.countryName = Locations.selectedCountryName
 
   $scope.countrySelected = function(countryName, countryId) {
     Locations.selectedCountryName = countryName

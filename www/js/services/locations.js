@@ -63,7 +63,9 @@ angular.module('starter.services')
       { id: 'ns', name: 'Nova Scotia' },
       { id: 'pe', name: 'Prince Edward Island' },
       { id: 'nl', name: 'Newfoundland and Labrador' },
-      { id: 'other', name: 'Other' }
+      { id: 'yt', name: 'Yukon' },
+      { id: 'nt', name: 'Northwest Territories' },
+      { id: 'nu', name: 'Nunavut' }
     ]
   }
 
@@ -77,6 +79,7 @@ angular.module('starter.services')
       { id: 'co', name: 'Colorado' },
       { id: 'ct', name: 'Connecticut' },
       { id: 'de', name: 'Delaware' },
+      { id: 'de', name: 'District of Columbia' },
       { id: 'fl', name: 'Florida' },
       { id: 'ga', name: 'Georgia' },
       { id: 'hi', name: 'Hawaii' },
@@ -112,14 +115,14 @@ angular.module('starter.services')
       { id: 'sd', name: 'South Dakota' },
       { id: 'tn', name: 'Tennessee' },
       { id: 'tx', name: 'Texas' },
+      { id: 'other', name: 'United States Territory' },
       { id: 'ut', name: 'Utah' },
       { id: 'vt', name: 'Vermont' },
       { id: 'va', name: 'Virginia' },
       { id: 'wa', name: 'Washington' },
       { id: 'wv', name: 'West Virginia' },
       { id: 'wi', name: 'Wisconsin' },
-      { id: 'wy', name: 'Wyoming' },
-      { id: 'other', name: 'Other' }
+      { id: 'wy', name: 'Wyoming' }
     ]
   }
 

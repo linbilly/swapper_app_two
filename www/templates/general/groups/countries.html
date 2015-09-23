@@ -6,7 +6,7 @@
     <div class="list">
 
       <label class="item item-radio" ng-repeat="country in countries" ng-click="countrySelected(country.name, country.id)">
-        <input type="radio" name="all-countries" ng-model="countryName" value="country.id">
+        <input type="radio" name="all-countries" value="country.id" ng-checked="countryName == country.name">
         <div class="item-content">
           {{country.name}}
         </div>

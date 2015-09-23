@@ -46,11 +46,21 @@ angular.module('starter.controllers')
   $scope.createGroup = function (groupName){
     Api.createGroup(groupName)
     Notification.message = groupName + " successfully created."
-    Group.groupTitle = null
+    clearAllSavedValues()
     $state.go('tab.groups', {}, {reload: true});
   }
 
   $scope.storeGroupTitle = function(groupTitle) {
     Group.groupTitle = groupTitle
+  }
+
+  function clearAllSavedValues() {
+    Group.groupTitle = null
+    Locations.selectedCountryName = null
+    Locations.selectedCountryId = null
+    Locations.selectedProvinceName = null
+    Locations.selectedProvinceId = null
+    Locations.selectedStateName = null
+    Locations.selectedStateId = null
   }
 })
