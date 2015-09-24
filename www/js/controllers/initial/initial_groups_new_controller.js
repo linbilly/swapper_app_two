@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 .controller('InitialGroupsNewCtrl', function($scope, $state, $ionicNavBarDelegate, Api, Notification, Locations, Group) {
   $ionicNavBarDelegate.showBackButton(false)
   Api.initialSignUp = true
-  
+
   clearErrors()
 
   displayGroupTitle()
@@ -59,8 +59,6 @@ angular.module('starter.controllers')
 
       Api.createGroup(params)
       clearAllSavedValues()
-
-      Api.initialSignUp = false
       $state.go('tab.calendar', {}, {reload: true});
     }
   }

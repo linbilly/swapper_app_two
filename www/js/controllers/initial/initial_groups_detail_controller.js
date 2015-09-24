@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('InitialGroupsDetailCtrl', function($scope, $stateParams, $ionicNavBarDelegate, Api) {
+.controller('InitialGroupsDetailCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Api) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.buttonClicked = false
@@ -30,15 +30,7 @@ angular.module('starter.controllers')
     Api.joinGroup($stateParams.groupId)
   }
 
-  $scope.$on(['groupJoined'], function() {
-    Api.groupDetails($stateParams.groupId)
-  });
-
-  $scope.leaveGroup = function() {
-    Api.leaveGroup($stateParams.groupId)
-  }
-
-  $scope.$on('leftGroup', function() {
-    Api.groupDetails($stateParams.groupId)
+  $scope.$on('groupJoined', function() {
+    $state.go("tab.calendar")
   });
 })

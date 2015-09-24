@@ -2,7 +2,12 @@ var app = angular.module('starter.controllers')
 
 app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, $ionicModal, Api, Calendar) {
   $scope.dateYear = Calendar.dateYear()
-  // $scope.shiftType = ShiftType
+
+  if (Api.initialSignUp) {
+    swal("You're good to go!", "Now input your shifts to start swapping", "success")
+    $("fieldset").addClass("hide")
+    Api.initialSignUp = false
+  }
 
   if (Calendar.needReload($scope.dateYear)) {
     $scope.loader = true
