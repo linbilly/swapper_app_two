@@ -169,6 +169,7 @@ angular.module('starter.services')
 
           Api.inputButtonsByGroup[group.name].push({
             abbreviation: shiftType.abbreviation,
+            name: shiftType.name,
             id: shiftType.id,
             groupId: group.id
           })

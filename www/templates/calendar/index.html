@@ -1,10 +1,11 @@
 <ion-view view-title="Calendar" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a class="button button-icon icon ion-information-circled" ng-click="openLengendModal()"></a>
+  </ion-nav-buttons>
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
-
   <ion-content>
-
     <div ng-controller="CalendarCtrl" class="calender-display">
       <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="3" on-slide-changed="highlightACell()">

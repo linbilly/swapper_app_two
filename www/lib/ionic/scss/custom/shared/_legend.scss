@@ -1,0 +1,39 @@
+.close-legend-modal-button {
+  border: none !important;
+}
+
+.legend-modal {
+  padding: 15px;
+
+  h4 {
+    margin-left: 5px;
+  }
+
+  .legend-row {
+    margin-bottom: 10px;
+  }
+
+  .sample-date {
+    width: 50px;
+    height: 50px;
+    border: 1px solid lightgrey;
+    padding-left: 3px;
+    position: relative;
+
+    .top-date {
+      position: absolute;
+      left: 3px;
+
+      &.holiday {
+        color: $assertive !important;
+      }
+    }
+
+    .date-content {
+      text-align: center;
+      padding-top: 20px;
+      margin-left: -2px;
+      font-size: 20px;
+    }
+  }
+}
