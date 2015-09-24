@@ -468,7 +468,7 @@ angular.module('starter.services')
   // ===========================================================================
 
   Api.userToken = function() {
-    // return window.localStorage['token']
+    return window.localStorage['token']
     
     // return "KHTTusxPysFNxPtYhxFe" // Localhost User 1
     // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
@@ -478,7 +478,8 @@ angular.module('starter.services')
     // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
     // return "77uiN2ARUxHV_C-p492z" // Heroku User 3
 
-    return null
+    // return null
+    // localStorage.removeItem(key);
   }
 
   return Api;

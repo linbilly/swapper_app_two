@@ -24,10 +24,6 @@ angular.module('starter.controllers', [])
     }
   }
 
-  $scope.hasToken = function() {
-    return hasToken()
-  }
-
   function hasToken() {
     if (Api.userToken()) {
       return true

@@ -137,6 +137,11 @@ a {
     text-align: center;
     text-decoration: none; }
 
+.initial-sign-up-page .scroll-content {
+  height: 100%; }
+.initial-sign-up-page form .sign-up-radio {
+  padding: 8px 0px; }
+
 .calendar-holder .row {
   padding: 0px; }
 

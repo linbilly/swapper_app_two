@@ -54,6 +54,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     controller: 'InitialSignUpCtrl'
   })
 
+  .state('groups', {
+    url: '/initial/groups',
+    templateUrl: 'templates/initial/groups.html',
+    controller: 'InitialGroupsCtrl'
+  })
+
   // ===========================================================
   // Calendar
   // ===========================================================
