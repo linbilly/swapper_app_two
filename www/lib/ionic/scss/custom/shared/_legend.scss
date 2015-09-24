@@ -9,6 +9,11 @@
     margin-left: 5px;
   }
 
+  p {
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
   .legend-row {
     margin-bottom: 10px;
   }
@@ -35,5 +40,13 @@
       margin-left: -2px;
       font-size: 20px;
     }
+  }
+
+  .custom-legend {
+    margin-top: -10px;
+  }
+
+  .legend-num-on-calendar {
+    margin-left: 10px !important;
   }
 }

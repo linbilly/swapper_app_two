@@ -1,84 +1,44 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive">
-    <h1 class="title">Legend</h1>
+    <h1 class="title">Calendar Tab Info</h1>
     <button class="button icon ion-close-circled close-legend-modal-button" ng-click="closeLengendModal()"></button>
   </ion-header-bar>
   <ion-content>
     <div class="legend-modal">
 
+      <h4>
+        Calendar
+      </h4>
+
+      <p>
+        This tab allows you to input your shifts and select shifts that you want to offer up for swap.
+      </p>
+    
       <shift-types-legend></shift-types-legend>
       
-      <h4>
-        General
-      </h4>
-      
-      <div class="row legend-row dates">
-        <div class="col-25 date-col">
-          <div class="sample-date">
-            <div class="top-date">
-              12
-            </div>
-            <div class="date-content">
-              Ex
-            </div>
+      <general-legend></general-legend>
+
+      <div class="custom-legend">
+        <div class="row legend-row">
+          <div class="col-25">
+            <button class="button button-stable">
+              Off
+            </button>
+          </div>
+          <div class="col-75 col-center">
+            This removes a shift
           </div>
         </div>
-        <div class="col-75 col-center">
-          This is a normal day with a shift
-        </div>
-      </div>
 
-      <div class="row legend-row dates">
-        <div class="col-25 date-col swap">
-          <div class="sample-date">
-            <div class="top-date">
-              12
-            </div>
-            <div class="date-content">
-              Ex
-            </div>
+        <div class="row legend-row">
+          <div class="col-25">
+            <button class="button button-energized swap-button">
+              Swap
+            </button>
           </div>
-        </div>
-        <div class="col-75 col-center">
-          This shift is being swapped
-        </div>
-      </div>
-
-      <div class="row legend-row dates">
-        <div class="col-25 date-col holiday">
-          <div class="sample-date">
-            <div class="top-date holiday">
-              12*
-            </div>
-            <div class="date-content">
-              Ex
-            </div>
+          <div class="col-75 col-center">
+            This puts a shift up for swap
           </div>
-        </div>
-        <div class="col-75 col-center">
-          This is a holiday
-        </div>
-      </div>
-
-      <div class="row legend-row">
-        <div class="col-25">
-          <button class="button button-stable">
-            Off
-          </button>
-        </div>
-        <div class="col-75 col-center">
-          This removes a shift
-        </div>
-      </div>
-
-      <div class="row legend-row">
-        <div class="col-25">
-          <button class="button button-energized swap-button">
-            Swap
-          </button>
-        </div>
-        <div class="col-75 col-center">
-          This puts a shift up for swap
         </div>
       </div>
 

@@ -1,8 +1,10 @@
 angular.module('starter.controllers')
 
-.controller('SwapsCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $timeout, Api, General, Notification, ShiftType, Calendar) {
+.controller('SwapsCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $timeout, $ionicModal, Api, General, Notification, ShiftType, Calendar) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.subControllers = General
+
+  Api.getShiftPatterns()
 
   // Not disabling cache on the view so that the tab state is maintained
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
@@ -59,5 +61,21 @@ angular.module('starter.controllers')
     if (startDate) {
       return General.stringDateToWords(startDate)
     }
+  }
+
+  $ionicModal.fromTemplateUrl('templates/shared/legend/legend_swaps.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openLengendModal = function() {
+    $scope.shiftTypesByGroup = Api.inputButtonsByGroup
+    $scope.modal.show()
+  }
+
+  $scope.closeLengendModal = function() {
+    $scope.modal.hide()
   }
 })

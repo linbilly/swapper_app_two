@@ -1,0 +1,45 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Swaps Tab Info</h1>
+    <button class="button icon ion-close-circled close-legend-modal-button" ng-click="closeLengendModal()"></button>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="legend-modal">
+
+      <h4>
+        Swaps
+      </h4>
+
+      <p>
+        This tab allows you to see what swaps you have put up for swap, what you have offered others, and what swaps are up for grabs.
+      </p>
+
+      <shift-types-legend></shift-types-legend>
+      
+      <general-legend></general-legend>
+
+      <div class="custom-legend">
+        <div class="row legend-row dates">
+          <div class="col-25 date-col">
+            <div class="sample-date">
+              <div class="top-date">
+                12
+              </div>
+              <div class="date-content legend-num-on-calendar">
+                <div class="num-shifts-available-on-calendar-holder">
+                  <div class="num-shifts-available-on-calendar">
+                    #
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-75 col-center">
+            The # of shifts available, offered, or up for grabs on this day
+          </div>
+        </div>
+
+    </div>
+  </ion-content>
+</ion-modal-view>

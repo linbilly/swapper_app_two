@@ -296,6 +296,9 @@ a {
   padding: 15px; }
   .legend-modal h4 {
     margin-left: 5px; }
+  .legend-modal p {
+    margin-left: 5px;
+    margin-bottom: 5px; }
   .legend-modal .legend-row {
     margin-bottom: 10px; }
   .legend-modal .sample-date {
@@ -314,6 +317,10 @@ a {
       padding-top: 20px;
       margin-left: -2px;
       font-size: 20px; }
+  .legend-modal .custom-legend {
+    margin-top: -10px; }
+  .legend-modal .legend-num-on-calendar {
+    margin-left: 10px !important; }
 
 .comments-page-footer .has-tabs {
   padding: 0px !important; }
