@@ -36,7 +36,7 @@ angular.module('starter.services')
   Api.getGroups = function() {
     var fetchGroupsUrl = root_url + "groups"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
       Api.groups = result.groups
@@ -47,7 +47,7 @@ angular.module('starter.services')
 
   Api.createGroup = function(params) {
     var createGroupUrl = root_url + "groups/create"
-    params["authentication_token"] = userToken()
+    params["authentication_token"] = Api.userToken()
     $.post(createGroupUrl, params).then(function(result){
       $rootScope.$broadcast("groupCreated");
     });
@@ -56,7 +56,7 @@ angular.module('starter.services')
   Api.groupDetails = function(id) {
     var fetchGroupsUrl = root_url + "groups/" + id + "/details"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(fetchGroupsUrl, params).then(function(result) {
       Api.group = result.group
@@ -69,7 +69,7 @@ angular.module('starter.services')
   Api.joinGroup = function(id) {
     var joinGroupUrl = root_url + "groups/" + id + "/join"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.post(joinGroupUrl, params).then(function(result){
       $rootScope.$broadcast("groupJoined");
@@ -79,7 +79,7 @@ angular.module('starter.services')
   Api.leaveGroup = function(id) {
     var leaveGroupUrl = root_url + "groups/" + id + "/leave"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
 
     $.ajax({
@@ -105,7 +105,7 @@ angular.module('starter.services')
   Api.getShiftPatterns = function() {
     var fetchShiftPatternsUrl = root_url + "shift-types"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(fetchShiftPatternsUrl, params).then(function(result) {
       Api.groupsWithShiftTypes = result.shift_types
@@ -116,7 +116,7 @@ angular.module('starter.services')
 
   Api.createShiftPattern = function(groupId, shiftParams) {
     var createShiftPatternUrl = root_url + "shift-types/" + groupId + "/create"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     shiftParams["group_id"] = groupId
     $.post(createShiftPatternUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("shiftTypeCreated", {name: result.shift_type.name});
@@ -125,7 +125,7 @@ angular.module('starter.services')
 
   Api.updateShiftPattern = function(id, shiftParams) {
     var updateShiftPatternUrl = root_url + "shift-types/" + id + "/update"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     $.ajax({
       url: updateShiftPatternUrl,
       method: "PUT",
@@ -142,7 +142,7 @@ angular.module('starter.services')
       url: deleteShiftPatternUrl,
       method: "DELETE",
       data: {
-        authentication_token: userToken()
+        authentication_token: Api.userToken()
       }
     })
     .done(function(result) {
@@ -184,7 +184,7 @@ angular.module('starter.services')
   Api.getAllShifts = function() {
     var getAllShiftsUrl = root_url + "shifts"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(getAllShiftsUrl, params).then(function(result) {
       Api.shifts = makeShiftsEasyToQuery(JSON.parse(result.shifts))
@@ -196,7 +196,7 @@ angular.module('starter.services')
   Api.getAllShiftsSwappable = function(shiftId) {
     var getAllShiftsSwappableForDayUrl = root_url + "shifts/swappable"
     var params = {
-      authentication_token: userToken(),
+      authentication_token: Api.userToken(),
       shift_id: shiftId
     }
     $.get(getAllShiftsSwappableForDayUrl, params).then(function(result) {
@@ -227,7 +227,7 @@ angular.module('starter.services')
 
   Api.createShift = function(shiftParams, selected) {
     var createShiftUrl = root_url + "shifts/create"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     $.post(createShiftUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("shiftCreated", {selected: selected, shift: result.shift, shift_type: result.shift_type});
     });
@@ -239,14 +239,14 @@ angular.module('starter.services')
       url: deleteShiftUrl,
       method: "DELETE",
       data: {
-        authentication_token: userToken()
+        authentication_token: Api.userToken()
       }
     })
   }
 
   Api.setOwnShiftToSwap = function(shiftParams, shiftId, selected) {
     var setOwnShiftToSwapUrl = root_url + "shifts/" + shiftId + "/swap"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     $.post(setOwnShiftToSwapUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("ownShiftSwapSet", {selected: selected, shift: result.shift});
     });
@@ -255,7 +255,7 @@ angular.module('starter.services')
   Api.cancelOwnShiftToSwap = function(shiftId) {
     var cancelOwnShiftToSwapUrl = root_url + "shifts/" + shiftId + "/cancel-swap"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.post(cancelOwnShiftToSwapUrl, params).then(function(result){
       $rootScope.$broadcast("ownShiftSwapCancelled", {shift: result.shift, shiftType: result.shift_type});
@@ -268,7 +268,7 @@ angular.module('starter.services')
   Api.getOwnShiftsWithSwaps = function() {
     var ownShiftsWithSwapsUrl = root_url + "shifts/swaps"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(ownShiftsWithSwapsUrl, params).then(function(result) {
       Api.ownShiftsWithSwaps = JSON.parse(result.shifts)
@@ -280,7 +280,7 @@ angular.module('starter.services')
   Api.getShiftsUpForGrabs = function(day) {
     var getShiftsUpForGrabsUrl = root_url + "shifts/available"
     var params = {
-      authentication_token: userToken(),
+      authentication_token: Api.userToken(),
       day: day
     }
     $.get(getShiftsUpForGrabsUrl, params).then(function(result) {
@@ -291,7 +291,7 @@ angular.module('starter.services')
 
   Api.offerToSwap = function(shiftParams) {
     var offerToSwapUrl = root_url + "swaps/create"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     $.post(offerToSwapUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("offeredToSwap");
     });
@@ -299,7 +299,7 @@ angular.module('starter.services')
 
   Api.updateSwap = function(shiftParams, swapId) {
     var updateSwapUrl = root_url + "swaps/" + swapId + "/update"
-    shiftParams["authentication_token"] = userToken()
+    shiftParams["authentication_token"] = Api.userToken()
     $.post(updateSwapUrl, shiftParams).then(function(result){
       $rootScope.$broadcast("updatedSwap");
     });
@@ -307,7 +307,7 @@ angular.module('starter.services')
 
   Api.acceptOfferedSwap = function(params, swapId) {
     var acceptOfferedSwapUrl = root_url + "swaps/" + swapId + "/accept"
-    params["authentication_token"] = userToken()
+    params["authentication_token"] = Api.userToken()
     $.post(acceptOfferedSwapUrl, params).then(function(result){
       $rootScope.$broadcast("swapAccepted");
     });
@@ -315,7 +315,7 @@ angular.module('starter.services')
 
   Api.cancelOfferedShift = function(params) {
     var cancelOfferedShiftUrl = root_url + "swaps/cancel-offered-shift"
-    params["authentication_token"] = userToken()
+    params["authentication_token"] = Api.userToken()
     $.post(cancelOfferedShiftUrl, params).then(function(result){
       $rootScope.$broadcast("offeredShiftCancelled");
     });
@@ -323,7 +323,7 @@ angular.module('starter.services')
 
   Api.cancelAllOfferedShifts = function(params) {
     var cancelAllOfferedShiftsUrl = root_url + "swaps/cancel-all-offered-shifts"
-    params["authentication_token"] = userToken()
+    params["authentication_token"] = Api.userToken()
     $.post(cancelAllOfferedShiftsUrl, params).then(function(result){
       $rootScope.$broadcast("allOfferedShiftsCancelled");
     });
@@ -349,7 +349,7 @@ angular.module('starter.services')
   Api.swapsOffered = function() {
     var swapsOfferedUrl = root_url + "swaps/offered"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(swapsOfferedUrl, params).then(function(result) {
       Api.swapsOfferedByUser = result.swaps
@@ -384,7 +384,7 @@ angular.module('starter.services')
   Api.approveSwap = function(shiftId) {
     var approveSwapUrl = root_url + "shifts/" + shiftId + "/approve-swap"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.post(approveSwapUrl, params).then(function(result){
       $rootScope.$broadcast("swapApproved");
@@ -397,7 +397,7 @@ angular.module('starter.services')
   Api.getComments = function(shiftId) {
     var getCommentsUrl = root_url + "comments/" + shiftId
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(getCommentsUrl, params).then(function(result){
       Api.comments = result.comments
@@ -407,7 +407,7 @@ angular.module('starter.services')
 
   Api.createComment = function(params) {
     var createCommentUrl = root_url + "comments/create"
-    params["authentication_token"] = userToken()
+    params["authentication_token"] = Api.userToken()
     $.post(createCommentUrl, params).then(function(result){
       $rootScope.$broadcast("commentCreated");
     });
@@ -416,7 +416,7 @@ angular.module('starter.services')
   Api.deleteComment = function(commentId) {
     var deleteCommentUrl = root_url + "comments/" + commentId + "/destroy"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.ajax({
       url: deleteCommentUrl,
@@ -434,7 +434,7 @@ angular.module('starter.services')
   Api.getNotifications = function() {
     var getNotificationsUrl = root_url + "notifications"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(getNotificationsUrl, params).then(function(result){
       Api.notifications = result.notifications
@@ -445,7 +445,7 @@ angular.module('starter.services')
   Api.numUnreadNotifications = function() {
     var numUnreadNotificationsUrl = root_url + "notifications/num-unread"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.get(numUnreadNotificationsUrl, params).then(function(result){
       Notification.numUnread = result.num_unread
@@ -456,7 +456,7 @@ angular.module('starter.services')
   Api.readNotifications = function(notificationId) {
     var readNotificationsUrl = root_url + "notifications/" + notificationId + "/read"
     var params = {
-      authentication_token: userToken()
+      authentication_token: Api.userToken()
     }
     $.post(readNotificationsUrl, params).then(function(result){
       Notification.numUnread = result.num_unread
@@ -467,16 +467,18 @@ angular.module('starter.services')
   // General
   // ===========================================================================
 
-  function userToken() {
+  Api.userToken = function() {
     // return window.localStorage['token']
     
     // return "KHTTusxPysFNxPtYhxFe" // Localhost User 1
-    return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
+    // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
     // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
     // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
     // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
     // return "77uiN2ARUxHV_C-p492z" // Heroku User 3
+
+    return null
   }
 
   return Api;

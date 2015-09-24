@@ -39,6 +39,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   // ===========================================================
+  // Initial startup
+  // ===========================================================
+
+  .state('initial', {
+    url: '/initial/welcome',
+    templateUrl: 'templates/initial/welcome.html',
+    controller: 'InitialWelcomeCtrl'
+  })
+
+  // ===========================================================
   // Calendar
   // ===========================================================
 
@@ -274,7 +284,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Fallback
   // ===========================================================
 
-  $urlRouterProvider.otherwise('/tab/general/index');
+  $urlRouterProvider.otherwise('/initial/welcome');
 
   // ===========================================================
   // General Configurations
