@@ -2,6 +2,8 @@ angular.module('starter.controllers')
 
 .controller('InitialGroupsNewCtrl', function($scope, $state, $ionicNavBarDelegate, Api, Notification, Locations, Group) {
   $ionicNavBarDelegate.showBackButton(false)
+  Api.initialSignUp = true
+  
   clearErrors()
 
   displayGroupTitle()
@@ -56,9 +58,10 @@ angular.module('starter.controllers')
       }
 
       Api.createGroup(params)
-      Notification.message = groupName + " successfully created."
       clearAllSavedValues()
-      $state.go('tab.groups', {}, {reload: true});
+
+      Api.initialSignUp = false
+      $state.go('tab.calendar', {}, {reload: true});
     }
   }
 

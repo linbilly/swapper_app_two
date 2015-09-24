@@ -12,4 +12,6 @@ angular.module('starter.controllers')
       return false
     }
   }
+
+  Api.initialSignUp = true
 })

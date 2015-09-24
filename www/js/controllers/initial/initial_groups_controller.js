@@ -4,6 +4,8 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true;
 
+  Api.initialSignUp = true
+
   Api.getGroups()
 
   $scope.$on('groupsFetched', function(event, args) {

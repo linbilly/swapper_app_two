@@ -3,6 +3,7 @@ angular.module('starter.controllers')
 .controller('InitialSignUpCtrl', function($scope, $ionicNavBarDelegate, $state, Api) {
   $ionicNavBarDelegate.showBackButton(false)
 
+  Api.initialSignUp = true
   setErrorsToFalse()
 
   $scope.createUser = function(email, firstName, lastName, password, sex) {
