@@ -5,23 +5,8 @@
   </ion-header-bar>
   <ion-content>
     <div class="legend-modal">
-      <div ng-repeat="(groupName, shiftTypes) in shiftTypesByGroup">
-        <h4>
-          {{groupName}}
-        </h4>
-        <div ng-repeat="shiftType in shiftTypes">
-          <div class="row">
-            <div class="col-25">
-              <button class="button button-positive" data-shift-type-id="{{shiftType.id}}" data-group-id="{{shiftType.groupId}}">
-                {{shiftType.abbreviation}}
-              </button>
-            </div>
-            <div class="col-75 col-center">
-              {{shiftType.name}}
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <shift-types-legend></shift-types-legend>
       
       <h4>
         General
@@ -39,7 +24,7 @@
           </div>
         </div>
         <div class="col-75 col-center">
-          This is a normal day
+          This is a normal day with a shift
         </div>
       </div>
 

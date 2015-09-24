@@ -23,7 +23,7 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
   })
 
 
-  $ionicModal.fromTemplateUrl('templates/shared/legend.html', {
+  $ionicModal.fromTemplateUrl('templates/shared/legend/legend_calendar.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {

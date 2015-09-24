@@ -1,0 +1,17 @@
+<div ng-repeat="(groupName, shiftTypes) in shiftTypesByGroup">
+  <h4>
+    {{groupName}}
+  </h4>
+  <div ng-repeat="shiftType in shiftTypes">
+    <div class="row">
+      <div class="col-25">
+        <button class="button button-positive" data-shift-type-id="{{shiftType.id}}" data-group-id="{{shiftType.groupId}}">
+          {{shiftType.abbreviation}}
+        </button>
+      </div>
+      <div class="col-75 col-center">
+        {{shiftType.name}}
+      </div>
+    </div>
+  </div>
+</div>
