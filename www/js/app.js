@@ -60,6 +60,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     controller: 'InitialGroupsCtrl'
   })
 
+  .state('groups-detail', {
+    url: '/initial/groups-detail/:groupId',
+    templateUrl: 'templates/initial/groups_detail.html',
+    controller: 'InitialGroupsDetailCtrl'
+  })
+
   // ===========================================================
   // Calendar
   // ===========================================================

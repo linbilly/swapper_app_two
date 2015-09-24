@@ -8,7 +8,7 @@
   <ion-content>
     <notification ng-model="message" ng-show="message"></notification>
     <ion-list>
-      <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/tab/general/groups/{{group.id}}">
+      <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/initial/groups-detail/{{group.id}}">
         {{group.name}}
         <span class="item-note" ng-if="hasUser(group)">
           Joined

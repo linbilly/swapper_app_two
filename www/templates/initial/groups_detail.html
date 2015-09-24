@@ -1,7 +1,7 @@
 <ion-view>
 <ion-nav-title>Details</ion-nav-title>
   <ion-nav-buttons side="left">
-    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/index">Groups</a>
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/initial/groups">Groups</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -23,22 +23,6 @@
         <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
         Join Group
       </button>
-      <div>
-      </div>
-      <div ng-show="groupHasUser">
-        <div class="row">
-          <div class="col">
-            <button class="button">
-              <i class="icon ion-checkmark"></i> Joined
-            </button>
-          </div>
-          <div class="col col-center">
-            <a class="leave-group-link" ng-click="leaveGroup()">
-              Leave group
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="item item-divider">
@@ -55,22 +39,6 @@
         <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
         Join group
       </button>
-      <div>
-      </div>
-      <div ng-show="groupHasUser">
-        <div class="row">
-          <div class="col">
-            <button class="button">
-              <i class="icon ion-checkmark"></i> Joined
-            </button>
-          </div>
-          <div class="col col-center">
-            <a class="leave-group-link" ng-click="leaveGroup()">
-              Leave group
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </ion-content>
 </ion-view>
