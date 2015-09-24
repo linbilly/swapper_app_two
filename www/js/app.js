@@ -48,6 +48,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     controller: 'InitialWelcomeCtrl'
   })
 
+  .state('sign-up', {
+    url: '/initial/sign-up',
+    templateUrl: 'templates/initial/sign_up.html',
+    controller: 'InitialSignUpCtrl'
+  })
+
   // ===========================================================
   // Calendar
   // ===========================================================

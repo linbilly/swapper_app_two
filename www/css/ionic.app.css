@@ -85,6 +85,58 @@ a {
 .notification-main-tab .badge {
   opacity: 1 !important; }
 
+.welcome-page {
+  position: relative; }
+  .welcome-page .scroll {
+    height: 100%; }
+  .welcome-page .welcome-page-content {
+    background-color: #97D2C4;
+    height: 100%;
+    margin: 0 auto;
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .welcome-page .welcome-page-content .icon-holder {
+      margin-bottom: 10px; }
+    .welcome-page .welcome-page-content .bottom-text {
+      margin-top: 20px;
+      font-size: 24px; }
+  .welcome-page .get-started-link {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none; }
+
 .calendar-holder .row {
   padding: 0px; }
 
