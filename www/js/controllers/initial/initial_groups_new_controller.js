@@ -49,6 +49,8 @@ angular.module('starter.controllers')
   $scope.createGroup = function (groupName){
     clearErrors()
     if (noErrors(groupName)) {
+      Api.initialCreatingNewGroup = true
+
       var params = {
         group_name: groupName,
         country: Locations.selectedCountryName,
@@ -59,7 +61,7 @@ angular.module('starter.controllers')
 
       Api.createGroup(params)
       clearAllSavedValues()
-      $state.go('tab.calendar', {}, {reload: true});
+      $state.go('tab.shifts-patterns', {}, {reload: true});
     }
   }
 

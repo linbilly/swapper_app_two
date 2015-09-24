@@ -20,6 +20,7 @@ angular.module('starter.controllers')
       $scope.swappable = $scope.shiftPattern.swappable
       $scope.shiftPattern.entireDay = isEntireDay()
       setup()
+      $scope.$apply()
     }
   });
 

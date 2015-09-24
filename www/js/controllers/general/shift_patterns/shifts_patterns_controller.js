@@ -9,6 +9,16 @@ angular.module('starter.controllers')
     Notification.message = null
   }
 
+  if (Api.initialSignUp) {
+    swal("You're good to go!", "Now you need to create some shift patterns before you can start inputting shifts", "success")
+    $("fieldset").addClass("hide")
+    Api.initialCreatingNewGroup = false
+    Api.initialSignUp = false
+
+    $(".tab-nav").removeClass("tabs-item-hide")
+    $(".scroll-content").addClass("has-tabs")
+  }
+
   Api.getShiftPatterns()
 
   $scope.fetchShiftPatterns = function() {

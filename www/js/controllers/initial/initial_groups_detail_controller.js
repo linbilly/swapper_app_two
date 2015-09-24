@@ -31,6 +31,8 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('groupJoined', function() {
-    $state.go("tab.calendar")
+    if (!Api.initialCreatingNewGroup) {
+      $state.go("tab.calendar")
+    }
   });
 })

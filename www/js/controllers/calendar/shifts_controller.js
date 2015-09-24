@@ -7,6 +7,9 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
     swal("You're good to go!", "Now input your shifts to start swapping", "success")
     $("fieldset").addClass("hide")
     Api.initialSignUp = false
+
+    $(".tab-nav").removeClass("tabs-item-hide")
+    $(".scroll-content").addClass("has-tabs")
   }
 
   if (Calendar.needReload($scope.dateYear)) {
