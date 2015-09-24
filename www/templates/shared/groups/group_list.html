@@ -1,0 +1,10 @@
+<notification ng-model="message" ng-show="message"></notification>
+<ion-list>
+  <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="{{detailLinkRoot}}{{group.id}}">
+    {{group.name}}
+    <span class="item-note" ng-if="hasUser(group)">
+      Joined
+    </span>
+    <i class="icon ion-chevron-right icon-accessory"></i>
+  </ion-item>
+</ion-list>

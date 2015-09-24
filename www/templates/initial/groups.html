@@ -6,15 +6,6 @@
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <notification ng-model="message" ng-show="message"></notification>
-    <ion-list>
-      <ion-item ng-repeat="group in groups" class="item-icon-right" type="item-text-wrap" href="#/initial/groups-detail/{{group.id}}">
-        {{group.name}}
-        <span class="item-note" ng-if="hasUser(group)">
-          Joined
-        </span>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+    <group-list></group-list>
   </ion-content>
 </ion-view>

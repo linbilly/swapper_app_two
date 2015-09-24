@@ -35,4 +35,12 @@ angular.module('starter.controllers')
       $state.go("tab.calendar")
     }
   });
+
+  $scope.leaveGroup = function() {
+    Api.leaveGroup($stateParams.groupId)
+  }
+
+  $scope.$on('leftGroup', function() {
+    Api.groupDetails($stateParams.groupId)
+  });
 })
