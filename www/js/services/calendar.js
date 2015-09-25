@@ -26,9 +26,10 @@ angular.module('starter.services')
 
     if (note) {
       $(".notes-display .actual-note").html(note)
-      Calendar.emptyNote = false
+      $(".notes-display .actual-note").removeClass("empty-notes")
     } else {
-      Calendar.emptyNote = true
+      $(".notes-display .actual-note").html("Notes")
+      $(".notes-display .actual-note").addClass("empty-notes")
     }
   }
 
