@@ -317,4 +317,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $ionicConfigProvider.tabs.position("bottom"); // Place tabs at the bottom for all OS
   $ionicConfigProvider.tabs.style("standard"); // Make tabs all look the same across all OS
   $ionicConfigProvider.navBar.alignTitle('center'); // Center headers for Android
+  $ionicConfigProvider.views.swipeBackEnabled(false); // Prevent from swiping back
 });
