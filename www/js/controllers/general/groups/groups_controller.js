@@ -10,6 +10,7 @@ angular.module('starter.controllers')
     $scope.groups = Api.groups
     $scope.userId = args.userId
     $scope.loader = false;
+    $scope.$apply()
   });
 
   if (Notification.message) {
