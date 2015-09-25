@@ -20,6 +20,7 @@ angular.module('starter.controllers')
 
   $scope.countries = Locations.countries()
   $scope.countryName = Locations.selectedCountryName
+  $scope.countryId = Locations.selectedCountryId
 
   $scope.countrySelected = function(countryName, countryId) {
     Locations.selectedCountryName = countryName

@@ -20,6 +20,7 @@ angular.module('starter.controllers')
 
   $scope.states = Locations.states()
   $scope.stateName = Locations.selectedStateName
+  $scope.stateId = Locations.selectedStateId
 
   $scope.stateSelected = function(stateName, stateId) {
     Locations.selectedStateName = stateName

@@ -20,6 +20,7 @@ angular.module('starter.controllers')
 
   $scope.provinces = Locations.provinces()
   $scope.provinceName = Locations.selectedProvinceName
+  $scope.provinceId = Locations.selectedProvinceId
 
   $scope.provinceSelected = function(provinceName, provinceId) {
     Locations.selectedProvinceName = provinceName

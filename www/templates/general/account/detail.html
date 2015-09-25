@@ -22,20 +22,8 @@
         <div class="item item-divider">
           Please select
         </div>
-        <label class="item item-radio">
-          <input type="radio" name="sex" ng-model="sex" value="female">
-          <div class="sign-up-radio">
-            Female
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-        <label class="item item-radio">
-          <input type="radio" name="sex" ng-model="sex" value="male">
-          <div class="sign-up-radio">
-            Male
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
+        <ion-radio-fix name="sex" ng-model="sex" value="female">Female</ion-radio-fix>
+        <ion-radio-fix name="sex" ng-model="sex" value="male">Male</ion-radio-fix>
       </form>
     </div>
     <div class="bottom-note" ng-show="!loader">

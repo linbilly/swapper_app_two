@@ -262,9 +262,23 @@ form .sign-up-radio {
     .notification-box .clear-button:before {
       content: "×"; }
 
+/**
+ * This CSS uses adjacent selectors instead of general sibling (~) selectors
+ * for ion radio that are broken in iOS 9 UIWebView.
+ *
+ * To apply the patch, include this CSS after your ionic.css include.
+ */
+.item-radio input:checked + .radio-content .item-content {
+  /* style the item content when its checked */
+  background: #f7f7f7; }
+
+.item-radio input:checked + .radio-content .radio-icon {
+  /* show the checkmark icon when its checked */
+  visibility: visible; }
+
 .account-sign-up-list input {
   font-size: 16px !important; }
-.account-sign-up-list .item {
+.account-sign-up-list .text-input {
   padding: 10px 16px !important; }
 
 .error-on-submit {

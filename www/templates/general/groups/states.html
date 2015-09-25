@@ -4,15 +4,7 @@
   </ion-nav-buttons>
   <ion-content>
     <div class="list">
-
-      <label class="item item-radio" ng-repeat="state in states" ng-click="stateSelected(state.name, state.id)">
-        <input type="radio" name="all-countries" value="state.id" ng-checked="stateName == state.name">
-        <div class="item-content">
-          {{state.name}}
-        </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label>
-
+      <ion-radio-fix name="all-states" ng-repeat="state in states" value="{{state.id}}" ng-click="stateSelected(state.name, state.id)" ng-model="stateId">{{state.name}}</ion-radio-fix>
     </div>
   </ion-content>
 </ion-view>
