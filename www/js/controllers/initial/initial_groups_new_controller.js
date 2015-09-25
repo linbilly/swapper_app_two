@@ -2,7 +2,6 @@ angular.module('starter.controllers')
 
 .controller('InitialGroupsNewCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicHistory, Api, Notification, Locations, Group) {
   $ionicNavBarDelegate.showBackButton(false)
-  Api.initialSignUp = true
 
   clearErrors()
 
