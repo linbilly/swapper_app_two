@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('InitialGroupsNewCtrl', function($scope, $state, $ionicNavBarDelegate, Api, Notification, Locations, Group) {
+.controller('InitialGroupsNewCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicHistory, Api, Notification, Locations, Group) {
   $ionicNavBarDelegate.showBackButton(false)
   Api.initialSignUp = true
 
@@ -62,6 +62,7 @@ angular.module('starter.controllers')
       Api.createGroup(params)
       clearAllSavedValues()
       $state.go('tab.shifts-patterns', {}, {reload: true});
+      $ionicHistory.clearHistory()
     }
   }
 

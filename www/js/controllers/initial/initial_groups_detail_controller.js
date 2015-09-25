@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('InitialGroupsDetailCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Api) {
+.controller('InitialGroupsDetailCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.buttonClicked = false
@@ -33,6 +33,7 @@ angular.module('starter.controllers')
   $scope.$on('groupJoined', function() {
     if (!Api.initialCreatingNewGroup) {
       $state.go("tab.calendar")
+      $ionicHistory.clearHistory()
     }
   });
 
