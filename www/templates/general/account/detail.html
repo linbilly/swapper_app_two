@@ -1,6 +1,6 @@
-<ion-view view-title="Account">
+<ion-view view-title="Account" cache-view="false">
   <ion-nav-buttons side="left">
-    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">General</a>
+    <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">Back</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
@@ -9,50 +9,44 @@
     <div class="list account-sign-up-list" ng-show="!loader">
       <form name="signUp">
         <div class="item item-divider">
-          Please fill in
+          Email: {{user.email}}
         </div>
-        <label class="item item-input">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">First Name</span>
           <input type="text" ng-model="firstName" placeholder="First name">
         </label>
-        <label class="item item-input">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Last Name</span>
           <input type="text" ng-model="lastName" placeholder="Last name">
-        </label>
-        <label class="item item-input">
-          <input type="email" ng-model="email" placeholder="Email">
-        </label>
-        <label class="item item-input">
-          <input type="password" ng-model="password" placeholder="Password">
         </label>
         <div class="item item-divider">
           Please select
         </div>
         <label class="item item-radio">
           <input type="radio" name="sex" ng-model="sex" value="female">
-          Female
+          <div class="sign-up-radio">
+            Female
+          </div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
         <label class="item item-radio">
           <input type="radio" name="sex" ng-model="sex" value="male">
-          Male
+          <div class="sign-up-radio">
+            Male
+          </div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
       </form>
     </div>
     <div class="bottom-note" ng-show="!loader">
-      <div class="error-on-submit assertive" ng-show="emailTakenError">
-        Email has already been taken
-      </div>
-      <div class="error-on-submit assertive not-valid-email" ng-show="signUp.$error.email" data-error="{{emailErrorCleaner(email, signUp.$error.email)}}">
-        Not a valid email
-      </div>
       <div class="error-on-submit assertive" ng-show="everthingFilledInError">
         Please fill everything in
       </div>
       <div class="error-on-submit assertive" ng-show="sexSelectedError">
         Please select the sex you identify as
       </div>
-      <button class="button button-block button-positive" ng-click="createUser(email, firstName, lastName, password, sex)">
-        Create Account
+      <button class="button button-block button-positive" ng-click="updateUser(firstName, lastName, sex)">
+        Update Account
       </button>
     </div>
 

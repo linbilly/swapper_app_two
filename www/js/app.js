@@ -295,11 +295,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // ===========================================================
 
   .state('tab.account', {
-    url: '/general/account/new',
+    url: '/general/account/detail',
     views: {
       'tab-general': {
-        templateUrl: 'templates/general/account/new.html',
-        controller: 'SignUpCtrl'
+        templateUrl: 'templates/general/account/detail.html',
+        controller: 'AccountDetailCtrl'
       }
     }
   })

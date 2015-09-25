@@ -139,7 +139,8 @@ a {
 
 .initial-sign-up-page .scroll-content {
   height: 100%; }
-.initial-sign-up-page form .sign-up-radio {
+
+form .sign-up-radio {
   padding: 8px 0px; }
 
 .calendar-holder .row {

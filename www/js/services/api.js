@@ -30,6 +30,30 @@ angular.module('starter.services')
     });
   }
 
+  Api.getUser = function() {
+    var getUserUrl = root_url + "users"
+    var params = {
+      authentication_token: Api.userToken()
+    }
+    $.get(getUserUrl, params).then(function(result) {
+      Api.user = result.user
+      $rootScope.$broadcast("userFetched");
+    });
+  }
+
+  Api.updateUser = function(params) {
+    var updateUserUrl = root_url + "users/update"
+    params["authentication_token"] = Api.userToken()
+    $.ajax({
+      url: updateUserUrl,
+      method: "PUT",
+      data: params
+    })
+    .done(function(result) {
+      $rootScope.$broadcast("userUpdated");
+    })
+  }
+
   // Groups
   // ===========================================================================
 
