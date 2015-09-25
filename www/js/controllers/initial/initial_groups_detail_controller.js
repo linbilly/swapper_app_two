@@ -26,6 +26,7 @@ angular.module('starter.controllers')
   });
 
   $scope.joinGroup = function() {
+    $scope.loader = true
     $scope.buttonClicked = !$scope.buttonClicked
     Api.joinGroup($stateParams.groupId)
   }
@@ -38,10 +39,13 @@ angular.module('starter.controllers')
   });
 
   $scope.leaveGroup = function() {
+    $scope.loader = true
     Api.leaveGroup($stateParams.groupId)
   }
 
   $scope.$on('leftGroup', function() {
+    $scope.loader = false
     Api.groupDetails($stateParams.groupId)
+    $scope.$apply()
   });
 })
