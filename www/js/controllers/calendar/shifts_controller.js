@@ -1,6 +1,6 @@
 var app = angular.module('starter.controllers')
 
-app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, $ionicModal, Api, Calendar) {
+app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, $interval, $ionicModal, Api, Calendar) {
   $scope.dateYear = Calendar.dateYear()
 
   if (Api.initialSignUp) {
@@ -25,9 +25,12 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
     $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
     $scope.loader = false
     window.localStorage['timeLastReloaded'] = $scope.dateYear
-    $timeout(function() {
+    $scope.setupInterval = $interval(function() {
       Calendar.highlightToday()
-    }, 500)
+      if ($(".active").length > 0) {
+        $interval.cancel($scope.setupInterval)
+      }
+    }, 100)
   })
 
 
