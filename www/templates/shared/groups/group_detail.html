@@ -8,8 +8,11 @@
         Located in: <span ng-if="group.province_state">{{group.province_state}}, </span>{{group.country}}
       </p>
     </div>
-    <div>
-      {{message}}
+    <div ng-if="groupHasUser">
+      This group has <ng-pluralize count="users.length || 0" when="{'0': 'no members yet!', '1': '1 member - and it is you! Get your colleagues to join the group so you can swap with them.', 'other': '{{users.length}} members - and you are one of them! Happy swapping!'}"></ng-pluralize>
+    </div>
+    <div ng-if="!groupHasUser">
+      This group has <ng-pluralize count="users.length || 0" when="{'0': 'no members yet - be the first!', '1': '1 member - join this lonely member!', 'other': '{{users.length}} members. Join to swap your shifts with them!'}"></ng-pluralize>
     </div>
     <button class="button button-positive" ng-click="joinGroup()" ng-show="!groupHasUser" ng-class="buttonClicked ? 'clicked' : ''">
       Join Group
