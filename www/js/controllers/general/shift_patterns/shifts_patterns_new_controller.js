@@ -8,16 +8,12 @@ angular.module('starter.controllers')
   $scope.shiftPattern.swappable = true
   $scope.shiftPattern.entireDay = false
 
-  if (!Api.groups) {
-    Api.getGroups()
-  } else {
-    $scope.shiftPattern.group = Api.groupsObj[$stateParams.groupId]
-    setup()
-  }
+  Api.getGroups()
 
   $scope.$on('groupsFetched', function() {
     $scope.shiftPattern.group = Api.groupsObj[$stateParams.groupId]
     setup()
+    $scope.$apply()
   });
 
   $scope.upHour = function($event) {
