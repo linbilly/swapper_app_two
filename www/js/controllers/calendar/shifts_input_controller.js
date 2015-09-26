@@ -72,7 +72,7 @@ angular.module('starter.controllers')
     $("fieldset").removeClass("hide")
     swal({
       title: "Swap me!",
-      text: "Write an optional message to go with your swap:",
+      text: "Optional message for your swap:",
       type: "input",
       showCancelButton: true,
       closeOnConfirm: false,
@@ -90,7 +90,20 @@ angular.module('starter.controllers')
         Api.setOwnShiftToSwap(shiftParams, shiftId, selected)
       }
     });
+    // $(".sweet-alert").css({marginTop: '-=100px'});
   }
+
+  // window.addEventListener('native.keyboardshow', function(){
+  //   if (ionic.Platform.isIOS()) {
+  //     $(".sweet-alert").css({marginTop: '-=50px'});
+  //   }
+  // });
+
+  // window.addEventListener('native.keyboardhide', function(){
+  //   if (ionic.Platform.isIOS()) {
+  //     $(".sweet-alert").css({marginTop: '+=100px'});
+  //   }
+  // });
 
   $scope.$on('ownShiftSwapSet', function(event, args) {
     swal("Your shift is now up for grabs!", "You can view it in the \"Swaps\" tab.", "success")
