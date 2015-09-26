@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('ShiftsPatternsCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, Api, ShiftPopover, Notification, ShiftType) {
+.controller('ShiftsPatternsCtrl', function($scope, $ionicPopover, $ionicNavBarDelegate, $ionicHistory, Api, ShiftPopover, Notification, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   ShiftPopover.renderPopover($scope)
   $scope.loader = true;
@@ -14,6 +14,8 @@ angular.module('starter.controllers')
     $("fieldset").addClass("hide")
     Api.initialCreatingNewGroup = false
     Api.initialSignUp = false
+
+    $ionicHistory.clearHistory()
 
     $(".tab-nav").removeClass("tabs-item-hide")
     $(".scroll-content").addClass("has-tabs")

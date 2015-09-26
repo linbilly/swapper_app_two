@@ -61,7 +61,6 @@ angular.module('starter.controllers')
       Api.createGroup(params)
       clearAllSavedValues()
       $state.go('tab.shifts-patterns', {}, {reload: true});
-      $ionicHistory.clearHistory()
     }
   }
 

@@ -24,7 +24,6 @@ angular.module('starter.controllers')
   $scope.$on('groupJoined', function() {
     if (!Api.initialCreatingNewGroup) {
       $state.go("tab.calendar")
-      $ionicHistory.clearHistory()
     }
   });
 
