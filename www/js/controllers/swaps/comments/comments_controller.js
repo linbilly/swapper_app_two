@@ -84,4 +84,8 @@ angular.module('starter.controllers')
     $(".icon-holder").rotate($(".icon-holder"), 180)
     $scope.showAdditionalDetails = !$scope.showAdditionalDetails
   }
+
+  $scope.multiline = function(message) {
+    return message.replace(/\n/g, "<br/>")
+  }
 })
