@@ -1,12 +1,26 @@
 var app = angular.module('starter.controllers')
 
-app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, $interval, $ionicModal, Api, Calendar) {
+app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $timeout, $interval, $ionicModal, $ionicHistory, $state, Api, Calendar) {
   $scope.dateYear = Calendar.dateYear()
+
+  if (!hasToken()) {
+    $state.go('initial', {}, {reload: true});
+  }
+
+  function hasToken() {
+    if (Api.userToken()) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   if (Api.initialSignUp) {
     swal("You're good to go!", "Now input your shifts to start swapping", "success")
     $("fieldset").addClass("hide")
     Api.initialSignUp = false
+
+    $ionicHistory.clearHistory()
 
     $(".tab-nav").removeClass("tabs-item-hide")
     $(".scroll-content").addClass("has-tabs")

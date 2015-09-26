@@ -308,7 +308,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Fallback
   // ===========================================================
 
-  $urlRouterProvider.otherwise('/initial/welcome');
+  $urlRouterProvider.otherwise('/tab/calendar/index');
 
   // ===========================================================
   // General Configurations
