@@ -29,7 +29,8 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftTypesFetched', function() {
     $scope.groupsWithShiftTypes = Api.groupsWithShiftTypes
-    $scope.loader = false;
+    $scope.loader = false
+    $scope.$apply()
   });
 
   $scope.prettyEndTime = function(shiftType) {

@@ -3,8 +3,11 @@
   <ion-nav-buttons side="left" >
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/patterns/index">Patterns</a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
-    <div class="shift-patterns-detail">
+    <div class="shift-patterns-detail" ng-show="!loader">
       <h4>
         {{shiftPattern.group.name}}
       </h4>
@@ -91,7 +94,6 @@
           <button class="button button-positive" ng-click="createShiftPattern(shiftPatternName, abbreviation)" ng-disabled="buttonClicked">
             {{actionButtonText}}
           </button>
-          <ion-spinner icon="lines" class="join-leave-loader" ng-show="buttonClicked"></ion-spinner>
         </div>
       </div>
     </div>

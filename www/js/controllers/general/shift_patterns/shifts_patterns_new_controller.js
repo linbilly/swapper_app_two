@@ -4,7 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
   $scope.shiftPattern = {}
   $scope.actionButtonText = "Create"
-  $scope.buttonClicked = false
+  $scope.loader = false
   $scope.shiftPattern.swappable = true
   $scope.shiftPattern.entireDay = false
 
@@ -50,7 +50,7 @@ angular.module('starter.controllers')
     $scope.lengthError = false
 
     if (ShiftType.noErrors($scope, shiftPatternName, abbreviation)) {
-      $scope.buttonClicked = true
+      $scope.loader = true
       $scope.actionButtonText = "Creating"
 
       var start_hour = null
@@ -82,7 +82,7 @@ angular.module('starter.controllers')
 
   $scope.$on('shiftTypeCreated', function(event, args) {
     $scope.actionButtonText = "Create"
-    $scope.buttonClicked = false
+    $scope.loader = false
     Notification.message = args.name + " successfully created"
     $state.go('tab.shifts-patterns', {}, {reload: true});
   });
