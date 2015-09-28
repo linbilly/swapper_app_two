@@ -81,7 +81,12 @@ angular.module('starter.controllers')
   }
 
   $scope.showAdditionalDetailsIconClicked = function($event) {
-    $(".icon-holder").rotate($(".icon-holder"), 180)
+    // $(".icon-holder").rotate($(".icon-holder"), 180)
+    if ($(".icon-holder").hasClass("icon-flipped")) {
+      $(".icon-holder").removeClass("icon-flipped")
+    } else {
+      $(".icon-holder").addClass("icon-flipped")
+    }
     $scope.showAdditionalDetails = !$scope.showAdditionalDetails
   }
 
