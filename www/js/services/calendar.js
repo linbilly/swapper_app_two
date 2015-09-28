@@ -47,10 +47,12 @@ angular.module('starter.services')
         var nextDay = visibleSelected.parents(".row").next().find(".col.date-col").first()
         nextDay.addClass("active")
         Calendar.updateSwapButtonStatus(nextDay)
+        Calendar.updateNotes(nextDay)
       }
     } else {
       visibleSelected.next().addClass("active")
       Calendar.updateSwapButtonStatus(visibleSelected.next())
+      Calendar.updateNotes(visibleSelected.next())
     }
   }
 
@@ -59,6 +61,7 @@ angular.module('starter.services')
     var nextDay = $(".dates").find("[data-date='" + date + "']");
     nextDay.addClass("active")
     Calendar.updateSwapButtonStatus(nextDay)
+    Calendar.updateNotes(nextDay)
   }
 
   Calendar.updateSwapButtonStatus = function(currentHighlighted) {

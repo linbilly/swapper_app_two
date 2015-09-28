@@ -37,8 +37,8 @@ angular.module('starter.controllers')
       removeAllHighlightedCells()
       var nextDay = currentSlide.find(".col.date-col").first()
       nextDay.addClass("active")
-      Calendar.updateNotes(hightlightedCell)
       Calendar.updateSwapButtonStatus(nextDay)
+      Calendar.updateNotes(nextDay)
     }
   }
 
