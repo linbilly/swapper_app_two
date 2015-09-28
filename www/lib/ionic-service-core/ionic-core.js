@@ -142,7 +142,7 @@ angular.module('ionic.service.core', [])
 
   var _is_cordova_available = function() {
 
-    console.log('Ionic Core: searching for cordova.js');
+    // console.log('Ionic Core: searching for cordova.js');
 
     try {
       if (window.cordova || cordova) {
@@ -161,7 +161,7 @@ angular.module('ionic.service.core', [])
         try {
           partsLength = parts.length;
           if (parts[partsLength-1] === 'cordova.js') {
-            console.log('Ionic Core: cordova.js has previously been included.');
+            // console.log('Ionic Core: cordova.js has previously been included.');
             return true;
           }
         } catch(e) {}
@@ -463,6 +463,6 @@ function($q, $ionicCoreSettings, $timeout, $http, persistentStorage, $ionicApp) 
 // Auto-generated configuration factory
 
 .run(['$ionicApp', function($ionicApp) {
-  console.log('Ionic Core: init');
+  // console.log('Ionic Core: init');
   $ionicApp.bootstrap();
 }]);
