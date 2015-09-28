@@ -11,6 +11,9 @@ angular.module('starter.controllers')
       $scope.$apply()
       $scope.loader = false
       setupView()
+    } else {
+      Notification.message = "This swap is no longer up for grabs"
+      $state.go('tab.swaps', {}, {reload: true})
     }
   });
 

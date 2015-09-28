@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnCtrl', function($scope, Api, General) {
+.controller('SwapsOwnCtrl', function($scope, $state, Api, General) {
   $scope.mySwapsTabSelected = function() {
     $scope.mySwapsLoader = true
     Api.getOwnShiftsWithSwaps()

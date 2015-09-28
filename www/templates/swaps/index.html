@@ -169,6 +169,7 @@
           <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="upForGrabsLoader"></ion-spinner>
         </div>
         <ion-content>
+          <notification ng-model="message" ng-show="message"></notification>
           <div ng-controller="CalendarCtrl" class="calender-display">
             <div class="calendar-holder" ng-if="calendarObjects && !upForGrabsLoader">
               <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
