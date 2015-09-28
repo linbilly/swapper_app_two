@@ -20,6 +20,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.num = Notification.numUnread
     }
+    $scope.$apply()
   }
 
   function hasToken() {
