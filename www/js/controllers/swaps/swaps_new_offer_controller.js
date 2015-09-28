@@ -14,27 +14,38 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('swappableShiftsFetched', function(event, args) {
-    $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
-    if (!$scope.shift_up_for_swap) {
-      Notification.message = "This swap is no longer up for grabs"
-      $state.go('tab.swaps', {}, {reload: true})
-    } else if (args.already_offered_swap) {
-      var swap = JSON.parse(args.swap)
-      $state.go('tab.swaps-offered-swap-detail', {swapId: swap.id}, {reload: true});
-    }
-    Calendar.cannot_swap_shift_dates = args.cannot_swap_shift_dates
-    Calendar.shifts_already_accepted = args.shifts_already_accepted
-    $scope.shift_owner = args.shift_owner
-    $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
-    $scope.loader = false
-    $scope.setupInterval = $interval(function() {
-      Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
-      Calendar.goToRightDefaultSlide($scope.day)
-      if ($(".ion-star").length > 0) {
-        $interval.cancel($scope.setupInterval)
+    if (args.success) {
+
+      $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
+      
+      if (args.already_offered_swap) {
+        var swap = JSON.parse(args.swap)
+        $state.go('tab.swaps-offered-swap-detail', {swapId: swap.id}, {reload: true});
       }
-    }, 100)
+
+      Calendar.cannot_swap_shift_dates = args.cannot_swap_shift_dates
+      Calendar.shifts_already_accepted = args.shifts_already_accepted
+      $scope.shift_owner = args.shift_owner
+      $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
+      $scope.loader = false
+      $scope.setupInterval = $interval(function() {
+        Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
+        Calendar.goToRightDefaultSlide($scope.day)
+        if ($(".ion-star").length > 0) {
+          $interval.cancel($scope.setupInterval)
+        }
+      }, 100)
+
+    } else {
+      noLongerUpForSwap()
+    }
+
   })
+
+  function noLongerUpForSwap() {
+    Notification.message = "This swap is no longer up for grabs"
+    $state.go('tab.swaps', {}, {reload: true})
+  }
 
   $scope.multipleDatesSelected = function($event) {
     var ele = null

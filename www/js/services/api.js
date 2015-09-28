@@ -224,20 +224,29 @@ angular.module('starter.services')
       shift_id: shiftId
     }
     $.get(getAllShiftsSwappableForDayUrl, params).then(function(result) {
-      Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
-      $rootScope.$broadcast(
-        "swappableShiftsFetched",
-        {
-          shifts: Api.shiftsSwappable,
-          already_offered_swap: result.already_offered_swap,
-          offered_swap: result.offered_swap,
-          cannot_swap_shift_dates: result.cannot_swap_shift_dates,
-          shifts_already_accepted: result.shifts_already_accepted,
-          shift_owner: result.shift_owner,
-          shift_up_for_swap: result.shift_up_for_swap,
-          swap: result.swap
-        }
-      )
+      if (result.status == 500) {
+
+        $rootScope.$broadcast("swappableShiftsFetched", {success: false})
+
+      } else {
+
+        Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
+        $rootScope.$broadcast(
+          "swappableShiftsFetched",
+          {
+            success: true,
+            shifts: Api.shiftsSwappable,
+            already_offered_swap: result.already_offered_swap,
+            offered_swap: result.offered_swap,
+            cannot_swap_shift_dates: result.cannot_swap_shift_dates,
+            shifts_already_accepted: result.shifts_already_accepted,
+            shift_owner: result.shift_owner,
+            shift_up_for_swap: result.shift_up_for_swap,
+            swap: result.swap
+          }
+        )
+
+      }
     });
   }
 
