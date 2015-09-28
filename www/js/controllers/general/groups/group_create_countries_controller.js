@@ -25,5 +25,9 @@ angular.module('starter.controllers')
   $scope.countrySelected = function(countryName, countryId) {
     Locations.selectedCountryName = countryName
     Locations.selectedCountryId = countryId
+
+    $timeout(function() {
+      $ionicHistory.goBack();
+    }, 500)
   }
 })
