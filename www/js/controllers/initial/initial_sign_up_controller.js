@@ -4,6 +4,7 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
 
   setErrorsToFalse()
+  Api.initialSignUp = true
 
   $scope.createUser = function(email, firstName, lastName, password, sex) {
     if (noErrors(email, firstName, lastName, password, sex)) {

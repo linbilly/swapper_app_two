@@ -6,7 +6,9 @@ angular.module('starter.controllers')
   $scope.calendar = Calendar
   $scope.calendar.emptyNote = true
 
-  Api.getShiftPatterns()
+  if (Api.userToken()) {
+    Api.getShiftPatterns()
+  }
 
   $scope.$on('shiftTypesFetched', function(event, args) {
     $scope.shiftTypesByGroup = Api.inputButtonsByGroup

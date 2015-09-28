@@ -5,12 +5,16 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
 
   if (!hasToken()) {
     $state.go('initial', {}, {reload: true});
+  } else if (Calendar.needReload($scope.dateYear)) {
+    $scope.loader = true
+    loadShifts()
   }
 
   function hasToken() {
     if (Api.userToken()) {
       return true
     } else {
+      Api.initialSignUp = false
       return false
     }
   }
@@ -24,11 +28,6 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
 
     $(".tab-nav").removeClass("tabs-item-hide")
     $(".scroll-content").addClass("has-tabs")
-  }
-
-  if (Calendar.needReload($scope.dateYear)) {
-    $scope.loader = true
-    loadShifts()
   }
   
   function loadShifts() {
