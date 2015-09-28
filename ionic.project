@@ -1,5 +1,5 @@
 {
-  "name": "swapper",
+  "name": "Swapper",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",
