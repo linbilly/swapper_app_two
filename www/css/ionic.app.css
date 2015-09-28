@@ -75,6 +75,9 @@ a {
     font-size: 14px;
     margin-top: 10px; }
 
+.general-bottom-note {
+  padding: 15px; }
+
 .bottom-note {
   text-align: center;
   padding: 15px; }
