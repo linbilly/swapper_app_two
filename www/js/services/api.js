@@ -231,6 +231,8 @@ angular.module('starter.services')
       } else {
 
         Api.shiftsSwappable = makeShiftsEasyToQuery(JSON.parse(result.shifts))
+        Api.holidays = result.holidays
+        
         $rootScope.$broadcast(
           "swappableShiftsFetched",
           {

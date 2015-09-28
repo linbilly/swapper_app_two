@@ -76,7 +76,8 @@
           Offer to Swap
         </button>
       </div>
-      <br>
+    </div>
+    <div class="general-bottom-note" ng-show="!loader">
       <p>
         You cannot offer some shifts because:
       </p>
@@ -91,6 +92,10 @@
       </p>
       <p>
         4. {{shift_owner.first_name}} already has a shift on that day
+      </p>
+      <br>
+      <p>
+        * Make sure you have inputted all your shifts into your <a href="#/tab/calendar/index">calendar</a>!
       </p>
     </div>
   </ion-content>
