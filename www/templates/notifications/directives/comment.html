@@ -2,6 +2,6 @@
   <i class="icon ion-chatbox notification-type-icon"></i>
   <h2 ng-if="notification.user_id == details.shift_owner">{{details.commenter_name}} commented on a shift you put up for swap</h2>
   <h2 ng-if="notification.user_id != details.shift_owner">{{details.commenter_name}} commented on a thread you're a part of</h2>
-  <p am-time-ago="notification.created_at | amParse:'YYYY-MM-DDTHH:mm:ss.sssZ'"></p>
+  <bottom-content></bottom-content>
   <i class="icon ion-chevron-right icon-accessory"></i>
 </a>

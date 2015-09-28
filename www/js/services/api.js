@@ -492,15 +492,15 @@ angular.module('starter.services')
   // ===========================================================================
 
   Api.userToken = function() {
-    return window.localStorage['token']
+    // return window.localStorage['token']
     
     // return "KHTTusxPysFNxPtYhxFe" // Localhost User 1
     // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
     // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
-    // return "Y4MwDy6HVBksGaAznA-4" // Heroku User 1
-    // return "fUP11h8QcHztefbNsE1X" // Heroku User 2
-    // return "77uiN2ARUxHV_C-p492z" // Heroku User 3
+    return "b8N2bx8idNNkqmkRYMXx" // Heroku User 1
+    // return "RXmfhw5FuhCAux68P-us" // Heroku User 2
+    // return "EsaUK23vVurw6pvsHGFz" // Heroku User 3
 
     // return null
     // localStorage.removeItem(key);

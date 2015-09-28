@@ -100,3 +100,12 @@ angular.module('starter')
     }
   }
 })
+
+.directive('bottomContent', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/bottom_content.html",
+    link: function(scope, element, attrs) {
+      // Something
+    }
+  }
+})
