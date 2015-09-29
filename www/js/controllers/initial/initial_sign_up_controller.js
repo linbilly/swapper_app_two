@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('InitialSignUpCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $state, $ionicPush, Api) {
+.controller('InitialSignUpCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $state, $ionicPush, $ionicUser, Api) {
   $ionicNavBarDelegate.showBackButton(false)
 
   setErrorsToFalse()
@@ -75,18 +75,15 @@ angular.module('starter.controllers')
       canRunActionsOnWake: true, // Can run actions outside the app,
       onNotification: function(notification) {
         // Handle push notifications here
+        var params = {
+          user_id: user.id,
+          ionic_user_token: notification.regid,
+          platform: ionic.Platform.platform()
+        }
+        Api.updateUserWithIonicDetails(params)
         console.log(notification);
         return true;
       }
     });
   };
-
-  $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-    var params = {
-      ionic_user_id: data.token,
-      platform: data.platform,
-      device: ionic.Platform.device()
-    }
-    Api.updateUserWithIonicDetails(params)
-  });
 })
