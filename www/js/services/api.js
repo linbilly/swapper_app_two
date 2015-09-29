@@ -499,6 +499,17 @@ angular.module('starter.services')
     });
   }
 
+  // Ionic User
+  // ===========================================================================
+
+  Api.updateUserWithIonicDetails = function(params) {
+    var updateUserWithIonicDetailsUrl = root_url + "ionic/update-user"
+    params["authentication_token"] = Api.userToken()
+    $.post(updateUserWithIonicDetailsUrl, params).then(function(result){
+      $rootScope.$broadcast("userUpdatedWithIonicDetails");
+    });
+  }
+
   // General
   // ===========================================================================
 

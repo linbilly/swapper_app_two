@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('InitialSignUpCtrl', function($scope, $ionicNavBarDelegate, $state, Api) {
+.controller('InitialSignUpCtrl', function($rootScope, $scope, $ionicNavBarDelegate, $state, $ionicPush, Api) {
   $ionicNavBarDelegate.showBackButton(false)
 
   setErrorsToFalse()
@@ -19,6 +19,7 @@ angular.module('starter.controllers')
       $scope.loader = false
       $scope.$apply()
     } else {
+      registerWithPushService(Api.user)
       window.localStorage['token'] =  Api.user.authentication_token;
       $state.go('groups')
     }
@@ -65,4 +66,27 @@ angular.module('starter.controllers')
       return true
     }
   }
+
+  function registerWithPushService(user) {
+    $ionicPush.register({
+      canShowAlert: true, // Can pushes show an alert on your screen?
+      canSetBadge: true, // Can pushes update app icon badges?
+      canPlaySound: true, // Can notifications play a sound?
+      canRunActionsOnWake: true, // Can run actions outside the app,
+      onNotification: function(notification) {
+        // Handle push notifications here
+        console.log(notification);
+        return true;
+      }
+    });
+  };
+
+  $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
+    var params = {
+      ionic_user_id: data.token,
+      platform: data.platform,
+      device: ionic.Platform.device()
+    }
+    Api.updateUserWithIonicDetails(params)
+  });
 })
