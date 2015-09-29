@@ -5,7 +5,16 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ngCordova', 'starter.controllers', 'starter.services', 'tagged.directives.autogrow', 'angularMoment', 'ngIOS9UIWebViewPatch'])
+angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.push', 'ngCordova', 'starter.controllers', 'starter.services', 'tagged.directives.autogrow', 'angularMoment', 'ngIOS9UIWebViewPatch'])
+
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  $ionicAppProvider.identify({
+    app_id: "a606b893",
+    api_key: "65d43b6a0a720b1f54b55cddad90e67c07ba37871c241ef8",
+    gcm_id: "400009070269",
+    dev_push: false
+  })
+}])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -86,4 +86,15 @@ angular.module('starter.controllers')
       }
     });
   };
+
+  $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
+    if (ionic.Platform.isIOS()) {
+      var params = {
+        user_id: Api.user.id,
+        ionic_user_token: data.token,
+        platform: ionic.Platform.platform()
+      }
+      Api.updateUserWithIonicDetails(params)
+    }
+  });
 })
