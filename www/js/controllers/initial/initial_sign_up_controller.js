@@ -68,27 +68,36 @@ angular.module('starter.controllers')
   }
 
   function registerWithPushService(user) {
-    $ionicPush.register({
-      canShowAlert: true, // Can pushes show an alert on your screen?
-      canSetBadge: true, // Can pushes update app icon badges?
-      canPlaySound: true, // Can notifications play a sound?
-      canRunActionsOnWake: true, // Can run actions outside the app,
-      onNotification: function(notification) {
-        // Handle push notifications here
-        var params = {
-          user_id: user.id,
-          ionic_user_token: notification.regid,
-          platform: ionic.Platform.platform()
+    if (ionic.Platform.isIOS()) {
+      $ionicPush.register({
+        // No senderID for iOS
+        canShowAlert: true, // Can pushes show an alert on your screen?
+        canSetBadge: true, // Can pushes update app icon badges?
+        canPlaySound: true, // Can notifications play a sound?
+        canRunActionsOnWake: true, // Can run actions outside the app,
+        onNotification: function(notification) {
+          // Handle push notifications here
+          console.log("Harro... ios")
         }
-        Api.updateUserWithIonicDetails(params)
-        console.log(notification);
-        return true;
-      }
-    });
+      });
+    } else {
+      $ionicPush.register({
+        senderID: "400009070269",
+        canShowAlert: true, // Can pushes show an alert on your screen?
+        canSetBadge: true, // Can pushes update app icon badges?
+        canPlaySound: true, // Can notifications play a sound?
+        canRunActionsOnWake: true, // Can run actions outside the app,
+        onNotification: function(notification) {
+          // Handle push notifications here
+          console.log("Harro... android")
+          return true;
+        }
+      });
+    }
   };
 
   $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-    if (ionic.Platform.isIOS()) {
+    if (data.token) {
       var params = {
         user_id: Api.user.id,
         ionic_user_token: data.token,

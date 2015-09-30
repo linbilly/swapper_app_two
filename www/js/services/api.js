@@ -516,7 +516,7 @@ angular.module('starter.services')
   Api.userToken = function() {
     return window.localStorage['token']
     
-    // return "KHTTusxPysFNxPtYhxFe" // Localhost User 1
+    // return "PXb91aUEP2Yk1sF68QMj" // Localhost User 1
     // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
     // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
