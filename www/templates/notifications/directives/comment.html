@@ -1,4 +1,4 @@
-<a class="item item-icon-left item-icon-right" ng-href="#/tab/swaps/comments/{{details.shift_id}}" ng-class="'not-read': !notification.read" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
+<a class="item item-icon-left item-icon-right" ng-href="#/tab/swaps/comments/{{details.shift_id}}" ng-class="{'not-read': !notification.read}" ng-class="{'not-read': !notification.read}" ng-click="read($event, notification.id)">
   <i class="icon ion-chatbox notification-type-icon"></i>
   <h2 ng-if="notification.user_id == details.shift_owner">{{details.commenter_name}} commented on a shift you put up for swap</h2>
   <h2 ng-if="notification.user_id != details.shift_owner">{{details.commenter_name}} commented on a thread you're a part of</h2>
