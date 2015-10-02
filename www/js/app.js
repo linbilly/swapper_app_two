@@ -187,6 +187,16 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.push', 
     }
   })
 
+  .state('tab.notification-settings', {
+    url: '/notifications/settings',
+    views: {
+      'tab-notifications': {
+        templateUrl: 'templates/notifications/settings.html',
+        controller: 'NotificationSettingsCtrl'
+      }
+    }
+  })
+
   // ===========================================================
   // General
   // ===========================================================

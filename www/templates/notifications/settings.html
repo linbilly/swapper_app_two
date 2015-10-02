@@ -1,0 +1,96 @@
+<ion-view view-title="Notifications" cache-view="false">
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-back" ng-click="goBack()">Back</a>
+  </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
+  <ion-content>
+    <div ng-show="!loader">
+      <div class="list notification-settings-list">
+
+        <ion-toggle ng-model="notificationSettings.join_group" ng-checked="notificationSettings.join_group" toggle-class="toggle-positive">
+          <h2>
+            Groups
+          </h2>
+          <p>
+            Someone joins your group
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.shift_available" ng-checked="notificationSettings.shift_available" toggle-class="toggle-positive">
+          <h2>
+            Available shift
+          </h2>
+          <p>
+            Someone in one of your groups puts up a shift for swap that you can take
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.comment" ng-checked="notificationSettings.comment" toggle-class="toggle-positive">
+          <h2>
+            Comments
+          </h2>
+          <p>
+            Someone comments on a tread you're a part of or a shift you put up for swap
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.swap_offered" ng-checked="notificationSettings.swap_offered" toggle-class="toggle-positive">
+          <h2>
+            Swap offered
+          </h2>
+          <p>
+            Someone offered to swap with you
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.swap_accepted" ng-checked="notificationSettings.swap_accepted" toggle-class="toggle-positive">
+          <h2>
+            Swap accepted
+          </h2>
+          <p>
+            Your offer to swap was accepted
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.swap_approved" ng-checked="notificationSettings.swap_approved" toggle-class="toggle-positive">
+          <h2>
+            Swap approved
+          </h2>
+          <p>
+            Your offer to swap was approved by a manager and both calendars are updated
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.swap_offers_cancelled" ng-checked="notificationSettings.swap_offers_cancelled" toggle-class="toggle-positive">
+          <h2>
+            Swap rescinded
+          </h2>
+          <p>
+            Someone took back his / her offer to swap with you
+          </p>
+        </ion-toggle>
+
+        <ion-toggle ng-model="notificationSettings.swap_cancelled" ng-checked="notificationSettings.swap_cancelled" toggle-class="toggle-positive">
+          <h2>
+            Swap cancelled
+          </h2>
+          <p>
+            A swap you made an offer on was cancelled
+          </p>
+        </ion-toggle>
+        
+        <ion-toggle ng-model="notificationSettings.someone_elses_swap_accepted" ng-checked="notificationSettings.someone_elses_swap_accepted" toggle-class="toggle-positive">
+          <h2>
+            Offered swap not chosen
+          </h2>
+          <p>
+            Your offer to swap was not the one that was accepted
+          </p>
+        </ion-toggle>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
