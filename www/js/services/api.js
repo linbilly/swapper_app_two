@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.service('Api', function($http, $rootScope, General, Notification) {
+.service('Api', function($http, $rootScope, $ionicPush, General, Notification) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   // var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
@@ -483,7 +483,11 @@ angular.module('starter.services')
       authentication_token: Api.userToken()
     }
     $.get(numUnreadNotificationsUrl, params).then(function(result){
-      Notification.numUnread = result.num_unread
+      if (result.num_unread == 0) {
+        Notification.numUnread = ""
+      } else {
+        Notification.numUnread = result.num_unread
+      }
       $rootScope.$broadcast("numUnreadNotificationsFetched");
     });
   }
@@ -494,7 +498,11 @@ angular.module('starter.services')
       authentication_token: Api.userToken()
     }
     $.post(readNotificationsUrl, params).then(function(result){
-      Notification.numUnread = result.num_unread
+      if (result.num_unread == 0) {
+        Notification.numUnread = ""
+      } else {
+        Notification.numUnread = result.num_unread
+      }
       $rootScope.$broadcast("notificationMarkedAsRead");
     });
   }
@@ -508,6 +516,35 @@ angular.module('starter.services')
     $.post(updateUserWithIonicDetailsUrl, params).then(function(result){
       $rootScope.$broadcast("userUpdatedWithIonicDetails");
     });
+  }
+
+  Api.registerWithPushService = function() {
+    if (ionic.Platform.isIOS()) {
+      $ionicPush.register({
+        // No senderID for iOS
+        canShowAlert: true, // Can pushes show an alert on your screen?
+        canSetBadge: true, // Can pushes update app icon badges?
+        canPlaySound: true, // Can notifications play a sound?
+        canRunActionsOnWake: true, // Can run actions outside the app,
+        onNotification: function(notification) {
+          // Handle push notifications here
+          console.log("Harro... ios")
+        }
+      });
+    } else {
+      $ionicPush.register({
+        senderID: "400009070269",
+        canShowAlert: true, // Can pushes show an alert on your screen?
+        canSetBadge: true, // Can pushes update app icon badges?
+        canPlaySound: true, // Can notifications play a sound?
+        canRunActionsOnWake: true, // Can run actions outside the app,
+        onNotification: function(notification) {
+          // Handle push notifications here
+          console.log("Harro... android")
+          return true;
+        }
+      });
+    }
   }
 
   // General

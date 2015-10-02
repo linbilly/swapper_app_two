@@ -19,7 +19,7 @@ angular.module('starter.controllers')
       $scope.loader = false
       $scope.$apply()
     } else {
-      registerWithPushService(Api.user)
+      Api.registerWithPushService()
       window.localStorage['token'] =  Api.user.authentication_token;
       $state.go('groups')
     }
@@ -66,35 +66,6 @@ angular.module('starter.controllers')
       return true
     }
   }
-
-  function registerWithPushService(user) {
-    if (ionic.Platform.isIOS()) {
-      $ionicPush.register({
-        // No senderID for iOS
-        canShowAlert: true, // Can pushes show an alert on your screen?
-        canSetBadge: true, // Can pushes update app icon badges?
-        canPlaySound: true, // Can notifications play a sound?
-        canRunActionsOnWake: true, // Can run actions outside the app,
-        onNotification: function(notification) {
-          // Handle push notifications here
-          console.log("Harro... ios")
-        }
-      });
-    } else {
-      $ionicPush.register({
-        senderID: "400009070269",
-        canShowAlert: true, // Can pushes show an alert on your screen?
-        canSetBadge: true, // Can pushes update app icon badges?
-        canPlaySound: true, // Can notifications play a sound?
-        canRunActionsOnWake: true, // Can run actions outside the app,
-        onNotification: function(notification) {
-          // Handle push notifications here
-          console.log("Harro... android")
-          return true;
-        }
-      });
-    }
-  };
 
   $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
     if (data.token) {
