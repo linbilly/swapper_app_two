@@ -10,9 +10,15 @@ angular.module('starter.controllers')
   Api.notificationSettings()
 
   $scope.$on('notificationSettingsFetched', function() {
-    $scope.notificationSettings = Api.notificationSettings
+    $scope.notificationSettings = Api.userNotificationSettings
     $scope.loader = false
     $scope.$apply()
   });
 
+  $scope.toggleChanged = function() {
+    var params = {
+      notification_settings: $scope.notificationSettings
+    }
+    Api.updateNotificationSettings(params)
+  }
 })

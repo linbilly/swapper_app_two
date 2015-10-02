@@ -9,7 +9,7 @@
     <div ng-show="!loader">
       <div class="list notification-settings-list">
 
-        <ion-toggle ng-model="notificationSettings.join_group" ng-checked="notificationSettings.join_group" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.join_group" ng-checked="notificationSettings.join_group" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Groups
           </h2>
@@ -18,7 +18,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.shift_available" ng-checked="notificationSettings.shift_available" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.shift_available" ng-checked="notificationSettings.shift_available" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Available shift
           </h2>
@@ -27,7 +27,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.comment" ng-checked="notificationSettings.comment" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.comment" ng-checked="notificationSettings.comment" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Comments
           </h2>
@@ -36,7 +36,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.swap_offered" ng-checked="notificationSettings.swap_offered" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.swap_offered" ng-checked="notificationSettings.swap_offered" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Swap offered
           </h2>
@@ -45,7 +45,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.swap_accepted" ng-checked="notificationSettings.swap_accepted" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.swap_accepted" ng-checked="notificationSettings.swap_accepted" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Swap accepted
           </h2>
@@ -54,7 +54,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.swap_approved" ng-checked="notificationSettings.swap_approved" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.swap_approved" ng-checked="notificationSettings.swap_approved" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Swap approved
           </h2>
@@ -63,7 +63,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.swap_offers_cancelled" ng-checked="notificationSettings.swap_offers_cancelled" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.swap_offers_cancelled" ng-checked="notificationSettings.swap_offers_cancelled" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Swap rescinded
           </h2>
@@ -72,7 +72,7 @@
           </p>
         </ion-toggle>
 
-        <ion-toggle ng-model="notificationSettings.swap_cancelled" ng-checked="notificationSettings.swap_cancelled" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.swap_cancelled" ng-checked="notificationSettings.swap_cancelled" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Swap cancelled
           </h2>
@@ -81,7 +81,7 @@
           </p>
         </ion-toggle>
         
-        <ion-toggle ng-model="notificationSettings.someone_elses_swap_accepted" ng-checked="notificationSettings.someone_elses_swap_accepted" toggle-class="toggle-positive">
+        <ion-toggle ng-model="notificationSettings.someone_elses_swap_accepted" ng-checked="notificationSettings.someone_elses_swap_accepted" ng-change="toggleChanged()" toggle-class="toggle-positive">
           <h2>
             Offered swap not chosen
           </h2>

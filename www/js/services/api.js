@@ -507,14 +507,22 @@ angular.module('starter.services')
     });
   }
 
-  Api.notificationSettings = function(notificationId) {
+  Api.notificationSettings = function() {
     var notificationSettingsUrl = root_url + "notifications/settings"
     var params = {
       authentication_token: Api.userToken()
     }
     $.get(notificationSettingsUrl, params).then(function(result){
-      Api.notificationSettings = result.notification_settings
+      Api.userNotificationSettings = result.notification_settings
       $rootScope.$broadcast("notificationSettingsFetched");
+    });
+  }
+
+  Api.updateNotificationSettings = function(params) {
+    var updateNotificationSettingsUrl = root_url + "notifications/update-settings"
+    params["authentication_token"] = Api.userToken()
+    $.post(updateNotificationSettingsUrl, params).then(function(result){
+      $rootScope.$broadcast("notificationSettingsUpdated");
     });
   }
 
