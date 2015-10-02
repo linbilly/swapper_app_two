@@ -22,15 +22,17 @@ angular.module('starter.controllers', [])
   }
 
   function updateIconBadge() {
-    $cordovaBadge.hasPermission().then(function(yes) {
-      $cordovaBadge.set(Notification.numUnread).then(function() {
-        console.log("Badge set to: " + Notification.numUnread)
-      }, function(err) {
-        console.log(err)
+    if (window.cordova) {
+      $cordovaBadge.hasPermission().then(function(yes) {
+        $cordovaBadge.set(Notification.numUnread).then(function() {
+          console.log("Badge set to: " + Notification.numUnread)
+        }, function(err) {
+          console.log(err)
+        });
+      }, function(no) {
+        console.log(no)
       });
-    }, function(no) {
-      console.log(no)
-    });
+    }
   }
 
   function hasToken() {

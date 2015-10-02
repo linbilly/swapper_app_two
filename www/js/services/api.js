@@ -519,31 +519,34 @@ angular.module('starter.services')
   }
 
   Api.registerWithPushService = function() {
-    if (ionic.Platform.isIOS()) {
-      $ionicPush.register({
-        // No senderID for iOS
-        canShowAlert: true, // Can pushes show an alert on your screen?
-        canSetBadge: true, // Can pushes update app icon badges?
-        canPlaySound: true, // Can notifications play a sound?
-        canRunActionsOnWake: true, // Can run actions outside the app,
-        onNotification: function(notification) {
-          // Handle push notifications here
-          console.log("Harro... ios")
-        }
-      });
-    } else {
-      $ionicPush.register({
-        senderID: "400009070269",
-        canShowAlert: true, // Can pushes show an alert on your screen?
-        canSetBadge: true, // Can pushes update app icon badges?
-        canPlaySound: true, // Can notifications play a sound?
-        canRunActionsOnWake: true, // Can run actions outside the app,
-        onNotification: function(notification) {
-          // Handle push notifications here
-          console.log("Harro... android")
-          return true;
-        }
-      });
+    if (window.cordova) {
+      // running on device/emulator
+      if (ionic.Platform.isIOS()) {
+        $ionicPush.register({
+          // No senderID for iOS
+          canShowAlert: true, // Can pushes show an alert on your screen?
+          canSetBadge: true, // Can pushes update app icon badges?
+          canPlaySound: true, // Can notifications play a sound?
+          canRunActionsOnWake: true, // Can run actions outside the app,
+          onNotification: function(notification) {
+            // Handle push notifications here
+            console.log("Harro... ios")
+          }
+        });
+      } else {
+        $ionicPush.register({
+          senderID: "400009070269",
+          canShowAlert: true, // Can pushes show an alert on your screen?
+          canSetBadge: true, // Can pushes update app icon badges?
+          canPlaySound: true, // Can notifications play a sound?
+          canRunActionsOnWake: true, // Can run actions outside the app,
+          onNotification: function(notification) {
+            // Handle push notifications here
+            console.log("Harro... android")
+            return true;
+          }
+        });
+      }
     }
   }
 
@@ -551,13 +554,13 @@ angular.module('starter.services')
   // ===========================================================================
 
   Api.userToken = function() {
-    return window.localStorage['token']
+    // return window.localStorage['token']
     
     // return "PXb91aUEP2Yk1sF68QMj" // Localhost User 1
     // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
     // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
-    // return "b8N2bx8idNNkqmkRYMXx" // Heroku User 1
+    return "qUT1AMH1osFUSdZQ_XTA" // Heroku User 1
     // return "RXmfhw5FuhCAux68P-us" // Heroku User 2
     // return "EsaUK23vVurw6pvsHGFz" // Heroku User 3
 
