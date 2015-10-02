@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $ionicScrollDelegate, Api, General, ShiftType) {
+.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $ionicScrollDelegate, $state, Api, General, ShiftType) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.sending = false
@@ -26,7 +26,11 @@ angular.module('starter.controllers')
   }
 
   $scope.goBack = function() {
-    $ionicHistory.goBack();
+    if ($ionicHistory.backTitle() == "Notifications") {
+      $state.go("tab.swaps")
+    } else {
+      $ionicHistory.goBack();
+    }
   };
 
   $scope.stringDateToWords = function(startDate) {
