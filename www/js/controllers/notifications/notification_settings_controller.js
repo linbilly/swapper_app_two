@@ -6,4 +6,13 @@ angular.module('starter.controllers')
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
+
+  Api.notificationSettings()
+
+  $scope.$on('notificationSettingsFetched', function() {
+    $scope.notificationSettings = Api.notificationSettings
+    $scope.loader = false
+    $scope.$apply()
+  });
+
 })

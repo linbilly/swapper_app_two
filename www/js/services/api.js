@@ -507,6 +507,17 @@ angular.module('starter.services')
     });
   }
 
+  Api.notificationSettings = function(notificationId) {
+    var notificationSettingsUrl = root_url + "notifications/settings"
+    var params = {
+      authentication_token: Api.userToken()
+    }
+    $.get(notificationSettingsUrl, params).then(function(result){
+      Api.notificationSettings = result.notification_settings
+      $rootScope.$broadcast("notificationSettingsFetched");
+    });
+  }
+
   // Ionic User
   // ===========================================================================
 
