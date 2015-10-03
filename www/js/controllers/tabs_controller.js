@@ -1,10 +1,17 @@
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function($rootScope, $scope, $location, $interval, $cordovaPush, $cordovaDialogs, $cordovaMedia, $state, $cordovaBadge, Api, Notification) {
-  if (hasToken() && !Api.initialSignUp) {
+.controller('TabsCtrl', function($rootScope, $scope, $location, $interval, $ionicPlatform, $cordovaPush, $cordovaDialogs, $cordovaMedia, $state, $cordovaBadge, Api, Notification) {
+  if (Api.userToken() && !Api.initialSignUp) {
     Api.numUnreadNotifications()
     $interval(Api.numUnreadNotifications, 1000 * 60 * 5) // Check for num of unread notifications every 5 minutes
   }
+
+  $ionicPlatform.ready(function() {
+    // Can only register after the platform is ready
+    if (Api.userToken()) {
+      Api.registerWithPushService()
+    }
+  })
 
   $scope.$on('numUnreadNotificationsFetched', function(event, args) {
     updateTabNumBadge()
@@ -35,15 +42,6 @@ angular.module('starter.controllers', [])
     }
   }
 
-  function hasToken() {
-    if (Api.userToken()) {
-      Api.registerWithPushService()
-      return true
-    } else {
-      return false
-    }
-  }
-
   // Notification Received
   // Code from https://github.com/hollyschinsky/PushNotificationSample
 
@@ -62,7 +60,7 @@ angular.module('starter.controllers', [])
       // Api.readNotifications(customPayload.notification_id)
       // var url = customPayload.url
       // window.location = url
-      if (notification.foreground) {
+      if (notification.foreground && Api.userToken()) {
         Api.numUnreadNotifications()
       } else {
         $state.go('tab.notifications', {}, {reload: true});
@@ -75,7 +73,7 @@ angular.module('starter.controllers', [])
     // var url = notification.url
     // window.location = url
     console.log(notification)
-    if (notification.foreground == "1") {
+    if (notification.foreground == "1" && Api.userToken()) {
       Api.numUnreadNotifications()
     } else {
       $state.go('tab.notifications', {}, {reload: true});
