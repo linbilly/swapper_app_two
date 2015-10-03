@@ -3,10 +3,10 @@
     <a class="button button-icon icon ion-ios-settings" href="#/tab/notifications/settings"></a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div ng-show="!loader">
+    <div class="ng-hide" ng-show="!loader">
       <div class="list notifications-list">
         <div ng-repeat="notification in notifications" ng-if="notifications.length > 0">
           <comment ng-model="notification" ng-if="notification.category == 'Comment'"></comment>

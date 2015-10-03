@@ -3,10 +3,10 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/index">Back</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div class="list account-sign-up-list" ng-show="!loader">
+    <div class="list account-sign-up-list ng-hide" ng-show="!loader">
       <form name="signUp">
         <div class="item item-divider">
           Email: {{user.email}}
@@ -26,11 +26,11 @@
         <ion-radio-fix name="sex" ng-model="sex" value="male">Male</ion-radio-fix>
       </form>
     </div>
-    <div class="bottom-note" ng-show="!loader">
-      <div class="error-on-submit assertive" ng-show="everthingFilledInError">
+    <div class="bottom-note ng-hide" ng-show="!loader">
+      <div class="error-on-submit assertive ng-hide" ng-show="everthingFilledInError">
         Please fill everything in
       </div>
-      <div class="error-on-submit assertive" ng-show="sexSelectedError">
+      <div class="error-on-submit assertive ng-hide" ng-show="sexSelectedError">
         Please select the sex you identify as
       </div>
       <button class="button button-block button-positive" ng-click="updateUser(firstName, lastName, sex)">

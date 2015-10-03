@@ -1,13 +1,13 @@
 <ion-view cache-view="false">
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-nav-title>Offer</ion-nav-title>
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/up-for-grabs/{{day}}/list" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
   <ion-content>
-    <div class="top-instructions" ng-if="shift_up_for_swap" ng-show="!loader">
+    <div class="top-instructions ng-hide" ng-if="shift_up_for_swap" ng-show="!loader">
       <div>
         <b>
           <i class="icon ion-star"></i>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div ng-controller="CalendarCtrl" class="calender-display" ng-show="!loader">
+    <div ng-controller="CalendarCtrl" class="calender-display ng-hide" ng-show="!loader">
       <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
           <ion-slide ng-repeat="month in calendarObjects">
@@ -67,9 +67,9 @@
       </div>
     </div>
 
-    <div class="bottom-note" ng-show="!loader">
+    <div class="bottom-note ng-hide" ng-show="!loader">
       <div>
-        <div class="error-on-submit assertive" ng-show="shiftsSelectedError">
+        <div class="error-on-submit assertive ng-hide" ng-show="shiftsSelectedError">
           Please select at least one shift to offer
         </div>
         <button class="button button-positive" ng-click="offerToSwap()">
@@ -77,7 +77,7 @@
         </button>
       </div>
     </div>
-    <div class="general-bottom-note" ng-show="!loader">
+    <div class="general-bottom-note ng-hide" ng-show="!loader">
       <p>
         You cannot offer some shifts because:
       </p>

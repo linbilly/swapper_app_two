@@ -4,7 +4,7 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/index" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
   <ion-content>
-    <notification ng-model="message" ng-show="message"></notification>
+    <notification ng-model="message" class="ng-hide" ng-show="message"></notification>
     <div class="list card up-for-grabs-list" ng-repeat="shift in shiftsUpForGrabs" ng-if="shiftsUpForGrabs.length > 0">
 
       <div class="item item-avatar">

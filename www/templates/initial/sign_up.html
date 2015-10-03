@@ -3,10 +3,10 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/initial/welcome">Back</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div class="list account-sign-up-list" ng-show="!loader">
+    <div class="list account-sign-up-list ng-hide" ng-show="!loader">
       <form name="signUp">
         <label class="item item-input text-input">
           <input type="text" ng-model="firstName" placeholder="First name">
@@ -27,17 +27,17 @@
         <ion-radio-fix name="sex" ng-model="sex" value="male">Male</ion-radio-fix>
       </form>
     </div>
-    <div class="bottom-note" ng-show="!loader">
-      <div class="error-on-submit assertive" ng-show="emailTakenError">
+    <div class="bottom-note ng-hide" ng-show="!loader">
+      <div class="error-on-submit assertive ng-hide" ng-show="emailTakenError">
         Email has already been taken
       </div>
-      <div class="error-on-submit assertive not-valid-email" ng-show="signUp.$error.email" data-error="{{emailErrorCleaner(email, signUp.$error.email)}}">
+      <div class="error-on-submit assertive not-valid-email ng-hide" ng-show="signUp.$error.email" data-error="{{emailErrorCleaner(email, signUp.$error.email)}}">
         Not a valid email
       </div>
-      <div class="error-on-submit assertive" ng-show="everthingFilledInError">
+      <div class="error-on-submit assertive ng-hide" ng-show="everthingFilledInError">
         Please fill everything in
       </div>
-      <div class="error-on-submit assertive" ng-show="sexSelectedError">
+      <div class="error-on-submit assertive ng-hide" ng-show="sexSelectedError">
         Please select the sex you identify as
       </div>
       <button class="button button-block button-positive" ng-click="createUser(email, firstName, lastName, password, sex)">

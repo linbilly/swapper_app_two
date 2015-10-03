@@ -7,10 +7,10 @@
     <a class="button button-icon icon ion-chatbox" href="#/tab/swaps/comments/{{shift.id}}"> {{shift.comments.length}}</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div class="swap-own-detail-holder" ng-show="!loader">
+    <div class="swap-own-detail-holder ng-hide" ng-show="!loader">
       <p>
         <b class="date-title">
           <i class="icon ion-star"></i>

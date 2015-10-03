@@ -31,7 +31,7 @@
         <i class="icon ion-android-arrow-dropdown-circle" ng-click="showAdditionalDetailsIconClicked()"></i>
       </div>
     </div>
-    <div class="additional-details" ng-show="showAdditionalDetails">
+    <div class="additional-details ng-hide" ng-show="showAdditionalDetails">
       <p>
         {{shift.shift_type.name}} ({{shift.shift_type.start_hour | numberFixedLen: 2}}:{{shift.shift_type.start_minute | numberFixedLen: 2}} - {{prettyEndTime(shift.shift_type)}})
       </p>
@@ -55,8 +55,8 @@
         <div class="ios-message-row-buffer hide-on-keyboard-open"></div>
       </div>
       <div class="col-20 button button-energized send-button" ng-click="sendMessage()" ng-enter="sendMessage()">
-        <i class="icon ion-android-send" ng-show="!sending"></i>
-        <ion-spinner class="dots-spinner" icon="dots" ng-show="sending"></ion-spinner>
+        <i class="icon ion-android-send ng-hide" ng-show="!sending"></i>
+        <ion-spinner class="dots-spinner ng-hide" icon="dots" ng-show="sending"></ion-spinner>
       </div>
     </div>
   </ion-footer-bar>

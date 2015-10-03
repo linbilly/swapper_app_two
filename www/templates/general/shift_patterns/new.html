@@ -4,10 +4,10 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/patterns/index">Patterns</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div class="shift-patterns-detail" ng-show="!loader">
+    <div class="shift-patterns-detail ng-hide" ng-show="!loader">
       <h4>
         {{shiftPattern.group.name}}
       </h4>
@@ -19,15 +19,15 @@
               <label>
                 <input class="shift-name-input" type="text" placeholder="E.g. Day Shift" ng-model="shiftPatternName">
               </label>
-              <span class="input-label assertive" ng-show="inputError">Please fill in</span>
+              <span class="input-label assertive ng-hide" ng-show="inputError">Please fill in</span>
             </div>
             <div class="col col-33">
               <span class="input-label">Abbreviation:</span>
               <label>
                 <input class="shift-name-input" type="text" placeholder="E.g. Dx" ng-model="abbreviation">
               </label>
-              <span class="input-label assertive" ng-show="abbInputError">Please fill in</span>
-              <span class="input-label assertive" ng-show="lengthError">3 letters max</span>
+              <span class="input-label assertive ng-hide" ng-show="abbInputError">Please fill in</span>
+              <span class="input-label assertive ng-hide" ng-show="lengthError">3 letters max</span>
             </div>
           </div>
         </label>
@@ -36,7 +36,7 @@
       <ion-toggle ng-model="shiftPattern.swappable" ng-checked="shiftPattern.swappable" toggle-class="toggle-positive">Swappable shift?</ion-toggle>
       <ion-toggle ng-model="shiftPattern.entireDay" ng-checked="shiftPattern.entireDay" toggle-class="toggle-positive">Entire day?</ion-toggle>
 
-      <div class="time-section-holder" ng-show="!shiftPattern.entireDay">
+      <div class="time-section-holder ng-hide" ng-show="!shiftPattern.entireDay">
         <div class="row">
           <div class="col">
             <p>
@@ -61,7 +61,7 @@
           <div class="col">
             <p>
               End time:
-              <span ng-show="nextDayEnd">
+              <span class="ng-hide" ng-show="nextDayEnd">
                 *
               </span>
             </p>
@@ -79,7 +79,7 @@
                 <i class="icon ion-arrow-down-b down-minute-icon end" ng-click="downMinute($event)"></i>
               </div>
             </div>
-            <div ng-show="nextDayEnd">
+            <div class="ng-hide" ng-show="nextDayEnd">
               * Ends the next day
             </div>
           </div>

@@ -7,11 +7,11 @@
     <ion-tab title="My Swaps" on-select="mySwapsTabSelected()" ng-controller="SwapsOwnCtrl">
       <ion-view cache-view="false">
         <div class="row loader-holder">
-          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="mySwapsLoader"></ion-spinner>
+          <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="mySwapsLoader"></ion-spinner>
         </div>
         <ion-content>
-          <notification ng-model="message" ng-show="message"></notification>
-          <div ng-show="!mySwapsLoader">
+          <notification ng-model="message" class="ng-hide" ng-show="message"></notification>
+          <div class="ng-hide" ng-show="!mySwapsLoader">
             <div ng-if="ownShiftsWithSwaps.length > 0">
               <div class="list">
                 <div ng-repeat="(name, shifts) in ownShiftsByStatus">
@@ -87,10 +87,10 @@
     <ion-tab title="Swaps Offered" on-select="swapsOfferedTabSelected()" ng-controller="SwapsOfferedCtrl">
       <ion-view cache-view="false">
         <div class="row loader-holder">
-          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="swapsOfferedLoader"></ion-spinner>
+          <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="swapsOfferedLoader"></ion-spinner>
         </div>
         <ion-content>
-          <notification ng-model="message" ng-show="message"></notification>
+          <notification ng-model="message" class="ng-hide" ng-show="message"></notification>
           <div class="list" ng-if="swapsOffered.length > 0 && !swapsOfferedLoader">
             <div ng-repeat="(status, swaps) in swapsOfferedByStatus">
               <div class="item item-divider" ng-if="swaps.length > 0">
@@ -166,10 +166,10 @@
     <ion-tab title="Up for Grabs" on-select="upForGrabsTabSelected()" ng-controller="SwapsUpForGrabsCtrl">
       <ion-view>
         <div class="row loader-holder">
-          <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="upForGrabsLoader"></ion-spinner>
+          <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="upForGrabsLoader"></ion-spinner>
         </div>
         <ion-content>
-          <notification ng-model="message" ng-show="message"></notification>
+          <notification ng-model="message" ng-class="ng-hide" ng-show="message"></notification>
           <div ng-controller="CalendarCtrl" class="calender-display">
             <div class="calendar-holder" ng-if="calendarObjects && !upForGrabsLoader">
               <ion-slide-box show-pager="false" auto-play="false" active-slide="3">
@@ -225,7 +225,7 @@
           <div class="shift-input-buttons-holder">
             <div class="bottom-block">
               <div>
-                <button class="button button-small button-positive" ng-click="goToViewAllAsList()" ng-show="calendarObjects && !upForGrabsLoader">
+                <button class="button button-small button-positive ng-hide" ng-click="goToViewAllAsList()" ng-show="calendarObjects && !upForGrabsLoader">
                   View All as List
                 </button>
               </div>

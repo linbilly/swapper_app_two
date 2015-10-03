@@ -1,4 +1,4 @@
-<div ng-show="!loader">
+<div class="ng-hide" ng-show="!loader">
   <div class="detailed-group-header-holder">
     <div class="title">
       <h4>
@@ -14,12 +14,12 @@
     <div ng-if="!groupHasUser">
       This group has <ng-pluralize count="users.length || 0" when="{'0': 'no members yet - be the first!', '1': '1 member - join this lonely member!', 'other': '{{users.length}} members. Join to swap your shifts with them!'}"></ng-pluralize>
     </div>
-    <button class="button button-positive" ng-click="joinGroup()" ng-show="!groupHasUser" ng-class="buttonClicked ? 'clicked' : ''">
+    <button class="button button-positive ng-hide" ng-click="joinGroup()" ng-show="!groupHasUser" ng-class="buttonClicked ? 'clicked' : ''">
       Join Group
     </button>
     <div>
     </div>
-    <div ng-show="groupHasUser">
+    <div class="ng-hide" ng-show="groupHasUser">
       <div class="row">
         <div class="col-50">
           <button class="button">

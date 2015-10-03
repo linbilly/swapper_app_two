@@ -8,12 +8,12 @@
     <p>{{country}}</p>
     <i class="icon ion-chevron-right icon-accessory"></i>
   </a>
-  <a class="item item-icon-right" ng-href="#/tab/general/groups/create/provinces" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'ca'">
+  <a class="item item-icon-right ng-hide" ng-href="#/tab/general/groups/create/provinces" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'ca'">
     <h2>Province</h2>
     <p>{{province}}</p>
     <i class="icon ion-chevron-right icon-accessory"></i>
   </a>
-  <a class="item item-icon-right" ng-href="#/tab/general/groups/create/states" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'us'">
+  <a class="item item-icon-right ng-hide" ng-href="#/tab/general/groups/create/states" ng-click="storeGroupTitle(groupTitle)" ng-show="countryId == 'us'">
     <h2>State</h2>
     <p>{{state}}</p>
     <i class="icon ion-chevron-right icon-accessory"></i>
@@ -21,16 +21,16 @@
 </div>
 
 <div class="bottom-note">
-  <div class="error-on-submit assertive" ng-show="groupNameError">
+  <div class="error-on-submit assertive ng-hide" ng-show="groupNameError">
     Please enter a group name
   </div>
-  <div class="error-on-submit assertive" ng-show="countryError">
+  <div class="error-on-submit assertive ng-hide" ng-show="countryError">
     Please select a country
   </div>
-  <div class="error-on-submit assertive" ng-show="provinceError">
+  <div class="error-on-submit assertive ng-hide" ng-show="provinceError">
     Please select a province
   </div>
-  <div class="error-on-submit assertive" ng-show="stateError">
+  <div class="error-on-submit assertive ng-hide" ng-show="stateError">
     Please select a state
   </div>
   <div class="text-before-submit">

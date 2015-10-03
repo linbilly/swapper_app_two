@@ -3,10 +3,10 @@
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/notifications/index">Back</a>
   </ion-nav-buttons>
   <div class="row loader-holder">
-    <ion-spinner class="actual-loader spinner-positive" icon="lines" ng-show="loader"></ion-spinner>
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
   <ion-content>
-    <div ng-show="!loader">
+    <div class="ng-hide" ng-show="!loader">
       <div class="list notification-settings-list">
 
         <ion-toggle ng-model="notificationSettings.join_group" ng-checked="notificationSettings.join_group" ng-change="toggleChanged()" toggle-class="toggle-positive">
