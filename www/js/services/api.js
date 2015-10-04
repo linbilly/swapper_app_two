@@ -573,13 +573,13 @@ angular.module('starter.services')
   // ===========================================================================
 
   Api.userToken = function() {
-    return window.localStorage['token']
+    // return window.localStorage['token']
     
     // return "PXb91aUEP2Yk1sF68QMj" // Localhost User 1
     // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
     // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
-    // return "3ad_xSNb_yvwmAhCzT1y" // Heroku User 1
+    return "3ad_xSNb_yvwmAhCzT1y" // Heroku User 1
     // return "RXmfhw5FuhCAux68P-us" // Heroku User 2
     // return "EsaUK23vVurw6pvsHGFz" // Heroku User 3
 

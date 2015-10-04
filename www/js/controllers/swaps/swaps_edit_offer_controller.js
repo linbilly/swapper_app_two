@@ -22,14 +22,16 @@ angular.module('starter.controllers')
     if ($scope.swap) {
       $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
       $scope.loader = false
-      $scope.setupInterval = $interval(function() {
+
+      var setupInterval = $interval(function() {
         Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
         Calendar.goToRightDefaultSlide($scope.day)
         highlightSwapsBeingOffered()
-        if ($(".edit-offer-page .dates .ion-star").length > 0) {
-          $interval.cancel($scope.setupInterval)
+        if ($(".edit-offer-page .dates .ion-star").length > 0 || $(".edit-offer-page").length == 0) {
+          $interval.cancel(setupInterval)
         }
       }, 100)
+
     } else {
       // In case user was still on this page when shift was removed
       $state.go('tab.swaps', {}, {reload: true});

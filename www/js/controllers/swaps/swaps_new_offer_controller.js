@@ -29,11 +29,12 @@ angular.module('starter.controllers')
       $scope.shift_owner = args.shift_owner
       $scope.calendarObjects = Calendar.setupCalendarObjects(args.shifts, {})
       $scope.loader = false
-      $scope.setupInterval = $interval(function() {
+
+      var setupInterval = $interval(function() {
         Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
         Calendar.goToRightDefaultSlide($scope.day)
-        if ($(".new-offer-page .dates .ion-star").length > 0) {
-          $interval.cancel($scope.setupInterval)
+        if ($(".new-offer-page .dates .ion-star").length > 0 || $(".new-offer-page").length == 0) {
+          $interval.cancel(setupInterval)
         }
       }, 100)
 

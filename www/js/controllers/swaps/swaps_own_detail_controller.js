@@ -10,7 +10,9 @@ angular.module('starter.controllers')
     if ($scope.shift) {
       $scope.loader = false
       $scope.$apply()
-      setupView()
+      if ($scope.shift.swaps.length > 0) {
+        setupView()
+      }
     } else {
       Notification.message = "This swap is no longer up for grabs"
       $state.go('tab.swaps', {}, {reload: true})
@@ -18,7 +20,7 @@ angular.module('starter.controllers')
   });
 
   function setupView() {
-    $scope.setupInterval = $interval(function() {
+    var setupInterval = $interval(function() {
       if ($scope.shift.has_accepted_a_swap) {
         addSwapIconToAcceptedSwap()
       } else {
@@ -26,8 +28,8 @@ angular.module('starter.controllers')
       }
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
-      if ($(".own-detail-page .dates .ion-star").length > 0) {
-        $interval.cancel($scope.setupInterval)
+      if ($(".own-detail-page .dates .ion-star").length > 0 || $(".own-detail-page").length == 0) {
+        $interval.cancel(setupInterval)
       }
     }, 100)
   }
@@ -49,7 +51,6 @@ angular.module('starter.controllers')
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
-    $interval.cancel($scope.setupInterval)
   }
 
   $scope.prettyEndTime = function(shiftType) {

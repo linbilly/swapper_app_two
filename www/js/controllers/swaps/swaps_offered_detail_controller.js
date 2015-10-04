@@ -13,7 +13,7 @@ angular.module('starter.controllers')
   });
 
   function setupView() {
-    $scope.setupInterval = $interval(function() {
+    var setupInterval = $interval(function() {
       if ($scope.swap.state == "Pending approval") {
         addSwapIconToAcceptedSwap()
       } else {
@@ -21,8 +21,8 @@ angular.module('starter.controllers')
       }
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
-      if ($(".offered-detail-page .dates .ion-star").length > 0) {
-        $interval.cancel($scope.setupInterval)
+      if ($(".offered-detail-page .dates .ion-star").length > 0 || $(".offered-detail-page").length == 0) {
+        $interval.cancel(setupInterval)
       }
     }, 100)
   }
