@@ -8,8 +8,8 @@ angular.module('starter.controllers')
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
     setShiftAndOfferedshifts()
     if ($scope.shift) {
-      $scope.$apply()
       $scope.loader = false
+      $scope.$apply()
       setupView()
     } else {
       Notification.message = "This swap is no longer up for grabs"
@@ -49,6 +49,7 @@ angular.module('starter.controllers')
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
+    $interval.cancel($scope.setupInterval)
   }
 
   $scope.prettyEndTime = function(shiftType) {

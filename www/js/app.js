@@ -337,5 +337,5 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.push', 
   $ionicConfigProvider.tabs.style("standard"); // Make tabs all look the same across all OS
   $ionicConfigProvider.navBar.alignTitle('center'); // Center headers for Android
   $ionicConfigProvider.views.swipeBackEnabled(false); // Prevent from swiping back
-  $ionicConfigProvider.scrolling.jsScrolling(false); // Use native scrolling
+  // $ionicConfigProvider.scrolling.jsScrolling(false); // Use native scrolling
 });

@@ -11,6 +11,7 @@ angular.module('starter.controllers')
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
+    $interval.cancel($scope.setupInterval)
   }
 
   $scope.$on('swappableShiftsFetched', function(event, args) {

@@ -52,6 +52,7 @@ angular.module('starter.controllers')
 
   $scope.clearHistory = function() {
     $ionicHistory.clearHistory()
+    $interval.cancel($scope.setupInterval)
   }
 
   $scope.prettyEndTime = function(shiftType) {
