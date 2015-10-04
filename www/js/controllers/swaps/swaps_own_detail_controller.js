@@ -26,7 +26,7 @@ angular.module('starter.controllers')
       }
       Calendar.addStarToDateToSwap($scope.shift.start_date)
       Calendar.goToRightDefaultSlide($scope.shift.start_date)
-      if ($(".dates .ion-star").length > 0) {
+      if ($(".own-detail-page .dates .ion-star").length > 0) {
         $interval.cancel($scope.setupInterval)
       }
     }, 100)

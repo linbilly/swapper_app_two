@@ -25,7 +25,7 @@ angular.module('starter.controllers')
         Calendar.addStarToDateToSwap($scope.shift_up_for_swap.start_date)
         Calendar.goToRightDefaultSlide($scope.day)
         highlightSwapsBeingOffered()
-        if ($(".dates .ion-star").length > 0) {
+        if ($(".edit-offer-page .dates .ion-star").length > 0) {
           $interval.cancel($scope.setupInterval)
         }
       }, 100)
