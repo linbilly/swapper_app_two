@@ -43,7 +43,7 @@
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" ng-if="shift.already_offered_swap">
+        <a class="tab-item" href="#/tab/swaps/offered/{{shift.swap_id_for_this_users_offer}}" ng-if="shift.already_offered_swap">
           <i class="icon ion-checkmark"></i>
           Already Offered
         </a>
