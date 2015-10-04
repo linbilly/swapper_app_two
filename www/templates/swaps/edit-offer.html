@@ -6,6 +6,9 @@
   <ion-nav-buttons side="left">
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/swaps/offered/{{swapId}}" ng-click="clearHistory()">Back</a>
   </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon icon ion-chatbox" href="#/tab/swaps/comments/{{shift_up_for_swap.id}}"> {{shift_up_for_swap.comments.length}}</a>
+  </ion-nav-buttons>
   <ion-content>
     <div class="top-instructions ng-hide" ng-if="shift_up_for_swap" ng-show="!loader">
       <div>
