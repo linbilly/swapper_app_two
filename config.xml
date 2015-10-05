@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.justsaywen.shiftswapper" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.justsaywen.shiftswapper" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Swapper</name>
   <description>
-    Helps shift workers swap shifts.
+    Swap your shifts
   </description>
-  <author email="dstwen@gmail.com" href="http://www.justsaywen.com">
+  <author email="swapperteam@gmail.com" href="http://www.justsaywen.com">
     David Wen
   </author>
   <content src="index.html" />
