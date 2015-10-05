@@ -2,6 +2,9 @@
   <ion-nav-buttons side="left" >
     <a class="button button-icon icon ion-ios-arrow-back" href="#/tab/general/groups/index">Groups</a>
   </ion-nav-buttons>
+  <div class="row loader-holder">
+    <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
+  </div>
   <ion-content>
     <new-group></new-group>
   </ion-content>
