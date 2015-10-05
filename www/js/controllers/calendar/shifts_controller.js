@@ -40,7 +40,7 @@ app.controller('ShiftsCtrl', function($scope, $stateParams, $ionicPopover, $time
     window.localStorage['timeLastReloaded'] = $scope.dateYear
     $scope.setupInterval = $interval(function() {
       Calendar.highlightToday()
-      if ($(".date-col.active").length > 0) {
+      if ($(".date-col.active").length > 0 || $(".calendar-index-page").length == 0) {
         $interval.cancel($scope.setupInterval)
       }
     }, 100)

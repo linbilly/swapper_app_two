@@ -5,7 +5,7 @@
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
-  <ion-content>
+  <ion-content class="calendar-index-page">
     <div ng-controller="CalendarCtrl" class="calender-display ng-hide" ng-show="!loader">
       <div class="calendar-holder" ng-if="calendarObjects">
         <ion-slide-box show-pager="false" auto-play="false" active-slide="3" on-slide-changed="highlightACell()">
