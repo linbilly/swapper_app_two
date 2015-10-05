@@ -4,6 +4,8 @@ angular.module('starter.controllers')
   $ionicNavBarDelegate.showBackButton(false)
   clearErrors()
 
+  $scope.loader = false
+
   displayGroupTitle()
   displayCountry()
   displayProvince()
@@ -47,6 +49,7 @@ angular.module('starter.controllers')
   $scope.createGroup = function (groupName){
     clearErrors()
     if (noErrors(groupName)) {
+      $scope.loader = true
       var params = {
         group_name: groupName,
         country: Locations.selectedCountryName,
@@ -54,13 +57,15 @@ angular.module('starter.controllers')
         province_state: provinceState(),
         province_state_code: provinceStateId()
       }
-
       Api.createGroup(params)
-      Notification.message = groupName + " successfully created."
       clearAllSavedValues()
-      $state.go('tab.groups', {}, {reload: true});
     }
   }
+
+  $scope.$on('groupCreated', function(event, args) {
+    Notification.message = args.group.name + " successfully created."
+    $state.go('tab.shifts-patterns-new', {groupId: args.group.id}, {reload: true});
+  });
 
   $scope.storeGroupTitle = function(groupTitle) {
     Group.groupTitle = groupTitle
