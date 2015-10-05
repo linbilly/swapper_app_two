@@ -73,7 +73,7 @@ angular.module('starter.services')
     var createGroupUrl = root_url + "groups/create"
     params["authentication_token"] = Api.userToken()
     $.post(createGroupUrl, params).then(function(result){
-      $rootScope.$broadcast("groupCreated");
+      $rootScope.$broadcast("groupCreated", {group: result.group});
     });
   }
 
@@ -581,7 +581,8 @@ angular.module('starter.services')
 
     // return "DLnwLvacAwo_zFydXc_S" // Heroku User 1
     // return "3ad_xSNb_yvwmAhCzT1y" // Heroku User 2
-    // return "DLnwLvacAwo_zFydXc_S" // Heroku User 3
+    // return "-JfK7A1Wx9N6quYUutzi" // Heroku User 3
+    // return "vy2KdUJ-KxYamwzC8sd6" // Heroku User 4
 
     // return null
     // localStorage.removeItem(key);
