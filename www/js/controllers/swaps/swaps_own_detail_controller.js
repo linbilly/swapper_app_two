@@ -112,7 +112,7 @@ angular.module('starter.controllers')
     var shifts = []
     for (var i = 0; i < shift.swaps.length; i++) {
       for (var index = 0; index < shift.swaps[i].offered_shifts.length; index++) {
-        shift.swaps[i].offered_shifts[index]["shift_type"] = shift.shift_type
+        // shift.swaps[i].offered_shifts[index]["shift_type"] = shift.shift_type
         shift.swaps[i].offered_shifts[index]["user"] = shift.swaps[i].user
         shift.swaps[i].offered_shifts[index]["swapId"] = shift.swaps[i].id
         shifts.push(shift.swaps[i].offered_shifts[index])
