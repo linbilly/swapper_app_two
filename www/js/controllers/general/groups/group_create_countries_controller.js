@@ -7,6 +7,8 @@ angular.module('starter.controllers')
     removeTabs()
   }
 
+  $scope.selectedAlready = false
+
   function removeTabs() {
     $(".tab-nav").addClass("tabs-item-hide")
     $timeout(function() {
@@ -26,8 +28,11 @@ angular.module('starter.controllers')
     Locations.selectedCountryName = countryName
     Locations.selectedCountryId = countryId
 
-    $timeout(function() {
-      $ionicHistory.goBack();
-    }, 500)
+    if (!$scope.selectedAlready) {
+      $scope.selectedAlready = true
+      $timeout(function() {
+        $ionicHistory.goBack();
+      }, 500)
+    }
   }
 })

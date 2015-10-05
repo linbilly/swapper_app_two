@@ -26,8 +26,11 @@ angular.module('starter.controllers')
     Locations.selectedStateName = stateName
     Locations.selectedStateId = stateId
 
-    $timeout(function() {
-      $ionicHistory.goBack();
-    }, 500)
+    if (!$scope.selectedAlready) {
+      $scope.selectedAlready = true
+      $timeout(function() {
+        $ionicHistory.goBack();
+      }, 500)
+    }
   }
 })
