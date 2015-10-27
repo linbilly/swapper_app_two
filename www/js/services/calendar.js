@@ -299,9 +299,13 @@ angular.module('starter.services')
     var monthThatSwapIsIn = parseInt(date.split("-")[1])
     var today = new Date()
     var todaysMonth = today.getMonth() + 1
-    var slideToGoTo = (monthThatSwapIsIn - todaysMonth) + 3
+    var slideToGoTo = 3
 
-    if (monthThatSwapIsIn != todaysMonth) {
+    if (todaysMonth < monthThatSwapIsIn) {
+      slideToGoTo = slideToGoTo + monthThatSwapIsIn - todaysMonth
+      $ionicSlideBoxDelegate.slide(slideToGoTo, 1000)
+    } else {
+      slideToGoTo = slideToGoTo + 12 - todaysMonth + monthThatSwapIsIn
       $ionicSlideBoxDelegate.slide(slideToGoTo, 1000)
     }
   }
