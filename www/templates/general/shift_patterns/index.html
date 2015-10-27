@@ -27,7 +27,7 @@
                 <span ng-repeat="user in group.admin_users">{{user.first_name}} {{user.last_name}}</span>
               </div>
               <div>
-                Only <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'admins', '1': 'the group admin', 'other': 'group admins'}"></ng-pluralize> can update shift patterns. Please reach out to <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'them', '1': '{{group.admin_users[0].pronoun_possessive}}', 'other': 'them'}"></ng-pluralize> if you would like something changed.
+                Only <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'admins', '1': 'the group admin', 'other': 'group admins'}"></ng-pluralize> can update shift patterns. Please reach out to <ng-pluralize count="group.admin_users.length || 0" when="{'0': 'them', '1': '{{group.admin_users[0].pronoun_object}}', 'other': 'them'}"></ng-pluralize> if you would like something changed.
               </div>
             </div>
           </div>
