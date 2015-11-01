@@ -2,9 +2,9 @@ angular.module('starter.services')
 
 .service('Api', function($http, $rootScope, $ionicPush, General, Notification) {
   $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-  // var root_url = "http://localhost:3000/api/";
+  var root_url = "http://localhost:3000/api/";
   // var root_url = "http://192.168.1.66:3000/api/";
-  var root_url = "https://swapper-app.herokuapp.com/api/";
+  // var root_url = "https://swapper-app.herokuapp.com/api/";
 
   var Api = {};
 
@@ -26,6 +26,22 @@ angular.module('starter.services')
         $rootScope.$broadcast("userCreated");
       } else {
         $rootScope.$broadcast("userCreated", {error: result.message});
+      }
+    });
+  }
+
+  Api.loginUser = function(email, password) {
+    var loginUserUrl = root_url + "users/login"
+    var params = {
+      email: email,
+      password: password
+    }
+    $.post(loginUserUrl, params).then(function(result) {
+      if (result.status == 200) {
+        Api.user = result.user;
+        $rootScope.$broadcast("userLoggedIn", {has_group: result.has_group});
+      } else {
+        $rootScope.$broadcast("userLoggedIn", {error: result.message});
       }
     });
   }
@@ -574,18 +590,14 @@ angular.module('starter.services')
 
   Api.userToken = function() {
     return window.localStorage['token']
-    
-    // return "PXb91aUEP2Yk1sF68QMj" // Localhost User 1
-    // return "jBkRafBgv1zDY_XUuSxX" // Localhost User 2
-    // return "4dJtNm94TD5p8dxqTeGa" // Localhost User 3
 
-    // return "DLnwLvacAwo_zFydXc_S" // Heroku User 1
-    // return "3ad_xSNb_yvwmAhCzT1y" // Heroku User 2
-    // return "-JfK7A1Wx9N6quYUutzi" // Heroku User 3
-    // return "vy2KdUJ-KxYamwzC8sd6" // Heroku User 4
+    // return "B8sgdXhBEfYGq72xeyjn" // User 1
+    // return "A1Mr989tTzgSAxzh8whT" // User 2
+    // return "SrMrz-tg1zhkPTH8juZL" // User 3
+    // return "vy2KdUJ-KxYamwzC8sd6" // User 4
 
     // return null
-    // localStorage.removeItem(key);
+    // localStorage.removeItem('token');
   }
 
   return Api;

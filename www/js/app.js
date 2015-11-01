@@ -63,6 +63,12 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.push', 
     controller: 'InitialSignUpCtrl'
   })
 
+  .state('login', {
+    url: '/initial/login',
+    templateUrl: 'templates/initial/login.html',
+    controller: 'InitialLoginCtrl'
+  })
+
   .state('groups', {
     url: '/initial/groups',
     templateUrl: 'templates/initial/groups.html',

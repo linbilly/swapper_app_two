@@ -1,7 +1,4 @@
 <ion-view view-title="Sign up" cache-view="false" class="initial-sign-up-page" can-swipe-back="false">
-  <ion-nav-buttons side="left">
-    <a class="button button-icon icon ion-ios-arrow-back" href="#/initial/welcome">Back</a>
-  </ion-nav-buttons>
   <div class="row loader-holder">
     <ion-spinner class="actual-loader spinner-positive ng-hide" icon="lines" ng-show="loader"></ion-spinner>
   </div>
@@ -43,6 +40,10 @@
       <button class="button button-block button-positive" ng-click="createUser(email, firstName, lastName, password, sex)">
         Create Account
       </button>
+      <br>
+      <div>
+        Already have an account? <a href="#/initial/login">Login</a>
+      </div>
     </div>
   </ion-content>
 </ion-view>
