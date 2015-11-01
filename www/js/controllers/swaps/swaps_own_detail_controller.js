@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
+.controller('SwapsOwnDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar, Shift) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   Api.getOwnShiftsWithSwaps()
@@ -8,6 +8,10 @@ angular.module('starter.controllers')
   $scope.$on('ownShiftsWithSwapsFetched', function(event, args) {
     setShiftAndOfferedshifts()
     if ($scope.shift) {
+      if (Shift.isInThePast($scope.shift)) {
+        Notification.message = "This swap is in the past now."
+        $state.go('tab.swaps', {}, {reload: true})
+      }
       $scope.loader = false
       $scope.$apply()
       if ($scope.shift.swaps.length > 0) {

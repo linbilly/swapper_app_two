@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, $interval, Api, Calendar, General, ShiftType, Notification) {
+.controller('SwapsNewOfferCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, $ionicHistory, $timeout, $ionicSlideBoxDelegate, $interval, Api, Calendar, General, ShiftType, Notification, Shift) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.shiftsSelectedError = false
@@ -18,6 +18,10 @@ angular.module('starter.controllers')
     if (args.success) {
 
       $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
+      if (Shift.isInThePast($scope.shift_up_for_swap)) {
+        Notification.message = "This swap is in the past now."
+        $state.go('tab.swaps', {}, {reload: true})
+      }
       
       if (args.already_offered_swap) {
         var swap = JSON.parse(args.swap)

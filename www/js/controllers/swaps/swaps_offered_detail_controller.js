@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsOfferedDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar) {
+.controller('SwapsOfferedDetailCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicHistory, $timeout, $interval, $ionicScrollDelegate, Api, General, ShiftType, Notification, Calendar, Shift) {
   // $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   Api.swapsOffered()
@@ -31,6 +31,10 @@ angular.module('starter.controllers')
     $scope.swap = General.findById(Api.swapsOfferedByUser, $stateParams.swapId)
     if ($scope.swap) {
       $scope.shift = $scope.swap.shift
+      if (Shift.isInThePast($scope.shift)) {
+        Notification.message = "This swap is in the past now."
+        $state.go('tab.swaps', {}, {reload: true})
+      }
       $scope.orderedOfferedShifts = General.compareByDate($scope.swap.offered_shifts)
     } else {
       // In case user was still on this page when shift was removed
