@@ -9,8 +9,8 @@ angular.module('starter.controllers')
 
   $scope.$on('commentsFetched', function(event, args) {
     $scope.shift = args.shift
-    if (!$scope.shift.swap) {
-      Notification.message = "This swap is no longer up for grabs"
+    if (!$scope.shift || !$scope.shift.swap) {
+      Notification.message = "This shift is no longer up for grabs"
       $state.go("tab.swaps")
     }
     $scope.comments = Api.comments
