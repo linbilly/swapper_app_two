@@ -208,10 +208,17 @@ form .sign-up-radio {
   .dates .col .date-number {
     font-size: 12px;
     position: absolute;
-    top: 2px;
+    top: 0px;
     left: 2px; }
     .dates .col .date-number.holiday {
       color: #ef473a !important; }
+  .dates .col .date-note {
+    font-size: 12px;
+    position: absolute;
+    top: 2px;
+    right: 10px; }
+    .dates .col .date-note i {
+      position: absolute; }
   .dates .col .content-text {
     padding-top: 20px; }
 

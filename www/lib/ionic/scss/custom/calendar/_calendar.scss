@@ -78,11 +78,22 @@
     .date-number {
       font-size: 12px;
       position: absolute;
-      top: 2px;
+      top: 0px;
       left: 2px;
 
       &.holiday {
         color: $assertive !important;
+      }
+    }
+
+    .date-note {
+      font-size: 12px;
+      position: absolute;
+      top: 2px;
+      right: 10px;
+
+      i {
+        position: absolute;
       }
     }
     
