@@ -221,6 +221,8 @@ form .sign-up-radio {
       position: absolute; }
   .dates .col .content-text {
     padding-top: 20px; }
+    .dates .col .content-text .isAcceptedSwap {
+      color: grey; }
 
 .dates .date-col.active {
   background-color: #FFFF9D; }
@@ -440,6 +442,8 @@ form .sign-up-radio {
       padding-top: 20px;
       margin-left: -2px;
       font-size: 20px; }
+      .legend-modal .sample-date .date-content.isAcceptedSwap {
+        color: grey; }
   .legend-modal .custom-legend {
     margin-top: -10px; }
   .legend-modal .legend-num-on-calendar {

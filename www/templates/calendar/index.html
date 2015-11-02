@@ -42,7 +42,7 @@
                     <i class="icon ion-bookmark"></i>
                   </div>
                   <div class="content-text">
-                    <div ng-if="date.shift">
+                    <div ng-if="date.shift" ng-class="{'isAcceptedSwap': date.shift.is_an_accepted_swap}">
                       {{date.shift.shift_type.abbreviation}}
                     </div>
                   </div>
