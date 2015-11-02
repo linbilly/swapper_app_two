@@ -130,7 +130,7 @@ angular.module('starter.controllers')
       var date = General.railsDateToCalendarDate($scope.orderedOfferedShifts[i].start_date)
       var dateToSwap = $(".dates").find("[data-date='" + date + "']");
       dateToSwap.find(".num-shifts-available-on-calendar-holder").removeClass("hide")
-      var currentNum = dateToSwap.find(".num-shifts-available-on-calendar").text()
+      var currentNum = $(dateToSwap[0]).find(".num-shifts-available-on-calendar").text()
       if (currentNum == "") {
         currentNum = 0
       } else {
