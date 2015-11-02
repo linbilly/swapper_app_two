@@ -215,7 +215,7 @@ form .sign-up-radio {
   .dates .col .date-note {
     font-size: 12px;
     position: absolute;
-    top: 2px;
+    top: 0px;
     right: 10px; }
     .dates .col .date-note i {
       position: absolute; }
@@ -428,6 +428,13 @@ form .sign-up-radio {
       left: 3px; }
       .legend-modal .sample-date .top-date.holiday {
         color: #ef473a !important; }
+    .legend-modal .sample-date .date-note {
+      font-size: 12px;
+      position: absolute;
+      top: -5px;
+      right: 10px; }
+      .legend-modal .sample-date .date-note i {
+        position: absolute; }
     .legend-modal .sample-date .date-content {
       text-align: center;
       padding-top: 20px;

@@ -34,6 +34,17 @@
       }
     }
 
+    .date-note {
+      font-size: 12px;
+      position: absolute;
+      top: -5px;
+      right: 10px;
+
+      i {
+        position: absolute;
+      }
+    }
+
     .date-content {
       text-align: center;
       padding-top: 20px;
