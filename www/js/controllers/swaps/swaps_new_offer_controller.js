@@ -21,6 +21,9 @@ angular.module('starter.controllers')
       if (Shift.isInThePast($scope.shift_up_for_swap)) {
         Notification.message = "This swap is in the past now."
         $state.go('tab.swaps', {}, {reload: true})
+      } else if (Shift.alreadyAcceptedOffer($scope.shift)) {
+        Notification.message = "Another swap offer has already been accepted."
+        $state.go('tab.swaps', {}, {reload: true})
       }
       
       if (args.already_offered_swap) {
