@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $ionicScrollDelegate, $state, Api, General, ShiftType) {
+.controller('CommentsCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, $ionicScrollDelegate, $state, Api, General, ShiftType, Notification) {
   $ionicNavBarDelegate.showBackButton(false)
   $scope.loader = true
   $scope.sending = false
