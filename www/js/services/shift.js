@@ -11,5 +11,16 @@ angular.module('starter.services')
     return shiftStartDate < today
   }
 
+  Shift.alreadyAcceptedOffer = function(shift) {
+    var alreadyAccepted = false
+    for (var i = 0; i < shift.swaps.length; i++) {
+      if (shift.swaps[i].state == "Pending approval") {
+        alreadyAccepted = true
+        break
+      }
+    };
+    return alreadyAccepted
+  }
+
   return Shift;
 })

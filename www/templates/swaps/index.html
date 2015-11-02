@@ -206,10 +206,10 @@
                           <div ng-if="date.shift">
                             {{date.shift.shift_type.abbreviation}}
                           </div>
-                          <div ng-if="date.availableShifts" class="num-shifts-available-on-calendar-holder">
+                          <div ng-if="date.availableShifts && numUpForGrabs(date.availableShifts)" class="num-shifts-available-on-calendar-holder">
                             <a href="#/tab/swaps/up-for-grabs/{{date.dateAsString}}/list">
                               <div class="num-shifts-available-on-calendar in-calendar">
-                                {{date.availableShifts.length}}
+                                {{numUpForGrabs(date.availableShifts)}}
                               </div>
                             </a>
                           </div>
