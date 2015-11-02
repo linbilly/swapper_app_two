@@ -91,6 +91,9 @@
                     <div class="date-number" ng-class="{'holiday': date.holiday}">
                       {{date.dayNum}}<span ng-if="date.holiday">*</span>
                     </div>
+                    <div class="date-note" ng-if="date.shift.swapped">
+                      <i class="icon ion-bookmark"></i>
+                    </div>
                     <div class="content-text">
                       <div ng-if="date.shift && isBeingOffered(date.shift)">
                         <a class="shift-abbreviation-as-link" ng-click="scrollToAnchor($event)">
