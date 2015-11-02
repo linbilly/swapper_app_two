@@ -14,15 +14,20 @@ angular.module('starter.services')
   }
 
   Calendar.updateNotes = function(ele) {
+    var notes = []
     var holiday = ele.attr("data-holiday")
-    var groupName = ele.attr("data-group-name")
-    var note = null
-
-    if (holiday) {
-      note = holiday + "<br>" + groupName
-    } else if (groupName) {
-      note = groupName
+    if (holiday != "") {
+      notes.push(holiday)
     }
+    var groupName = ele.attr("data-group-name")
+    if (groupName != "") {
+      notes.push(groupName)
+    }
+    var shiftNotes = ele.attr("data-shift-notes")
+    if (shiftNotes != "") {
+      notes.push(shiftNotes)
+    }
+    var note = notes.join("<br>")
 
     if (note) {
       $(".notes-display .actual-note").html(note)
