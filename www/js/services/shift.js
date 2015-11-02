@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.service('Shift', function() {
+.service('Shift', function(Api) {
   var Shift = {};
 
   Shift.isInThePast = function(shift) {
@@ -20,6 +20,16 @@ angular.module('starter.services')
       }
     };
     return alreadyAccepted
+  }
+
+  Shift.removeAlreadyAccepted = function() {
+    var available = []
+    for (var i = 0; i < Api.shiftsUpForGrabs.length; i++) {
+      if (!Shift.alreadyAcceptedOffer(Api.shiftsUpForGrabs[i])) {
+        available.push(Api.shiftsUpForGrabs[i])
+      }
+    };
+    Api.shiftsUpForGrabs = available
   }
 
   return Shift;

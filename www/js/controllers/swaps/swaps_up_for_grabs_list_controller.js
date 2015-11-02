@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('SwapsUpForGrabsListCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Calendar, Notification) {
+.controller('SwapsUpForGrabsListCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicHistory, Api, General, ShiftType, Calendar, Notification, Shift) {
   // $ionicNavBarDelegate.showBackButton(false)
 
   $scope.loader = true
@@ -18,6 +18,7 @@ angular.module('starter.controllers')
   }
 
   $scope.$on('shiftsUpForGrabsFetched', function(event, args) {
+    Shift.removeAlreadyAccepted()
     $scope.shiftsUpForGrabs = Api.shiftsUpForGrabs
     $scope.$apply()
     $scope.loader = false
