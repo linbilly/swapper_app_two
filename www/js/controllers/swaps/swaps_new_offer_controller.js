@@ -16,12 +16,11 @@ angular.module('starter.controllers')
 
   $scope.$on('swappableShiftsFetched', function(event, args) {
     if (args.success) {
-
-      $scope.shift_up_for_swap = JSON.parse(args.shift_up_for_swap)
+      $scope.shift_up_for_swap = args.shift_up_for_swap
       if (Shift.isInThePast($scope.shift_up_for_swap)) {
         Notification.message = "This swap is in the past now."
         $state.go('tab.swaps', {}, {reload: true})
-      } else if (Shift.alreadyAcceptedOffer($scope.shift)) {
+      } else if (Shift.alreadyAcceptedOffer($scope.shift_up_for_swap)) {
         Notification.message = "Another swap offer has already been accepted."
         $state.go('tab.swaps', {}, {reload: true})
       }
