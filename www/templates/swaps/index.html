@@ -198,11 +198,11 @@
                   </div>
                   <div class="dates">
                     <div class="row" ng-repeat="row in month.rows">
-                      <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap}" data-holiday="{{date.holiday}}">
+                      <div class="col date-col" ng-repeat="date in row" ng-class="{'not-current-month': !date.isInCurrentMonth, 'swap': date.shift.swap && !date.shift.is_an_accepted_swap}" data-holiday="{{date.holiday}}">
                         <div class="date-number" ng-class="{'holiday': date.holiday}">
                           {{date.dayNum}}<span ng-if="date.holiday">*</span>
                         </div>
-                        <div class="date-note" ng-if="date.shift.swapped">
+                        <div class="date-note" ng-if="date.shift.notes">
                           <i class="icon ion-bookmark"></i>
                         </div>
                         <div class="content-text">
