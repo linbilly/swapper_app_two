@@ -22,7 +22,7 @@ angular.module('starter.controllers')
     if (abbreviation == selected.find(".content-text").text().trim()) {
       Calendar.highlightNextDay()
     } else {
-      if (selected.hasClass("swap")) {
+      if (selected.attr("data-is-swap") == "true") {
         swal({
           title: "Woah there!",
           text: "You have already put this shift up for a swap. If you want to change the shift, the swap will be removed.",
