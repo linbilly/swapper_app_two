@@ -18,6 +18,7 @@
           <swap-cancelled ng-model="notification" ng-if="notification.category == 'SwapCancelled'"></swap-cancelled>
           <someone-elses-swap-accepted ng-model="notification" ng-if="notification.category == 'SomeoneElsesSwapAccepted'"></someone-elses-swap-accepted>
           <swap-offers-cancelled ng-model="notification" ng-if="notification.category == 'SwapOffersCancelled'"></swap-offers-cancelled>
+          <general ng-model="notification" ng-if="notification.category == 'General'"></general>
         </div>
       </div>
       <div ng-if="notifications.length == 0">

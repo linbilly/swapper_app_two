@@ -101,6 +101,15 @@ angular.module('starter')
   }
 })
 
+.directive('general', function(Notification){
+  return {
+    templateUrl: "templates/notifications/directives/general.html",
+    link: function(scope, element, attrs) {
+      scope.details = scope.notification.details
+    }
+  }
+})
+
 .directive('bottomContent', function(Notification){
   return {
     templateUrl: "templates/notifications/directives/bottom_content.html",
