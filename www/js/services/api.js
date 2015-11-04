@@ -594,7 +594,7 @@ angular.module('starter.services')
     // return "B8sgdXhBEfYGq72xeyjn" // User 1
     // return "A1Mr989tTzgSAxzh8whT" // User 2
     // return "ZoZyiotQFnTFAZsw1t4x" // User 3
-    // return "vzDbRseSs5SGkawz1krC" // User 4
+    // return "A1Mr989tTzgSAxzh8whT" // User 4
 
     // return null
     // localStorage.removeItem('token');

@@ -20,8 +20,8 @@ angular.module('starter.controllers')
   $scope.$on('shiftsUpForGrabsFetched', function(event, args) {
     Shift.removeAlreadyAccepted()
     $scope.shiftsUpForGrabs = Api.shiftsUpForGrabs
-    $scope.$apply()
     $scope.loader = false
+    $scope.$apply()
   });
 
   $scope.abbreviatedMonth = function(startDate) {
